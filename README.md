@@ -1,2 +1,2 @@
 # Crystalline
-A new mod. Details coming soon, watch for a post on my blog (http://blog.thepuzzlemaker.info)
+Crystalline is a Minecraft mod that adds various magical crystals to the game. These crystals, when overused, can cause insanity.
