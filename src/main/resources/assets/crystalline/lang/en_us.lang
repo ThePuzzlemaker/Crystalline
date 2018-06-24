@@ -1,0 +1,55 @@
+< Crystalline >
+
+< Key Bindings >
+
+<< Categories >>
+key.categories.crystalline=Crystalline
+
+<< Bindings >>
+key.change_crystal_operation=Change Crystal Operation
+
+< Compat >
+
+<< Thaumcraft >>
+
+crystal.void=Void
+
+< I18N >
+
+<< Crystals >>
+
+crystal.type=Type:
+crystal.drained=Drained:
+crystal.properties=Essence Properties:
+crystal.potential=Potential:
+crystal.reagent=Reagent Required:
+crystal.insanity=This crystal can cause insanity.
+crystal.noinsanity=This crystal does not cause insanity.
+
+crystal.cleansing=Cleansing
+crystal.administration=Administration
+crystal.life=Life
+crystal.knowledge=Knowledge
+crystal.rift=Rift
+crystal.universe=Universe
+crystal.artificial=Artificial
+crystal.unknown=Unknown
+
+item.crystalline.crystal.name=Crystal
+
+<< Reagents >>
+
+reagent.rift=Rift or above
+reagent.universe=Universe
+reagent.basic=Basic or above
+reagent.advanced=Advanced or above
+reagent.extreme=Extreme or above
+reagent.void=Void
+reagent.binding=Binding
+
+item.crystalline.binding_reagent.name=Binding Reagent
+
+<< General >>
+
+i18n.yes=Yes
+i18n.no=No

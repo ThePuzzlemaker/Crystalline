@@ -1,0 +1,16 @@
+[
+{
+  "modid": "crystalline",
+  "name": "Crystalline",
+  "description": "Crystalline is a mod that adds magic crystals. If you use the crystals too much though, you may want to question your sanity!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["The Puzzlemaker"],
+  "credits": "McJty, for his tutorials; Azanor, for creating Thaumcraft, one of the inspirations of this mod; Vazkii, for creating Psi, another one of the inspirations of this mod; and Some friends for giving me some ideas, and many other people.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
