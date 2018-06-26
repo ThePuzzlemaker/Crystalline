@@ -1,21 +1,33 @@
 package ext.tpz.crystalline.item;
 
 import ext.tpz.crystalline.util.Reference;
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemCrystal extends Item {
 
     public ItemCrystal() {
-        this.setRegistryName("crystal").setUnlocalizedName(Reference.MODID + ".crystal");
+        this.setRegistryName("crystal").setUnlocalizedName(Reference.MODID + ".crystal").setMaxStackSize(1);
     }
 
     @Override
@@ -23,6 +35,7 @@ public class ItemCrystal extends Item {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         String type = I18n.format("crystal.type");
         String insanity;
+        String bound = "";
         switch (this.getType(stack)) {
             case "void":
                 type += " " + I18n.format("crystal.void"); insanity = I18n.format("crystal.insanity"); break;
@@ -31,7 +44,7 @@ public class ItemCrystal extends Item {
             case "administration":
                 type += " " + I18n.format("crystal.administration"); insanity = I18n.format("crystal.insanity"); break;
             case "life":
-                type += " " + I18n.format("crystal.life"); insanity = I18n.format("crystal.insanity"); break;
+                type += " " + I18n.format("crystal.life"); insanity = I18n.format("crystal.insanity"); bound = I18n.format("crystal.boundto") + " " + getBound(stack); break;
             case "knowledge":
                 type += " " + I18n.format("crystal.knowledge"); insanity = I18n.format("crystal.noinsanity"); break;
             case "rift":
@@ -50,6 +63,7 @@ public class ItemCrystal extends Item {
         tooltip.add(TextFormatting.RESET + insanity);
         tooltip.add(TextFormatting.RESET + I18n.format("crystal.properties"));
         tooltip.add(TextFormatting.RESET + "  " + I18n.format("crystal.potential") + " " + Integer.toString(getPotential(stack)) + "%");
+        if (getType(stack) == "life") { tooltip.add(TextFormatting.RESET + "  " + bound); }
         String reagents = "  " + I18n.format("crystal.reagent");
         switch (getReagent(stack)) {
             case "basic":
@@ -62,6 +76,8 @@ public class ItemCrystal extends Item {
                 reagents += " " + I18n.format("reagent.rift"); break;
             case "universe":
                 reagents += " " + I18n.format("reagent.universe"); break;
+            case "none":
+                reagents += " " + I18n.format("reagent.none"); break;
             default:
                 reagents += " " + I18n.format("reagent.basic"); break;
         }
@@ -161,6 +177,81 @@ public class ItemCrystal extends Item {
             NBTTagCompound tmp = new NBTTagCompound();
             tmp.setString("reagent", type.getName());
             stack.setTagCompound(tmp);
+        }
+    }
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+        ModelResourceLocation knowledge = new ModelResourceLocation(getRegistryName() + "_knowledge", "inventory");
+
+        ModelBakery.registerItemVariants(this, knowledge);
+
+        ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
+            @Override
+            public ModelResourceLocation getModelLocation(ItemStack stack) {
+                switch (getType(stack)) {
+                    case "void":
+                        break;
+                    case "cleansing":
+                        break;
+                    case "administration":
+                        break;
+                    case "life":
+                        break;
+                    case "knowledge":
+                        return knowledge;
+                    case "rift":
+                        break;
+                    case "universe":
+                        break;
+                    case "artificial":
+                        break;
+                    case "unknown":
+                        return knowledge;
+                    default:
+                        return knowledge;
+
+                }
+                return knowledge;
+            }
+        });
+    }
+
+    void theIntellijDebuggerIsAnnoyingSoIAddedThisMethodToEditSoTheClassesAreReloadedWithoutAnyChanges() {
+        // If this is in an actual release, blame IntelliJ.
+        String a = "This is so stupid.";
+        String b = "Here you see my ramblings as I try to get this stupid thing to work.";
+        String c = "Am I done yet?";
+        String d = "When will this work?";
+    }
+
+    public void setBound(ItemStack stack, String playerName) {
+        if (stack.hasTagCompound()) {
+            stack.getTagCompound().setString("bound", playerName);
+        } else {
+            NBTTagCompound tmp = new NBTTagCompound();
+            tmp.setString("bound", playerName);
+            stack.setTagCompound(tmp);
+        }
+    }
+
+    public String getBound(ItemStack stack) {
+        if (stack.hasTagCompound()) {
+            if (stack.getTagCompound().hasKey("bound")) {
+                return stack.getTagCompound().getString("bound");
+            } else {
+                setBound(stack, "SickPlayerNameThatDoesNotExist");
+                return "SickPlayerNameThatDoesNotExist";
+            }
+        } else {
+            setBound(stack, "SickPlayerNameThatDoesNotExist");
+            return "SickPlayerNameThatDoesNotExist";
         }
     }
 

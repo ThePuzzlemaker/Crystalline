@@ -4,9 +4,13 @@ package ext.tpz.crystalline.proxy;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.item.ItemCrystal;
 import ext.tpz.crystalline.packet.common.PacketHandler;
+import ext.tpz.crystalline.recipe.EventHandlers;
 import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
@@ -30,6 +34,7 @@ public class CommonProxy {
 
         PacketHandler.registerMessages("crystalline");
 
+        MinecraftForge.EVENT_BUS.register(new EventHandlers());
         if (Loader.isModLoaded("thaumcraft")) {
             ThaumcraftCompat.preInit(e);
         }
@@ -45,6 +50,7 @@ public class CommonProxy {
         if (config.hasChanged()) {
             config.save();
         }
+
         if (Loader.isModLoaded("thaumcraft")) {
             ThaumcraftCompat.postInit(e);
         }
@@ -58,6 +64,11 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().register(new ItemCrystal());
+    }
+
+    @SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> e) {
+
     }
 
 

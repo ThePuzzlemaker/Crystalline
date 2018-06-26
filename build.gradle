@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.0.0-Snapshot"
+version = "1.0.0r01"
 group = "ext.tpz.crystalline"
 archivesBaseName = "crystalline"
 
@@ -26,8 +26,12 @@ minecraft {
     mappings = "snapshot_20171003"
 }
 
-dependencies {
+repositories {
+    maven { url 'http://tehnut.info/maven/' }
+}
 
+dependencies {
+    deobfCompile "info.amerifrance.guideapi:Guide-API:1.12-2.1.5-60"
 }
 
 processResources {

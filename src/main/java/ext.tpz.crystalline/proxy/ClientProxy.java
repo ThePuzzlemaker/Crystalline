@@ -1,9 +1,13 @@
 package ext.tpz.crystalline.proxy;
 
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
+import ext.tpz.crystalline.item.CrystallineItems;
+import ext.tpz.crystalline.item.ItemCrystal;
 import ext.tpz.crystalline.packet.client.InputHandler;
 import ext.tpz.crystalline.packet.client.KeyBindings;
+import ext.tpz.crystalline.util.Reference;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +23,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
+
+        OBJLoader.INSTANCE.addDomain(Reference.MODID);
 
         if (Loader.isModLoaded("thaumcraft")) {
             ThaumcraftCompat.clientPre(e);
@@ -48,7 +54,7 @@ public class ClientProxy extends CommonProxy {
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent e) {
-
+        CrystallineItems.crystal.initModel();
     }
 
 }

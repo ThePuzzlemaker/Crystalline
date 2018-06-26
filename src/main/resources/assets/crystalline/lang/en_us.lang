@@ -22,6 +22,7 @@ crystal.type=Type:
 crystal.drained=Drained:
 crystal.properties=Essence Properties:
 crystal.potential=Potential:
+crystal.boundto=Bound To:
 crystal.reagent=Reagent Required:
 crystal.insanity=This crystal can cause insanity.
 crystal.noinsanity=This crystal does not cause insanity.
@@ -46,6 +47,7 @@ reagent.advanced=Advanced or above
 reagent.extreme=Extreme or above
 reagent.void=Void
 reagent.binding=Binding
+reagent.none=None
 
 item.crystalline.binding_reagent.name=Binding Reagent
 
@@ -53,3 +55,11 @@ item.crystalline.binding_reagent.name=Binding Reagent
 
 i18n.yes=Yes
 i18n.no=No
+
+< Book >
+
+crystalline.guide.title=Crystalline Knowledge
+crystalline.guide.lore=All the knowledge you could need for crystalline magic
+
+
+

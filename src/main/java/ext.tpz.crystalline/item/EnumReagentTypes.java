@@ -7,8 +7,10 @@ public enum EnumReagentTypes {
     EXTREME("extreme"),
     RIFT("rift"),
     UNIVERSE("universe"),
+    NONE("none"),
 
     VOID("void");
+
 
     private String name;
 

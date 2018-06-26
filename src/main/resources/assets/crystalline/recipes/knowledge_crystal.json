@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "crystalline:crystal",
+    "nbt": {
+      "potential": 100,
+      "drained": false,
+      "type": "knowledge",
+      "reagent": "none"
+    }
+  },
+  "pattern": [
+    " d ",
+    "dfd",
+    " d "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "d": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "f": {
+      "item": "minecraft:flint"
+    }
+  }
+}
