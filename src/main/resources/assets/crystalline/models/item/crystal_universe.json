@@ -1,7 +1,7 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
-        "0": "crystalline:items/knowledge"
+        "0": "crystalline:items/universe"
     },
     "elements": [
         {
@@ -10,11 +10,11 @@
             "to": [ 9.0, 12.0, 9.0 ], 
             "faces": {
                 "north": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 8.0 ] },
-                "east": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 8.0 ] },
-                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 8.0 ] },
-                "west": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 8.0 ] },
-                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 2.0 ] },
-                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 2.0 ] }
+                "east": { "texture": "#0", "uv": [ 5.0, 3.0, 7.0, 11.0 ] },
+                "south": { "texture": "#0", "uv": [ 2.0, 8.0, 4.0, 16.0 ] },
+                "west": { "texture": "#0", "uv": [ 10.0, 6.0, 12.0, 14.0 ] },
+                "up": { "texture": "#0", "uv": [ 3.0, 4.0, 5.0, 6.0 ] },
+                "down": { "texture": "#0", "uv": [ 5.0, 9.0, 7.0, 11.0 ] }
             }
         }
     ],

@@ -48,15 +48,34 @@ public class Guide implements IGuideBook {
 
         List<IPage> about = new ArrayList<IPage>();
 
+        ItemStack crystalKnowledge = new ItemStack(CrystallineItems.crystal);
+        CrystallineItems.crystal.setType(crystalKnowledge, EnumCrystalTypes.KNOWLEDGE);
+
+        ItemStack crystalLife = new ItemStack(CrystallineItems.crystal);
+        CrystallineItems.crystal.setType(crystalLife, EnumCrystalTypes.LIFE);
+
+        ItemStack crystalCleansing = new ItemStack(CrystallineItems.crystal);
+        CrystallineItems.crystal.setType(crystalCleansing, EnumCrystalTypes.CLEANSING);
+
         about.add(new PageText("There are many types of crystals that you can find and create. This section will inform you of them."));
         entriesCrystals.put(new ResourceLocation(Reference.MODID, "about"), new EntryItemStack(about, "About", new ItemStack(Items.BOOK)));
 
         List<IPage> knowledge = new ArrayList<IPage>();
         knowledge.add(new PageText("The knowledge crystal can help you monitor your sanity, so you do not become too insane."));
         knowledge.add(new PageJsonRecipe(new ResourceLocation(Reference.MODID, "knowledge_crystal")));
-        entriesCrystals.put(new ResourceLocation(Reference.MODID, "knowledge"), new EntryItemStack(knowledge, "Knowledge Crystal", new ItemStack(CrystallineItems.crystal)));
+        entriesCrystals.put(new ResourceLocation(Reference.MODID, "knowledge"), new EntryItemStack(knowledge, "Knowledge Crystal", crystalKnowledge));
 
-        binder.addCategory(new CategoryItemStack(entriesCrystals, "Crystals", new ItemStack(CrystallineItems.crystal)));
+        List<IPage> life = new ArrayList<IPage>();
+        life.add(new PageText("Life crystals are dropped on a 25% chance of a player dying. They can be used for regeneration."));
+        entriesCrystals.put(new ResourceLocation(Reference.MODID, "life"), new EntryItemStack(life, "Life Crystal", crystalLife));
+
+        List<IPage> cleansing = new ArrayList<IPage>();
+        cleansing.add(new PageText("Cleansing crystals can be made with any crystal, and quartz all around it. You can right-click them to make Cleansing Reagents, at the cost of Potential, and a Basic Reagent."));
+        cleansing.add(new PageJsonRecipe(new ResourceLocation(Reference.MODID, "cleansing_crystal")));
+        entriesCrystals.put(new ResourceLocation(Reference.MODID, "cleansing"), new EntryItemStack(cleansing, "Cleansing Crystal", crystalCleansing));
+
+
+        binder.addCategory(new CategoryItemStack(entriesCrystals, "Crystals", crystalKnowledge));
 
         binder.setSpawnWithBook();
 

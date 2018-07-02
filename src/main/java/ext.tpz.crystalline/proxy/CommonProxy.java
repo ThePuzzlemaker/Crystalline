@@ -4,7 +4,7 @@ package ext.tpz.crystalline.proxy;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.item.ItemCrystal;
 import ext.tpz.crystalline.packet.common.PacketHandler;
-import ext.tpz.crystalline.recipe.EventHandlers;
+import ext.tpz.crystalline.util.EventHandlers;
 import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

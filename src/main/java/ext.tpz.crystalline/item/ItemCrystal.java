@@ -1,9 +1,14 @@
 package ext.tpz.crystalline.item;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import ext.tpz.crystalline.util.Reference;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -14,15 +19,22 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.Attributes;
+import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.model.obj.OBJLoader;
+import net.minecraftforge.client.model.obj.OBJModel;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
 public class ItemCrystal extends Item {
 
@@ -189,36 +201,44 @@ public class ItemCrystal extends Item {
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelResourceLocation knowledge = new ModelResourceLocation(getRegistryName() + "_knowledge", "inventory");
+        ModelResourceLocation administration = new ModelResourceLocation(getRegistryName() + "_administration", "inventory");
+        ModelResourceLocation cleansing = new ModelResourceLocation(getRegistryName() + "_cleansing", "inventory");
+        ModelResourceLocation life = new ModelResourceLocation(getRegistryName() + "_life", "inventory");
+        ModelResourceLocation universe = new ModelResourceLocation(getRegistryName() + "_universe", "inventory");
+        ModelResourceLocation unknown = new ModelResourceLocation(getRegistryName() + "_unknown", "inventory");
+        ModelResourceLocation drained = new ModelResourceLocation(getRegistryName() + "_drained", "inventory");
+        ModelResourceLocation rift = new ModelResourceLocation(getRegistryName() + "_rift", "inventory");
 
-        ModelBakery.registerItemVariants(this, knowledge);
+        ModelBakery.registerItemVariants(this, knowledge, administration, cleansing, life, universe, unknown, drained, rift);
 
         ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
             @Override
             public ModelResourceLocation getModelLocation(ItemStack stack) {
+                if (isDrained(stack))
+                    return drained;
                 switch (getType(stack)) {
                     case "void":
-                        break;
+                        return unknown;
                     case "cleansing":
-                        break;
+                        return cleansing;
                     case "administration":
-                        break;
+                        return administration;
                     case "life":
-                        break;
+                        return life;
                     case "knowledge":
                         return knowledge;
                     case "rift":
-                        break;
+                        return rift;
                     case "universe":
-                        break;
+                        return universe;
                     case "artificial":
-                        break;
+                        return unknown;
                     case "unknown":
-                        return knowledge;
+                        return unknown;
                     default:
-                        return knowledge;
+                        return unknown;
 
                 }
-                return knowledge;
             }
         });
     }
@@ -229,6 +249,11 @@ public class ItemCrystal extends Item {
         String b = "Here you see my ramblings as I try to get this stupid thing to work.";
         String c = "Am I done yet?";
         String d = "When will this work?";
+        String e = "Getting closer...";
+        String f = "Almost there...";
+        String g = "Nearing the end...";
+        String h = "Some more testing...";
+        String i = "Come on";
     }
 
     public void setBound(ItemStack stack, String playerName) {

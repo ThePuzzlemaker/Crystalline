@@ -12,21 +12,6 @@ public class Config {
     public static final String CATEGORY_GENERAL = "general";
 
     // Crystals
-    public static boolean enableCrystalAdmin = true;
-    public static String  descEnableCrystalAdmin = "This option enables the Administration Crystal. Either 'true' or 'false'. Default: 'true'";
-
-    public static boolean enableCrystalLife = true;
-    public static String  descEnableCrystalLife = "This option enables the Life Crystal. Either 'true' or 'false'. Default: 'true'";
-
-    public static boolean enableCrystalRift = true;
-    public static String  descEnableCrystalRift = "This option enables the Rift Crystal. Either 'true' or 'false'. Default: 'true'";
-
-    public static boolean enableCrystalCleansing = true;
-    public static String  descEnableCrystalCleansing = "This option enables the Cleansing Crystal. Either 'true' or 'false'. Default: 'true'";
-
-    public static boolean enableCrystalCustom = true;
-    public static String  descEnableCrystalCustom = "This option enables customized crystals. Either 'true' or 'false'. Default: 'true'";
-
     public static boolean doesCrystalDrainAdmin = true;
     public static String  descDoesCrystalDrainAdmin = "This option determines whether the Administration Crystal's essence drains. Either 'true' or 'false'. Default: 'true'.";
 
@@ -63,9 +48,9 @@ public class Config {
     public static int mpeInsanityStage4 = 14400;
     public static String descMpeInsanityStage4 = "This option determines how many ticks it takes for one insanity event to happen at 70% to 89% insanity. 20 ticks = 1 second. Default: 14400. Set to -1 to disable.";
 
-    // Stage 5 = 90% - 100%
+    // Stage 5 = 90% - 99%
     public static int mpeInsanityStage5 = 10800;
-    public static String descMpeInsanityStage5 = "This option determines how many ticks it takes for one insanity event to happen at 30% to 49% insanity. 20 ticks = 1 second. Default: 10800. Set to -1 to disable.";
+    public static String descMpeInsanityStage5 = "This option determines how many ticks it takes for one insanity event to happen at 90% to 99% insanity. 20 ticks = 1 second. Default: 10800. Set to -1 to disable.";
 
     // Stage 6 = 100%
     public static int mpeInsanityStage6 = 8700;
@@ -94,12 +79,6 @@ public class Config {
 
     public static void initCrystalConfig(Configuration cfg) {
         cfg.addCustomCategoryComment(CATEGORY_CRYSTALS, "This section determines different settings regarding crystals.");
-
-        enableCrystalAdmin = cfg.getBoolean("enableCrystalAdmin", CATEGORY_CRYSTALS, enableCrystalAdmin, descEnableCrystalAdmin);
-        enableCrystalLife = cfg.getBoolean("enableCrystalLife", CATEGORY_CRYSTALS, enableCrystalLife, descEnableCrystalLife);
-        enableCrystalRift = cfg.getBoolean("enableCrystalRift", CATEGORY_CRYSTALS, enableCrystalRift, descEnableCrystalRift);
-        enableCrystalCleansing = cfg.getBoolean("enableCrystalCleansing", CATEGORY_CRYSTALS, enableCrystalCleansing, descEnableCrystalCleansing);
-        enableCrystalCustom = cfg.getBoolean("enableCrystalCustom", CATEGORY_CRYSTALS, enableCrystalCustom, descEnableCrystalCustom);
 
         doesCrystalDrainAdmin = cfg.getBoolean("doesCrystalDrainAdmin", CATEGORY_CRYSTALS, doesCrystalDrainAdmin, descDoesCrystalDrainAdmin);
         doesCrystalDrainLife = cfg.getBoolean("doesCrystalDrainLife", CATEGORY_CRYSTALS, doesCrystalDrainLife, descDoesCrystalDrainLife);

@@ -34,7 +34,7 @@ crystal.knowledge=Knowledge
 crystal.rift=Rift
 crystal.universe=Universe
 crystal.artificial=Artificial
-crystal.unknown=Unknown
+crystal.unknown=missingno
 
 item.crystalline.crystal.name=Crystal
 
@@ -50,6 +50,7 @@ reagent.binding=Binding
 reagent.none=None
 
 item.crystalline.binding_reagent.name=Binding Reagent
+item.crystalline.cleansing_reagent.name=Cleansing Reagent
 
 << General >>
 
