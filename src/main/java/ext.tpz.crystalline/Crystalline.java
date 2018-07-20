@@ -2,6 +2,8 @@ package ext.tpz.crystalline;
 
 import ext.tpz.crystalline.proxy.CommonProxy;
 import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.util.TabCrystalline;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -20,6 +22,8 @@ public class Crystalline {
     public static Crystalline instance;
 
     public static Logger logger;
+
+    public static CreativeTabs tab = new TabCrystalline();
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {

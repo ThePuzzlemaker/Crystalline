@@ -51,6 +51,15 @@ reagent.none=None
 
 item.crystalline.binding_reagent.name=Binding Reagent
 item.crystalline.cleansing_reagent.name=Cleansing Reagent
+item.crystalline.reagent_basic.name=Basic Reagent
+item.crystalline.reagent_advanced.name=Advanced Reagent
+item.crystalline.reagent_extreme.name=Extreme Reagent
+item.crystalline.reagent_rift.name=Rift Reagent (§4UNSTABLE§r)
+item.crystalline.reagent_universe.name=Universe Reagent
+item.crystalline.pure_rift_essence.name=Pure Rift Essence
+item.crystalline.pure_universe_essence.name=Pure Universe Essence
+
+tabGroup.crystalline=Crystalline
 
 << General >>
 
@@ -59,7 +68,7 @@ i18n.no=No
 
 < Book >
 
-crystalline.guide.title=Crystalline Knowledge
+crystalline.guide.title=Crystalline Knowledge (WIP)
 crystalline.guide.lore=All the knowledge you could need for crystalline magic
 
 

@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "crystalline:reagent_rift",
+    "count": 1
+  },
+  "pattern": [
+    "EEE",
+    "EeE",
+    "EEE"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "e": {
+      "item": "crystalline:reagent_extreme"
+    },
+    "E": {
+      "item": "crystalline:pure_rift_essence"
+    }
+  }
+}

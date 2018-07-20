@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "crystalline:pure_universe_essence",
+    "count": 8
+  },
+  "pattern": [
+    "rrr",
+    "rcr",
+    "rrr"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "r": {
+      "item": "crystalline:pure_rift_essence"
+    },
+    "c": {
+      "item": "crystalline:cleansing_reagent"
+    }
+  }
+}

@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -48,7 +49,7 @@ public class EventHandlers {
         }
     }
 
-    private static HashMap<UUID, Integer> ticks = new HashMap<UUID, Integer>();
+    private static HashMap<UUID, Integer> ticks = new HashMap<>();
 
     @SubscribeEvent
     public void livingUpdate(LivingEvent.LivingUpdateEvent event) {
@@ -99,7 +100,11 @@ public class EventHandlers {
                 if (tick == Config.mpeInsanityStage4) {
                     ticks.put(uuid, 0);
                     player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths."), false);
+                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths. You find a weird purple powder on the ground where they have been moving."), false);
+                    BlockPos pos = player.getPosition();
+                    ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
+                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                    world.spawnEntity(item);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -108,7 +113,11 @@ public class EventHandlers {
                 if (tick == Config.mpeInsanityStage5) {
                     ticks.put(uuid, 0);
                     player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths."), false);
+                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths. You find a weird purple powder on the ground where they have been moving."), false);
+                    BlockPos pos = player.getPosition();
+                    ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
+                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                    world.spawnEntity(item);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -117,7 +126,11 @@ public class EventHandlers {
                 if (tick == Config.mpeInsanityStage6) {
                     ticks.put(uuid, 0);
                     player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths."), false);
+                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths. You find a weird purple powder on the ground where they have been moving."), false);
+                    BlockPos pos = player.getPosition();
+                    ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
+                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                    world.spawnEntity(item);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -126,7 +139,11 @@ public class EventHandlers {
                 if (tick == Config.mpeInsanityPerm) {
                     ticks.put(uuid, 0);
                     player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths."), false);
+                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths. You find a weird purple powder on the ground where they have been moving."), false);
+                    BlockPos pos = player.getPosition();
+                    ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
+                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                    world.spawnEntity(item);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);

@@ -2,6 +2,7 @@ package ext.tpz.crystalline.proxy;
 
 
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
+import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.item.ItemCrystal;
 import ext.tpz.crystalline.packet.common.PacketHandler;
 import ext.tpz.crystalline.util.EventHandlers;
@@ -64,6 +65,14 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().register(new ItemCrystal());
+        e.getRegistry().register(CrystallineItems.reagent_basic);
+        e.getRegistry().register(CrystallineItems.reagent_advanced);
+        e.getRegistry().register(CrystallineItems.reagent_extreme);
+        e.getRegistry().register(CrystallineItems.reagent_rift);
+        e.getRegistry().register(CrystallineItems.reagent_universe);
+        e.getRegistry().register(CrystallineItems.pure_rift_essence);
+        e.getRegistry().register(CrystallineItems.pure_universe_essence);
+        e.getRegistry().register(CrystallineItems.cleansing_reagent);
     }
 
     @SubscribeEvent

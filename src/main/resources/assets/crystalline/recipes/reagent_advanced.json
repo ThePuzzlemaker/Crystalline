@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "crystalline:reagent_advanced",
+    "count": 8
+  },
+  "pattern": [
+    "bbb",
+    "bqb",
+    "bbb"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "item": "crystalline:reagent_basic"
+    },
+    "q": {
+      "type": "forge:ore_dict",
+      "ore": "gemQuartz"
+    }
+  }
+}

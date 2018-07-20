@@ -61,12 +61,12 @@ public class Guide implements IGuideBook {
         entriesCrystals.put(new ResourceLocation(Reference.MODID, "about"), new EntryItemStack(about, "About", new ItemStack(Items.BOOK)));
 
         List<IPage> knowledge = new ArrayList<IPage>();
-        knowledge.add(new PageText("The knowledge crystal can help you monitor your sanity, so you do not become too insane."));
+        knowledge.add(new PageText("The knowledge crystal can help you monitor your sanity, so you do not become too insane. You can right click without sneaking to see the quick overview, or right click while sneaking to see information about the stage of insanity you are in."));
         knowledge.add(new PageJsonRecipe(new ResourceLocation(Reference.MODID, "knowledge_crystal")));
         entriesCrystals.put(new ResourceLocation(Reference.MODID, "knowledge"), new EntryItemStack(knowledge, "Knowledge Crystal", crystalKnowledge));
 
         List<IPage> life = new ArrayList<IPage>();
-        life.add(new PageText("Life crystals are dropped on a 25% chance of a player dying. They can be used for regeneration."));
+        life.add(new PageText("Life crystals are dropped on a 25% chance of a player dying. They can be used for regeneration. You can only use a crystal that is bound to you. See Rebinding for more information."));
         entriesCrystals.put(new ResourceLocation(Reference.MODID, "life"), new EntryItemStack(life, "Life Crystal", crystalLife));
 
         List<IPage> cleansing = new ArrayList<IPage>();

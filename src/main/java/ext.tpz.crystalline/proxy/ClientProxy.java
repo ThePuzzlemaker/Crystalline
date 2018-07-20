@@ -6,7 +6,9 @@ import ext.tpz.crystalline.item.ItemCrystal;
 import ext.tpz.crystalline.packet.client.InputHandler;
 import ext.tpz.crystalline.packet.client.KeyBindings;
 import ext.tpz.crystalline.util.Reference;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -55,6 +57,14 @@ public class ClientProxy extends CommonProxy {
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent e) {
         CrystallineItems.crystal.initModel();
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_basic, 0, new ModelResourceLocation(CrystallineItems.reagent_basic.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_advanced, 0, new ModelResourceLocation(CrystallineItems.reagent_advanced.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_extreme, 0, new ModelResourceLocation(CrystallineItems.reagent_extreme.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_rift, 0, new ModelResourceLocation(CrystallineItems.reagent_rift.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_universe, 0, new ModelResourceLocation(CrystallineItems.reagent_universe.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.pure_rift_essence, 0, new ModelResourceLocation(CrystallineItems.pure_rift_essence.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.pure_universe_essence, 0, new ModelResourceLocation(CrystallineItems.pure_universe_essence.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.cleansing_reagent, 0, new ModelResourceLocation(CrystallineItems.cleansing_reagent.getRegistryName(), "inventory"));
     }
 
 }

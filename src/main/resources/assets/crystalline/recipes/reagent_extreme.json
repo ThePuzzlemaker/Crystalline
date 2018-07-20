@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "crystalline:reagent_extreme",
+    "count": 8
+  },
+  "pattern": [
+    "aaa",
+    "asa",
+    "aaa"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "a": {
+      "item": "crystalline:reagent_advanced"
+    },
+    "s": {
+      "item": "minecraft:nether_star"
+    }
+  }
+}
