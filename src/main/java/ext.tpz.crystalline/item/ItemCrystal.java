@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.function.Function;
 
 public class ItemCrystal extends Item {
@@ -199,66 +200,8 @@ public class ItemCrystal extends Item {
     }
 
     public boolean consumeReagent(EnumReagentTypes type, EntityPlayer player, ItemStack stack) {
-        /*List<Slot> slots = player.inventoryContainer.inventorySlots;
+        List<Slot> slots = player.inventoryContainer.inventorySlots;
         Iterator<Slot> i = slots.iterator();
-        boolean found = false;
-        while (i.hasNext()) {
-            Slot slot = i.next();
-            if (slot.getHasStack()) {
-                Item it = slot.getStack().getItem();
-                switch (type) {
-                    case BASIC:
-                        if (it == CrystallineItems.reagent_basic || it == CrystallineItems.reagent_advanced || it == CrystallineItems.reagent_extreme || it == CrystallineItems.reagent_rift || it == CrystallineItems.reagent_universe) {} else {
-                            break;
-                        }
-                        found = true;
-                        break;
-                    case ADVANCED:
-                        if (it == CrystallineItems.reagent_advanced || it == CrystallineItems.reagent_extreme || it == CrystallineItems.reagent_rift || it == CrystallineItems.reagent_universe) {} else {
-                            break;
-                        }
-                        found = true;
-                        break;
-                    case EXTREME:
-                        if (it == CrystallineItems.reagent_extreme || it == CrystallineItems.reagent_rift || it == CrystallineItems.reagent_universe) {} else {
-                            break;
-                        }
-                        found = true;
-                        break;
-                    case RIFT:
-                        if (it == CrystallineItems.reagent_rift || it == CrystallineItems.reagent_universe) {} else {
-                            break;
-                        }
-                        found = true;
-                        break;
-                    case UNIVERSE:
-                        if (it == CrystallineItems.reagent_universe) {} else {
-                            break;
-                        }
-                        found = true;
-                        break;
-                    case NONE:
-                        return true;
-                    case VOID:
-                        player.sendStatusMessage(new TextComponentString("Not implemented yet!"), true);
-                        return false;
-                }
-                if (!found) {
-                    player.sendStatusMessage(new TextComponentString("No valid reagents were found in your inventory " + TextFormatting.RED +" (CURRENT BUG: CAN NOT BE IN HOTBAR)!"), true);
-                    return false;
-                } else {
-                    if (slot.getStack().getCount() == 1) {
-                        slot.putStack(ItemStack.EMPTY);
-                    } else {
-                        slot.decrStackSize(1);
-                    }
-                    return true;
-                }
-            }
-        }
-        return false;*/
-        List<ItemStack> stacks = player.inventoryContainer.inventoryItemStacks;
-        Iterator<ItemStack> i = stacks.iterator();
         // 0: none
         // 1: basic
         // 2: advanced
@@ -267,113 +210,130 @@ public class ItemCrystal extends Item {
         // 5: universe
         int lowestReagentFound = 0;
         ItemStack bestReagent = ItemStack.EMPTY;
+        Slot slot = null;
         while (i.hasNext()) {
-            ItemStack s = i.next();
+            Slot sl = i.next();
+            ItemStack s = ItemStack.EMPTY;
+            if (sl.getHasStack()) {
+                s = sl.getStack();
+            } else {
+                continue;
+            }
             if (!s.isEmpty()) {
                 switch (type) {
                     case BASIC:
                         if (s.getItem() == CrystallineItems.reagent_basic) {
-                            if (lowestReagentFound>1||lowestReagentFound==0) {
+                            if (1<lowestReagentFound||lowestReagentFound==0) {
                                 lowestReagentFound = 1;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_advanced) {
-                            if (lowestReagentFound>1||lowestReagentFound==0) {
-                                lowestReagentFound = 1;
+                            if (2<lowestReagentFound||lowestReagentFound==0) {
+                                lowestReagentFound = 2;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_extreme) {
-                            if (lowestReagentFound>1||lowestReagentFound==0) {
-                                lowestReagentFound = 1;
+                            if (3<lowestReagentFound||lowestReagentFound==0) {
+                                lowestReagentFound = 3;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_rift) {
-                            if (lowestReagentFound>1||lowestReagentFound==0) {
-                                lowestReagentFound = 1;
+                            if (4<lowestReagentFound||lowestReagentFound==0) {
+                                lowestReagentFound = 4;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_universe) {
-                            if (lowestReagentFound>1||lowestReagentFound==0) {
-                                lowestReagentFound = 1;
+                            if (lowestReagentFound==0) {
+                                lowestReagentFound = 5;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else {
-                            player.sendStatusMessage(new TextComponentString("No valid reagents were found in your inventory!"), true);
-                            return false;
+                            continue;
                         }
                         break;
                     case ADVANCED:
                         if (s.getItem() == CrystallineItems.reagent_advanced) {
-                            if (lowestReagentFound>2||lowestReagentFound==0) {
+                            if (2<lowestReagentFound||lowestReagentFound==0) {
                                 lowestReagentFound = 2;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_extreme) {
-                            if (lowestReagentFound>2||lowestReagentFound==0) {
-                                lowestReagentFound = 2;
+                            if (3<lowestReagentFound||lowestReagentFound==0) {
+                                lowestReagentFound = 3;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_rift) {
-                            if (lowestReagentFound>2||lowestReagentFound==0) {
-                                lowestReagentFound = 2;
+                            if (4<lowestReagentFound||lowestReagentFound==0) {
+                                lowestReagentFound = 4;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_universe) {
-                            if (lowestReagentFound>2||lowestReagentFound==0) {
-                                lowestReagentFound = 2;
+                            if (lowestReagentFound==0) {
+                                lowestReagentFound = 5;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else {
-                            player.sendStatusMessage(new TextComponentString("No valid reagents were found in your inventory!"), true);
-                            return false;
+                            continue;
                         }
                         break;
                     case EXTREME:
                         if (s.getItem() == CrystallineItems.reagent_extreme) {
-                            if (lowestReagentFound>3||lowestReagentFound==0) {
+                            if (3<lowestReagentFound||lowestReagentFound==0) {
                                 lowestReagentFound = 3;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_rift) {
-                            if (lowestReagentFound>3||lowestReagentFound==0) {
-                                lowestReagentFound = 3;
+                            if (4<lowestReagentFound||lowestReagentFound==0) {
+                                lowestReagentFound = 4;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_universe) {
-                            if (lowestReagentFound>3||lowestReagentFound==0) {
-                                lowestReagentFound = 3;
+                            if (lowestReagentFound==0) {
+                                lowestReagentFound = 5;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else {
-                            player.sendStatusMessage(new TextComponentString("No valid reagents were found in your inventory!"), true);
-                            return false;
+                            continue;
                         }
                         break;
                     case RIFT:
                         if (s.getItem() == CrystallineItems.reagent_rift) {
-                            if (lowestReagentFound>4||lowestReagentFound==0) {
+                            if (4<lowestReagentFound||lowestReagentFound==0) {
                                 lowestReagentFound = 4;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else if (s.getItem() == CrystallineItems.reagent_universe) {
-                            if (lowestReagentFound>4||lowestReagentFound==0) {
-                                lowestReagentFound = 4;
+                            if (lowestReagentFound==0) {
+                                lowestReagentFound = 5;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else {
-                            player.sendStatusMessage(new TextComponentString("No valid reagents were found in your inventory!"), true);
-                            return false;
+                            continue;
                         }
                         break;
                     case UNIVERSE:
                         if (s.getItem() == CrystallineItems.reagent_universe) {
-                            if (lowestReagentFound>5||lowestReagentFound==0) {
+                            if (lowestReagentFound==0) {
                                 lowestReagentFound = 5;
                                 bestReagent = s;
+                                slot = sl;
                             }
                         } else {
-                            player.sendStatusMessage(new TextComponentString("No valid reagents were found in your inventory!"), true);
-                            return false;
+                            continue;
                         }
                         break;
                     case NONE:
@@ -383,45 +343,68 @@ public class ItemCrystal extends Item {
                 }
             }
         }
-        if (bestReagent != ItemStack.EMPTY)
-            bestReagent.setCount(bestReagent.getCount()-1);
+        if (bestReagent != ItemStack.EMPTY) {
+            if (slot.getStack().getCount() == 1) {
+                slot.putStack(ItemStack.EMPTY);
+            } else {
+                slot.decrStackSize(1);
+            }
+            if (lowestReagentFound == 4) {
+                InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
+                data.setPlayer(player.getUniqueID(), 101);
+                InsanityWorldSavedData.set(data, player.getEntityWorld());
+            }
+        } else {
+            player.sendStatusMessage(new TextComponentString("No valid reagents were found in your inventory!"), true);
+            return false;
+        }
         return true;
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
-        if (!isDrained(stack) && getPotential(stack) > 0) {
-            switch (getType(stack)) {
-                case "void":
-                    break;
-                case "cleansing":
-                    break;
-                case "administration":
-                    break;
-                case "life":
-                    if (getBound(stack) == player.getName()) {
+        if (!isDrained(stack) && getPotential(stack) > 0) switch (getType(stack)) {
+            case "void":
+                break;
+            case "cleansing":
+                break;
+            case "administration":
+                break;
+            case "life":
+                if (getBound(stack) == player.getName()) {
+                    PotionEffect regen = new PotionEffect(MobEffects.REGENERATION, 3000, 1);
+                    if (player.getActivePotionEffect(MobEffects.REGENERATION) == null) {
                         if (consumeReagent(EnumReagentTypes.ADVANCED, player, stack)) {
-                            player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 3000, 1));
+                            player.addPotionEffect(regen);
                             setPotential(stack, getPotential(stack) - 1);
+                            UUID uuid = player.getUniqueID();
+                            InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
+                            if (data.getPlayer(uuid) < 100)
+                                data.setPlayer(uuid, data.getPlayer(uuid) + 1);
                         }
-                    } else {
-                        player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is not bound to you!"), true);
                     }
-                    break;
-                case "knowledge":
-                    handleKnowledge(stack, player);
-                    break;
-                case "rift":
-                    break;
-                case "universe":
-                    break;
-                case "artificial":
-                    break;
-                case "unknown": player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is an invalid crystal!"), true); break;
-                default: player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is an invalid crystal!"), true); break;
-            }
-        } else {
+                } else {
+                    player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is not bound to you!"), true);
+                }
+                break;
+            case "knowledge":
+                handleKnowledge(stack, player);
+                break;
+            case "rift":
+                break;
+            case "universe":
+                break;
+            case "artificial":
+                break;
+            case "unknown":
+                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is an invalid crystal!"), true);
+                break;
+            default:
+                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is an invalid crystal!"), true);
+                break;
+        }
+        else {
             player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is drained of potential!"), true);
             return ActionResult.newResult(EnumActionResult.FAIL, stack);
         }

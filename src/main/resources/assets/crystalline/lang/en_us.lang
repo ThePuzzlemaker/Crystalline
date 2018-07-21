@@ -59,7 +59,7 @@ item.crystalline.reagent_universe.name=Universe Reagent
 item.crystalline.pure_rift_essence.name=Pure Rift Essence
 item.crystalline.pure_universe_essence.name=Pure Universe Essence
 
-tabGroup.crystalline=Crystalline
+itemGroup.crystalline=Crystalline
 
 << General >>
 
