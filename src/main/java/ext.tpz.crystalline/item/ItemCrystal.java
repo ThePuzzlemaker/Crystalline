@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.Slot;
@@ -24,6 +25,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -369,6 +371,16 @@ public class ItemCrystal extends Item {
             case "void":
                 break;
             case "cleansing":
+                if (consumeReagent(EnumReagentTypes.BASIC, player, stack)) {
+                    BlockPos pos = player.getPosition();
+                    ItemStack s = new ItemStack(CrystallineItems.cleansing_reagent, 1);
+                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), s);
+                    world.spawnEntity(item);
+                    UUID uuid = player.getUniqueID();
+                    InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
+                    if (data.getPlayer(uuid) < 100)
+                        data.setPlayer(uuid, data.getPlayer(uuid) + 1);
+                }
                 break;
             case "administration":
                 break;

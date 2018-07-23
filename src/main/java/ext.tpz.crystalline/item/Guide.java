@@ -40,6 +40,7 @@ public class Guide implements IGuideBook {
         BookBinder binder = new BookBinder(new ResourceLocation(Reference.MODID, "guide"));
         binder.setGuideTitle(I18n.format("crystalline.guide.title"));
         binder.setItemName(I18n.format("crystalline.guide.title"));
+        binder.setHeader(I18n.format("crystalline.guide.wdli"));
         binder.setAuthor(TextFormatting.ITALIC + I18n.format("crystalline.guide.lore"));
         binder.setColor(Color.BLACK);
         binder.setCreativeTab(CreativeTabs.MISC);
