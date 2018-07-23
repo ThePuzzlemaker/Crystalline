@@ -64,7 +64,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
-        e.getRegistry().register(new ItemCrystal());
+        e.getRegistry().register(CrystallineItems.crystal);
         e.getRegistry().register(CrystallineItems.reagent_basic);
         e.getRegistry().register(CrystallineItems.reagent_advanced);
         e.getRegistry().register(CrystallineItems.reagent_extreme);
@@ -73,6 +73,7 @@ public class CommonProxy {
         e.getRegistry().register(CrystallineItems.pure_rift_essence);
         e.getRegistry().register(CrystallineItems.pure_universe_essence);
         e.getRegistry().register(CrystallineItems.cleansing_reagent);
+        e.getRegistry().register(CrystallineItems.cleansing_potion);
     }
 
     @SubscribeEvent

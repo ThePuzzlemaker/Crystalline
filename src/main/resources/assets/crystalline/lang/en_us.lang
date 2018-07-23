@@ -58,6 +58,7 @@ item.crystalline.reagent_rift.name=Rift Reagent (§4UNSTABLE§r)
 item.crystalline.reagent_universe.name=Universe Reagent
 item.crystalline.pure_rift_essence.name=Pure Rift Essence
 item.crystalline.pure_universe_essence.name=Pure Universe Essence
+item.crystalline.cleansing_potion.name=Cleansing Potion
 
 itemGroup.crystalline=Crystalline
 

@@ -65,6 +65,7 @@ public class ClientProxy extends CommonProxy {
         ModelLoader.setCustomModelResourceLocation(CrystallineItems.pure_rift_essence, 0, new ModelResourceLocation(CrystallineItems.pure_rift_essence.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(CrystallineItems.pure_universe_essence, 0, new ModelResourceLocation(CrystallineItems.pure_universe_essence.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(CrystallineItems.cleansing_reagent, 0, new ModelResourceLocation(CrystallineItems.cleansing_reagent.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.cleansing_potion, 0, new ModelResourceLocation(CrystallineItems.cleansing_potion.getRegistryName(), "inventory"));
     }
 
 }

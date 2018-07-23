@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class CrystallineItems {
 
     @GameRegistry.ObjectHolder(Reference.MODID + ":crystal")
-    public static ItemCrystal crystal;
+    public static ItemCrystal crystal = new ItemCrystal();
 
     @GameRegistry.ObjectHolder(Reference.MODID + ":reagent_basic")
     public static CrystallineItem reagent_basic = new CrystallineItem("reagent_basic", Reference.MODID + ".reagent_basic", 64, Crystalline.tab, Lists.asList(TextFormatting.RESET + "Reagent value: Basic", new String[]{}));
@@ -34,5 +34,8 @@ public class CrystallineItems {
 
     @GameRegistry.ObjectHolder(Reference.MODID + ":cleansing_reagent")
     public static CrystallineItem cleansing_reagent = new CrystallineItem("cleansing_reagent", Reference.MODID + ".cleansing_reagent", 64, Crystalline.tab, Lists.asList(TextFormatting.RESET + "It's a white powder that seems to clean anything it touches.", new String[]{}));
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":cleansing_potion")
+    public static ItemCleansingPotion cleansing_potion = new ItemCleansingPotion();
 
 }

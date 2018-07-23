@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "crystalline:cleansing_potion",
+    "count": 1
+  },
+  "pattern": [
+    "ccc",
+    "cwc",
+    "ccc"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "w": {
+      "item": "minecraft:potion",
+      "nbt": {
+        "Potion":"minecraft:water"
+      }
+    },
+    "c": {
+      "item": "crystalline:cleansing_reagent"
+    }
+  }
+}

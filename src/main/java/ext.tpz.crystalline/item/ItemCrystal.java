@@ -361,6 +361,7 @@ public class ItemCrystal extends Item {
         return true;
     }
 
+
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
@@ -382,6 +383,7 @@ public class ItemCrystal extends Item {
                             InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
                             if (data.getPlayer(uuid) < 100)
                                 data.setPlayer(uuid, data.getPlayer(uuid) + 1);
+
                         }
                     }
                 } else {
