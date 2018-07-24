@@ -201,6 +201,31 @@ public class ItemCrystal extends Item {
         }
     }
 
+    public EnumCrystalModes cycleMode(ItemStack stack) {
+        NBTTagCompound tmp = new NBTTagCompound();
+        if (stack.hasTagCompound()) {
+            tmp = stack.getTagCompound();
+        }
+        if (getType(stack) == EnumCrystalTypes.RIFT.getName() || getType(stack) == EnumCrystalTypes.UNIVERSE.getName()) {
+            String mode = EnumCrystalModes.OBLITERATE_BLOCK.getName();
+            if (tmp.hasKey("mode"))
+                mode = tmp.getString("mode");
+            if (mode == EnumCrystalModes.OBLITERATE_BLOCK.getName()) {
+                tmp.setString("mode", EnumCrystalModes.OBLITERATE_ENTITY.getName());
+                stack.setTagCompound(tmp);
+                return EnumCrystalModes.OBLITERATE_ENTITY;
+            } else if (mode == EnumCrystalModes.OBLITERATE_ENTITY.getName()) {
+                tmp.setString("mode", EnumCrystalModes.OBLITERATE_BLOCK.getName());
+                stack.setTagCompound(tmp);
+                return EnumCrystalModes.OBLITERATE_BLOCK;
+            } else {
+                return EnumCrystalModes.OBLITERATE_BLOCK;
+            }
+        } else {
+            return EnumCrystalModes.NONE;
+        }
+    }
+
     public boolean consumeReagent(EnumReagentTypes type, EntityPlayer player, ItemStack stack) {
         List<Slot> slots = player.inventoryContainer.inventorySlots;
         Iterator<Slot> i = slots.iterator();

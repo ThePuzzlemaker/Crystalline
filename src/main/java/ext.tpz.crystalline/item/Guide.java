@@ -3,19 +3,18 @@ package ext.tpz.crystalline.item;
 import amerifrance.guideapi.api.*;
 import amerifrance.guideapi.api.impl.Book;
 import amerifrance.guideapi.api.impl.BookBinder;
-import amerifrance.guideapi.api.impl.abstraction.CategoryAbstract;
 import amerifrance.guideapi.api.impl.abstraction.EntryAbstract;
 import amerifrance.guideapi.category.CategoryItemStack;
 import amerifrance.guideapi.entry.EntryItemStack;
-import amerifrance.guideapi.page.PageIRecipe;
 import amerifrance.guideapi.page.PageJsonRecipe;
 import amerifrance.guideapi.page.PageText;
-import amerifrance.guideapi.page.PageTextImage;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -81,8 +80,6 @@ public class Guide implements IGuideBook {
         binder.setSpawnWithBook();
 
 
-
-
         guide = binder.build();
         return guide;
 
@@ -95,8 +92,7 @@ public class Guide implements IGuideBook {
     }
 
     @Override
-    public void handlePost(ItemStack bookStack) {
-
+    public void handlePost(@Nonnull ItemStack bookStack) {
+        GameRegistry.addShapelessRecipe(new ResourceLocation(Reference.MODID + ":crystalline_guide"), new ResourceLocation(""), bookStack, Ingredient.fromItem(Items.BOOK), Ingredient.fromItem(CrystallineItems.reagent_basic));
     }
-
 }
