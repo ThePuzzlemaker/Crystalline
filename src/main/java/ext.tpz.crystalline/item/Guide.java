@@ -93,6 +93,6 @@ public class Guide implements IGuideBook {
 
     @Override
     public void handlePost(@Nonnull ItemStack bookStack) {
-        GameRegistry.addShapelessRecipe(new ResourceLocation(Reference.MODID + ":crystalline_guide"), new ResourceLocation(""), bookStack, Ingredient.fromItem(Items.BOOK), Ingredient.fromItem(CrystallineItems.reagent_basic));
+        GameRegistry.addShapelessRecipe(new ResourceLocation("guideapi:crystalline_guide"), new ResourceLocation(""), bookStack, Ingredient.fromItem(Items.BOOK), Ingredient.fromItem(CrystallineItems.reagent_basic));
     }
 }

@@ -60,6 +60,9 @@ item.crystalline.pure_rift_essence.name=Pure Rift Essence
 item.crystalline.pure_universe_essence.name=Pure Universe Essence
 item.crystalline.cleansing_potion.name=Cleansing Potion
 
+tile.crystalline.distillation_basin.name=Distillation Basin
+tile.crystalline.restoration_apparatus.name=Restoration Apparatus
+
 itemGroup.crystalline=Crystalline
 
 << General >>

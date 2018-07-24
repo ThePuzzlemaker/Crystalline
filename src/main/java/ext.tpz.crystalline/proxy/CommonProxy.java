@@ -1,15 +1,22 @@
 package ext.tpz.crystalline.proxy;
 
 
+import ext.tpz.crystalline.block.BlockDistillationBasin;
+import ext.tpz.crystalline.block.BlockRestorationApparatus;
+import ext.tpz.crystalline.block.CrystallineBlocks;
+import ext.tpz.crystalline.block.tileentity.TEDistillationBasin;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.packet.common.PacketHandler;
 import ext.tpz.crystalline.recipe.RecipeCleansing;
 import ext.tpz.crystalline.util.EventHandlers;
+import ext.tpz.crystalline.util.Reference;
 import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.RegistryEvent;
@@ -19,6 +26,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.io.File;
 
@@ -58,7 +66,9 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> e) {
-
+        e.getRegistry().register(new BlockDistillationBasin());
+        e.getRegistry().register(new BlockRestorationApparatus());
+        GameRegistry.registerTileEntity(TEDistillationBasin.class, new ResourceLocation(Reference.MODID + ":distillation_basin"));
     }
 
     @SubscribeEvent
@@ -73,6 +83,8 @@ public class CommonProxy {
         e.getRegistry().register(CrystallineItems.pure_universe_essence);
         e.getRegistry().register(CrystallineItems.cleansing_reagent);
         e.getRegistry().register(CrystallineItems.cleansing_potion);
+        e.getRegistry().register(new ItemBlock(CrystallineBlocks.distillationBasin).setRegistryName(CrystallineBlocks.distillationBasin.getRegistryName()));
+        e.getRegistry().register(new ItemBlock(CrystallineBlocks.restorationApparatus).setRegistryName(CrystallineBlocks.restorationApparatus.getRegistryName()));
     }
 
     @SubscribeEvent

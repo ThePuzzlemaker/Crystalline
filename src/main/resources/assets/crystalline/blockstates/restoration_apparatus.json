@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "crystalline:restoration_apparatus"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "result": {
+    "item": "crystalline:distillation_basin",
+    "count": 1
+  },
+  "pattern": [
+    "SIS",
+    "LWL",
+    "LLL"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "logWood"
+    },
+    "S": {
+      "item": "minecraft:stonebrick",
+      "data": 0
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "W": {
+      "item": "minecraft:potion",
+      "nbt": {
+        "Potion":"minecraft:water"
+      }
+    }
+  }
+}

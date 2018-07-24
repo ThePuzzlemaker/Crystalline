@@ -1,5 +1,6 @@
 package ext.tpz.crystalline.proxy;
 
+import ext.tpz.crystalline.block.CrystallineBlocks;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.item.ItemCrystal;
@@ -7,6 +8,8 @@ import ext.tpz.crystalline.packet.client.InputHandler;
 import ext.tpz.crystalline.packet.client.KeyBindings;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -66,6 +69,11 @@ public class ClientProxy extends CommonProxy {
         ModelLoader.setCustomModelResourceLocation(CrystallineItems.pure_universe_essence, 0, new ModelResourceLocation(CrystallineItems.pure_universe_essence.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(CrystallineItems.cleansing_reagent, 0, new ModelResourceLocation(CrystallineItems.cleansing_reagent.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(CrystallineItems.cleansing_potion, 0, new ModelResourceLocation(CrystallineItems.cleansing_potion.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(new ItemBlock(CrystallineBlocks.distillationBasin), 0, new ModelResourceLocation(CrystallineBlocks.distillationBasin.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(CrystallineBlocks.distillationBasin), 0, new ModelResourceLocation(CrystallineBlocks.distillationBasin.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(new ItemBlock(CrystallineBlocks.restorationApparatus), 0, new ModelResourceLocation(CrystallineBlocks.restorationApparatus.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(CrystallineBlocks.restorationApparatus), 0, new ModelResourceLocation(CrystallineBlocks.restorationApparatus.getRegistryName(), "inventory"));
+        CrystallineBlocks.distillationBasin.initTESR();
     }
 
 }
