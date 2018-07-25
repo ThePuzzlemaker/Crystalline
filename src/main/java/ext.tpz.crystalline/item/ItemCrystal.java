@@ -399,8 +399,12 @@ public class ItemCrystal extends Item {
                 if (consumeReagent(EnumReagentTypes.BASIC, player, stack)) {
                     BlockPos pos = player.getPosition();
                     ItemStack s = new ItemStack(CrystallineItems.cleansing_reagent, 1);
-                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), s);
-                    world.spawnEntity(item);
+                    if (!player.inventory.addItemStackToInventory(s)) {
+                        EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), s);
+                        world.spawnEntity(item);
+                    } else {
+                        player.openContainer.detectAndSendChanges();
+                    }
                     UUID uuid = player.getUniqueID();
                     InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
                     if (data.getPlayer(uuid) < 100)

@@ -5,6 +5,7 @@ import ext.tpz.crystalline.block.BlockDistillationBasin;
 import ext.tpz.crystalline.block.BlockRestorationApparatus;
 import ext.tpz.crystalline.block.CrystallineBlocks;
 import ext.tpz.crystalline.block.tileentity.TEDistillationBasin;
+import ext.tpz.crystalline.block.tileentity.TERestorationApparatus;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.packet.common.PacketHandler;
@@ -69,6 +70,7 @@ public class CommonProxy {
         e.getRegistry().register(new BlockDistillationBasin());
         e.getRegistry().register(new BlockRestorationApparatus());
         GameRegistry.registerTileEntity(TEDistillationBasin.class, new ResourceLocation(Reference.MODID + ":distillation_basin"));
+        GameRegistry.registerTileEntity(TERestorationApparatus.class, new ResourceLocation(Reference.MODID + ":restoration_apparatus"));
     }
 
     @SubscribeEvent
@@ -85,6 +87,7 @@ public class CommonProxy {
         e.getRegistry().register(CrystallineItems.cleansing_potion);
         e.getRegistry().register(new ItemBlock(CrystallineBlocks.distillationBasin).setRegistryName(CrystallineBlocks.distillationBasin.getRegistryName()));
         e.getRegistry().register(new ItemBlock(CrystallineBlocks.restorationApparatus).setRegistryName(CrystallineBlocks.restorationApparatus.getRegistryName()));
+        e.getRegistry().register(CrystallineItems.essence_bottle);
     }
 
     @SubscribeEvent

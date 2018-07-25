@@ -74,6 +74,8 @@ public class ClientProxy extends CommonProxy {
         ModelLoader.setCustomModelResourceLocation(new ItemBlock(CrystallineBlocks.restorationApparatus), 0, new ModelResourceLocation(CrystallineBlocks.restorationApparatus.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(CrystallineBlocks.restorationApparatus), 0, new ModelResourceLocation(CrystallineBlocks.restorationApparatus.getRegistryName(), "inventory"));
         CrystallineBlocks.distillationBasin.initTESR();
+        CrystallineBlocks.restorationApparatus.initTESR();
+        CrystallineItems.essence_bottle.initModel();
     }
 
 }

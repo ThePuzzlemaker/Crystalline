@@ -38,4 +38,7 @@ public class CrystallineItems {
     @GameRegistry.ObjectHolder(Reference.MODID + ":cleansing_potion")
     public static ItemCleansingPotion cleansing_potion = new ItemCleansingPotion();
 
+    @GameRegistry.ObjectHolder(Reference.MODID + ":essence_bottle")
+    public static ItemEssenceBottle essence_bottle = new ItemEssenceBottle();
+
 }
