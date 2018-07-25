@@ -1,5 +1,6 @@
 package ext.tpz.crystalline.item;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
@@ -13,6 +14,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -26,6 +28,8 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -63,7 +67,7 @@ public class ItemCrystal extends Item {
             case "cleansing":
                 type += " " + I18n.format("crystal.cleansing"); insanity = I18n.format("crystal.noinsanity"); break;
             case "administration":
-                type += " " + I18n.format("crystal.administration"); insanity = I18n.format("crystal.insanity"); break;
+                type += " " + I18n.format("crystal.administration"); insanity = I18n.format("crystal.insanity"); bound = I18n.format("crystal.boundto") + " " + getBound(stack); break;
             case "life":
                 type += " " + I18n.format("crystal.life"); insanity = I18n.format("crystal.insanity"); bound = I18n.format("crystal.boundto") + " " + getBound(stack); break;
             case "knowledge":
@@ -84,7 +88,7 @@ public class ItemCrystal extends Item {
         tooltip.add(TextFormatting.RESET + insanity);
         tooltip.add(TextFormatting.RESET + I18n.format("crystal.properties"));
         tooltip.add(TextFormatting.RESET + "  " + I18n.format("crystal.potential") + " " + Integer.toString(getPotential(stack)) + "%");
-        if (getType(stack) == "life") { tooltip.add(TextFormatting.RESET + "  " + bound); }
+        if (getType(stack).equals("life") || getType(stack).equals("administration")) { tooltip.add(TextFormatting.RESET + "  " + bound); }
         String reagents = "  " + I18n.format("crystal.reagent");
         switch (getReagent(stack)) {
             case "basic":
@@ -201,12 +205,24 @@ public class ItemCrystal extends Item {
         }
     }
 
+    public String getMode(ItemStack stack) {
+        if (stack.hasTagCompound()) {
+            if (stack.getTagCompound().hasKey("mode")) {
+                return stack.getTagCompound().getString("mode");
+            } else {
+                return "none";
+            }
+        } else {
+            return "none";
+        }
+    }
+
     public EnumCrystalModes cycleMode(ItemStack stack) {
         NBTTagCompound tmp = new NBTTagCompound();
         if (stack.hasTagCompound()) {
             tmp = stack.getTagCompound();
         }
-        if (getType(stack) == EnumCrystalTypes.RIFT.getName() || getType(stack) == EnumCrystalTypes.UNIVERSE.getName()) {
+        if (getType(stack).equals(EnumCrystalTypes.RIFT.getName()) || getType(stack).equals(EnumCrystalTypes.UNIVERSE.getName())) {
             String mode = EnumCrystalModes.OBLITERATE_BLOCK.getName();
             if (tmp.hasKey("mode"))
                 mode = tmp.getString("mode");
@@ -219,6 +235,8 @@ public class ItemCrystal extends Item {
                 stack.setTagCompound(tmp);
                 return EnumCrystalModes.OBLITERATE_BLOCK;
             } else {
+                tmp.setString("mode", EnumCrystalModes.OBLITERATE_BLOCK.getName());
+                stack.setTagCompound(tmp);
                 return EnumCrystalModes.OBLITERATE_BLOCK;
             }
         } else {
@@ -399,32 +417,110 @@ public class ItemCrystal extends Item {
                 if (consumeReagent(EnumReagentTypes.BASIC, player, stack)) {
                     BlockPos pos = player.getPosition();
                     ItemStack s = new ItemStack(CrystallineItems.cleansing_reagent, 1);
+                    if ((getPotential(stack) - 10) > 0) {
+                        setPotential(stack, getPotential(stack) - 10);
+                    } else {
+                        player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
+                        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+                    }
                     if (!player.inventory.addItemStackToInventory(s)) {
                         EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), s);
                         world.spawnEntity(item);
                     } else {
                         player.openContainer.detectAndSendChanges();
                     }
+
                     UUID uuid = player.getUniqueID();
                     InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
-                    if (data.getPlayer(uuid) < 100)
+                    if (data.getPlayer(uuid) + 1 < 100) {
                         data.setPlayer(uuid, data.getPlayer(uuid) + 1);
+                    } else {
+                        data.setPlayer(uuid, 100);
+                    }
                 }
                 break;
             case "administration":
+                EntityPlayer target = world.getPlayerEntityByName(getBound(stack));
+                if (target != null) {
+                    if (player.isSneaking()) {
+                        if (consumeReagent(EnumReagentTypes.EXTREME, player, stack)) {
+                            if ((getPotential(stack) - 10) >= 0) {
+                                setPotential(stack, getPotential(stack) - 10);
+                            } else {
+                                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
+                                return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+                            }
+                            target.setHealth(target.getHealth() - 2.5f);
+                            UUID uuid = player.getUniqueID();
+                            InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
+                            if (data.getPlayer(uuid)+25 < 100) {
+                                data.setPlayer(uuid, data.getPlayer(uuid) + 25);
+                            } else {
+                                data.setPlayer(uuid, 100);
+                            }
+                            InsanityWorldSavedData.set(data, world);
+                        }
+                    } else {
+                        if (consumeReagent(EnumReagentTypes.EXTREME, player, stack)) {
+                            double strength = 0.5D;
+                            if ((getPotential(stack) - 5) >= 0) {
+                                setPotential(stack, getPotential(stack) - 5);
+                            } else {
+                                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
+                                return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+                            }
+                            switch(player.getHorizontalFacing()) {
+                                case UP:
+                                    target.setVelocity(0.0D, strength, 0.0D);
+                                    break;
+                                case DOWN:
+                                    target.setVelocity(0.0D, -strength, 0.0D);
+                                    break;
+                                case EAST:
+                                    target.setVelocity(strength, (-player.rotationPitch)/100, 0.0D);
+                                    break;
+                                case WEST:
+                                    target.setVelocity(-strength, (-player.rotationPitch)/100, 0.0D);
+                                    break;
+                                case NORTH:
+                                    target.setVelocity(0.0D, (-player.rotationPitch)/100, -strength);
+                                    break;
+                                case SOUTH:
+                                    target.setVelocity(0.0D, (-player.rotationPitch)/100, strength);
+                                    break;
+                            }
+                            UUID uuid = player.getUniqueID();
+                            InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
+                            if (data.getPlayer(uuid)+25 < 100) {
+                                data.setPlayer(uuid, data.getPlayer(uuid) + 5);
+                            } else {
+                                data.setPlayer(uuid, 100);
+                            }
+                            InsanityWorldSavedData.set(data, world);
+                        }
+                    }
+                }
                 break;
             case "life":
                 if (getBound(stack) == player.getName()) {
                     PotionEffect regen = new PotionEffect(MobEffects.REGENERATION, 3000, 1);
                     if (player.getActivePotionEffect(MobEffects.REGENERATION) == null) {
                         if (consumeReagent(EnumReagentTypes.ADVANCED, player, stack)) {
+                            if ((getPotential(stack) - 1) >= 0) {
+                                setPotential(stack, getPotential(stack) - 1);
+                            } else {
+                                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
+                                return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+                            }
                             player.addPotionEffect(regen);
-                            setPotential(stack, getPotential(stack) - 1);
                             UUID uuid = player.getUniqueID();
                             InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
-                            if (data.getPlayer(uuid) < 100)
+                            if (data.getPlayer(uuid) + 1 < 100) {
                                 data.setPlayer(uuid, data.getPlayer(uuid) + 1);
-
+                            } else {
+                                data.setPlayer(uuid, 100);
+                            }
+                            InsanityWorldSavedData.set(data, world);
                         }
                     }
                 } else {
@@ -435,6 +531,14 @@ public class ItemCrystal extends Item {
                 handleKnowledge(stack, player);
                 break;
             case "rift":
+                if (consumeReagent(EnumReagentTypes.RIFT, player, stack)) {
+                    if ((getPotential(stack) - 1) >= 0) {
+                        setPotential(stack, getPotential(stack) - 1);
+                    } else {
+                        player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
+                        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+                    }
+                }
                 break;
             case "universe":
                 break;
@@ -574,6 +678,41 @@ public class ItemCrystal extends Item {
             player.sendStatusMessage(new TextComponentString(msg2), true);
         } else {
             player.sendStatusMessage(new TextComponentString(msg), true);
+        }
+    }
+
+    public ActionResult<ItemStack> handleRift(ItemStack stack, EntityPlayer player) {
+        if ((getPotential(stack) - 1) >= 0) {
+            setPotential(stack, getPotential(stack) - 1);
+        } else {
+            player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
+            return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+        }
+        if (getMode(stack) == "obliterate_entity") {
+            World world = player.getEntityWorld();
+            RayTraceResult res = player.rayTrace(10, 0);
+            System.out.println(res);
+            if (res.typeOfHit == RayTraceResult.Type.ENTITY) {
+                world.removeEntity(res.entityHit);
+            }
+        } else if (getMode(stack) == "obliterate_block") {
+            World world = player.getEntityWorld();
+            RayTraceResult res = player.rayTrace(10, 0);
+            if (res.typeOfHit == RayTraceResult.Type.BLOCK) {
+                world.destroyBlock(res.getBlockPos(), true);
+            }
+        }
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+    }
+
+
+    public void setType(ItemStack stack, String type) {
+        if (stack.hasTagCompound()) {
+            stack.getTagCompound().setString("type", type);
+        } else {
+            NBTTagCompound tmp = new NBTTagCompound();
+            tmp.setString("type", type);
+            stack.setTagCompound(tmp);
         }
     }
 

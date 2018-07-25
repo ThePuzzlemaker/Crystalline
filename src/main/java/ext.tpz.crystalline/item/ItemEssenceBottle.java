@@ -90,17 +90,6 @@ public class ItemEssenceBottle extends Item {
         }
     }
 
-    /*
-        knowledge: diamond
-        administration: spectral arrow
-        cleansing: quartz
-        life: golden apple
-        universe: pure universe essence
-        unknown: missingno essence
-        rift: pure rift essence
-     */
-
-
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelResourceLocation knowledge = new ModelResourceLocation(getRegistryName() + "_knowledge", "inventory");

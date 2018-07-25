@@ -9,6 +9,7 @@ import ext.tpz.crystalline.block.tileentity.TERestorationApparatus;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.packet.common.PacketHandler;
+import ext.tpz.crystalline.recipe.RecipeBinding;
 import ext.tpz.crystalline.recipe.RecipeCleansing;
 import ext.tpz.crystalline.util.EventHandlers;
 import ext.tpz.crystalline.util.Reference;
@@ -93,6 +94,7 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> e) {
         e.getRegistry().register(new RecipeCleansing());
+        e.getRegistry().register(new RecipeBinding());
     }
 
 

@@ -62,7 +62,6 @@ public class BlockRestorationApparatus extends Block implements ITileEntityProvi
     @SideOnly(Side.CLIENT)
     public void initTESR() {
         ClientRegistry.bindTileEntitySpecialRenderer(TERestorationApparatus.class, new TESRRestorationApparatus());
-        System.out.println("TESRRestorationApparatus initialized");
     }
 
     @Override
