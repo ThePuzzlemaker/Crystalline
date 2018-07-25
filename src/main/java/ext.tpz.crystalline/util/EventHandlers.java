@@ -103,8 +103,12 @@ public class EventHandlers {
                     player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths. You find a weird purple powder on the ground where they have been moving."), false);
                     BlockPos pos = player.getPosition();
                     ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
-                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-                    world.spawnEntity(item);
+                    if (!player.inventory.addItemStackToInventory(stack)) {
+                        EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                        world.spawnEntity(item);
+                    } else {
+                        player.openContainer.detectAndSendChanges();
+                    }
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -116,8 +120,12 @@ public class EventHandlers {
                     player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths. You find a weird purple powder on the ground where they have been moving."), false);
                     BlockPos pos = player.getPosition();
                     ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
-                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-                    world.spawnEntity(item);
+                    if (!player.inventory.addItemStackToInventory(stack)) {
+                        EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                        world.spawnEntity(item);
+                    } else {
+                        player.openContainer.detectAndSendChanges();
+                    }
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -129,8 +137,12 @@ public class EventHandlers {
                     player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths. You find a weird purple powder on the ground where they have been moving."), false);
                     BlockPos pos = player.getPosition();
                     ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
-                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-                    world.spawnEntity(item);
+                    if (!player.inventory.addItemStackToInventory(stack)) {
+                        EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                        world.spawnEntity(item);
+                    } else {
+                        player.openContainer.detectAndSendChanges();
+                    }
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -142,8 +154,12 @@ public class EventHandlers {
                     player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. Your mind is somehow conjuring up strange images of ghostly figures with tattered black cloths. You find a weird purple powder on the ground where they have been moving."), false);
                     BlockPos pos = player.getPosition();
                     ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
-                    EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-                    world.spawnEntity(item);
+                    if (!player.inventory.addItemStackToInventory(stack)) {
+                        EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                        world.spawnEntity(item);
+                    } else {
+                        player.openContainer.detectAndSendChanges();
+                    }
                 } else {
                     tick++;
                     ticks.put(uuid, tick);

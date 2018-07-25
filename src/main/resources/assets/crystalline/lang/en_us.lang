@@ -36,6 +36,10 @@ crystal.universe=Universe
 crystal.artificial=Artificial
 crystal.unknown=missingno
 
+essence.type=Essence Type:
+
+item.crystalline.essence_bottle.name=Essence Bottle
+
 item.crystalline.crystal.name=Crystal
 
 << Reagents >>
