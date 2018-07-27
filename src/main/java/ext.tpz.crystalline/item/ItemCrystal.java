@@ -5,6 +5,7 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import ext.tpz.crystalline.entity.EntityObliterateBlock;
+import ext.tpz.crystalline.entity.EntityObliterateEntity;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.client.Minecraft;
@@ -279,6 +280,7 @@ public class ItemCrystal extends Item {
         // 5: universe
         int lowestReagentFound = 0;
         ItemStack bestReagent = ItemStack.EMPTY;
+        UUID uuid = player.getUniqueID();
         Slot slot = null;
         while (i.hasNext()) {
             Slot sl = i.next();
@@ -389,6 +391,12 @@ public class ItemCrystal extends Item {
                                 lowestReagentFound = 5;
                                 bestReagent = s;
                                 slot = sl;
+                                InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
+                                if (data.getPlayer(uuid) + 1 < 100) {
+                                    data.setPlayer(uuid, data.getPlayer(uuid) + 1);
+                                } else {
+                                    data.setPlayer(uuid, 100);
+                                }
                             }
                         } else {
                             continue;
@@ -400,6 +408,12 @@ public class ItemCrystal extends Item {
                                 lowestReagentFound = 5;
                                 bestReagent = s;
                                 slot = sl;
+                                InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
+                                if (data.getPlayer(uuid) + 1 < 100) {
+                                    data.setPlayer(uuid, data.getPlayer(uuid) + 1);
+                                } else {
+                                    data.setPlayer(uuid, 100);
+                                }
                             }
                         } else {
                             continue;
@@ -555,13 +569,19 @@ public class ItemCrystal extends Item {
                 handleKnowledge(stack, player);
                 break;
             case "rift":
-                if (consumeReagent(EnumReagentTypes.RIFT, player, stack)) {
-                    handleRift(stack, player);
+                ActionResult<ItemStack> res = handleRift(stack, player);
+                if (res.getType() == EnumActionResult.SUCCESS) {
+                    consumeReagent(EnumReagentTypes.RIFT, player, stack);
+                } else {
+                    return res;
                 }
                 break;
             case "universe":
-                if (consumeReagent(EnumReagentTypes.UNIVERSE, player, stack)) {
-                    handleUniverse(stack, player);
+                ActionResult<ItemStack> res2 = handleUniverse(stack, player);
+                if (res2.getType() == EnumActionResult.SUCCESS) {
+                    consumeReagent(EnumReagentTypes.UNIVERSE, player, stack);
+                } else {
+                    return res2;
                 }
                 break;
             case "artificial":
@@ -710,10 +730,16 @@ public class ItemCrystal extends Item {
             player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
             return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
         }
-        if (getMode(stack) == "obliterate_entity") {
-
+        if (getMode(stack).equals("obliterate_entity")) {
+            EntityObliterateEntity eOE = new EntityObliterateEntity(player.getEntityWorld(), player);
+            eOE.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
+            player.getEntityWorld().spawnEntity(eOE);
         } else if (getMode(stack) == "obliterate_block") {
-
+            if (!player.getEntityWorld().isRemote) {
+                EntityObliterateBlock eOB = new EntityObliterateBlock(player.getEntityWorld(), player);
+                eOB.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
+                player.getEntityWorld().spawnEntity(eOB);
+            }
         }
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
     }
@@ -726,12 +752,14 @@ public class ItemCrystal extends Item {
             return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
         }
         if (getMode(stack).equals("obliterate_entity")) {
-
+            EntityObliterateEntity eOE = new EntityObliterateEntity(player.getEntityWorld(), player);
+            eOE.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
+            player.getEntityWorld().spawnEntity(eOE);
         } else if (getMode(stack) == "obliterate_block") {
             if (!player.getEntityWorld().isRemote) {
                 EntityObliterateBlock eOB = new EntityObliterateBlock(player.getEntityWorld(), player);
                 eOB.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
-                player.getEntityWorld().spawnEntity(new EntityObliterateBlock(player.getEntityWorld(), player));
+                player.getEntityWorld().spawnEntity(eOB);
             }
         } else if (getMode(stack) == "ultra_cleanse") {
             InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());

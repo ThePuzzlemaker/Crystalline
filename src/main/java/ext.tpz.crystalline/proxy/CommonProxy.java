@@ -9,6 +9,7 @@ import ext.tpz.crystalline.block.tileentity.TEDistillationBasin;
 import ext.tpz.crystalline.block.tileentity.TERestorationApparatus;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.entity.EntityObliterateBlock;
+import ext.tpz.crystalline.entity.EntityObliterateEntity;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.packet.common.PacketHandler;
 import ext.tpz.crystalline.recipe.RecipeBinding;
@@ -48,7 +49,7 @@ public class CommonProxy {
 
         PacketHandler.registerMessages("crystalline");
         EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":obliterate_block"), EntityObliterateBlock.class, "crystalline.entity.obliterate", 5691, Crystalline.instance, 64, 10, true);
-
+        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":obliterate_entity"), EntityObliterateEntity.class, "crystalline.entity.obliterate_entity", 5692, Crystalline.instance, 64, 10, true);
         MinecraftForge.EVENT_BUS.register(new EventHandlers());
         if (Loader.isModLoaded("thaumcraft")) {
             ThaumcraftCompat.preInit(e);

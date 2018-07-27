@@ -3,7 +3,9 @@ package ext.tpz.crystalline.proxy;
 import ext.tpz.crystalline.block.CrystallineBlocks;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.entity.EntityObliterateBlock;
+import ext.tpz.crystalline.entity.EntityObliterateEntity;
 import ext.tpz.crystalline.entity.render.RenderEntityObliterate;
+import ext.tpz.crystalline.entity.render.RenderEntityObliterateEntity;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.item.EnumCrystalTypes;
 import ext.tpz.crystalline.item.ItemCrystal;
@@ -86,6 +88,7 @@ public class ClientProxy extends CommonProxy {
         ItemStack rift = new ItemStack(CrystallineItems.crystal);
         CrystallineItems.crystal.setType(rift, EnumCrystalTypes.RIFT);
         RenderingRegistry.registerEntityRenderingHandler(EntityObliterateBlock.class, RenderEntityObliterate.FACTORY);
+        RenderingRegistry.registerEntityRenderingHandler(EntityObliterateEntity.class, RenderEntityObliterateEntity.FACTORY);
     }
 
 }
