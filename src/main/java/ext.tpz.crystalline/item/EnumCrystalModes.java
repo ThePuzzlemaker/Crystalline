@@ -5,6 +5,11 @@ public enum EnumCrystalModes {
     // Rift & Universe Crystal
     OBLITERATE_ENTITY("obliterate_entity", "Obliterate Entity"),
     OBLITERATE_BLOCK("obliterate_block", "Obliterate Block"),
+
+    // Universe Only
+    ULTRA_CLEANSE("ultra_cleanse", "Ultra Cleanse"),
+
+    // None
     NONE("none", "missingno");
 
     private String name;

@@ -2,18 +2,25 @@ package ext.tpz.crystalline.proxy;
 
 import ext.tpz.crystalline.block.CrystallineBlocks;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
+import ext.tpz.crystalline.entity.EntityObliterateBlock;
+import ext.tpz.crystalline.entity.render.RenderEntityObliterate;
 import ext.tpz.crystalline.item.CrystallineItems;
+import ext.tpz.crystalline.item.EnumCrystalTypes;
 import ext.tpz.crystalline.item.ItemCrystal;
 import ext.tpz.crystalline.packet.client.InputHandler;
 import ext.tpz.crystalline.packet.client.KeyBindings;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.entity.RenderEntity;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -76,6 +83,9 @@ public class ClientProxy extends CommonProxy {
         CrystallineBlocks.distillationBasin.initTESR();
         CrystallineBlocks.restorationApparatus.initTESR();
         CrystallineItems.essence_bottle.initModel();
+        ItemStack rift = new ItemStack(CrystallineItems.crystal);
+        CrystallineItems.crystal.setType(rift, EnumCrystalTypes.RIFT);
+        RenderingRegistry.registerEntityRenderingHandler(EntityObliterateBlock.class, RenderEntityObliterate.FACTORY);
     }
 
 }

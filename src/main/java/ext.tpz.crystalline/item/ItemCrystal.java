@@ -1,8 +1,10 @@
 package ext.tpz.crystalline.item;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import ext.tpz.crystalline.entity.EntityObliterateBlock;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.client.Minecraft;
@@ -14,8 +16,11 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.Slot;
@@ -23,10 +28,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -222,7 +225,7 @@ public class ItemCrystal extends Item {
         if (stack.hasTagCompound()) {
             tmp = stack.getTagCompound();
         }
-        if (getType(stack).equals(EnumCrystalTypes.RIFT.getName()) || getType(stack).equals(EnumCrystalTypes.UNIVERSE.getName())) {
+        if (getType(stack).equals(EnumCrystalTypes.RIFT.getName())) {
             String mode = EnumCrystalModes.OBLITERATE_BLOCK.getName();
             if (tmp.hasKey("mode"))
                 mode = tmp.getString("mode");
@@ -231,6 +234,27 @@ public class ItemCrystal extends Item {
                 stack.setTagCompound(tmp);
                 return EnumCrystalModes.OBLITERATE_ENTITY;
             } else if (mode == EnumCrystalModes.OBLITERATE_ENTITY.getName()) {
+                tmp.setString("mode", EnumCrystalModes.OBLITERATE_BLOCK.getName());
+                stack.setTagCompound(tmp);
+                return EnumCrystalModes.OBLITERATE_BLOCK;
+            } else {
+                tmp.setString("mode", EnumCrystalModes.OBLITERATE_BLOCK.getName());
+                stack.setTagCompound(tmp);
+                return EnumCrystalModes.OBLITERATE_BLOCK;
+            }
+        } else if (getType(stack).equals(EnumCrystalTypes.UNIVERSE.getName())) {
+            String mode = EnumCrystalModes.OBLITERATE_BLOCK.getName();
+            if (tmp.hasKey("mode"))
+                mode = tmp.getString("mode");
+            if (mode == EnumCrystalModes.OBLITERATE_BLOCK.getName()) {
+                tmp.setString("mode", EnumCrystalModes.OBLITERATE_ENTITY.getName());
+                stack.setTagCompound(tmp);
+                return EnumCrystalModes.OBLITERATE_ENTITY;
+            } else if (mode == EnumCrystalModes.OBLITERATE_ENTITY.getName()) {
+                tmp.setString("mode", EnumCrystalModes.ULTRA_CLEANSE.getName());
+                stack.setTagCompound(tmp);
+                return EnumCrystalModes.ULTRA_CLEANSE;
+            } else if (mode == EnumCrystalModes.ULTRA_CLEANSE.getName()) {
                 tmp.setString("mode", EnumCrystalModes.OBLITERATE_BLOCK.getName());
                 stack.setTagCompound(tmp);
                 return EnumCrystalModes.OBLITERATE_BLOCK;
@@ -532,15 +556,13 @@ public class ItemCrystal extends Item {
                 break;
             case "rift":
                 if (consumeReagent(EnumReagentTypes.RIFT, player, stack)) {
-                    if ((getPotential(stack) - 1) >= 0) {
-                        setPotential(stack, getPotential(stack) - 1);
-                    } else {
-                        player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
-                        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
-                    }
+                    handleRift(stack, player);
                 }
                 break;
             case "universe":
+                if (consumeReagent(EnumReagentTypes.UNIVERSE, player, stack)) {
+                    handleUniverse(stack, player);
+                }
                 break;
             case "artificial":
                 break;
@@ -689,22 +711,35 @@ public class ItemCrystal extends Item {
             return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
         }
         if (getMode(stack) == "obliterate_entity") {
-            World world = player.getEntityWorld();
-            RayTraceResult res = player.rayTrace(10, 0);
-            System.out.println(res);
-            if (res.typeOfHit == RayTraceResult.Type.ENTITY) {
-                world.removeEntity(res.entityHit);
-            }
+
         } else if (getMode(stack) == "obliterate_block") {
-            World world = player.getEntityWorld();
-            RayTraceResult res = player.rayTrace(10, 0);
-            if (res.typeOfHit == RayTraceResult.Type.BLOCK) {
-                world.destroyBlock(res.getBlockPos(), true);
-            }
+
         }
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
     }
 
+    public ActionResult<ItemStack> handleUniverse(ItemStack stack, EntityPlayer player) {
+        if ((getPotential(stack) - 1) >= 0) {
+            setPotential(stack, getPotential(stack) - 1);
+        } else {
+            player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
+            return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+        }
+        if (getMode(stack).equals("obliterate_entity")) {
+
+        } else if (getMode(stack) == "obliterate_block") {
+            if (!player.getEntityWorld().isRemote) {
+                EntityObliterateBlock eOB = new EntityObliterateBlock(player.getEntityWorld(), player);
+                eOB.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
+                player.getEntityWorld().spawnEntity(new EntityObliterateBlock(player.getEntityWorld(), player));
+            }
+        } else if (getMode(stack) == "ultra_cleanse") {
+            InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
+            data.setPlayer(player.getUniqueID(), 0);
+            InsanityWorldSavedData.set(data, player.getEntityWorld());
+        }
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+    }
 
     public void setType(ItemStack stack, String type) {
         if (stack.hasTagCompound()) {

@@ -1,12 +1,14 @@
 package ext.tpz.crystalline.proxy;
 
 
+import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.block.BlockDistillationBasin;
 import ext.tpz.crystalline.block.BlockRestorationApparatus;
 import ext.tpz.crystalline.block.CrystallineBlocks;
 import ext.tpz.crystalline.block.tileentity.TEDistillationBasin;
 import ext.tpz.crystalline.block.tileentity.TERestorationApparatus;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
+import ext.tpz.crystalline.entity.EntityObliterateBlock;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.packet.common.PacketHandler;
 import ext.tpz.crystalline.recipe.RecipeBinding;
@@ -15,6 +17,7 @@ import ext.tpz.crystalline.util.EventHandlers;
 import ext.tpz.crystalline.util.Reference;
 import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
@@ -28,6 +31,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.io.File;
@@ -43,6 +47,7 @@ public class CommonProxy {
         Config.readConfig();
 
         PacketHandler.registerMessages("crystalline");
+        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":obliterate_block"), EntityObliterateBlock.class, "crystalline.entity.obliterate", 5691, Crystalline.instance, 64, 10, true);
 
         MinecraftForge.EVENT_BUS.register(new EventHandlers());
         if (Loader.isModLoaded("thaumcraft")) {
