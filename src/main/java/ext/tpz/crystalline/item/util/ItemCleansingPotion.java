@@ -1,6 +1,7 @@
 package ext.tpz.crystalline.item.util;
 
 import ext.tpz.crystalline.Crystalline;
+import ext.tpz.crystalline.entity.DamageSourceCleansingPotion;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.client.util.ITooltipFlag;
@@ -66,6 +67,7 @@ public class ItemCleansingPotion extends ItemSimpleFoiled {
                         data.setPlayer(uuid, 0);
                     } else {
                         player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "" + TextFormatting.ITALIC + "It isn't very effective..."), true);
+                        player.attackEntityFrom(new DamageSourceCleansingPotion(), player.getHealth());
                     }
                 }
                 return new ItemStack(Items.GLASS_BOTTLE);

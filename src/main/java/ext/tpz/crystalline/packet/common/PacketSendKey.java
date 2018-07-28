@@ -3,6 +3,7 @@ package ext.tpz.crystalline.packet.common;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.util.EnumHand;
@@ -44,7 +45,7 @@ public class PacketSendKey implements IMessage {
             World world = playerEntity.getEntityWorld();
 
             if (playerEntity.getHeldItem(EnumHand.MAIN_HAND).getItem() == CrystallineItems.crystal) {
-                playerEntity.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "Crystal mode changed to '" + CrystallineItems.crystal.cycleMode(playerEntity.getHeldItem(EnumHand.MAIN_HAND)).getLocName() + "'."), true);
+                playerEntity.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "Crystal mode changed to '" + I18n.format(CrystallineItems.crystal.cycleMode(playerEntity.getHeldItem(EnumHand.MAIN_HAND)).getUnlocalizedName()) + "'."), true);
             }
         }
     }

@@ -29,7 +29,7 @@ public class EntityObliterateEntity extends EntityThrowable {
                 if (result.entityHit instanceof EntityLiving) {
                     if (this.getThrower() instanceof EntityPlayer) {
                         EntityPlayer player = (EntityPlayer) this.getThrower();
-                        result.entityHit.attackEntityFrom(DamageSource.causePlayerDamage(player), 20);
+                        result.entityHit.attackEntityFrom(new DamageSourceObliterate(), ((EntityLiving)result.entityHit).getHealth());
                         setDead();
                     }
                 }

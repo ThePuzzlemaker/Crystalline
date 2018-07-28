@@ -4,8 +4,11 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import ext.tpz.crystalline.api.crystal.CrystalRegistry;
 import ext.tpz.crystalline.api.crystal.CrystalUtils;
 import ext.tpz.crystalline.api.crystal.ICrystal;
+import ext.tpz.crystalline.api.mode.ICrystalMode;
+import ext.tpz.crystalline.api.mode.ModeUtils;
 import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.api.reagent.ReagentUtils;
 import ext.tpz.crystalline.crystals.BaseModCrystals;
@@ -58,10 +61,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Function;
 
 public class ItemCrystal extends Item {
@@ -186,64 +186,39 @@ public class ItemCrystal extends Item {
         }
     }
 
-    public String getMode(ItemStack stack) {
+    public ICrystalMode getMode(ItemStack stack) {
         if (stack.hasTagCompound()) {
             if (stack.getTagCompound().hasKey("mode")) {
-                return stack.getTagCompound().getString("mode");
+                return ModeUtils.from(stack.getTagCompound().getString("mode"));
             } else {
-                return "none";
+                setMode(stack, BaseModModes.mode_null);
+                return BaseModModes.mode_null;
             }
         } else {
-            return "none";
+            setMode(stack, BaseModModes.mode_null);
+            return BaseModModes.mode_null;
         }
     }
 
-    public EnumCrystalModes cycleMode(ItemStack stack) {
-        NBTTagCompound tmp = new NBTTagCompound();
+    public void setMode(ItemStack stack, ICrystalMode mode) {
         if (stack.hasTagCompound()) {
-            tmp = stack.getTagCompound();
-        }
-        if (getType(stack).equals(EnumCrystalTypes.RIFT.getName())) {
-            String mode = EnumCrystalModes.OBLITERATE_BLOCK.getName();
-            if (tmp.hasKey("mode"))
-                mode = tmp.getString("mode");
-            if (mode == EnumCrystalModes.OBLITERATE_BLOCK.getName()) {
-                tmp.setString("mode", EnumCrystalModes.OBLITERATE_ENTITY.getName());
-                stack.setTagCompound(tmp);
-                return EnumCrystalModes.OBLITERATE_ENTITY;
-            } else if (mode == EnumCrystalModes.OBLITERATE_ENTITY.getName()) {
-                tmp.setString("mode", EnumCrystalModes.OBLITERATE_BLOCK.getName());
-                stack.setTagCompound(tmp);
-                return EnumCrystalModes.OBLITERATE_BLOCK;
-            } else {
-                tmp.setString("mode", EnumCrystalModes.OBLITERATE_BLOCK.getName());
-                stack.setTagCompound(tmp);
-                return EnumCrystalModes.OBLITERATE_BLOCK;
-            }
-        } else if (getType(stack).equals(EnumCrystalTypes.UNIVERSE.getName())) {
-            String mode = EnumCrystalModes.OBLITERATE_BLOCK.getName();
-            if (tmp.hasKey("mode"))
-                mode = tmp.getString("mode");
-            if (mode == EnumCrystalModes.OBLITERATE_BLOCK.getName()) {
-                tmp.setString("mode", EnumCrystalModes.OBLITERATE_ENTITY.getName());
-                stack.setTagCompound(tmp);
-                return EnumCrystalModes.OBLITERATE_ENTITY;
-            } else if (mode == EnumCrystalModes.OBLITERATE_ENTITY.getName()) {
-                tmp.setString("mode", EnumCrystalModes.ULTRA_CLEANSE.getName());
-                stack.setTagCompound(tmp);
-                return EnumCrystalModes.ULTRA_CLEANSE;
-            } else if (mode == EnumCrystalModes.ULTRA_CLEANSE.getName()) {
-                tmp.setString("mode", EnumCrystalModes.OBLITERATE_BLOCK.getName());
-                stack.setTagCompound(tmp);
-                return EnumCrystalModes.OBLITERATE_BLOCK;
-            } else {
-                tmp.setString("mode", EnumCrystalModes.OBLITERATE_BLOCK.getName());
-                stack.setTagCompound(tmp);
-                return EnumCrystalModes.OBLITERATE_BLOCK;
-            }
+            stack.getTagCompound().setString("mode", ModeUtils.to(mode));
         } else {
-            return EnumCrystalModes.NONE;
+            NBTTagCompound tmp = new NBTTagCompound();
+            tmp.setString("mode", ModeUtils.to(mode));
+            stack.setTagCompound(tmp);
         }
+    }
+
+    public ICrystalMode cycleMode(ItemStack stack) {
+        ICrystal type = getType(stack);
+        ICrystalMode currentMode = getMode(stack);
+        List<ICrystalMode> modes = type.getModes();
+        int currentModeId = modes.indexOf(currentMode);
+        int nextModeId = currentModeId+1 <= modes.size() ? currentModeId+1 : 0;
+        ICrystalMode nextMode = modes.get(nextModeId);
+        setMode(stack, nextMode);
+        return nextMode;
     }
 
     public boolean consumeReagent(EnumReagentTypes type, EntityPlayer player, ItemStack stack) {
@@ -426,8 +401,6 @@ public class ItemCrystal extends Item {
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
         if (!isDrained(stack) && getPotential(stack) > 0) switch (getType(stack)) {
-            case "void":
-                break;
             case "cleansing":
                 if (consumeReagent(EnumReagentTypes.BASIC, player, stack)) {
                     BlockPos pos = player.getPosition();
@@ -516,48 +489,7 @@ public class ItemCrystal extends Item {
                     }
                 }
                 break;
-            case "life":
-                if (getBound(stack) == player.getName()) {
-                    PotionEffect regen = new PotionEffect(MobEffects.REGENERATION, 3000, 1);
-                    if (player.getActivePotionEffect(MobEffects.REGENERATION) == null) {
-                        if (consumeReagent(EnumReagentTypes.ADVANCED, player, stack)) {
-                            if ((getPotential(stack) - 1) >= 0) {
-                                setPotential(stack, getPotential(stack) - 1);
-                            } else {
-                                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
-                                return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
-                            }
-                            player.addPotionEffect(regen);
-                            UUID uuid = player.getUniqueID();
-                            InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
-                            if (data.getPlayer(uuid) + 1 < 100) {
-                                data.setPlayer(uuid, data.getPlayer(uuid) + 1);
-                            } else {
-                                data.setPlayer(uuid, 100);
-                            }
-                            InsanityWorldSavedData.set(data, world);
-                        }
-                    }
-                } else {
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is not bound to you!"), true);
-                }
-                break;
-            case "knowledge":
-                handleKnowledge(stack, player);
-                break;
-            case "rift":
-                handleRift(stack, player);
-                break;
-            case "universe":
-                return handleUniverse(stack, player);
-            case "artificial":
-                break;
-            case "unknown":
-                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is an invalid crystal!"), true);
-                break;
-            default:
-                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is an invalid crystal!"), true);
-                break;
+
         }
         else {
             player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is drained of potential!"), true);
@@ -577,8 +509,15 @@ public class ItemCrystal extends Item {
         ModelResourceLocation life = new ModelResourceLocation(getRegistryName() + "_life", "inventory");
         ModelResourceLocation universe = new ModelResourceLocation(getRegistryName() + "_universe", "inventory");
         ModelResourceLocation unknown = new ModelResourceLocation(getRegistryName() + "_unknown", "inventory");
-        ModelResourceLocation drained = new ModelResourceLocation(getRegistryName() + "_drained", "inventory");
+        ModelResourceLocation drained = new ModelResourceLocation(Reference.CRYSTAL_MODEL_BASE + ".drained", "inventory");
         ModelResourceLocation rift = new ModelResourceLocation(getRegistryName() + "_rift", "inventory");
+
+        Iterator<ICrystal> iterator  = CrystalRegistry.getRegistry().iterator();
+
+        while (iterator.hasNext()) {
+            ICrystal crystal = iterator.next();
+            ModelBakery.registerItemVariants(this, crystal.getModel());
+        }
 
         ModelBakery.registerItemVariants(this, knowledge, administration, cleansing, life, universe, unknown, drained, rift);
 
@@ -587,34 +526,12 @@ public class ItemCrystal extends Item {
             public ModelResourceLocation getModelLocation(ItemStack stack) {
                 if (isDrained(stack))
                     return drained;
-                switch (getType(stack)) {
-                    case "void":
-                        return unknown;
-                    case "cleansing":
-                        return cleansing;
-                    case "administration":
-                        return administration;
-                    case "life":
-                        return life;
-                    case "knowledge":
-                        return knowledge;
-                    case "rift":
-                        return rift;
-                    case "universe":
-                        return universe;
-                    case "artificial":
-                        return unknown;
-                    case "unknown":
-                        return unknown;
-                    default:
-                        return unknown;
-
-                }
+                return getType(stack).getModel();
             }
         });
     }
 
-    void theIntellijDebuggerIsAnnoyingSoIAddedThisMethodToEditSoTheClassesAreReloadedWithoutAnyChanges() {
+    String theIntellijDebuggerIsAnnoyingSoIAddedThisMethodToEditSoTheClassesAreReloadedWithoutAnyChanges() {
         // If this is in an actual release, blame IntelliJ.
         String a = "This is so stupid.";
         String b = "Here you see my ramblings as I try to get this stupid thing to work.";
@@ -625,6 +542,7 @@ public class ItemCrystal extends Item {
         String g = "Nearing the end...";
         String h = "Some more testing...";
         String i = "Come on";
+        return a + " " + b + " " + c + " " + d + " " + e + " " + f + " " + g + " " + h + " " + i;
     }
 
     public void setBound(ItemStack stack, String playerName) {
@@ -648,104 +566,6 @@ public class ItemCrystal extends Item {
         } else {
             setBound(stack, "SickPlayerNameThatDoesNotExist");
             return "SickPlayerNameThatDoesNotExist";
-        }
-    }
-
-    public void handleKnowledge(ItemStack stack, EntityPlayer player) {
-        InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
-        int insanity = data.getPlayer(player.getUniqueID());
-        String msg = "Insanity: ";
-        String msg2 = "You have Stage ";
-        if (insanity >= 0 && insanity <= 9) {
-            msg += "[-------] (" + insanity + "%)";
-            msg2 += "0 insanity. This means you will not experience any effects.";
-        } else if (insanity >= 10 && insanity <= 29) {
-            msg += "[*------] (" + insanity + "%)";
-            msg2 += "1 insanity. This means you may experience some minor effects.";
-        } else if (insanity >= 30 && insanity <= 49) {
-            msg += "[**-----] (" + insanity + "%)";
-            msg2 += "2 insanity. This means you may experience some minor effects.";
-        } else if (insanity >= 50 && insanity <= 69) {
-            msg += "[***----] (" + insanity + "%)";
-            msg2 += "3 insanity. This means you may experience some possibly damaging effects.";
-        } else if (insanity >= 70 && insanity <= 89) {
-            msg += "[****---] (" + insanity + "%)";
-            msg2 += "4 insanity. This means you may experience some possibly lethal effects.";
-        } else if (insanity >= 90 && insanity <= 99) {
-            msg += "[*****--] (" + insanity + "%)";
-            msg2 += "5 insanity. This means you may experience some possibly lethal effects.";
-        } else if (insanity == 100) {
-            msg += "[******-] (" + insanity + "%)";
-            msg2 += "6 insanity. This means you may experience some possibly lethal effects.";
-        } else if (insanity == 101) {
-            msg += "[#######] (" + insanity + "%)";
-            msg2 = "You are permanently insane. You may experience possibly lethal effects.";
-        }
-
-        if (player.isSneaking()) {
-            player.sendStatusMessage(new TextComponentString(msg2), true);
-        } else {
-            player.sendStatusMessage(new TextComponentString(msg), true);
-        }
-    }
-
-    public ActionResult<ItemStack> handleRift(ItemStack stack, EntityPlayer player) {
-        if ((getPotential(stack) - 1) >= 0) {
-            setPotential(stack, getPotential(stack) - 1);
-        } else {
-            player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
-            return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
-        }
-        if (getMode(stack).equals("obliterate_entity")) {
-            if (consumeReagent(EnumReagentTypes.RIFT, player, stack)) {
-                EntityObliterateEntity eOE = new EntityObliterateEntity(player.getEntityWorld(), player);
-                eOE.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
-                player.getEntityWorld().spawnEntity(eOE);
-            }
-        } else if (getMode(stack) == "obliterate_block") {
-            if (consumeReagent(EnumReagentTypes.RIFT, player, stack)) {
-                EntityObliterateBlock eOB = new EntityObliterateBlock(player.getEntityWorld(), player);
-                eOB.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
-                player.getEntityWorld().spawnEntity(eOB);
-            }
-        }
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
-    }
-
-    public ActionResult<ItemStack> handleUniverse(ItemStack stack, EntityPlayer player) {
-        if ((getPotential(stack) - 1) >= 0) {
-            setPotential(stack, getPotential(stack) - 1);
-        } else {
-            player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
-            return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
-        }
-        if (getMode(stack).equals("obliterate_entity")) {
-            if (consumeReagent(EnumReagentTypes.UNIVERSE, player, stack)) {
-                EntityObliterateEntity eOE = new EntityObliterateEntity(player.getEntityWorld(), player);
-                eOE.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
-                player.getEntityWorld().spawnEntity(eOE);
-            }
-        } else if (getMode(stack) == "obliterate_block") {
-            if (consumeReagent(EnumReagentTypes.UNIVERSE, player, stack)) {
-                EntityObliterateBlock eOB = new EntityObliterateBlock(player.getEntityWorld(), player);
-                eOB.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
-                player.getEntityWorld().spawnEntity(eOB);
-            }
-        } else if (getMode(stack) == "ultra_cleanse") {
-            InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
-            data.setPlayer(player.getUniqueID(), 0);
-            InsanityWorldSavedData.set(data, player.getEntityWorld());
-        }
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
-    }
-
-    public void setType(ItemStack stack, String type) {
-        if (stack.hasTagCompound()) {
-            stack.getTagCompound().setString("type", type);
-        } else {
-            NBTTagCompound tmp = new NBTTagCompound();
-            tmp.setString("type", type);
-            stack.setTagCompound(tmp);
         }
     }
 

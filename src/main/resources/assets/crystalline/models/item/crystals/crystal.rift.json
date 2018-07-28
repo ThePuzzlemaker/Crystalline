@@ -1,7 +1,7 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
-        "0": "crystalline:items/knowledge"
+        "0": "crystalline:items/crystals/rift"
     },
     "elements": [
         {

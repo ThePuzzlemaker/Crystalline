@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
 
-public class ReagentNull implements IReagent {
+public class  ReagentNull implements IReagent {
 
     @Override
     public String getUnlocalizedName() {
