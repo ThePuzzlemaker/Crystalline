@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.0.0r01"
+version = "1.0.0r04"
 group = "ext.tpz.crystalline"
 archivesBaseName = "crystalline"
 
@@ -28,10 +28,23 @@ minecraft {
 
 repositories {
     maven { url 'http://tehnut.info/maven/' }
+    maven { // TOP
+        name 'tterrag maven'
+        url "http://maven.tterrag.com/"
+    }
+    maven {
+        name = "JEI Maven"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven {  // Required by TOP
+        name = "CoFH Maven"
+        url = "http://maven.covers1624.net"
+    }
 }
 
 dependencies {
     deobfCompile "info.amerifrance.guideapi:Guide-API:1.12-2.1.5-60"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.14-7"
 }
 
 processResources {
