@@ -3,6 +3,8 @@ package ext.tpz.crystalline.proxy;
 
 import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.api.crystal.ICrystal;
+import ext.tpz.crystalline.api.mode.ICrystalMode;
+import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.block.BlockDistillationBasin;
 import ext.tpz.crystalline.block.BlockRestorationApparatus;
 import ext.tpz.crystalline.block.CrystallineBlocks;
@@ -10,10 +12,14 @@ import ext.tpz.crystalline.block.tileentity.TEDistillationBasin;
 import ext.tpz.crystalline.block.tileentity.TERestorationApparatus;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.compat.top.TOPCompat;
+import ext.tpz.crystalline.crystals.BaseModCrystals;
+import ext.tpz.crystalline.crystals.CrystalKnowledge;
 import ext.tpz.crystalline.entity.EntityObliterateBlock;
 import ext.tpz.crystalline.entity.EntityObliterateEntity;
 import ext.tpz.crystalline.item.CrystallineItems;
+import ext.tpz.crystalline.modes.BaseModModes;
 import ext.tpz.crystalline.packet.common.PacketHandler;
+import ext.tpz.crystalline.reagents.BaseModReagents;
 import ext.tpz.crystalline.recipe.RecipeBinding;
 import ext.tpz.crystalline.recipe.RecipeCleansing;
 import ext.tpz.crystalline.util.EventHandlers;
@@ -110,12 +116,17 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerCrystals(RegistryEvent.Register<ICrystal> e) {
-
+        BaseModCrystals.register(e);
     }
 
     @SubscribeEvent
-    public static void registerModes(RegistryEvent.Register<ICrystal> e) {
+    public static void registerModes(RegistryEvent.Register<ICrystalMode> e) {
+        BaseModModes.register(e);
+    }
 
+    @SubscribeEvent
+    public static void registerReagents(RegistryEvent.Register<IReagent> e) {
+        BaseModReagents.register(e);
     }
 
 

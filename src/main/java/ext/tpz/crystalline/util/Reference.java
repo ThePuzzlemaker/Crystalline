@@ -13,5 +13,7 @@ public class Reference {
     public static final String PROXYCLIENT = "ext.tpz.crystalline.proxy.ClientProxy";
 
     public static final String CRYSTAL_MODEL_BASE = CrystallineItems.crystal.getRegistryName().getResourceDomain() + ":/crystals/" + CrystallineItems.crystal.getRegistryName().getResourceDomain();
+    //public static final String REAGENT_MODEL_BASE = CrystallineItems.reagent.getRegistryName().getResourceDomain() + ":/reagents/" + CrystallineItems.reagent.getRegistryName().getResourceDomain();
+
 
 }

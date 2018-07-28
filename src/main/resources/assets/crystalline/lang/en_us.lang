@@ -18,14 +18,13 @@ crystal.void=Void
 
 << Crystals >>
 
-crystal.type=Type:
-crystal.drained=Drained:
-crystal.properties=Essence Properties:
-crystal.potential=Potential:
-crystal.boundto=Bound To:
-crystal.reagent=Reagent Required:
-crystal.insanity=This crystal can cause insanity.
-crystal.noinsanity=This crystal does not cause insanity.
+crystalline.lore.crystal.type=Type: %s
+crystalline.lore.crystal.drained=Drained: %s
+crystalline.lore.crystal.properties=Essence Properties:
+crystalline.lore.crystal.potential=Potential: %d
+crystalline.lore.crystal.bound=Bound To: %s
+crystalline.lore.crystal.reagent=Reagent Required: %s or above
+crystalline.lore.crystal.insanity=This crystal %s cause insanity.
 
 crystal.cleansing=Cleansing
 crystal.administration=Administration
@@ -36,6 +35,14 @@ crystal.universe=Universe
 crystal.artificial=Artificial
 crystal.unknown=missingno
 
+crystalline.crystal.null=missingno
+crystalline.crystal.knowledge=Knowledge
+crystalline.crystal.cleansing=Cleansing
+crystalline.crystal.administration=Administration
+crystalline.crystal.life=Life
+crystalline.crystal.rift=Rift
+crystalline.crystal.universe=Universe
+
 essence.type=Essence Type:
 
 item.crystalline.essence_bottle.name=Essence Bottle
@@ -44,14 +51,18 @@ item.crystalline.crystal.name=Crystal
 
 << Reagents >>
 
-reagent.rift=Rift or above
-reagent.universe=Universe
-reagent.basic=Basic or above
-reagent.advanced=Advanced or above
-reagent.extreme=Extreme or above
-reagent.void=Void
-reagent.binding=Binding
-reagent.none=None
+crystalline.reagent.null=None
+crystalline.reagent.basic=Basic
+crystalline.reagent.advanced=Advanced
+crystalline.reagent.extreme=Extreme
+crystalline.reagent.rift=Rift
+crystalline.reagent.universe=Universe
+
+<< Modes >>
+
+crystalline.mode.null=Disabled
+crystalline.mode.view_insanity=View Insanity
+
 
 item.crystalline.binding_reagent.name=Binding Reagent
 item.crystalline.cleansing_reagent.name=Cleansing Reagent
@@ -71,8 +82,10 @@ itemGroup.crystalline=Crystalline
 
 << General >>
 
-i18n.yes=Yes
-i18n.no=No
+crystalline.i18n.yes=Yes
+crystalline.i18n.no=No
+crystalline.i18n.can=can
+crystalline.i18n.doesnot=does not
 
 < Book >
 

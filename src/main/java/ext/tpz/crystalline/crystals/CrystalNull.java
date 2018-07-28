@@ -13,11 +13,11 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class CrystalKnowledge implements ICrystal {
+public class CrystalNull implements ICrystal {
 
     @Override
     public String getUnlocalizedName() {
-        return "crystalline.crystal.knowledge";
+        return "crystalline.crystal.null";
     }
 
     @Override
@@ -27,12 +27,12 @@ public class CrystalKnowledge implements ICrystal {
 
     @Override
     public List<ICrystalMode> getModes() {
-        return Lists.newArrayList(BaseModModes.view_insanity);
+        return Lists.newArrayList();
     }
 
     @Override
     public ModelResourceLocation getModel() {
-        return new ModelResourceLocation(Reference.CRYSTAL_MODEL_BASE + ".knowledge");
+        return new ModelResourceLocation(Reference.CRYSTAL_MODEL_BASE + ".null");
     }
 
     @Override
@@ -48,7 +48,7 @@ public class CrystalKnowledge implements ICrystal {
     @Nullable
     @Override
     public ResourceLocation getRegistryName() {
-        return new ResourceLocation(Reference.MODID, "crystal.knowledge");
+        return new ResourceLocation(Reference.MODID, "crystal.null");
     }
 
     @Override

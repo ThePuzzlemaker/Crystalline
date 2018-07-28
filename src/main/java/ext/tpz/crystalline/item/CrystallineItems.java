@@ -2,6 +2,9 @@ package ext.tpz.crystalline.item;
 
 import com.google.common.collect.Lists;
 import ext.tpz.crystalline.Crystalline;
+import ext.tpz.crystalline.item.dynamic.ItemCrystal;
+import ext.tpz.crystalline.item.dynamic.ItemEssenceBottle;
+import ext.tpz.crystalline.item.util.ItemCleansingPotion;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.registry.GameRegistry;

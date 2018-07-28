@@ -17,4 +17,8 @@ public interface ICrystal extends net.minecraftforge.registries.IForgeRegistryEn
 
     ModelResourceLocation getModel();
 
+    boolean causesInsanity();
+
+    boolean hasBinding();
+
 }
