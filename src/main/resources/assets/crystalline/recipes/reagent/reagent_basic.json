@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "crystalline:reagent",
+    "nbt": {
+      "type":"crystalline:reagent.basic"
+    },
+    "count": 8
+  },
+  "pattern": [
+    "rgr",
+    "gfg",
+    "rgr"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "g": {
+      "item": "minecraft:gunpowder"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "f": {
+      "item": "minecraft:flint"
+    }
+  }
+}

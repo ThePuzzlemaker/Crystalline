@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "crystalline:reagent",
+    "nbt": {
+      "type":"crystalline:reagent.universe"
+    },
+    "count": 1
+  },
+  "pattern": [
+    "EEE",
+    "EeE",
+    "EEE"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "e": {
+      "item": "crystalline:reagent",
+      "nbt": {
+        "type":"crystalline:reagent.rift"
+      }
+    },
+    "E": {
+      "item": "crystalline:pure_universe_essence"
+    }
+  }
+}

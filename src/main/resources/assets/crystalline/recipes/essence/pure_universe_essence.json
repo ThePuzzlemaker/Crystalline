@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "crystalline:essence_powder",
+    "nbt": {
+      "type":"crystalline:essence.powder.universe"
+    },
+    "count": 8
+  },
+  "pattern": [
+    "rrr",
+    "rcr",
+    "rrr"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "r": {
+      "item": "crystalline:essence_powder",
+      "nbt": {
+        "type":"crystalline:essence.powder.rift"
+      }
+    },
+    "c": {
+      "item": "crystalline:cleansing_reagent"
+    }
+  }
+}

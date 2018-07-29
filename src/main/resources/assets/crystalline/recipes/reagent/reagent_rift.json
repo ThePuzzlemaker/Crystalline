@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "crystalline:reagent",
+    "nbt": {
+      "type":"crystalline:reagent.rift"
+    },
+    "count": 1
+  },
+  "pattern": [
+    "EEE",
+    "EeE",
+    "EEE"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "e": {
+
+      "item": "crystalline:reagent",
+      "nbt": {
+        "type":"crystalline:reagent.extreme"
+      }
+    },
+    "E": {
+      "item": "crystalline:pure_rift_essence"
+    }
+  }
+}
