@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 public class RenderEntityObliterate extends Render<EntityObliterateBlock> {
 
-    private static final ResourceLocation texture = new ResourceLocation(Reference.MODID + ":textures/items/universe.png");
+    private static final ResourceLocation texture = new ResourceLocation(Reference.MODID + ":textures/items/crystal.universe.png");
     private ModelBase model;
 
     public static Factory FACTORY = new Factory();

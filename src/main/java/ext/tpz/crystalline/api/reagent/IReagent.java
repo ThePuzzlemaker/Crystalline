@@ -25,4 +25,6 @@ public interface IReagent extends net.minecraftforge.registries.IForgeRegistryEn
 
     boolean consume(EntityPlayer player, ItemStack crystalStack);
 
+    boolean isUnstable();
+
 }

@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
 
-public class  ReagentNull implements IReagent {
+public class ReagentNull implements IReagent {
 
     @Override
     public String getUnlocalizedName() {
@@ -23,8 +23,7 @@ public class  ReagentNull implements IReagent {
 
     @Override
     public ModelResourceLocation getModel() {
-        return null;
-        //return new ModelResourceLocation(Reference.REAGENT_MODEL_BASE + ".unknown");
+        return new ModelResourceLocation(Reference.REAGENT_MODEL_BASE + ".unknown");
     }
 
     @Override
@@ -49,4 +48,8 @@ public class  ReagentNull implements IReagent {
         return true;
     }
 
+    @Override
+    public boolean isUnstable() {
+        return false;
+    }
 }

@@ -1,9 +1,12 @@
 package ext.tpz.crystalline.util;
 
+import ext.tpz.crystalline.crystals.BaseModCrystals;
+import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.item.EnumCrystalTypes;
 import ext.tpz.crystalline.item.EnumReagentTypes;
+import ext.tpz.crystalline.reagents.BaseModReagents;
 import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -40,12 +43,41 @@ public class EventHandlers {
                 CrystallineItems.crystal.setBound(stack, player.getName());
                 CrystallineItems.crystal.setDrained(stack, false);
                 CrystallineItems.crystal.setPotential(stack, 100);
-                CrystallineItems.crystal.setReagent(stack, EnumReagentTypes.ADVANCED);
-                CrystallineItems.crystal.setType(stack, EnumCrystalTypes.LIFE);
+                CrystallineItems.crystal.setReagent(stack, BaseModReagents.reagent_advanced);
+                CrystallineItems.crystal.setType(stack, BaseModCrystals.life_crystal);
 
                 EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
                 world.spawnEntity(item);
             }
+        }
+    }
+
+    private void levitation(EntityPlayer player) {
+        player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 200));
+        player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "You suddenly felt yourself levitating."), false);
+    }
+
+    private void dual(EntityPlayer player) {
+        if (new Random().nextBoolean()) {
+            player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200));
+            player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "You suddenly slowed down, and felt a weird ooze at your feet that didn't even exist."), false);
+        } else {
+            player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200));
+            player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "You suddenly lost your vision."), false);
+        }
+    }
+
+    private void poison(EntityPlayer player) {
+        player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
+        player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. You find a mysterious purple powder on the ground."), false);
+        BlockPos pos = player.getPosition();
+        ItemStack stack = new ItemStack(CrystallineItems.essence_powder, 8);
+        CrystallineItems.essence_powder.setType(stack, BaseModEssencePowders.essence_powder_rift);
+        if (!player.inventory.addItemStackToInventory(stack)) {
+            EntityItem item = new EntityItem(player.getEntityWorld(), pos.getX(), pos.getY(), pos.getZ(), stack);
+            player.getEntityWorld().spawnEntity(item);
+        } else {
+            player.openContainer.detectAndSendChanges();
         }
     }
 
@@ -66,8 +98,7 @@ public class EventHandlers {
             if (insanity >= 10 && insanity <= 29) {
                 if (tick == Config.mpeInsanityStage1) {
                     ticks.put(uuid, 0);
-                    player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "You suddenly felt yourself levitating."), false);
+                    levitation(player);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -75,9 +106,7 @@ public class EventHandlers {
             } else if (insanity >= 30 && insanity <= 49) {
                 if (tick == Config.mpeInsanityStage2) {
                     ticks.put(uuid, 0);
-                    ticks.put(uuid, 0);
-                    player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "You suddenly felt yourself levitating."), false);
+                    levitation(player);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -85,13 +114,7 @@ public class EventHandlers {
             } else if (insanity >= 50 && insanity <= 69) {
                 if (tick == Config.mpeInsanityStage3) {
                     ticks.put(uuid, 0);
-                    if (new Random().nextBoolean()) {
-                        player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200));
-                        player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "You suddenly slowed down, and felt a weird ooze at your feet that didn't even exist."), false);
-                    } else {
-                        player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200));
-                        player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "You suddenly lost your vision."), false);
-                    }
+                    dual(player);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -99,16 +122,7 @@ public class EventHandlers {
             } else if (insanity >= 70 && insanity <= 89) {
                 if (tick == Config.mpeInsanityStage4) {
                     ticks.put(uuid, 0);
-                    player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. You find a mysterious purple powder on the ground."), false);
-                    BlockPos pos = player.getPosition();
-                    ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
-                    if (!player.inventory.addItemStackToInventory(stack)) {
-                        EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-                        world.spawnEntity(item);
-                    } else {
-                        player.openContainer.detectAndSendChanges();
-                    }
+                    poison(player);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -116,16 +130,7 @@ public class EventHandlers {
             } else if (insanity >= 90 && insanity <= 99) {
                 if (tick == Config.mpeInsanityStage5) {
                     ticks.put(uuid, 0);
-                    player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. You find a mysterious purple powder on the ground."), false);
-                    BlockPos pos = player.getPosition();
-                    ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
-                    if (!player.inventory.addItemStackToInventory(stack)) {
-                        EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-                        world.spawnEntity(item);
-                    } else {
-                        player.openContainer.detectAndSendChanges();
-                    }
+                    poison(player);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -133,16 +138,7 @@ public class EventHandlers {
             } else if (insanity == 100) {
                 if (tick == Config.mpeInsanityStage6) {
                     ticks.put(uuid, 0);
-                    player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. You find a mysterious purple powder on the ground."), false);
-                    BlockPos pos = player.getPosition();
-                    ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
-                    if (!player.inventory.addItemStackToInventory(stack)) {
-                        EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-                        world.spawnEntity(item);
-                    } else {
-                        player.openContainer.detectAndSendChanges();
-                    }
+                    poison(player);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);
@@ -150,16 +146,7 @@ public class EventHandlers {
             } else if (insanity == 101 /* permanent */) {
                 if (tick == Config.mpeInsanityPerm) {
                     ticks.put(uuid, 0);
-                    player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
-                    player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. You find a mysterious purple powder on the ground."), false);
-                    BlockPos pos = player.getPosition();
-                    ItemStack stack = new ItemStack(CrystallineItems.pure_rift_essence, 8);
-                    if (!player.inventory.addItemStackToInventory(stack)) {
-                        EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-                        world.spawnEntity(item);
-                    } else {
-                        player.openContainer.detectAndSendChanges();
-                    }
+                    poison(player);
                 } else {
                     tick++;
                     ticks.put(uuid, tick);

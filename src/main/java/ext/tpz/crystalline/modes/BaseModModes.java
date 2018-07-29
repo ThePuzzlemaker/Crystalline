@@ -2,6 +2,8 @@ package ext.tpz.crystalline.modes;
 
 import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.crystals.CrystalKnowledge;
+import ext.tpz.crystalline.modes.administration.ModeAdministration;
+import ext.tpz.crystalline.modes.cleansing.ModeCleansingReagent;
 import ext.tpz.crystalline.modes.knowledge.ModeViewInsanity;
 import ext.tpz.crystalline.modes.life.ModeRegeneration;
 import ext.tpz.crystalline.modes.universe.ModeObliterateBlock;
@@ -36,6 +38,14 @@ public class BaseModModes {
     @GameRegistry.ObjectHolder(Reference.MODID + ":mode.regeneration")
     public static ICrystalMode regeneration = new ModeRegeneration();
 
+    // Cleansing Crystal
+    @GameRegistry.ObjectHolder(Reference.MODID + ":mode.cleansing_reagent")
+    public static ICrystalMode cleansing_reagent = new ModeCleansingReagent();
+
+    // Administration Crystal
+    @GameRegistry.ObjectHolder(Reference.MODID + ":mode.administration")
+    public static ICrystalMode administration = new ModeAdministration();
+
 
     public static void register(RegistryEvent.Register<ICrystalMode> e) {
         e.getRegistry().register(view_insanity);
@@ -44,6 +54,8 @@ public class BaseModModes {
         e.getRegistry().register(obliterate_entity);
         e.getRegistry().register(ultra_cleanse);
         e.getRegistry().register(regeneration);
+        e.getRegistry().register(cleansing_reagent);
+        e.getRegistry().register(administration);
     }
 
 

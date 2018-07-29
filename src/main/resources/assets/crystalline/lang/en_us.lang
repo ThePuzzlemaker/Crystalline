@@ -43,34 +43,34 @@ crystalline.crystal.life=Life
 crystalline.crystal.rift=Rift
 crystalline.crystal.universe=Universe
 
-essence.type=Essence Type:
 
-item.crystalline.essence_bottle.name=Essence Bottle
 
 item.crystalline.crystal.name=Crystal
 
 << Reagents >>
 
-crystalline.reagent.null=None
-crystalline.reagent.basic=Basic
-crystalline.reagent.advanced=Advanced
-crystalline.reagent.extreme=Extreme
-crystalline.reagent.rift=Rift
-crystalline.reagent.universe=Universe
+item.crystalline.reagent.name=Reagent
+
+crystalline.lore.reagent.type=Type: %s
+crystalline.lore.reagent.unstable=WARNING: UNSTABLE!
+crystalline.reagent.null=None [0]
+crystalline.reagent.basic=Basic [1]
+crystalline.reagent.advanced=Advanced [2]
+crystalline.reagent.extreme=Extreme [3]
+crystalline.reagent.rift=Rift [4]
+crystalline.reagent.universe=Universe [5]
 
 << Modes >>
 
 crystalline.mode.null=Disabled
 crystalline.mode.view_insanity=View Insanity
+crystalline.mode.administration=Administration
+crystalline.mode.regeneration=Regeneration
+crystalline.mode.cleansing_reagent=Cleansing Reagent
+crystalline.mode.obliterate_block=Obliterate Block
+crystalline.mode.obliterate_entity=Obliterate Entity
+crystalline.mode.ultra_cleanse=Ultra Cleanse
 
-
-item.crystalline.binding_reagent.name=Binding Reagent
-item.crystalline.cleansing_reagent.name=Cleansing Reagent
-item.crystalline.reagent_basic.name=Basic Reagent
-item.crystalline.reagent_advanced.name=Advanced Reagent
-item.crystalline.reagent_extreme.name=Extreme Reagent
-item.crystalline.reagent_rift.name=Rift Reagent (§4UNSTABLE§r)
-item.crystalline.reagent_universe.name=Universe Reagent
 item.crystalline.pure_rift_essence.name=Pure Rift Essence
 item.crystalline.pure_universe_essence.name=Pure Universe Essence
 item.crystalline.cleansing_potion.name=Cleansing Potion
@@ -79,6 +79,20 @@ tile.crystalline.distillation_basin.name=Distillation Basin
 tile.crystalline.restoration_apparatus.name=Restoration Apparatus
 
 itemGroup.crystalline=Crystalline
+
+<< Essences >>
+
+crystalline.lore.essence.type=Type: %s
+
+crystalline.essence.null=Unknown
+crystalline.essence.administration=Administration
+crystalline.essence.knowledge=Knowledge
+crystalline.essence.life=Life
+crystalline.essence.rift=Rift
+crystalline.essence.universe=Universe
+
+item.crystalline.essence_bottle.name=Bottle of Pure Essence
+item.crystalline.essence_powder.name=Pure Essence Powder
 
 << General >>
 

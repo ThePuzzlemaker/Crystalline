@@ -15,7 +15,7 @@ public class DamageSourceLiquidEssence extends DamageSource {
 
     @Override
     public ITextComponent getDeathMessage(EntityLivingBase entityLivingBaseIn) {
-        return new TextComponentString(entityLivingBaseIn.getName() + " took a swig of pure rift essence, and was ripped from the inside out. Foolish of them.");
+        return new TextComponentString(entityLivingBaseIn.getName() + " took a swig of liquid essence, and was ripped from the inside out. Foolish of them.");
     }
 
 }

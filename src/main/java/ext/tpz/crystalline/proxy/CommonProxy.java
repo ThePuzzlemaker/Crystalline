@@ -3,6 +3,8 @@ package ext.tpz.crystalline.proxy;
 
 import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.api.crystal.ICrystal;
+import ext.tpz.crystalline.api.essence.liquid.IEssenceLiquid;
+import ext.tpz.crystalline.api.essence.powder.IEssencePowder;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.block.BlockDistillationBasin;
@@ -16,6 +18,8 @@ import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.crystals.CrystalKnowledge;
 import ext.tpz.crystalline.entity.EntityObliterateBlock;
 import ext.tpz.crystalline.entity.EntityObliterateEntity;
+import ext.tpz.crystalline.essences.liquid.BaseModEssenceLiquids;
+import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.modes.BaseModModes;
 import ext.tpz.crystalline.packet.common.PacketHandler;
@@ -94,18 +98,14 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().register(CrystallineItems.crystal);
-        e.getRegistry().register(CrystallineItems.reagent_basic);
-        e.getRegistry().register(CrystallineItems.reagent_advanced);
-        e.getRegistry().register(CrystallineItems.reagent_extreme);
-        e.getRegistry().register(CrystallineItems.reagent_rift);
-        e.getRegistry().register(CrystallineItems.reagent_universe);
-        e.getRegistry().register(CrystallineItems.pure_rift_essence);
-        e.getRegistry().register(CrystallineItems.pure_universe_essence);
+        e.getRegistry().register(CrystallineItems.reagent);
+        e.getRegistry().register(CrystallineItems.rebinding_reagent);
         e.getRegistry().register(CrystallineItems.cleansing_reagent);
         e.getRegistry().register(CrystallineItems.cleansing_potion);
         e.getRegistry().register(new ItemBlock(CrystallineBlocks.distillationBasin).setRegistryName(CrystallineBlocks.distillationBasin.getRegistryName()));
         e.getRegistry().register(new ItemBlock(CrystallineBlocks.restorationApparatus).setRegistryName(CrystallineBlocks.restorationApparatus.getRegistryName()));
         e.getRegistry().register(CrystallineItems.essence_bottle);
+        e.getRegistry().register(CrystallineItems.essence_powder);
     }
 
     @SubscribeEvent
@@ -129,6 +129,15 @@ public class CommonProxy {
         BaseModReagents.register(e);
     }
 
+    @SubscribeEvent
+    public static void registerEssenceLiquids(RegistryEvent.Register<IEssenceLiquid> e) {
+        BaseModEssenceLiquids.register(e);
+    }
+
+    @SubscribeEvent
+    public static void registerEssencePowders(RegistryEvent.Register<IEssencePowder> e) {
+        BaseModEssencePowders.register(e);
+    }
 
 
 }

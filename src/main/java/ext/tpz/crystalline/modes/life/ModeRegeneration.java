@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.crystals.BaseModCrystals;
+import ext.tpz.crystalline.insanity.InsanityUtils;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.item.EnumReagentTypes;
@@ -43,14 +44,7 @@ public class ModeRegeneration implements ICrystalMode {
                         return new ActionResult<ItemStack>(EnumActionResult.FAIL, crystal);
                     }
                     player.addPotionEffect(regen);
-                    UUID uuid = player.getUniqueID();
-                    InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
-                    if (data.getPlayer(uuid) + 1 < 100) {
-                        data.setPlayer(uuid, data.getPlayer(uuid) + 1);
-                    } else {
-                        data.setPlayer(uuid, 100);
-                    }
-                    InsanityWorldSavedData.set(data, player.getEntityWorld());
+                    InsanityUtils.addInsanity(player.getEntityWorld(), player, 1);
                     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, crystal);
                 }
             }
