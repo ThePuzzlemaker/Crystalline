@@ -4,23 +4,18 @@ import com.google.common.collect.Lists;
 import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.insanity.InsanityUtils;
-import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.item.EnumReagentTypes;
 import ext.tpz.crystalline.util.Reference;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.UUID;
 
 public class ModeAdministration implements ICrystalMode {
 

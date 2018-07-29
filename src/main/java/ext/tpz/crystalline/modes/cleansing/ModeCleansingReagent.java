@@ -1,15 +1,10 @@
 package ext.tpz.crystalline.modes.cleansing;
 
 import com.google.common.collect.Lists;
-import ext.tpz.crystalline.api.crystal.CrystalRegistry;
 import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
-import ext.tpz.crystalline.crystals.BaseModCrystals;
-import ext.tpz.crystalline.crystals.CrystalKnowledge;
 import ext.tpz.crystalline.insanity.InsanityUtils;
-import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.item.EnumReagentTypes;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +18,6 @@ import net.minecraft.util.text.TextFormatting;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.UUID;
 
 public class ModeCleansingReagent implements ICrystalMode {
 

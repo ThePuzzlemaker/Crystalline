@@ -7,7 +7,6 @@ import ext.tpz.crystalline.entity.EntityObliterateEntity;
 import ext.tpz.crystalline.entity.render.RenderEntityObliterate;
 import ext.tpz.crystalline.entity.render.RenderEntityObliterateEntity;
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.item.EnumCrystalTypes;
 import ext.tpz.crystalline.packet.client.InputHandler;
 import ext.tpz.crystalline.packet.client.KeyBindings;
 import ext.tpz.crystalline.util.Reference;

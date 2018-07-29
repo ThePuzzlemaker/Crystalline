@@ -1,8 +1,7 @@
 package ext.tpz.crystalline.block.tileentity;
 
-import ext.tpz.crystalline.block.BlockRestorationApparatus;
+import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.item.EnumCrystalTypes;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -114,6 +113,8 @@ public class TEDistillationBasin extends TileEntity implements ITickable {
     @Override
     public void update() {
         if (!world.isRemote) {
+            ItemStack universe = new ItemStack(CrystallineItems.essence_powder);
+            ItemStack rift = new ItemStack(CrystallineItems.essence_powder);
             TEDistillationBasin te = (TEDistillationBasin) world.getTileEntity(pos);
             if (!te.getStack().isEmpty()) {
                 if (getTimer() + 1 < 1200) {
@@ -126,9 +127,9 @@ public class TEDistillationBasin extends TileEntity implements ITickable {
                         setTimer((getTimer() + 1));
                     } else if (s.getItem() == Items.GOLDEN_APPLE && s.getCount() == 4) {
                         setTimer((getTimer() + 1));
-                    } else if (s.getItem() == CrystallineItems.pure_universe_essence && s.getCount() == 8) {
+                    } else if (s.getItem() == CrystallineItems.essence_powder && CrystallineItems.essence_powder.getType(stack) == BaseModEssencePowders.essence_powder_rift  && s.getCount() == 8) {
                         setTimer((getTimer() + 1));
-                    } else if (s.getItem() == CrystallineItems.pure_rift_essence && s.getCount() == 8) {
+                    } else if (s.getItem() == CrystallineItems.essence_powder && CrystallineItems.essence_powder.getType(stack) == BaseModEssencePowders.essence_powder_rift && s.getCount() == 8) {
                         setTimer((getTimer() + 1));
                     } else {
                         setTimer(0);
@@ -148,10 +149,10 @@ public class TEDistillationBasin extends TileEntity implements ITickable {
                     } else if (s.getItem() == Items.GOLDEN_APPLE && s.getCount() == 4) {
                         CrystallineItems.essence_bottle.setType(res, EnumCrystalTypes.LIFE);
                         te.setStack(res);
-                    } else if (s.getItem() == CrystallineItems.pure_universe_essence && s.getCount() == 8) {
+                    } else if (s.getItem() == CrystallineItems.essence_powder && CrystallineItems.essence_powder.getType(stack) == BaseModEssencePowders.essence_powder_rift && s.getCount() == 8) {
                         CrystallineItems.essence_bottle.setType(res, EnumCrystalTypes.UNIVERSE);
                         te.setStack(res);
-                    } else if (s.getItem() == CrystallineItems.pure_rift_essence && s.getCount() == 8) {
+                    } else if (s.getItem() == CrystallineItems.essence_powder && CrystallineItems.essence_powder.getType(stack) == BaseModEssencePowders.essence_powder_rift  && s.getCount() == 8) {
                         CrystallineItems.essence_bottle.setType(res, EnumCrystalTypes.RIFT);
                         te.setStack(res);
                     }

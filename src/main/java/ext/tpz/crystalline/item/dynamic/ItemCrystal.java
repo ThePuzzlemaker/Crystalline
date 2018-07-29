@@ -1,9 +1,5 @@
 package ext.tpz.crystalline.item.dynamic;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import ext.tpz.crystalline.api.crystal.CrystalRegistry;
 import ext.tpz.crystalline.api.crystal.CrystalUtils;
 import ext.tpz.crystalline.api.crystal.ICrystal;
@@ -12,57 +8,28 @@ import ext.tpz.crystalline.api.mode.ModeUtils;
 import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.api.reagent.ReagentUtils;
 import ext.tpz.crystalline.crystals.BaseModCrystals;
-import ext.tpz.crystalline.entity.EntityObliterateBlock;
-import ext.tpz.crystalline.entity.EntityObliterateEntity;
-import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
-import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.item.EnumCrystalModes;
-import ext.tpz.crystalline.item.EnumCrystalTypes;
-import ext.tpz.crystalline.item.EnumReagentTypes;
 import ext.tpz.crystalline.modes.BaseModModes;
 import ext.tpz.crystalline.reagents.BaseModReagents;
 import ext.tpz.crystalline.util.Reference;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.Attributes;
-import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.client.model.obj.OBJLoader;
-import net.minecraftforge.client.model.obj.OBJModel;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
-import java.util.function.Function;
 
 public class ItemCrystal extends Item {
 

@@ -1,13 +1,8 @@
 package ext.tpz.crystalline.item.dynamic;
 
-import ext.tpz.crystalline.api.crystal.CrystalRegistry;
-import ext.tpz.crystalline.api.crystal.CrystalUtils;
-import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.api.reagent.ReagentRegistry;
 import ext.tpz.crystalline.api.reagent.ReagentUtils;
-import ext.tpz.crystalline.crystals.BaseModCrystals;
-import ext.tpz.crystalline.item.EnumCrystalTypes;
 import ext.tpz.crystalline.reagents.BaseModReagents;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.client.renderer.ItemMeshDefinition;

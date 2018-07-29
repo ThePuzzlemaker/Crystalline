@@ -1,11 +1,7 @@
 package ext.tpz.crystalline.block.tileentity;
 
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.item.EnumCrystalTypes;
-import ext.tpz.crystalline.item.EnumReagentTypes;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;

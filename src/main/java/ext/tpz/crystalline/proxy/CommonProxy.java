@@ -7,6 +7,7 @@ import ext.tpz.crystalline.api.essence.liquid.IEssenceLiquid;
 import ext.tpz.crystalline.api.essence.powder.IEssencePowder;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.api.reagent.IReagent;
+import ext.tpz.crystalline.api.recipe.IDistillationRecipe;
 import ext.tpz.crystalline.block.BlockDistillationBasin;
 import ext.tpz.crystalline.block.BlockRestorationApparatus;
 import ext.tpz.crystalline.block.CrystallineBlocks;
@@ -15,7 +16,6 @@ import ext.tpz.crystalline.block.tileentity.TERestorationApparatus;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
 import ext.tpz.crystalline.compat.top.TOPCompat;
 import ext.tpz.crystalline.crystals.BaseModCrystals;
-import ext.tpz.crystalline.crystals.CrystalKnowledge;
 import ext.tpz.crystalline.entity.EntityObliterateBlock;
 import ext.tpz.crystalline.entity.EntityObliterateEntity;
 import ext.tpz.crystalline.essences.liquid.BaseModEssenceLiquids;
@@ -24,13 +24,13 @@ import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.modes.BaseModModes;
 import ext.tpz.crystalline.packet.common.PacketHandler;
 import ext.tpz.crystalline.reagents.BaseModReagents;
+import ext.tpz.crystalline.recipe.BaseModRecipes;
 import ext.tpz.crystalline.recipe.RecipeBinding;
 import ext.tpz.crystalline.recipe.RecipeCleansing;
 import ext.tpz.crystalline.util.EventHandlers;
 import ext.tpz.crystalline.util.Reference;
 import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
@@ -139,5 +139,8 @@ public class CommonProxy {
         BaseModEssencePowders.register(e);
     }
 
+    public static void registerDistillation(RegistryEvent.Register<IDistillationRecipe> e) {
+        BaseModRecipes.registerDistillation(e);
+    }
 
 }

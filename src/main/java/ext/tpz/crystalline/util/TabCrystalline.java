@@ -1,7 +1,6 @@
 package ext.tpz.crystalline.util;
 
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.item.EnumCrystalTypes;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
