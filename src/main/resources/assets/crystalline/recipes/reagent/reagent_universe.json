@@ -20,7 +20,10 @@
       }
     },
     "E": {
-      "item": "crystalline:pure_universe_essence"
+      "item": "crystalline:essence_powder",
+      "nbt": {
+        "type":"crystalline:essence.powder.universe"
+      }
     }
   }
 }

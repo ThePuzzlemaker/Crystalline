@@ -8,6 +8,7 @@ import amerifrance.guideapi.category.CategoryItemStack;
 import amerifrance.guideapi.entry.EntryItemStack;
 import amerifrance.guideapi.page.PageJsonRecipe;
 import amerifrance.guideapi.page.PageText;
+import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.item.CrystallineItems;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
@@ -48,13 +49,13 @@ public class Guide implements IGuideBook {
         List<IPage> about = new ArrayList<IPage>();
 
         ItemStack crystalKnowledge = new ItemStack(CrystallineItems.crystal);
-        CrystallineItems.crystal.setType(crystalKnowledge, EnumCrystalTypes.KNOWLEDGE);
+        CrystallineItems.crystal.setType(crystalKnowledge, BaseModCrystals.knowledge_crystal);
 
         ItemStack crystalLife = new ItemStack(CrystallineItems.crystal);
-        CrystallineItems.crystal.setType(crystalLife, EnumCrystalTypes.LIFE);
+        CrystallineItems.crystal.setType(crystalLife, BaseModCrystals.life_crystal);
 
         ItemStack crystalCleansing = new ItemStack(CrystallineItems.crystal);
-        CrystallineItems.crystal.setType(crystalCleansing, EnumCrystalTypes.CLEANSING);
+        CrystallineItems.crystal.setType(crystalCleansing, BaseModCrystals.cleansing_crystal);
 
         about.add(new PageText("There are many types of crystals that you can find and create. This section will inform you of them."));
         entriesCrystals.put(new ResourceLocation(Reference.MODID, "about"), new EntryItemStack(about, "About", new ItemStack(Items.BOOK)));
@@ -92,6 +93,6 @@ public class Guide implements IGuideBook {
 
     @Override
     public void handlePost(@Nonnull ItemStack bookStack) {
-        GameRegistry.addShapelessRecipe(new ResourceLocation("guideapi:crystalline_guide"), new ResourceLocation(""), bookStack, Ingredient.fromItem(Items.BOOK), Ingredient.fromItem(CrystallineItems.reagent_basic));
+        GameRegistry.addShapelessRecipe(new ResourceLocation("guideapi:crystalline_guide"), new ResourceLocation(""), bookStack, Ingredient.fromItem(Items.BOOK), Ingredient.fromItem(CrystallineItems.reagent));
     }
 }

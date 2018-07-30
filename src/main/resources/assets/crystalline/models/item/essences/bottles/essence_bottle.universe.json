@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "crystalline:items/essence/bottles/essence.universe"
+        "layer0": "crystalline:items/essences/bottles/essence.universe"
     }
 }

@@ -1,5 +1,7 @@
 package ext.tpz.crystalline.block.tileentity;
 
+import ext.tpz.crystalline.api.recipe.DistillationRegistry;
+import ext.tpz.crystalline.api.recipe.IDistillationRecipe;
 import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
 import ext.tpz.crystalline.item.CrystallineItems;
 import net.minecraft.block.state.IBlockState;
@@ -10,6 +12,9 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.items.ItemHandlerHelper;
+
+import java.util.Iterator;
 
 public class TEDistillationBasin extends TileEntity implements ITickable {
 
@@ -119,45 +124,32 @@ public class TEDistillationBasin extends TileEntity implements ITickable {
             if (!te.getStack().isEmpty()) {
                 if (getTimer() + 1 < 1200) {
                     ItemStack s = te.getStack();
-                    if (s.getItem() == Items.GLOWSTONE_DUST && s.getCount() == 8) {
-                        setTimer((getTimer() + 1));
-                    } else if (s.getItem() == Items.DIAMOND && s.getCount() == 4) {
-                        setTimer((getTimer() + 1));
-                    } else if (s.getItem() == Items.QUARTZ && s.getCount() == 8) {
-                        setTimer((getTimer() + 1));
-                    } else if (s.getItem() == Items.GOLDEN_APPLE && s.getCount() == 4) {
-                        setTimer((getTimer() + 1));
-                    } else if (s.getItem() == CrystallineItems.essence_powder && CrystallineItems.essence_powder.getType(stack) == BaseModEssencePowders.essence_powder_rift  && s.getCount() == 8) {
-                        setTimer((getTimer() + 1));
-                    } else if (s.getItem() == CrystallineItems.essence_powder && CrystallineItems.essence_powder.getType(stack) == BaseModEssencePowders.essence_powder_rift && s.getCount() == 8) {
-                        setTimer((getTimer() + 1));
-                    } else {
-                        setTimer(0);
+                    Iterator<IDistillationRecipe> iterator = DistillationRegistry.getRegistry().iterator();
+                    while (iterator.hasNext()) {
+                        IDistillationRecipe recipe = iterator.next();
+                        if (ItemHandlerHelper.canItemStacksStack(s, recipe.getInput())) {
+                            setTimer((getTimer() + 1));
+                        } else {
+                            continue;
+                        }
                     }
                 } else {
                     ItemStack s = te.getStack();
                     ItemStack res = new ItemStack(CrystallineItems.essence_bottle);
-                    if (s.getItem() == Items.GLOWSTONE_DUST && s.getCount() == 8) {
-                        CrystallineItems.essence_bottle.setType(res, EnumCrystalTypes.ADMINISTRATION);
-                        te.setStack(res);
-                    } else if (s.getItem() == Items.DIAMOND && s.getCount() == 4) {
-                        CrystallineItems.essence_bottle.setType(res, EnumCrystalTypes.KNOWLEDGE);
-                        te.setStack(res);
-                    } else if (s.getItem() == Items.QUARTZ && s.getCount() == 8) {
-                        CrystallineItems.essence_bottle.setType(res, EnumCrystalTypes.CLEANSING);
-                        te.setStack(res);
-                    } else if (s.getItem() == Items.GOLDEN_APPLE && s.getCount() == 4) {
-                        CrystallineItems.essence_bottle.setType(res, EnumCrystalTypes.LIFE);
-                        te.setStack(res);
-                    } else if (s.getItem() == CrystallineItems.essence_powder && CrystallineItems.essence_powder.getType(stack) == BaseModEssencePowders.essence_powder_rift && s.getCount() == 8) {
-                        CrystallineItems.essence_bottle.setType(res, EnumCrystalTypes.UNIVERSE);
-                        te.setStack(res);
-                    } else if (s.getItem() == CrystallineItems.essence_powder && CrystallineItems.essence_powder.getType(stack) == BaseModEssencePowders.essence_powder_rift  && s.getCount() == 8) {
-                        CrystallineItems.essence_bottle.setType(res, EnumCrystalTypes.RIFT);
-                        te.setStack(res);
+                    Iterator<IDistillationRecipe> iterator = DistillationRegistry.getRegistry().iterator();
+                    while (iterator.hasNext()) {
+                        IDistillationRecipe recipe = iterator.next();
+                        if (ItemHandlerHelper.canItemStacksStack(s, recipe.getInput())) {
+                            CrystallineItems.essence_bottle.setType(res, recipe.getOutput());
+                            te.setStack(res);
+                        } else {
+                            continue;
+                        }
                     }
                     setTimer(0);
                 }
+            } else {
+                setTimer(0);
             }
         }
     }

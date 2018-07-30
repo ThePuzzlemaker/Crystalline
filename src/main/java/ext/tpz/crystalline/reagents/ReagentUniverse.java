@@ -22,7 +22,7 @@ public class ReagentUniverse implements IReagent {
 
     @Override
     public String getUnlocalizedName() {
-        return "crystalline.reagent.rift";
+        return "crystalline.reagent.universe";
     }
 
     @Override
@@ -32,12 +32,12 @@ public class ReagentUniverse implements IReagent {
 
     @Override
     public ModelResourceLocation getModel() {
-        return new ModelResourceLocation(Reference.REAGENT_MODEL_BASE + ".rift");
+        return new ModelResourceLocation(Reference.REAGENT_MODEL_BASE + ".universe");
     }
 
     @Override
     public IReagent setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ReagentUniverse implements IReagent {
     @Nullable
     @Override
     public ResourceLocation getRegistryName() {
-        return new ResourceLocation(Reference.MODID, "reagent.rift");
+        return new ResourceLocation(Reference.MODID, "reagent.universe");
     }
 
     @Override

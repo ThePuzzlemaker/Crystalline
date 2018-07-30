@@ -15,6 +15,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemSimpleFoiled;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,7 +32,7 @@ import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 
-public class ItemEssenceBottle extends ItemSimpleFoiled {
+public class ItemEssenceBottle extends Item {
 
     public ItemEssenceBottle() {
         this.setRegistryName("essence_bottle").setUnlocalizedName(Reference.MODID + ".essence_bottle").setMaxStackSize(1);
@@ -40,8 +41,10 @@ public class ItemEssenceBottle extends ItemSimpleFoiled {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        String type = I18n.format("crystalline.lore.essence.type", I18n.format(getType(stack).getUnlocalizedName()));
-        tooltip.add(TextFormatting.RESET + type);
+        if (getType(stack) != null) {
+            String type = I18n.format("crystalline.lore.essence.type", I18n.format(getType(stack).getUnlocalizedName()));
+            tooltip.add(TextFormatting.RESET + type);
+        }
     }
 
     public IEssenceLiquid getType(ItemStack stack) {

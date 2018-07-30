@@ -26,7 +26,7 @@ public class EssenceLiquidRegistry {
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void registerRegistry(@Nonnull RegistryEvent.NewRegistry event) {
         REGISTRY = new RegistryBuilder<IEssenceLiquid>()
-                .setName(new ResourceLocation(Reference.MODID, "registry.essence.powder"))
+                .setName(new ResourceLocation(Reference.MODID, "registry.essence.liquid"))
                 .setType(IEssenceLiquid.class)
                 .setIDRange(0, Integer.MAX_VALUE - 1)
                 .create();

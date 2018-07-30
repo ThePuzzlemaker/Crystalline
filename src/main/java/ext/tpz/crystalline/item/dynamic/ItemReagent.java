@@ -33,10 +33,15 @@ public class ItemReagent extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         IReagent type = getType(stack);
-        String textType = I18n.format("crystalline.lore.reagent.type", I18n.format(type.getUnlocalizedName()));
-        tooltip.add(TextFormatting.RESET + textType);
-        if (type.isUnstable())
-            tooltip.add(TextFormatting.RESET + "" + TextFormatting.DARK_RED + I18n.format("crystalline.lore.reagent.unstable"));
+        if (type != null) {
+            String textType = I18n.format("crystalline.lore.reagent.type", "missingno");
+            if (type.getUnlocalizedName() != null) {
+                textType = I18n.format("crystalline.lore.reagent.type", I18n.format(type.getUnlocalizedName()));
+            }
+            tooltip.add(TextFormatting.RESET + textType);
+            if (type.isUnstable())
+                tooltip.add(TextFormatting.RESET + "" + TextFormatting.DARK_RED + I18n.format("crystalline.lore.reagent.unstable"));
+        }
     }
 
     public IReagent getType(ItemStack stack) {

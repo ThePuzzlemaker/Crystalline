@@ -37,7 +37,7 @@ public class ReagentRift implements IReagent {
 
     @Override
     public IReagent setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Override

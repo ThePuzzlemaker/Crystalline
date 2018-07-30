@@ -3,6 +3,7 @@ package ext.tpz.crystalline.item.dynamic;
 import ext.tpz.crystalline.api.essence.liquid.EssenceLiquidRegistry;
 import ext.tpz.crystalline.api.essence.liquid.EssenceLiquidUtils;
 import ext.tpz.crystalline.api.essence.liquid.IEssenceLiquid;
+import ext.tpz.crystalline.api.essence.powder.EssencePowderRegistry;
 import ext.tpz.crystalline.api.essence.powder.EssencePowderUtils;
 import ext.tpz.crystalline.api.essence.powder.IEssencePowder;
 import ext.tpz.crystalline.entity.DamageSourceLiquidEssence;
@@ -18,6 +19,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemSimpleFoiled;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,7 +36,7 @@ import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 
-public class ItemEssencePowder extends ItemSimpleFoiled {
+public class ItemEssencePowder extends Item {
 
     public ItemEssencePowder() {
         this.setRegistryName("essence_powder").setUnlocalizedName(Reference.MODID + ".essence_powder").setMaxStackSize(1);
@@ -43,8 +45,12 @@ public class ItemEssencePowder extends ItemSimpleFoiled {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        String type = I18n.format("crystalline.lore.essence.type", I18n.format(getType(stack).getUnlocalizedName()));
-        tooltip.add(TextFormatting.RESET + type);
+        if (getType(stack) != null) {
+            String type = I18n.format("crystalline.lore.essence.type", I18n.format(getType(stack).getUnlocalizedName()));
+            if (getType(stack) == BaseModEssencePowders.essence_powder_rift) { tooltip.add(TextFormatting.RESET + I18n.format("item.crystalline.essence_powder.rift.lore")); }
+            if (getType(stack) == BaseModEssencePowders.essence_powder_universe) { tooltip.add(TextFormatting.RESET + I18n.format("item.crystalline.essence_powder.universe.lore")); }
+            tooltip.add(TextFormatting.RESET + type);
+        }
     }
 
     public IEssencePowder getType(ItemStack stack) {
@@ -73,11 +79,11 @@ public class ItemEssencePowder extends ItemSimpleFoiled {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        Iterator<IEssenceLiquid> iterator = EssenceLiquidRegistry.getRegistry().iterator();
+        Iterator<IEssencePowder> iterator = EssencePowderRegistry.getRegistry().iterator();
 
         while (iterator.hasNext()) {
-            IEssenceLiquid bottle = iterator.next();
-            ModelBakery.registerItemVariants(this, bottle.getModel());
+            IEssencePowder powder = iterator.next();
+            ModelBakery.registerItemVariants(this, powder.getModel());
         }
 
         ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
@@ -86,32 +92,6 @@ public class ItemEssencePowder extends ItemSimpleFoiled {
                 return getType(stack).getModel();
             }
         });
-    }
-
-    @Override
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
-        if (entityLiving instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer)entityLiving;
-            player.attackEntityFrom(new DamageSourceLiquidEssence(), player.getHealth());
-            return new ItemStack(Items.GLASS_BOTTLE);
-        }
-        return null;
-    }
-
-    @Override
-    public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.DRINK;
-    }
-
-    @Override
-    public int getMaxItemUseDuration(ItemStack stack) {
-        return 32;
-    }
-
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
-    {
-        playerIn.setActiveHand(handIn);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     }
 
 }

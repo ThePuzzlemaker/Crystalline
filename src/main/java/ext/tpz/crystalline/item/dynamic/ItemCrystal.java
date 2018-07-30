@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -41,19 +42,25 @@ public class ItemCrystal extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         ICrystal type = getType(stack);
-        String textType = I18n.format("crystalline.lore.crystal.type", I18n.format(type.getUnlocalizedName()));
-        String insanity = I18n.format("crystalline.lore.crystal.insanity", I18n.format(type.causesInsanity() ? "crystalline.i18n.can" : "crystalline.i18n.doesnot"));
-        String bound = I18n.format("crystalline.lore.crystal.bound", type.hasBinding() ? getBound(stack) : "");
+        if (getType(stack) != null) {
+            String textType = I18n.format("crystalline.lore.crystal.type", I18n.format(type.getUnlocalizedName()));
+            String insanity = I18n.format("crystalline.lore.crystal.insanity", I18n.format(type.causesInsanity() ? "crystalline.i18n.can" : "crystalline.i18n.doesnot"));
+            String bound = I18n.format("crystalline.lore.crystal.bound", type.hasBinding() ? getBound(stack) : "");
 
-        tooltip.add(TextFormatting.RESET + textType);
-        tooltip.add(TextFormatting.RESET + I18n.format("crystal.drained", isDrained(stack) ? I18n.format("i18n.yes") : I18n.format("i18n.no")));
-        tooltip.add(TextFormatting.RESET + insanity);
-        tooltip.add(TextFormatting.RESET + I18n.format("crystal.properties"));
-        tooltip.add(TextFormatting.RESET + "  " + I18n.format("crystal.potential", Integer.toString(getPotential(stack)) + "%"));
-        if (type.hasBinding()) { tooltip.add(TextFormatting.RESET + "  " + bound); }
-        IReagent reagent = getReagent(stack);
-        String textReagent = "  " + I18n.format("crystal.reagent", I18n.format(reagent.getUnlocalizedName()));
-        tooltip.add(TextFormatting.RESET + textReagent);
+            tooltip.add(TextFormatting.RESET + textType);
+            tooltip.add(TextFormatting.RESET + I18n.format("crystalline.lore.crystal.drained", isDrained(stack) ? I18n.format("crystalline.i18n.yes") : I18n.format("crystalline.i18n.no")));
+            tooltip.add(TextFormatting.RESET + insanity);
+            tooltip.add(TextFormatting.RESET + I18n.format("crystalline.lore.crystal.properties"));
+            tooltip.add(TextFormatting.RESET + "  " + I18n.format("crystalline.lore.crystal.potential", Integer.toString(getPotential(stack)) + "%"));
+            if (type.hasBinding()) {
+                tooltip.add(TextFormatting.RESET + "  " + bound);
+            }
+            IReagent reagent = getReagent(stack);
+            if (reagent != null) {
+                String textReagent = "  " + I18n.format("crystalline.lore.crystal.reagent", I18n.format(reagent.getUnlocalizedName()));
+                tooltip.add(TextFormatting.RESET + textReagent);
+            }
+        }
     }
 
     public ICrystal getType(ItemStack stack) {
@@ -178,14 +185,18 @@ public class ItemCrystal extends Item {
     }
 
     public ICrystalMode cycleMode(ItemStack stack) {
-        ICrystal type = getType(stack);
-        ICrystalMode currentMode = getMode(stack);
-        List<ICrystalMode> modes = type.getModes();
-        int currentModeId = modes.indexOf(currentMode);
-        int nextModeId = currentModeId+1 <= modes.size() ? currentModeId+1 : 0;
-        ICrystalMode nextMode = modes.get(nextModeId);
-        setMode(stack, nextMode);
-        return nextMode;
+        if (getType(stack) != null && getMode(stack) != null) {
+            ICrystal type = getType(stack);
+            ICrystalMode currentMode = getMode(stack);
+            List<ICrystalMode> modes = type.getModes();
+            int currentModeId = modes.indexOf(currentMode);
+            int nextModeId = currentModeId + 1 <= modes.size() ? currentModeId + 1 : 0;
+            ICrystalMode nextMode = modes.get(nextModeId);
+            setMode(stack, nextMode);
+            return nextMode;
+        } else {
+            return BaseModModes.mode_null;
+        }
     }
 
     @Override
@@ -221,7 +232,11 @@ public class ItemCrystal extends Item {
             public ModelResourceLocation getModelLocation(ItemStack stack) {
                 if (isDrained(stack))
                     return drained;
-                return getType(stack).getModel();
+                if (getType(stack) != null) {
+                    return getType(stack).getModel();
+                } else {
+                    return BaseModCrystals.null_crystal.getModel();
+                }
             }
         });
     }
@@ -237,7 +252,8 @@ public class ItemCrystal extends Item {
         String g = "Nearing the end...";
         String h = "Some more testing...";
         String i = "Come on";
-        return a + " " + b + " " + c + " " + d + " " + e + " " + f + " " + g + " " + h + " " + i;
+        String z = "I'm skipping to z...Because I can.";
+        return a + " " + b + " " + c + " " + d + " " + e + " " + f + " " + g + " " + h + " " + i + " " + z;
     }
 
     public void setBound(ItemStack stack, String playerName) {
@@ -263,6 +279,4 @@ public class ItemCrystal extends Item {
             return "SickPlayerNameThatDoesNotExist";
         }
     }
-
-
 }

@@ -65,15 +65,9 @@ public class ClientProxy extends CommonProxy {
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent e) {
         CrystallineItems.crystal.initModel();
-        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_basic, 0, new ModelResourceLocation(CrystallineItems.reagent_basic.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_advanced, 0, new ModelResourceLocation(CrystallineItems.reagent_advanced.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_extreme, 0, new ModelResourceLocation(CrystallineItems.reagent_extreme.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_rift, 0, new ModelResourceLocation(CrystallineItems.reagent_rift.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(CrystallineItems.reagent_universe, 0, new ModelResourceLocation(CrystallineItems.reagent_universe.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(CrystallineItems.pure_rift_essence, 0, new ModelResourceLocation(CrystallineItems.pure_rift_essence.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(CrystallineItems.pure_universe_essence, 0, new ModelResourceLocation(CrystallineItems.pure_universe_essence.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(CrystallineItems.cleansing_reagent, 0, new ModelResourceLocation(CrystallineItems.cleansing_reagent.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(CrystallineItems.cleansing_potion, 0, new ModelResourceLocation(CrystallineItems.cleansing_potion.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.cleansing_reagent, 0, new ModelResourceLocation(CrystallineItems.cleansing_reagent.getRegistryName().getResourceDomain() + ":reagents/" + CrystallineItems.cleansing_reagent.getRegistryName().getResourcePath(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.cleansing_potion, 0, new ModelResourceLocation(CrystallineItems.cleansing_potion.getRegistryName().getResourceDomain() + ":util/" + CrystallineItems.cleansing_potion.getRegistryName().getResourcePath(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(CrystallineItems.rebinding_reagent, 0, new ModelResourceLocation(CrystallineItems.rebinding_reagent.getRegistryName().getResourceDomain() + ":util/" + CrystallineItems.rebinding_reagent.getRegistryName().getResourcePath(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(new ItemBlock(CrystallineBlocks.distillationBasin), 0, new ModelResourceLocation(CrystallineBlocks.distillationBasin.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(CrystallineBlocks.distillationBasin), 0, new ModelResourceLocation(CrystallineBlocks.distillationBasin.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(new ItemBlock(CrystallineBlocks.restorationApparatus), 0, new ModelResourceLocation(CrystallineBlocks.restorationApparatus.getRegistryName(), "inventory"));
@@ -81,8 +75,8 @@ public class ClientProxy extends CommonProxy {
         CrystallineBlocks.distillationBasin.initTESR();
         CrystallineBlocks.restorationApparatus.initTESR();
         CrystallineItems.essence_bottle.initModel();
-        ItemStack rift = new ItemStack(CrystallineItems.crystal);
-        CrystallineItems.crystal.setType(rift, EnumCrystalTypes.RIFT);
+        CrystallineItems.reagent.initModel();
+        CrystallineItems.essence_powder.initModel();
         RenderingRegistry.registerEntityRenderingHandler(EntityObliterateBlock.class, RenderEntityObliterate.FACTORY);
         RenderingRegistry.registerEntityRenderingHandler(EntityObliterateEntity.class, RenderEntityObliterateEntity.FACTORY);
     }

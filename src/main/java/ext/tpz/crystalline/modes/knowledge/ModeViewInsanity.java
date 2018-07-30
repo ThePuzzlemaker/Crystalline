@@ -78,7 +78,7 @@ public class ModeViewInsanity implements ICrystalMode {
 
     @Override
     public ICrystalMode setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Nullable

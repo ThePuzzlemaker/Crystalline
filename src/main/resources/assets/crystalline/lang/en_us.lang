@@ -12,7 +12,7 @@ key.change_crystal_operation=Change Crystal Operation
 
 << Thaumcraft >>
 
-crystal.void=Void
+crystalline.crystal.void=Void
 
 < I18N >
 
@@ -23,17 +23,8 @@ crystalline.lore.crystal.drained=Drained: %s
 crystalline.lore.crystal.properties=Essence Properties:
 crystalline.lore.crystal.potential=Potential: %d
 crystalline.lore.crystal.bound=Bound To: %s
-crystalline.lore.crystal.reagent=Reagent Required: %s or above
+crystalline.lore.crystal.reagent=Reagent Required: %s
 crystalline.lore.crystal.insanity=This crystal %s cause insanity.
-
-crystal.cleansing=Cleansing
-crystal.administration=Administration
-crystal.life=Life
-crystal.knowledge=Knowledge
-crystal.rift=Rift
-crystal.universe=Universe
-crystal.artificial=Artificial
-crystal.unknown=missingno
 
 crystalline.crystal.null=missingno
 crystalline.crystal.knowledge=Knowledge
@@ -50,15 +41,22 @@ item.crystalline.crystal.name=Crystal
 << Reagents >>
 
 item.crystalline.reagent.name=Reagent
+item.crystalline.cleansing_reagent.name=Cleansing Reagent
+item.crystalline.cleansing_reagent.lore=It's a white powder that seems to clean anything it touches.
+
+
+item.crystalline.rebinding_reagent.name=Rebinding Reagent
+item.crystalline.rebinding_reagent.lore1=It's a red powder that seems to cling to you.
+item.crystalline.rebinding_reagent.lore2=Right click to bind it to you.
 
 crystalline.lore.reagent.type=Type: %s
 crystalline.lore.reagent.unstable=WARNING: UNSTABLE!
 crystalline.reagent.null=None [0]
-crystalline.reagent.basic=Basic [1]
-crystalline.reagent.advanced=Advanced [2]
-crystalline.reagent.extreme=Extreme [3]
-crystalline.reagent.rift=Rift [4]
-crystalline.reagent.universe=Universe [5]
+crystalline.reagent.basic=Basic [1+]
+crystalline.reagent.advanced=Advanced [2+]
+crystalline.reagent.extreme=Extreme [3+]
+crystalline.reagent.rift=Rift [4+]
+crystalline.reagent.universe=Universe [5+]
 
 << Modes >>
 
@@ -71,8 +69,6 @@ crystalline.mode.obliterate_block=Obliterate Block
 crystalline.mode.obliterate_entity=Obliterate Entity
 crystalline.mode.ultra_cleanse=Ultra Cleanse
 
-item.crystalline.pure_rift_essence.name=Pure Rift Essence
-item.crystalline.pure_universe_essence.name=Pure Universe Essence
 item.crystalline.cleansing_potion.name=Cleansing Potion
 
 tile.crystalline.distillation_basin.name=Distillation Basin
@@ -84,12 +80,21 @@ itemGroup.crystalline=Crystalline
 
 crystalline.lore.essence.type=Type: %s
 
-crystalline.essence.null=Unknown
-crystalline.essence.administration=Administration
-crystalline.essence.knowledge=Knowledge
-crystalline.essence.life=Life
-crystalline.essence.rift=Rift
-crystalline.essence.universe=Universe
+crystalline.essence.liquid.null=Unknown
+crystalline.essence.liquid.administration=Administration
+crystalline.essence.liquid.knowledge=Knowledge
+crystalline.essence.liquid.life=Life
+crystalline.essence.liquid.rift=Rift
+crystalline.essence.liquid.universe=Universe
+crystalline.essence.liquid.cleansing=Cleansing
+
+crystalline.essence.powder.null=Unknown
+crystalline.essence.powder.rift=Rift
+crystalline.essence.powder.universe=Universe
+
+
+item.crystalline.essence_powder.rift.lore=It's a purple-colored powder. It might be some type of pure essence.
+item.crystalline.essence_powder.universe.lore=It's a galaxy-colored powder. It might be some type of pure essence.
 
 item.crystalline.essence_bottle.name=Bottle of Pure Essence
 item.crystalline.essence_powder.name=Pure Essence Powder

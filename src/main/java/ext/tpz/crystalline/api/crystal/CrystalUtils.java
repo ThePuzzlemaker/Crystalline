@@ -9,7 +9,7 @@ public class CrystalUtils {
     }
 
     public static String to(ICrystal crystal) {
-        return crystal.getRegistryName().getResourceDomain() + ":" + crystal.getRegistryName().getResourcePath();
+        return crystal.getRegistryName().toString();
     }
 
 }

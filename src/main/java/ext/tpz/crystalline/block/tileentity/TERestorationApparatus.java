@@ -1,5 +1,6 @@
 package ext.tpz.crystalline.block.tileentity;
 
+import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.item.CrystallineItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -145,32 +146,12 @@ public class TERestorationApparatus extends TileEntity implements ITickable {
                         setTimer(getTimer() + 1);
                     } else {
                         CrystallineItems.crystal.setPotential(crystal, 100);
-                        CrystallineItems.crystal.setType(crystal, CrystallineItems.essence_bottle.getType(essence));
+                        CrystallineItems.crystal.setType(crystal, CrystallineItems.essence_bottle.getType(essence).getEquivalent());
                         CrystallineItems.crystal.setDrained(crystal, false);
-                        EnumReagentTypes reagent = EnumReagentTypes.NONE;
-                        switch (CrystallineItems.essence_bottle.getType(essence)) {
-                            case "void":
-                                reagent = EnumReagentTypes.NONE; break;
-                            case "cleansing":
-                                reagent = EnumReagentTypes.BASIC; break;
-                            case "administration":
-                                reagent = EnumReagentTypes.EXTREME; CrystallineItems.crystal.setBound(crystal, CrystallineItems.crystal.getBound(crystal)); break;
-                            case "life":
-                                reagent = EnumReagentTypes.ADVANCED; CrystallineItems.crystal.setBound(crystal, CrystallineItems.crystal.getBound(crystal)); break;
-                            case "knowledge":
-                                reagent = EnumReagentTypes.NONE; break;
-                            case "rift":
-                                reagent = EnumReagentTypes.RIFT; break;
-                            case "universe":
-                                reagent = EnumReagentTypes.UNIVERSE; break;
-                            case "artificial":
-                                reagent = EnumReagentTypes.NONE; break;
-                            case "unknown":
-                                reagent = EnumReagentTypes.NONE; break;
-                            default:
-                                reagent = EnumReagentTypes.NONE; break;
+                        CrystallineItems.crystal.setReagent(crystal, CrystallineItems.essence_bottle.getType(essence).getEquivalent().getReagentType());
+                        if (CrystallineItems.essence_bottle.getType(essence).getEquivalent().hasBinding()) {
+                            CrystallineItems.crystal.setBound(crystal, CrystallineItems.crystal.getBound(crystal));
                         }
-                        CrystallineItems.crystal.setReagent(crystal, reagent);
                         te.setEssenceStack(ItemStack.EMPTY);
                         setTimer(0);
                     }

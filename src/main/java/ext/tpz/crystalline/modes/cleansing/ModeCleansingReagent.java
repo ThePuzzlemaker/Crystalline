@@ -3,6 +3,7 @@ package ext.tpz.crystalline.modes.cleansing;
 import com.google.common.collect.Lists;
 import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
+import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.insanity.InsanityUtils;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.util.Reference;
@@ -50,7 +51,7 @@ public class ModeCleansingReagent implements ICrystalMode {
 
     @Override
     public List<ICrystal> getValidCrystals() {
-        return Lists.newArrayList(/*BaseModCrystals.cleansing_crystal*/);
+        return Lists.newArrayList(BaseModCrystals.cleansing_crystal);
     }
 
     @Override
@@ -60,7 +61,7 @@ public class ModeCleansingReagent implements ICrystalMode {
 
     @Override
     public ICrystalMode setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Nullable

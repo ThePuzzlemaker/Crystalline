@@ -11,7 +11,7 @@ public class ModeUtils {
     }
 
     public static String to(ICrystalMode mode) {
-        return mode.getRegistryName().getResourceDomain() + ":" + mode.getRegistryName().getResourcePath();
+        return mode.getRegistryName().toString();
     }
 
 }

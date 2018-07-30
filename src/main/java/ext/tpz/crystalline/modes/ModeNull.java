@@ -41,7 +41,7 @@ public class ModeNull implements ICrystalMode {
 
     @Override
     public ICrystalMode setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Nullable

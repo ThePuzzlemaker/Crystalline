@@ -9,7 +9,7 @@ public class EssencePowderUtils {
     }
 
     public static String to(IEssencePowder powder) {
-        return powder.getRegistryName().getResourceDomain() + ":" + powder.getRegistryName().getResourcePath();
+        return powder.getRegistryName().toString();
     }
 
 }

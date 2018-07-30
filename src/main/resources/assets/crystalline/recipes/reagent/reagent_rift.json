@@ -21,7 +21,10 @@
       }
     },
     "E": {
-      "item": "crystalline:pure_rift_essence"
+      "item": "crystalline:essence_powder",
+      "nbt": {
+        "type": "crystalline:essence.powder.rift"
+      }
     }
   }
 }

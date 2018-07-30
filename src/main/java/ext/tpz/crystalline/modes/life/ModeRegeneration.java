@@ -53,7 +53,7 @@ public class ModeRegeneration implements ICrystalMode {
 
     @Override
     public List<ICrystal> getValidCrystals() {
-        return Lists.newArrayList(BaseModCrystals.knowledge_crystal);
+        return Lists.newArrayList(BaseModCrystals.life_crystal);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ModeRegeneration implements ICrystalMode {
 
     @Override
     public ICrystalMode setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Nullable

@@ -18,7 +18,7 @@ public class EssencePowderNull implements IEssencePowder {
     @Nullable
     @Override
     public ResourceLocation getRegistryName() {
-        return new ModelResourceLocation(Reference.MODID + ":essence.powder.null");
+        return new ResourceLocation(Reference.MODID + ":essence.powder.null");
     }
 
     @Override
@@ -28,7 +28,7 @@ public class EssencePowderNull implements IEssencePowder {
 
     @Override
     public IEssencePowder setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Override

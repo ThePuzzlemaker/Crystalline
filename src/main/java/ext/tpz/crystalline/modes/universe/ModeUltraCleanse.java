@@ -37,7 +37,7 @@ public class ModeUltraCleanse implements ICrystalMode {
 
     @Override
     public List<ICrystal> getValidCrystals() {
-        return Lists.newArrayList(/*BaseModCrystals.universe_crystal*/);
+        return Lists.newArrayList(BaseModCrystals.universe_crystal);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ModeUltraCleanse implements ICrystalMode {
 
     @Override
     public ICrystalMode setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Nullable

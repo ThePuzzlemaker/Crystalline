@@ -11,7 +11,7 @@ public class EssenceLiquidUtils {
     }
 
     public static String to(IEssenceLiquid liquid) {
-        return liquid.getRegistryName().getResourceDomain() + ":" + liquid.getRegistryName().getResourcePath();
+        return liquid.getRegistryName().toString();
     }
 
 }

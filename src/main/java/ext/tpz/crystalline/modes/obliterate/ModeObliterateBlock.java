@@ -1,8 +1,9 @@
-package ext.tpz.crystalline.modes.universe;
+package ext.tpz.crystalline.modes.obliterate;
 
 import com.google.common.collect.Lists;
 import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
+import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.entity.EntityObliterateBlock;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.util.Reference;
@@ -35,7 +36,7 @@ public class ModeObliterateBlock implements ICrystalMode {
 
     @Override
     public List<ICrystal> getValidCrystals() {
-        return Lists.newArrayList(/*BaseModCrystals.rift_crystal, BaseModCrystals.universe_crystal*/);
+        return Lists.newArrayList(BaseModCrystals.rift_crystal, BaseModCrystals.universe_crystal);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class ModeObliterateBlock implements ICrystalMode {
 
     @Override
     public ICrystalMode setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Nullable

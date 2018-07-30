@@ -37,7 +37,7 @@ public class CrystalLife implements ICrystal {
 
     @Override
     public ICrystal setRegistryName(ResourceLocation name) {
-        return null;
+        return this;
     }
 
     @Override

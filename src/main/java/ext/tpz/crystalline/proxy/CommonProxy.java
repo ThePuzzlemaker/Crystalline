@@ -27,6 +27,7 @@ import ext.tpz.crystalline.reagents.BaseModReagents;
 import ext.tpz.crystalline.recipe.BaseModRecipes;
 import ext.tpz.crystalline.recipe.RecipeBinding;
 import ext.tpz.crystalline.recipe.RecipeCleansing;
+import ext.tpz.crystalline.recipe.RecipeRebinding;
 import ext.tpz.crystalline.util.EventHandlers;
 import ext.tpz.crystalline.util.Reference;
 import ext.tpz.crystalline.util.config.Config;
@@ -112,6 +113,7 @@ public class CommonProxy {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> e) {
         e.getRegistry().register(new RecipeCleansing());
         e.getRegistry().register(new RecipeBinding());
+        e.getRegistry().register(new RecipeRebinding());
     }
 
     @SubscribeEvent

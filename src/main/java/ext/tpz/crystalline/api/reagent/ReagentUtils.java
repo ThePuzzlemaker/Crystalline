@@ -19,7 +19,7 @@ public class ReagentUtils {
     }
 
     public static String to(IReagent reagent) {
-        return reagent.getRegistryName().getResourceDomain() + ":" + reagent.getRegistryName().getResourcePath();
+        return reagent.getRegistryName().toString();
     }
 
     public static boolean consume(IReagent reagent, EntityPlayer player, ItemStack crystalStack) {

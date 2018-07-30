@@ -16,6 +16,6 @@ public class DamageSourceObliterate extends DamageSource {
 
     @Override
     public ITextComponent getDeathMessage(EntityLivingBase entityLivingBaseIn) {
-        return new TextComponentString(entityLivingBaseIn.getName() + " was obliterated.");
+        return new TextComponentString("Cthulu has been fed by " + entityLivingBaseIn.getName());
     }
 }
