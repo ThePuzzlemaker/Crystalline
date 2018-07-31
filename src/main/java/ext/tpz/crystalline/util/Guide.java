@@ -186,19 +186,19 @@ public class Guide implements IGuideBook {
         List<IPage> reagent_rift = new ArrayList<>();
         List<IPage> reagent_universe = new ArrayList<>();
 
-        basic.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagents/reagent_basic")));
+        basic.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagent/reagent_basic")));
         entriesReagents.put(new ResourceLocation(MODID, "reagent_basic"), new EntryItemStack(basic, I18n.format("crystalline.guide.reagents.basic.title"), reagentStack.copy()));
         reagent.setType(reagentStack, BaseModReagents.reagent_advanced);
-        advanced.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagents/reagent_advanced")));
+        advanced.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagent/reagent_advanced")));
         entriesReagents.put(new ResourceLocation(MODID, "reagent_advanced"), new EntryItemStack(advanced, I18n.format("crystalline.guide.reagents.advanced.title"), reagentStack.copy()));
         reagent.setType(reagentStack, BaseModReagents.reagent_extreme);
-        extreme.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagents/reagent_extreme")));
+        extreme.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagent/reagent_extreme")));
         entriesReagents.put(new ResourceLocation(MODID, "reagent_extreme"), new EntryItemStack(extreme, I18n.format("crystalline.guide.reagents.extreme.title"), reagentStack.copy()));
         reagent.setType(reagentStack, BaseModReagents.reagent_rift);
-        reagent_rift.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagents/reagent_rift")));
+        reagent_rift.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagent/reagent_rift")));
         entriesReagents.put(new ResourceLocation(MODID, "reagent_rift"), new EntryItemStack(reagent_rift, I18n.format("crystalline.guide.reagents.rift.title"), reagentStack.copy()));
         reagent.setType(reagentStack, BaseModReagents.reagent_universe);
-        reagent_universe.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagents/reagent_universe")));
+        reagent_universe.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagent/reagent_universe")));
         entriesReagents.put(new ResourceLocation(MODID, "reagent_universe"), new EntryItemStack(reagent_universe, I18n.format("crystalline.guide.reagents.universe.title"), reagentStack.copy()));
 
         binder.addCategory(new CategoryItemStack(entriesReagents, I18n.format("crystalline.guide.reagents.title"), reagentStack.copy()));
