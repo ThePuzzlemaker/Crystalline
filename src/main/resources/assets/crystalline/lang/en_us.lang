@@ -224,3 +224,13 @@ crystalline.guide.utilities.restoration=You can restore or create new crystals u
 
 crystalline.guide.utilities.distillation.title=Distillation
 crystalline.guide.utilities.distillation=You can create essence bottles by putting items in the Distillation Basin. Simply right-click with an item to put it in, and right click with an empty item to take it out. See Distillation Recipes for recipes.
+
+<< Reagents >>
+
+crystalline.guide.reagents.title=Reagents
+
+crystalline.guide.reagents.basic.title=Basic Reagent
+crystalline.guide.reagents.advanced.title=Advanced Reagent
+crystalline.guide.reagents.extreme.title=Extreme Reagent
+crystalline.guide.reagents.rift.title=Rift Reagent
+crystalline.guide.reagents.universe.title=Universe Reagent
