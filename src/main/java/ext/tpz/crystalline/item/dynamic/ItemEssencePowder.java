@@ -39,7 +39,7 @@ import java.util.List;
 public class ItemEssencePowder extends Item {
 
     public ItemEssencePowder() {
-        this.setRegistryName("essence_powder").setUnlocalizedName(Reference.MODID + ".essence_powder").setMaxStackSize(1);
+        this.setRegistryName("essence_powder").setUnlocalizedName(Reference.MODID + ".essence_powder").setMaxStackSize(64);
     }
 
     @Override

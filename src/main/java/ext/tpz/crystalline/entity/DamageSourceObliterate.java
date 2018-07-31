@@ -8,14 +8,17 @@ import net.minecraft.util.text.TextComponentString;
 
 public class DamageSourceObliterate extends DamageSource {
 
-    public DamageSourceObliterate() {
+    EntityPlayer source;
+
+    public DamageSourceObliterate(EntityPlayer source) {
         super("obliterate");
+        this.source = source;
         setDamageBypassesArmor();
         setMagicDamage();
     }
 
     @Override
     public ITextComponent getDeathMessage(EntityLivingBase entityLivingBaseIn) {
-        return new TextComponentString("Cthulu has been fed by " + entityLivingBaseIn.getName());
+        return new TextComponentString("Cthulu has been fed by " + entityLivingBaseIn.getName() + ", thanks to " + source.getName());
     }
 }

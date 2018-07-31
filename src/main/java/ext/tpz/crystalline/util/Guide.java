@@ -4,6 +4,7 @@ import amerifrance.guideapi.api.*;
 import amerifrance.guideapi.api.impl.Book;
 import amerifrance.guideapi.api.impl.BookBinder;
 import amerifrance.guideapi.api.impl.abstraction.EntryAbstract;
+import amerifrance.guideapi.api.util.PageHelper;
 import amerifrance.guideapi.category.CategoryItemStack;
 import amerifrance.guideapi.entry.EntryItemStack;
 import amerifrance.guideapi.page.PageJsonRecipe;
@@ -28,6 +29,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static ext.tpz.crystalline.item.CrystallineItems.crystal;
+import static ext.tpz.crystalline.util.Reference.MODID;
+
 @GuideBook
 public class Guide implements IGuideBook {
 
@@ -36,7 +40,7 @@ public class Guide implements IGuideBook {
     @Nonnull
     @Override
     public Book buildBook() {
-        BookBinder binder = new BookBinder(new ResourceLocation(Reference.MODID, "guide"));
+        BookBinder binder = new BookBinder(new ResourceLocation(MODID, "guide"));
         binder.setGuideTitle(I18n.format("crystalline.guide.title"));
         binder.setItemName(I18n.format("crystalline.guide.title"));
         binder.setHeader(I18n.format("crystalline.guide.wdli"));
@@ -44,38 +48,66 @@ public class Guide implements IGuideBook {
         binder.setColor(Color.BLACK);
         binder.setCreativeTab(CreativeTabs.MISC);
 
-        Map<ResourceLocation, EntryAbstract> entriesCrystals = new LinkedHashMap<ResourceLocation, EntryAbstract>();
+        Map<ResourceLocation, EntryAbstract> entriesCrystals = new LinkedHashMap<>();
 
-        List<IPage> about = new ArrayList<IPage>();
+        ItemStack crystalStack = new ItemStack(crystal);
+        crystal.setType(crystalStack, BaseModCrystals.knowledge_crystal);
 
-        ItemStack crystalKnowledge = new ItemStack(CrystallineItems.crystal);
-        CrystallineItems.crystal.setType(crystalKnowledge, BaseModCrystals.knowledge_crystal);
+        List<IPage> about = new ArrayList<>();
+        about.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.crystals.about"), 300));
+        entriesCrystals.put(new ResourceLocation(MODID, "about"), new EntryItemStack(about, I18n.format("crystalline.guide.crystals.about.title"), new ItemStack(Items.BOOK)));
 
-        ItemStack crystalLife = new ItemStack(CrystallineItems.crystal);
-        CrystallineItems.crystal.setType(crystalLife, BaseModCrystals.life_crystal);
+        List<IPage> knowledge = new ArrayList<>();
+        knowledge.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.crystals.knowledge"), 300));
+        knowledge.add(new PageJsonRecipe(new ResourceLocation(MODID, "crystal/knowledge_crystal")));
+        entriesCrystals.put(new ResourceLocation(MODID, "knowledge_crystal"), new EntryItemStack(knowledge, I18n.format("crystalline.guide.crystals.knowledge.title"), crystalStack.copy()));
 
-        ItemStack crystalCleansing = new ItemStack(CrystallineItems.crystal);
-        CrystallineItems.crystal.setType(crystalCleansing, BaseModCrystals.cleansing_crystal);
+        List<IPage> cleansing = new ArrayList<>();
+        crystal.setType(crystalStack, BaseModCrystals.cleansing_crystal);
+        cleansing.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.crystals.cleansing"), 300));
+        cleansing.add(new PageJsonRecipe(new ResourceLocation(MODID, "crystal/cleansing_crystal")));
+        entriesCrystals.put(new ResourceLocation(MODID, "cleansing_crystal"), new EntryItemStack(cleansing, I18n.format("crystalline.guide.crystals.cleansing.title"), crystalStack.copy()));
 
-        about.add(new PageText("There are many types of crystals that you can find and create. This section will inform you of them."));
-        entriesCrystals.put(new ResourceLocation(Reference.MODID, "about"), new EntryItemStack(about, "About", new ItemStack(Items.BOOK)));
+        List<IPage> life = new ArrayList<>();
+        crystal.setType(crystalStack, BaseModCrystals.life_crystal);
+        life.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.crystals.life"), 300));
+        entriesCrystals.put(new ResourceLocation(MODID, "life_crystal"), new EntryItemStack(life, I18n.format("crystalline.guide.crystals.life.title"), crystalStack.copy()));
 
-        List<IPage> knowledge = new ArrayList<IPage>();
-        knowledge.add(new PageText("The knowledge crystal can help you monitor your sanity, so you do not become too insane. You can right click without sneaking to see the quick overview, or right click while sneaking to see information about the stage of insanity you are in."));
-        knowledge.add(new PageJsonRecipe(new ResourceLocation(Reference.MODID, "knowledge_crystal")));
-        entriesCrystals.put(new ResourceLocation(Reference.MODID, "knowledge"), new EntryItemStack(knowledge, "Knowledge Crystal", crystalKnowledge));
+        List<IPage> administration = new ArrayList<>();
+        crystal.setType(crystalStack, BaseModCrystals.administration_crystal);
+        administration.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.crystals.administration"), 300));
+        entriesCrystals.put(new ResourceLocation(MODID, "administration_crystal"), new EntryItemStack(administration, I18n.format("crystalline.guide.crystals.administration.title"), crystalStack.copy()));
 
-        List<IPage> life = new ArrayList<IPage>();
-        life.add(new PageText("Life crystals are dropped on a 25% chance of a player dying. They can be used for regeneration. You can only use a crystal that is bound to you. See Rebinding for more information."));
-        entriesCrystals.put(new ResourceLocation(Reference.MODID, "life"), new EntryItemStack(life, "Life Crystal", crystalLife));
+        List<IPage> rift = new ArrayList<>();
+        crystal.setType(crystalStack, BaseModCrystals.rift_crystal);
+        rift.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.crystals.rift"), 300));
+        entriesCrystals.put(new ResourceLocation(MODID, "rift_crystal"), new EntryItemStack(rift, I18n.format("crystalline.guide.crystals.rift.title"), crystalStack.copy()));
 
-        List<IPage> cleansing = new ArrayList<IPage>();
-        cleansing.add(new PageText("Cleansing crystals can be made with any crystal, and quartz all around it. You can right-click them to make Cleansing Reagents, at the cost of Potential, and a Basic Reagent."));
-        cleansing.add(new PageJsonRecipe(new ResourceLocation(Reference.MODID, "cleansing_crystal")));
-        entriesCrystals.put(new ResourceLocation(Reference.MODID, "cleansing"), new EntryItemStack(cleansing, "Cleansing Crystal", crystalCleansing));
+        List<IPage> universe = new ArrayList<>();
+        crystal.setType(crystalStack, BaseModCrystals.universe_crystal);
+        universe.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.crystals.universe"), 300));
+        entriesCrystals.put(new ResourceLocation(MODID, "universe_crystal"), new EntryItemStack(universe, I18n.format("crystalline.guide.crystals.universe.title"), crystalStack.copy()));
 
 
-        binder.addCategory(new CategoryItemStack(entriesCrystals, "Crystals", crystalKnowledge));
+
+        crystal.setType(crystalStack, BaseModCrystals.knowledge_crystal);
+        binder.addCategory(new CategoryItemStack(entriesCrystals, I18n.format("crystalline.guide.crystals.title"), crystalStack.copy()));
+
+        Map<ResourceLocation, EntryAbstract> entriesUtilities = new LinkedHashMap<>();
+
+        List<IPage> cleansing_potion = new ArrayList<>();
+        cleansing_potion.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.utilities.cleansing_potion"), 238));
+        cleansing_potion.add(new PageJsonRecipe(new ResourceLocation(MODID, "util/cleansing_potion")));
+        entriesUtilities.put(new ResourceLocation(MODID, "cleansing_potion"), new EntryItemStack(cleansing_potion, I18n.format("crystalline.guide.utilities.cleansing_potion.title"), new ItemStack(CrystallineItems.cleansing_potion)));
+
+        List<IPage> rebinding = new ArrayList<>();
+        rebinding.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.utilities.rebinding"), 300));
+        rebinding.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.utilities.rebinding.life_crystal_binding"), 300));
+        rebinding.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.utilities.rebinding.rebinding_reagent"), 300));
+        rebinding.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagent/reagent_rebinding")));
+        entriesUtilities.put(new ResourceLocation(MODID, "rebinding"), new EntryItemStack(rebinding, I18n.format("crystalline.guide.utilities.rebinding.title"), new ItemStack(CrystallineItems.rebinding_reagent)));
+
+        binder.addCategory(new CategoryItemStack(entriesUtilities, I18n.format("crystalline.guide.utilities.title"), new ItemStack(CrystallineItems.rebinding_reagent)));
 
         binder.setSpawnWithBook();
 

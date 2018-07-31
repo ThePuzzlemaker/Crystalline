@@ -26,7 +26,7 @@ import java.util.List;
 public class ItemReagent extends Item {
 
     public ItemReagent() {
-        this.setRegistryName("reagent").setUnlocalizedName(Reference.MODID + ".reagent").setMaxStackSize(1);
+        this.setRegistryName("reagent").setUnlocalizedName(Reference.MODID + ".reagent").setMaxStackSize(64);
     }
 
     @Override

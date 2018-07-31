@@ -44,7 +44,7 @@ public class ModeAdministration implements ICrystalMode {
                 if (CrystallineItems.crystal.getType(crystal).getReagentType().consume(player, crystal)) {
                     double strength = 0.5D;
                     if ((CrystallineItems.crystal.getPotential(crystal) - 5) >= 0) {
-                        CrystallineItems.crystal.setPotential(crystal, CrystallineItems.crystal.getPotential(crystal) - 10);
+                        CrystallineItems.crystal.setPotential(crystal, CrystallineItems.crystal.getPotential(crystal) - 5);
                     } else {
                         player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
                         return new ActionResult<ItemStack>(EnumActionResult.FAIL, crystal);

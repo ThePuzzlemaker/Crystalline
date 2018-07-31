@@ -8,6 +8,7 @@ import ext.tpz.crystalline.api.essence.powder.EssencePowderRegistry;
 import ext.tpz.crystalline.api.essence.powder.IEssencePowder;
 import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.api.reagent.ReagentRegistry;
+import ext.tpz.crystalline.block.CrystallineBlocks;
 import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.item.CrystallineItems;
 import net.minecraft.creativetab.CreativeTabs;
@@ -67,5 +68,7 @@ public class TabCrystalline extends CreativeTabs {
         stacks.add(new ItemStack(rebinding_reagent));
         stacks.add(new ItemStack(cleansing_reagent));
         stacks.add(new ItemStack(cleansing_potion));
+        stacks.add(new ItemStack(CrystallineBlocks.distillationBasin));
+        stacks.add(new ItemStack(CrystallineBlocks.restorationApparatus));
     }
 }
