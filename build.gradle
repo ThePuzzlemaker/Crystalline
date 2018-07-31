@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.0.0r04"
+version = "1.1.0r01"
 group = "ext.tpz.crystalline"
 archivesBaseName = "crystalline"
 
@@ -33,8 +33,14 @@ repositories {
         url "http://maven.tterrag.com/"
     }
     maven {
-        name = "JEI Maven"
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
         url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "modmaven.k-4u.nl"
     }
     maven {  // Required by TOP
         name = "CoFH Maven"
@@ -45,6 +51,8 @@ repositories {
 dependencies {
     deobfCompile "info.amerifrance.guideapi:Guide-API:1.12-2.1.5-60"
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.14-7"
+    deobfProvided "mezz.jei:jei_1.12.2:4.11.0.202:api"
+    runtime "mezz.jei:jei_1.12.2:4.11.0.202"
 }
 
 processResources {
