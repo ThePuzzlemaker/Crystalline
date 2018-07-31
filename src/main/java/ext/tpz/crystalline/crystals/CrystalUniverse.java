@@ -27,7 +27,7 @@ public class CrystalUniverse implements ICrystal {
 
     @Override
     public List<ICrystalMode> getModes() {
-        return Lists.newArrayList(BaseModModes.obliterate_block, BaseModModes.obliterate_entity, BaseModModes.ultra_cleanse);
+        return Lists.newArrayList(BaseModModes.mode_null, BaseModModes.obliterate_block, BaseModModes.obliterate_entity, BaseModModes.ultra_cleanse);
     }
 
     @Override

@@ -27,7 +27,7 @@ public class CrystalCleansing implements ICrystal {
 
     @Override
     public List<ICrystalMode> getModes() {
-        return Lists.newArrayList(BaseModModes.cleansing_reagent);
+        return Lists.newArrayList(BaseModModes.mode_null, BaseModModes.cleansing_reagent);
     }
 
     @Override

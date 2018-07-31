@@ -9,7 +9,10 @@ import amerifrance.guideapi.category.CategoryItemStack;
 import amerifrance.guideapi.entry.EntryItemStack;
 import amerifrance.guideapi.page.PageJsonRecipe;
 import amerifrance.guideapi.page.PageText;
+import ext.tpz.crystalline.block.CrystallineBlocks;
 import ext.tpz.crystalline.crystals.BaseModCrystals;
+import ext.tpz.crystalline.essences.liquid.BaseModEssenceLiquids;
+import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
 import ext.tpz.crystalline.item.CrystallineItems;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
@@ -30,6 +33,8 @@ import java.util.List;
 import java.util.Map;
 
 import static ext.tpz.crystalline.item.CrystallineItems.crystal;
+import static ext.tpz.crystalline.item.CrystallineItems.essence_bottle;
+import static ext.tpz.crystalline.item.CrystallineItems.essence_powder;
 import static ext.tpz.crystalline.util.Reference.MODID;
 
 @GuideBook
@@ -107,7 +112,69 @@ public class Guide implements IGuideBook {
         rebinding.add(new PageJsonRecipe(new ResourceLocation(MODID, "reagent/reagent_rebinding")));
         entriesUtilities.put(new ResourceLocation(MODID, "rebinding"), new EntryItemStack(rebinding, I18n.format("crystalline.guide.utilities.rebinding.title"), new ItemStack(CrystallineItems.rebinding_reagent)));
 
+        List<IPage> restoration = new ArrayList<>();
+        restoration.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.utilities.restoration"), 300));
+        restoration.add(new PageJsonRecipe(new ResourceLocation(MODID, "block/restoration_apparatus")));
+        entriesUtilities.put(new ResourceLocation(MODID, "restoration"), new EntryItemStack(restoration, I18n.format("crystalline.guide.utilities.restoration.title"), new ItemStack(CrystallineBlocks.restorationApparatus)));
+
+        List<IPage> distillation = new ArrayList<>();
+        distillation.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.utilities.distillation"), 300));
+        distillation.add(new PageJsonRecipe(new ResourceLocation(MODID, "block/distillation_basin")));
+        entriesUtilities.put(new ResourceLocation(MODID, "distillation"), new EntryItemStack(distillation, I18n.format("crystalline.guide.utilities.distillation.title"), new ItemStack(CrystallineBlocks.distillationBasin)));
+
         binder.addCategory(new CategoryItemStack(entriesUtilities, I18n.format("crystalline.guide.utilities.title"), new ItemStack(CrystallineItems.rebinding_reagent)));
+
+        ItemStack essenceBottleStack = new ItemStack(essence_bottle);
+        essence_bottle.setType(essenceBottleStack, BaseModEssenceLiquids.essence_liquid_knowledge);
+
+        Map<ResourceLocation, EntryAbstract> entriesDistillation = new LinkedHashMap<>();
+
+        List<IPage> knowledge_distill = new ArrayList<>();
+        knowledge_distill.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.distillation.knowledge"), 300));
+        entriesDistillation.put(new ResourceLocation(MODID, "knowledge_distill"), new EntryItemStack(knowledge_distill, I18n.format("crystalline.guide.distillation.knowledge.title"), essenceBottleStack.copy()));
+
+        List<IPage> cleansing_distill = new ArrayList<>();
+        essence_bottle.setType(essenceBottleStack, BaseModEssenceLiquids.essence_liquid_cleansing);
+        cleansing_distill.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.distillation.cleansing"), 300));
+        entriesDistillation.put(new ResourceLocation(MODID, "cleansing_distill"), new EntryItemStack(cleansing_distill, I18n.format("crystalline.guide.distillation.cleansing.title"), essenceBottleStack.copy()));
+
+        List<IPage> life_distill = new ArrayList<>();
+        essence_bottle.setType(essenceBottleStack, BaseModEssenceLiquids.essence_liquid_life);
+        life_distill.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.distillation.life"), 300));
+        entriesDistillation.put(new ResourceLocation(MODID, "life_distill"), new EntryItemStack(life_distill, I18n.format("crystalline.guide.distillation.life.title"), essenceBottleStack.copy()));
+
+        List<IPage> administration_distill = new ArrayList<>();
+        essence_bottle.setType(essenceBottleStack, BaseModEssenceLiquids.essence_liquid_administration);
+        administration_distill.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.distillation.administration"), 300));
+        entriesDistillation.put(new ResourceLocation(MODID, "administration_distill"), new EntryItemStack(administration_distill, I18n.format("crystalline.guide.distillation.administration.title"), essenceBottleStack.copy()));
+
+        List<IPage> rift_distill = new ArrayList<>();
+        essence_bottle.setType(essenceBottleStack, BaseModEssenceLiquids.essence_liquid_rift);
+        rift_distill.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.distillation.rift"), 300));
+        entriesDistillation.put(new ResourceLocation(MODID, "rift_distill"), new EntryItemStack(rift_distill, I18n.format("crystalline.guide.distillation.rift.title"), essenceBottleStack.copy()));
+
+        List<IPage> universe_distill = new ArrayList<>();
+        essence_bottle.setType(essenceBottleStack, BaseModEssenceLiquids.essence_liquid_universe);
+        universe_distill.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.distillation.universe"), 300));
+        entriesDistillation.put(new ResourceLocation(MODID, "universe_distill"), new EntryItemStack(universe_distill, I18n.format("crystalline.guide.distillation.universe.title"), essenceBottleStack.copy()));
+
+        binder.addCategory(new CategoryItemStack(entriesDistillation, I18n.format("crystalline.guide.distillation.title"), essenceBottleStack.copy()));
+
+        Map<ResourceLocation, EntryAbstract> entriesPowders = new LinkedHashMap<>();
+
+        ItemStack essencePowderStack = new ItemStack(essence_powder);
+
+        List<IPage> rift_powder = new ArrayList<>();
+        essence_powder.setType(essencePowderStack, BaseModEssencePowders.essence_powder_rift);
+        rift_powder.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.powders.rift"), 300));
+        entriesPowders.put(new ResourceLocation(MODID, "rift_powder"), new EntryItemStack(rift_powder, I18n.format("crystalline.guide.powders.rift.title"), essencePowderStack.copy()));
+
+        List<IPage> universe_powder = new ArrayList<>();
+        essence_powder.setType(essencePowderStack, BaseModEssencePowders.essence_powder_universe);
+        universe_powder.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.powders.universe"), 300));
+        entriesPowders.put(new ResourceLocation(MODID, "universe_powder"), new EntryItemStack(universe_powder, I18n.format("crystalline.guide.powders.universe.title"), essencePowderStack.copy()));
+
+        binder.addCategory(new CategoryItemStack(entriesPowders, I18n.format("crystalline.guide.powders.title"), essencePowderStack.copy()));
 
         binder.setSpawnWithBook();
 

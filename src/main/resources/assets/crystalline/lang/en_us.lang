@@ -109,7 +109,7 @@ crystalline.i18n.doesnot=does not
 < Book >
 
 crystalline.guide.title=Crystalline Knowledge
-crystalline.guide.lore=§lAll the knowledge you could need for crystalline magic
+crystalline.guide.lore=§oAll the knowledge you could need for crystalline magic
 crystalline.guide.wdli=Who doesn't like insanity?
 
 << Crystals >>
@@ -196,21 +196,31 @@ crystalline.guide.powders.rift=Pure Rift Essence is obtained from insanity of at
 
 <<< Universe >>>
 
-crystalline.guide.powders.rift.title=Pure Universe Essence
-crystalline.guide.powders.rift=Pure Universe Essence is made with 8 Cleansing Reagents and 1 Pure Rift Essence.
+crystalline.guide.powders.universe.title=Pure Universe Essence
+crystalline.guide.powders.universe=Pure Universe Essence is made with 8 Cleansing Reagents and 1 Pure Rift Essence.
 
 << Utilities >>
 
 crystalline.guide.utilities.title=Various Utilities
 
-<< Cleansing Potion >>
+<<< Cleansing Potion >>>
 
 crystalline.guide.utilities.cleansing_potion.title=Cleansing Potion
 crystalline.guide.utilities.cleansing_potion=The Cleansing Potion has a chance to cure insanity. Here's how it works: \n\nIf you temporary insanity:\n  50 percent chance: cure temporary insanity\n  50 percent chance: raise player insanity by 10 percent\n\nIf you have permanent insanity:\n  1 percent chance: Cure permanent insanity\n  99 percent chance: Kill the player, and do nothing else.
 
-<< Rebinding >>
+<<< Rebinding >>>
 
 crystalline.guide.utilities.rebinding.title=Rebinding
 crystalline.guide.utilities.rebinding=You can bind a crystal using either of these two options: The Rebinding Reagent or Life Crystal Binding
 crystalline.guide.utilities.rebinding.life_crystal_binding=You can simply craft a life crystal with another crystal that has binding.
 crystalline.guide.utilities.rebinding.rebinding_reagent=You can simply craft a Rebinding Reagent, and right click it, then craft the bound Rebinding Reagent with a crystal.
+
+<<< Restoration >>>
+
+crystalline.guide.utilities.restoration.title=Restoration
+crystalline.guide.utilities.restoration=You can restore or create new crystals using the Restoration Apparatus. Simply right click with a crystal to put that in, then put an essence bottle in. You can right-click to get the essence bottle out, and right-click while sneaking to get the crystal out.
+
+<<< Distillation >>>
+
+crystalline.guide.utilities.distillation.title=Distillation
+crystalline.guide.utilities.distillation=You can create essence bottles by putting items in the Distillation Basin. Simply right-click with an item to put it in, and right click with an empty item to take it out. See Distillation Recipes for recipes.

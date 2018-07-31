@@ -27,7 +27,7 @@ public class CrystalRift implements ICrystal {
 
     @Override
     public List<ICrystalMode> getModes() {
-        return Lists.newArrayList(BaseModModes.obliterate_block, BaseModModes.obliterate_entity);
+        return Lists.newArrayList(BaseModModes.mode_null, BaseModModes.obliterate_block, BaseModModes.obliterate_entity);
     }
 
     @Override

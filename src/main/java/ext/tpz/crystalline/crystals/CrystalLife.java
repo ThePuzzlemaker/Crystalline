@@ -27,7 +27,7 @@ public class CrystalLife implements ICrystal {
 
     @Override
     public List<ICrystalMode> getModes() {
-        return Lists.newArrayList(BaseModModes.regeneration);
+        return Lists.newArrayList(BaseModModes.mode_null, BaseModModes.regeneration);
     }
 
     @Override

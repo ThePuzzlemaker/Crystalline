@@ -63,7 +63,7 @@ public class EventHandlers {
     }
 
     private void poison(EntityPlayer player) {
-        player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200));
+        player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200, 2));
         player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_GRAY + "Your own thoughts have somehow poisoned yourself. You find a mysterious purple powder on the ground."), false);
         BlockPos pos = player.getPosition();
         ItemStack stack = new ItemStack(CrystallineItems.essence_powder, 8);
@@ -73,6 +73,7 @@ public class EventHandlers {
             player.getEntityWorld().spawnEntity(item);
         } else {
             player.openContainer.detectAndSendChanges();
+            player.inventoryContainer.detectAndSendChanges();
         }
     }
 

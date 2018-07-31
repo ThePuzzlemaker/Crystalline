@@ -189,11 +189,17 @@ public class ItemCrystal extends Item {
             ICrystal type = getType(stack);
             ICrystalMode currentMode = getMode(stack);
             List<ICrystalMode> modes = type.getModes();
-            int currentModeId = modes.indexOf(currentMode);
-            int nextModeId = currentModeId + 1 <= modes.size() ? currentModeId + 1 : 0;
-            ICrystalMode nextMode = modes.get(nextModeId);
-            setMode(stack, nextMode);
-            return nextMode;
+            if (!modes.isEmpty()) {
+                int currentModeId = modes.indexOf(currentMode);
+                int nextModeId = currentModeId + 1;
+                if (currentModeId + 1 > modes.size()-1) {
+                    nextModeId = 0;
+                }
+                ICrystalMode nextMode = modes.get(nextModeId);
+                setMode(stack, nextMode);
+                return nextMode;
+            }
+            return BaseModModes.mode_null;
         } else {
             return BaseModModes.mode_null;
         }

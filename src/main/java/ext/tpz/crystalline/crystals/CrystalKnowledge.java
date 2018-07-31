@@ -27,7 +27,7 @@ public class CrystalKnowledge implements ICrystal {
 
     @Override
     public List<ICrystalMode> getModes() {
-        return Lists.newArrayList(BaseModModes.view_insanity);
+        return Lists.newArrayList(BaseModModes.mode_null, BaseModModes.view_insanity);
     }
 
     @Override

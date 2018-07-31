@@ -27,7 +27,7 @@ public class CrystalNull implements ICrystal {
 
     @Override
     public List<ICrystalMode> getModes() {
-        return Lists.newArrayList();
+        return Lists.newArrayList(BaseModModes.mode_null);
     }
 
     @Override
