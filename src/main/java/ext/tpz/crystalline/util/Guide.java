@@ -171,6 +171,7 @@ public class Guide implements IGuideBook {
         List<IPage> universe_powder = new ArrayList<>();
         essence_powder.setType(essencePowderStack, BaseModEssencePowders.essence_powder_universe);
         universe_powder.addAll(PageHelper.pagesForLongText(I18n.format("crystalline.guide.powders.universe"), 300));
+        universe_powder.add(new PageJsonRecipe(new ResourceLocation(MODID, "essence/pure_universe_essence")));
         entriesPowders.put(new ResourceLocation(MODID, "universe_powder"), new EntryItemStack(universe_powder, I18n.format("crystalline.guide.powders.universe.title"), essencePowderStack.copy()));
 
         binder.addCategory(new CategoryItemStack(entriesPowders, I18n.format("crystalline.guide.powders.title"), essencePowderStack.copy()));
