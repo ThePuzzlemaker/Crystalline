@@ -6,6 +6,7 @@ import ext.tpz.crystalline.api.essence.liquid.IEssenceLiquid;
 import ext.tpz.crystalline.api.essence.powder.EssencePowderRegistry;
 import ext.tpz.crystalline.api.essence.powder.EssencePowderUtils;
 import ext.tpz.crystalline.api.essence.powder.IEssencePowder;
+import ext.tpz.crystalline.entity.DamageSourceBitesTheDust;
 import ext.tpz.crystalline.entity.DamageSourceLiquidEssence;
 import ext.tpz.crystalline.essences.liquid.BaseModEssenceLiquids;
 import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
@@ -92,6 +93,36 @@ public class ItemEssencePowder extends Item {
                 return getType(stack).getModel();
             }
         });
+    }
+
+    @Override
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+        if (entityLiving instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer)entityLiving;
+            player.attackEntityFrom(new DamageSourceBitesTheDust(), player.getHealth());
+            if (stack.getCount() == 1) {
+                return ItemStack.EMPTY;
+            }
+            stack.setCount(stack.getCount() - 1);
+            return stack;
+        }
+        return null;
+    }
+
+    @Override
+    public EnumAction getItemUseAction(ItemStack stack) {
+        return EnumAction.EAT;
+    }
+
+    @Override
+    public int getMaxItemUseDuration(ItemStack stack) {
+        return 32;
+    }
+
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+    {
+        playerIn.setActiveHand(handIn);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     }
 
 }

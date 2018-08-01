@@ -14,6 +14,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -27,6 +28,12 @@ public class ModeUltraCleanse implements ICrystalMode {
 
     @Override
     public ActionResult<ItemStack> use(ItemStack crystal, EntityPlayer player) {
+        if ((CrystallineItems.crystal.getPotential(crystal) - 5) >= 0) {
+            CrystallineItems.crystal.setPotential(crystal, CrystallineItems.crystal.getPotential(crystal) - 5);
+        } else {
+            player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
+            return new ActionResult<ItemStack>(EnumActionResult.FAIL, crystal);
+        }
         InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
         int insanity = data.getPlayer(player.getUniqueID());
         insanity = 0;
