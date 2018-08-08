@@ -124,26 +124,22 @@ public class TEDistillationBasin extends TileEntity implements ITickable {
             if (!te.getStack().isEmpty()) {
                 if (getTimer() + 1 < 1200) {
                     ItemStack s = te.getStack();
-                    Iterator<IDistillationRecipe> iterator = DistillationRegistry.getRegistry().iterator();
+                    Iterator<IDistillationRecipe> iterator = DistillationRegistry.getRegistry().getValuesCollection().iterator();
                     while (iterator.hasNext()) {
                         IDistillationRecipe recipe = iterator.next();
-                        if (ItemHandlerHelper.canItemStacksStack(s, recipe.getInput())) {
+                        if (ItemStack.areItemStacksEqual(s, recipe.getInput())) {
                             setTimer((getTimer() + 1));
-                        } else {
-                            continue;
                         }
                     }
                 } else {
                     ItemStack s = te.getStack();
                     ItemStack res = new ItemStack(CrystallineItems.essence_bottle);
-                    Iterator<IDistillationRecipe> iterator = DistillationRegistry.getRegistry().iterator();
+                    Iterator<IDistillationRecipe> iterator = DistillationRegistry.getRegistry().getValuesCollection().iterator();
                     while (iterator.hasNext()) {
                         IDistillationRecipe recipe = iterator.next();
-                        if (ItemHandlerHelper.canItemStacksStack(s, recipe.getInput())) {
+                        if (ItemStack.areItemStacksEqual(s, recipe.getInput())) {
                             CrystallineItems.essence_bottle.setType(res, recipe.getOutput());
                             te.setStack(res);
-                        } else {
-                            continue;
                         }
                     }
                     setTimer(0);

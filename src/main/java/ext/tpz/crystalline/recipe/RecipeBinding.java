@@ -69,8 +69,10 @@ public class RecipeBinding implements IRecipe {
             ItemStack s = inv.getStackInSlot(i);
             if (s.getItem() == CrystallineItems.crystal && CrystallineItems.crystal.getType(s) == BaseModCrystals.life_crystal) {
                 lifeCrystalFound = true;
+                life = s.copy();
             } else if (s.getItem() == CrystallineItems.crystal && CrystallineItems.crystal.getType(s).hasBinding()) {
                 bindingCrystalFound = true;
+                binding = s.copy();
             } else if (!s.isEmpty()) {
                 otherItemFound = true;
             }

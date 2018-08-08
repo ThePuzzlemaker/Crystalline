@@ -1,6 +1,7 @@
 package ext.tpz.crystalline.proxy;
 
 
+import com.google.common.eventbus.Subscribe;
 import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.essence.liquid.IEssenceLiquid;
@@ -141,6 +142,7 @@ public class CommonProxy {
         BaseModEssencePowders.register(e);
     }
 
+    @SubscribeEvent
     public static void registerDistillation(RegistryEvent.Register<IDistillationRecipe> e) {
         BaseModRecipes.registerDistillation(e);
     }
