@@ -27,7 +27,7 @@ public class ReagentUniverse implements IReagent {
 
     @Override
     public int getValue() {
-        return 3;
+        return 5;
     }
 
     @Override

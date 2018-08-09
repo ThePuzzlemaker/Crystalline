@@ -27,7 +27,7 @@ public class ReagentRift implements IReagent {
 
     @Override
     public int getValue() {
-        return 3;
+        return 4;
     }
 
     @Override

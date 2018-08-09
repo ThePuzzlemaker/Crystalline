@@ -14,7 +14,7 @@
   "type": "forge:ore_shaped",
   "key": {
     "b": {
-
+      "type": "minecraft:item_nbt",
       "item": "crystalline:reagent",
       "nbt": {
         "type":"crystalline:reagent.basic"

@@ -14,6 +14,7 @@
   "type": "forge:ore_shaped",
   "key": {
     "r": {
+      "type": "minecraft:item_nbt",
       "item": "crystalline:essence_powder",
       "nbt": {
         "type":"crystalline:essence.powder.rift"
