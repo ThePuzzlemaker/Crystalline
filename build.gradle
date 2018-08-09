@@ -69,3 +69,13 @@ processResources {
         exclude 'mcmod.info'
     }
 }
+
+// Taken from EnderCore code
+task apiJar(type: Jar) {
+	classifier = 'api'
+	
+	from sourceSets.main.allSource
+	from sourceSets.main.output
+	
+	include 'ext/tpz/crystalline/api/**/*'
+}
