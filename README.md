@@ -1,6 +1,6 @@
 # Crystalline ![travis status](https://api.travis-ci.org/ThePuzzlemaker/Crystalline.svg?branch=master)
 
-![logo](src/main/resources/assets/crystalline/gui/logo.png)
+![logo](src/main/resources/assets/crystalline/textures/gui/logo.png)
 
 Crystalline is a Minecraft mod that adds various magical crystals to the game. These crystals, when overused, can cause insanity.
 
