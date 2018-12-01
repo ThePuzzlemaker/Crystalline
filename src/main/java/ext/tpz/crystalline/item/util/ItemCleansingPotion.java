@@ -26,7 +26,7 @@ import java.util.UUID;
 public class ItemCleansingPotion extends ItemSimpleFoiled {
 
     public ItemCleansingPotion() {
-        this.setRegistryName("cleansing_potion").setUnlocalizedName(Reference.MODID + ".cleansing_potion").setMaxStackSize(1).setCreativeTab(Crystalline.tab).setMaxStackSize(0);
+        this.setRegistryName("cleansing_potion").setUnlocalizedName(Reference.MODID + ".cleansing_potion").setMaxStackSize(1).setCreativeTab(Crystalline.tab);
     }
 
     public boolean hasEffect(ItemStack stack) {
