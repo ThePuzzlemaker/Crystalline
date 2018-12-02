@@ -1,0 +1,12 @@
+{
+  "name": "Cleansing Essence",
+  "icon": "crystalline:essence_bottle{type:'crystalline:essence.liquid.cleansing'}",
+  "category": "essences",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Cleansing Essence can be crafted in a $(l:blocks/distillation_basin)Distillation Basin$(/l) with 8 quartz."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "crystalline.guide.name",
+  "landing_text": "crystalline.guide.landing_text",
+  "version": 1,
+  "book_texture": "patchouli:textures/gui/book_blue.png",
+  "model": "patchouli:book_blue"
+}

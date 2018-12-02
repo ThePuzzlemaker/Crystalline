@@ -1,0 +1,16 @@
+{
+  "name": "Rebinding",
+  "icon": "crystalline:rebinding_reagent",
+  "category": "information",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "text": "You can bind a crystal using either of these two options: the $(l:utils/rebinding_reagent)Rebinding Reagent$(/l) or $(l:crystals/life_crystal)Life Crystal$(/l) Binding.$(br2)$(l)Rebinding Reagent$()$(br)You can simply craft a $(l:utils/rebinding_reagent)Rebinding Reagent$(/l), right click it to bind it to yourself, then craft the bound $(l:utils/rebinding_reagent)Rebinding Reagent$(/l) with a bound crystal."
+    },
+    {
+      "type": "text",
+      "text": "$(l)Life Crystal Binding$()$(br)You can simply craft a $(l:crystals/life_crystal)Life Crystal$(/l) with a bound crystal to bind it to the player the $(l:crystals/life_crystal)Life Crystal$(/l) is bound to."
+    }
+  ]
+}

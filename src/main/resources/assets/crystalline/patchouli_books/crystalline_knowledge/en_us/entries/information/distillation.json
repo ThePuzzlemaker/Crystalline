@@ -1,0 +1,12 @@
+{
+  "name": "Distillation",
+  "icon": "crystalline:distillation_basin",
+  "category": "information",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "You can create Essence Bottles by putting items in the $(l:blocks/distillation_basin)Distillation Basin$(/l). Simply right-click an item to put it in, and right click with an empty hand to take it out. See Essences for recipes."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Universe Essence",
+  "icon": "crystalline:essence_bottle{type:'crystalline:essence.liquid.universe'}",
+  "category": "essences",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Universe Essence can be crafted in a $(l:blocks/distillation_basin)Distillation Basin$(/l) with 8 $(l:essences/pure_universe_essence)Pure Universe Essence$(/l)."
+    }
+  ]
+}

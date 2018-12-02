@@ -1,0 +1,16 @@
+{
+  "name": "Administration Crystal",
+  "icon": "crystalline:crystal{type:'crystalline:crystal.administration'}",
+  "category": "crystals",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "The Administration Crystal is $(l)very$() fun to troll players with. It is inspired by the Voodoo Poppet from Witchery. It also causes the most insanity in this mod (without addons, excluding the $(l:crystals/rift_crystal)Rift Crystal$(/l)). If you use it in the mode \"Administration\", you can push a player a bit in the direction you are looking, or if you use it while sneaking, you can harm a player by roughly 1.5 hearts."
+    },
+    {
+      "type": "text",
+      "text": "Pushing a player will cost 10% insanity, 5% potential, and an $(l:reagents/extreme_reagent)Extreme Reagent$(/l). Hurting a player will cost 25% insanity, 10% potential, and an $(l:reagents/extreme_reagent)Extreme Reagent$(/l). The Administration Crystal is a bound crystal, so whoever it is bound to will be affected. See $(l:information/rebinding)Rebinding$(/l) for more information."
+    }
+  ]
+}

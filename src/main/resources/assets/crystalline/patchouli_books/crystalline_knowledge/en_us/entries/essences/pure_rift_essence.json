@@ -1,0 +1,12 @@
+{
+  "name": "Pure Rift Essence",
+  "icon": "crystalline:essence_powder{type:'crystalline:essence.powder.rift'}",
+  "category": "essences",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Rift Essence is obtained from a $(l:information/insanity#poison)Stage 4-7 Insanity Event$(/l)."
+    }
+  ]
+}

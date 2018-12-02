@@ -1,0 +1,6 @@
+{
+  "name": "Essences",
+  "description": "This section will inform you of the distillation recipes used to make crystals.",
+  "sortnum": 4,
+  "icon": "crystalline:essence_bottle{type:'crystalline:essence.liquid.universe'}"
+}

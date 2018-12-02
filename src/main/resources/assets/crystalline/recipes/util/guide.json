@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "patchouli:guide_book",
+    "count": 1,
+    "nbt": {
+      "patchouli:book": "crystalline:crystalline_knowledge"
+    }
+  },
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "type": "minecraft:item_nbt",
+      "item": "crystalline:reagent",
+      "nbt": {
+        "type": "crystalline:reagent.basic"
+      }
+    }
+  ]
+}

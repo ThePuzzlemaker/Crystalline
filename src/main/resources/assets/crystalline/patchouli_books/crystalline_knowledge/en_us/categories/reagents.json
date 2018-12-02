@@ -1,0 +1,6 @@
+{
+  "name": "Reagents",
+  "description": "Reagents are consumable items used by crystals. To see what reagent you need, you can view the tooltip of a crystal. You can use any type of reagent that is the value needed or above. Crystals automatically consume the least acceptable value reagent in your inventory on use.",
+  "sortnum": 1,
+  "icon": "crystalline:reagent{type:'crystalline:reagent.universe'}"
+}

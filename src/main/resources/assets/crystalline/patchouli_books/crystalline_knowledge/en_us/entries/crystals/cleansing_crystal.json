@@ -1,0 +1,18 @@
+{
+  "name": "Cleansing Crystal",
+  "icon": "crystalline:crystal{type:'crystalline:crystal.cleansing'}",
+  "category": "crystals",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "The Cleansing Crystal can produce $(l:utils/cleansing_reagent)Cleansing Reagents$(/l) at the cost of 10% potential and 1 $(l:reagents/advanced_reagent)Advanced Reagent$(/l) while in the \"Cleansing Reagent\" mode."
+    },
+    {
+      "type": "crafting",
+      "recipe": "crystalline:crystal/cleansing_crystal",
+      "title": "Crafting Recipe",
+      "text": "The Cleansing Crystal is made simply with quartz and any type of crystal."
+    }
+  ]
+}

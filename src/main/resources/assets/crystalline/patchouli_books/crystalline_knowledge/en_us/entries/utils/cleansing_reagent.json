@@ -1,0 +1,12 @@
+{
+  "name": "Cleansing Reagent",
+  "icon": "crystalline:cleansing_reagent",
+  "category": "utils",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "text": "The Cleansing Reagent is used to drain crystals so they can be used for $(l:information/restoration)Restoration$(/l). They are obtained from the $(l:crystals/cleansing_crystal)Cleansing Crystal$(/l)."
+    }
+  ]
+}

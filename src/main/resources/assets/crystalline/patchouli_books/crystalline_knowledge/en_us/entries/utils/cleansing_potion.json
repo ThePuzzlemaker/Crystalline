@@ -1,0 +1,22 @@
+{
+  "name": "Cleansing Potion",
+  "icon": "crystalline:cleansing_potion",
+  "category": "utils",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "The Cleansing Potion is used to clear insanity. Here's how it works:$(br2)$(l)If you have temporary insanity:$()$(br)$(li)50% chance: cure temporary insanity$(br)$(li)50% chance: raise insanity by 10%"
+    },
+    {
+      "type": "text",
+      "text": "$(l)If you have permanent insanity:$()$(br)$(li)1% chance: cure permanent insanity$(br)$(li)99% chance: kill the player and do nothing else"
+    },
+    {
+      "type": "crafting",
+      "title": "Crafting Recipe",
+      "recipe": "crystalline:util/cleansing_potion",
+      "text": "The Uncraftable Potion in this recipe is actually a Water Bottle."
+    }
+  ]
+}

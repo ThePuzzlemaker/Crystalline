@@ -1,0 +1,17 @@
+{
+  "name": "Basic Reagent",
+  "icon": "crystalline:reagent{type:'crystalline:reagent.basic'}",
+  "category": "reagents",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "The Basic Reagent is a value 1 reagent."
+    },
+    {
+      "type": "crafting",
+      "recipe": "crystalline:reagent/reagent_basic",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

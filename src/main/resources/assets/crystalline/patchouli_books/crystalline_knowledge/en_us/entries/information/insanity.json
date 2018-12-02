@@ -1,0 +1,29 @@
+{
+  "name": "Insanity",
+  "icon": "crystalline:textures/gui/jei/icons/insanity_event.png",
+  "category": "information",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Insanity is a gameplay mechanic added to Crystalline to balance out crystals. This way, you can not just go around obliterating things without some adverse side effects."
+    },
+    {
+      "type": "text",
+      "text": "Insanity is separated into 7 stages:$(br)$(li)Stage 1: 10% to 29% insanity$(br)$(li)Stage 2: 30% to 49% insanity$(br)$(li)Stage 3: 50% to 69% insanity$(br)$(li)Stage 4: 70% to 89% insanity$(br)$(li)Stage 5: 90% to 99% insanity$(br)$(li)Stage 6: 100% insanity$(br)$(li)Stage 7: Permanent insanity$(br2)Each stage comes with its own insanity events. Insanity events are events in the game that happen at intervals set in the mod config."
+    },
+    {
+      "type": "text",
+      "text": "$(l)Levitation Event$()$(br)$(l)Stages:$() Stage 1, Stage 2$(br)$(l)Effects:$() Levitation I (2:30)$(br)$(l)Message:$() \"You suddenly felt yourself levitating.\""
+    },
+    {
+      "type": "text",
+      "text": "$(l)Dual Event$()$(br)$(l)Stages:$() Stage 3$(br)$(l)Effects:$() Slowness I (2:30) $(l)OR$() Blindness I (2:30)$(br)$(l)Message:$() \"You suddenly slowed down, and felt a weird ooze at your feet that didn't even exist.\" $(l)OR$() \"You suddenly lost your vision.\""
+    },
+    {
+      "type": "text",
+      "anchor": "poison",
+      "text": "$(l)Poison Event$()$(br)$(l)Stages:$() Stage 4, Stage 5, Stage 6, Stage 7$(br)$(l)Effects:$() Poison III (2:30)$(br)$(l)Message:$() \"Your own thoughts have somehow poisoned yourself. You find a mysterious purple powder on the ground.\"$(br)$(l)Items Gained:$() $(l:essences/pure_rift_essence)Pure Rift Essence$(/l) (x8)"
+    }
+  ]
+}
