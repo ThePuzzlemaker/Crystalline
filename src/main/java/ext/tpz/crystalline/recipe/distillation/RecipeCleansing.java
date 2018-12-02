@@ -30,7 +30,7 @@ public class RecipeCleansing implements IDistillationRecipe {
     @Nullable
     @Override
     public ResourceLocation getRegistryName() {
-        return new ResourceLocation(Reference.MODID + ":recipe.knowledge");
+        return new ResourceLocation(Reference.MODID + ":recipe.cleansing");
     }
 
     @Override
