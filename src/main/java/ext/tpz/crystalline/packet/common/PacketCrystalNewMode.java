@@ -6,7 +6,9 @@ import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.modes.BaseModModes;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.util.EnumHand;
@@ -54,7 +56,9 @@ public class PacketCrystalNewMode implements IMessage {
             if (mode == null) {
                 mode = BaseModModes.mode_null;
             }
-            PacketHandler.INSTANCE.sendToServer(new PacketSendClientMessage(TextFormatting.GREEN + I18n.format("crystalline.crystal.mode.changed", I18n.format(mode.getUnlocalizedName()))));
+            EntityPlayer player = Minecraft.getMinecraft().player;
+            if (player != null)
+                player.sendMessage(new TextComponentString(TextFormatting.GREEN + I18n.format("crystalline.crystal.mode.changed", I18n.format(mode.getUnlocalizedName()))));
         }
     }
 
