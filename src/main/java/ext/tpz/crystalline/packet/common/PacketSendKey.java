@@ -1,5 +1,6 @@
 package ext.tpz.crystalline.packet.common;
 
+import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
 import io.netty.buffer.ByteBuf;
@@ -43,9 +44,8 @@ public class PacketSendKey implements IMessage {
         private void handle(PacketSendKey message, MessageContext ctx) {
             EntityPlayerMP playerEntity = ctx.getServerHandler().player;
             World world = playerEntity.getEntityWorld();
-
             if (playerEntity.getHeldItem(EnumHand.MAIN_HAND).getItem() == CrystallineItems.crystal) {
-                playerEntity.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "Crystal mode changed to '" + I18n.format(CrystallineItems.crystal.cycleMode(playerEntity.getHeldItem(EnumHand.MAIN_HAND)).getUnlocalizedName()) + "'."), true);
+                PacketHandler.INSTANCE.sendTo(new PacketCrystalNewMode(CrystallineItems.crystal.cycleMode(playerEntity.getHeldItem(EnumHand.MAIN_HAND)).getRegistryName().toString()), playerEntity);
             }
         }
     }

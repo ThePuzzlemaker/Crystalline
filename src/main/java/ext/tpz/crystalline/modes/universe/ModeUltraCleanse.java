@@ -34,11 +34,10 @@ public class ModeUltraCleanse implements ICrystalMode {
             player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
             return new ActionResult<ItemStack>(EnumActionResult.FAIL, crystal);
         }
-        InsanityWorldSavedData data = InsanityWorldSavedData.get(player.getEntityWorld());
-        int insanity = data.getPlayer(player.getUniqueID());
-        insanity = 0;
-        InsanityWorldSavedData.set(data, player.getEntityWorld());
-        InsanityUtils.addInsanity(player.getEntityWorld(), player, 1);
+        if (!player.getEntityWorld().isRemote) {
+            InsanityUtils.setInsanity(player.getEntityWorld(), player, 0);
+            InsanityUtils.addInsanity(player.getEntityWorld(), player, 1);
+        }
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, crystal);
     }
 

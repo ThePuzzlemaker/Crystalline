@@ -209,6 +209,7 @@ public class ItemCrystal extends Item {
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
         if (!isDrained(stack) && getPotential(stack) > 0) {
+            player.getCooldownTracker().setCooldown(this, 10);
             getMode(stack).use(stack, player);
         } else {
             player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is drained of potential!"), true);
@@ -285,4 +286,6 @@ public class ItemCrystal extends Item {
             return "SickPlayerNameThatDoesNotExist";
         }
     }
+
+
 }

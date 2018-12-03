@@ -11,6 +11,7 @@ public class PacketHandler {
     public static SimpleNetworkWrapper INSTANCE = null;
 
     public PacketHandler() {
+
     }
 
     public static int nextID() {
@@ -24,6 +25,8 @@ public class PacketHandler {
 
     public static void registerMessages() {
         INSTANCE.registerMessage(PacketSendKey.Handler.class, PacketSendKey.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(PacketCrystalNewMode.Handler.class, PacketCrystalNewMode.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(PacketSendClientMessage.Handler.class, PacketSendClientMessage.class, nextID(), Side.SERVER);
     }
 
 

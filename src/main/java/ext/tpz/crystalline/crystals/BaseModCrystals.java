@@ -29,6 +29,18 @@ public class BaseModCrystals {
     @GameRegistry.ObjectHolder(Reference.MODID + ":crystal.cleansing")
     public static ICrystal cleansing_crystal = new CrystalCleansing();
 
+    @GameRegistry.ObjectHolder(Reference.MODID + ":crystal.hellfire")
+    public static ICrystal hellfire_crystal = new CrystalHellfire();
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":crystal.aquagust")
+    public static ICrystal aquagust_crystal = new CrystalAquagust();
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":crystal.dirtshield")
+    public static ICrystal dirtshield_crystal = new CrystalDirtshield();
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":crystal.atmosburst")
+    public static ICrystal atmosburst_crystal = new CrystalAtmosburst();
+
     public static void register(RegistryEvent.Register<ICrystal> e) {
         e.getRegistry().register(BaseModCrystals.knowledge_crystal);
         e.getRegistry().register(BaseModCrystals.null_crystal);
@@ -37,6 +49,10 @@ public class BaseModCrystals {
         e.getRegistry().register(BaseModCrystals.universe_crystal);
         e.getRegistry().register(BaseModCrystals.cleansing_crystal);
         e.getRegistry().register(BaseModCrystals.life_crystal);
+        e.getRegistry().register(BaseModCrystals.hellfire_crystal);
+        e.getRegistry().register(BaseModCrystals.aquagust_crystal);
+        e.getRegistry().register(BaseModCrystals.dirtshield_crystal);
+        e.getRegistry().register(BaseModCrystals.atmosburst_crystal);
     }
 
 }

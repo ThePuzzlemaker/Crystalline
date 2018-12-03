@@ -27,6 +27,18 @@ public class BaseModRecipes {
     @GameRegistry.ObjectHolder(Reference.MODID + ":recipe.universe")
     public static IDistillationRecipe recipe_universe = new RecipeUniverse();
 
+    @GameRegistry.ObjectHolder(Reference.MODID + ":recipe.hellfire")
+    public static IDistillationRecipe recipe_hellfire = new RecipeHellfire();
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":recipe.aquagust")
+    public static IDistillationRecipe recipe_aquagust = new RecipeAquagust();
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":recipe.dirtshield")
+    public static IDistillationRecipe recipe_dirtshield = new RecipeDirtshield();
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":recipe.atmosburst")
+    public static IDistillationRecipe recipe_atmosburst = new RecipeAtmosburst();
+
     public static void registerDistillation(RegistryEvent.Register<IDistillationRecipe> e) {
         e.getRegistry().register(recipe_administration);
         e.getRegistry().register(recipe_cleansing);
@@ -34,6 +46,10 @@ public class BaseModRecipes {
         e.getRegistry().register(recipe_rift);
         e.getRegistry().register(recipe_life);
         e.getRegistry().register(recipe_universe);
+        e.getRegistry().register(recipe_hellfire);
+        e.getRegistry().register(recipe_aquagust);
+        e.getRegistry().register(recipe_dirtshield);
+        e.getRegistry().register(recipe_atmosburst);
     }
 
 }

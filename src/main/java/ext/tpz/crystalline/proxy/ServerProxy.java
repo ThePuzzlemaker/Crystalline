@@ -10,6 +10,8 @@ public class ServerProxy extends CommonProxy {
 
     @Override
     public void preInit(FMLPreInitializationEvent e) {
+        super.preInit(e);
+
         if (Loader.isModLoaded("thaumcraft")) {
             ThaumcraftCompat.serverPre(e);
         }
@@ -17,6 +19,8 @@ public class ServerProxy extends CommonProxy {
 
     @Override
     public void init(FMLInitializationEvent e) {
+        super.init(e);
+
         if (Loader.isModLoaded("thaumcraft")) {
             ThaumcraftCompat.serverInit(e);
         }
@@ -24,6 +28,8 @@ public class ServerProxy extends CommonProxy {
 
     @Override
     public void postInit(FMLPostInitializationEvent e) {
+        super.postInit(e);
+
         if (Loader.isModLoaded("thaumcraft")) {
             ThaumcraftCompat.serverPost(e);
         }

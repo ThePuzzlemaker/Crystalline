@@ -24,13 +24,23 @@ public class EntityObliterateEntity extends EntityThrowable {
 
     @Override
     protected void onImpact(RayTraceResult result) {
-        if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
-            if (result.entityHit != null) {
-                if (result.entityHit instanceof EntityLiving) {
-                    if (this.getThrower() instanceof EntityPlayer) {
-                        EntityPlayer player = (EntityPlayer) this.getThrower();
-                        result.entityHit.attackEntityFrom(new DamageSourceObliterate(player), ((EntityLiving)result.entityHit).getHealth());
-                        setDead();
+        if (!world.isRemote) {
+            if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
+                if (result.entityHit != null) {
+                    if (result.entityHit instanceof EntityLivingBase) {
+                        if (this.getThrower() instanceof EntityPlayer) {
+                            if (result.entityHit instanceof EntityPlayer) {
+                                if ((EntityPlayer)this.getThrower() != (EntityPlayer)result.entityHit) {
+                                    EntityPlayer player = (EntityPlayer) this.getThrower();
+                                    result.entityHit.attackEntityFrom(new DamageSourceObliterate(player), ((EntityLivingBase) result.entityHit).getHealth());
+                                    setDead();
+                                }
+                            } else {
+                                EntityPlayer player = (EntityPlayer) this.getThrower();
+                                result.entityHit.attackEntityFrom(new DamageSourceObliterate(player), ((EntityLivingBase) result.entityHit).getHealth());
+                                setDead();
+                            }
+                        }
                     }
                 }
             }

@@ -40,7 +40,8 @@ public class ModeRegeneration implements ICrystalMode {
                         return new ActionResult<ItemStack>(EnumActionResult.FAIL, crystal);
                     }
                     player.addPotionEffect(regen);
-                    InsanityUtils.addInsanity(player.getEntityWorld(), player, 1);
+                    if (!player.getEntityWorld().isRemote)
+                        InsanityUtils.addInsanity(player.getEntityWorld(), player, 1);
                     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, crystal);
                 }
             }

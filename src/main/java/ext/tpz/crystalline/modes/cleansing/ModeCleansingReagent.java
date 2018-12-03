@@ -44,7 +44,8 @@ public class ModeCleansingReagent implements ICrystalMode {
             } else {
                 player.openContainer.detectAndSendChanges();
             }
-            InsanityUtils.addInsanity(player.getEntityWorld(), player, 1);
+            if (!player.getEntityWorld().isRemote)
+                InsanityUtils.addInsanity(player.getEntityWorld(), player, 1);
         }
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, crystal);
     }

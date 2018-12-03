@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "text",
-      "text": "The Rift Crystal has two modes: \"Obliterate Block\" and \"Obliterate Entity\", which both do as their names suggest. They launch a projectile where you are looking, similar to a snowball. The Rift Crystal requires a $(l:reagents/rift_reagent)Rift Reagent$(/l), and causes permanent insanity if you use it with a $(l:reagents/rift_reagent)Rift Reagent$(/l)."
+      "text": "The Rift Crystal has two modes: \"Obliterate Block\" and \"Obliterate Entity\", which both do as their names suggest, and also take 25% insanity. They launch a projectile where you are looking, similar to a snowball. The Rift Crystal requires a $(l:reagents/rift_reagent)Rift Reagent$(/l), and causes permanent insanity if you use it with a $(l:reagents/rift_reagent)Rift Reagent$(/l)."
     }
   ]
 }

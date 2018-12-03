@@ -5,6 +5,7 @@ import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.entity.EntityObliterateEntity;
+import ext.tpz.crystalline.insanity.InsanityUtils;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,16 +28,19 @@ public class ModeObliterateEntity implements ICrystalMode {
 
     @Override
     public ActionResult<ItemStack> use(ItemStack crystal, EntityPlayer player) {
-        if ((CrystallineItems.crystal.getPotential(crystal) - 5) >= 0) {
-            CrystallineItems.crystal.setPotential(crystal, CrystallineItems.crystal.getPotential(crystal) - 5);
-        } else {
-            player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
-            return new ActionResult<ItemStack>(EnumActionResult.FAIL, crystal);
-        }
         if (CrystallineItems.crystal.getReagent(crystal).consume(player, crystal)) {
-            EntityObliterateEntity eOE = new EntityObliterateEntity(player.getEntityWorld(), player);
-            eOE.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
-            player.getEntityWorld().spawnEntity(eOE);
+            if ((CrystallineItems.crystal.getPotential(crystal) - 5) >= 0) {
+                CrystallineItems.crystal.setPotential(crystal, CrystallineItems.crystal.getPotential(crystal) - 5);
+            } else {
+                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "Not enough potential!"), true);
+                return new ActionResult<ItemStack>(EnumActionResult.FAIL, crystal);
+            }
+            if (!player.getEntityWorld().isRemote) {
+                EntityObliterateEntity eOE = new EntityObliterateEntity(player.getEntityWorld(), player);
+                eOE.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 0.0F);
+                player.getEntityWorld().spawnEntity(eOE);
+                InsanityUtils.addInsanity(player.getEntityWorld(), player, 25);
+            }
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, crystal);
         }
         return new ActionResult<ItemStack>(EnumActionResult.FAIL, crystal);

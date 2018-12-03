@@ -38,7 +38,8 @@ public class ModeAdministration implements ICrystalMode {
                         return new ActionResult<ItemStack>(EnumActionResult.FAIL, crystal);
                     }
                     target.setHealth(target.getHealth() - 2.5f);
-                    InsanityUtils.addInsanity(player.getEntityWorld(), player, 25);
+                    if (!player.getEntityWorld().isRemote)
+                        InsanityUtils.addInsanity(player.getEntityWorld(), player, 25);
                 }
             } else {
                 if (CrystallineItems.crystal.getType(crystal).getReagentType().consume(player, crystal)) {

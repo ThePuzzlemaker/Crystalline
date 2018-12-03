@@ -28,6 +28,18 @@ public class BaseModEssenceLiquids {
     @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.cleansing")
     public static IEssenceLiquid essence_liquid_cleansing = new EssenceLiquidCleansing();
 
+    @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.hellfire")
+    public static IEssenceLiquid essence_liquid_hellfire = new EssenceLiquidHellfire();
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.aquagust")
+    public static IEssenceLiquid essence_liquid_aquagust = new EssenceLiquidAquagust();
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.hellfire")
+    public static IEssenceLiquid essence_liquid_dirtshield = new EssenceLiquidDirtshield();
+
+    @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.hellfire")
+    public static IEssenceLiquid essence_liquid_atmosburst = new EssenceLiquidAtmosburst();
+
 
     public static void register(RegistryEvent.Register<IEssenceLiquid> e) {
         e.getRegistry().register(essence_liquid_null);
@@ -37,6 +49,10 @@ public class BaseModEssenceLiquids {
         e.getRegistry().register(essence_liquid_rift);
         e.getRegistry().register(essence_liquid_universe);
         e.getRegistry().register(essence_liquid_cleansing);
+        e.getRegistry().register(essence_liquid_hellfire);
+        e.getRegistry().register(essence_liquid_aquagust);
+        e.getRegistry().register(essence_liquid_dirtshield);
+        e.getRegistry().register(essence_liquid_atmosburst);
     }
 
 }

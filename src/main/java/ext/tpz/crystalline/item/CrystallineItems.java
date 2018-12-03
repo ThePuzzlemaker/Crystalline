@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.item.dynamic.*;
 import ext.tpz.crystalline.item.util.ItemCleansingPotion;
+import ext.tpz.crystalline.item.util.ItemCleansingReagent;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.TextFormatting;
@@ -15,7 +16,7 @@ public class CrystallineItems {
     public static ItemCrystal crystal = new ItemCrystal();
 
     @GameRegistry.ObjectHolder(Reference.MODID + ":cleansing_reagent")
-    public static CrystallineItem cleansing_reagent = new CrystallineItem("cleansing_reagent", Reference.MODID + ".cleansing_reagent", 64, Crystalline.tab, Lists.newArrayList(TextFormatting.RESET + I18n.format("item.crystalline.cleansing_reagent.lore")));
+    public static CrystallineItem cleansing_reagent = new ItemCleansingReagent();
 
     @GameRegistry.ObjectHolder(Reference.MODID + ":rebinding_reagent")
     public static ItemRebindingReagent rebinding_reagent = new ItemRebindingReagent();

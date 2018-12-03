@@ -1,9 +1,14 @@
 package ext.tpz.crystalline.modes;
 
+import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.crystals.CrystalKnowledge;
 import ext.tpz.crystalline.modes.administration.ModeAdministration;
+import ext.tpz.crystalline.modes.aquagust.ModeWaterThrow;
+import ext.tpz.crystalline.modes.atmosburst.ModeAtmosburst;
 import ext.tpz.crystalline.modes.cleansing.ModeCleansingReagent;
+import ext.tpz.crystalline.modes.dirtshield.ModeDirtshield;
+import ext.tpz.crystalline.modes.hellfire.ModeFireThrow;
 import ext.tpz.crystalline.modes.knowledge.ModeViewInsanity;
 import ext.tpz.crystalline.modes.life.ModeRegeneration;
 import ext.tpz.crystalline.modes.obliterate.ModeObliterateBlock;
@@ -46,6 +51,21 @@ public class BaseModModes {
     @GameRegistry.ObjectHolder(Reference.MODID + ":mode.administration")
     public static ICrystalMode administration = new ModeAdministration();
 
+    // Hellfire Crystal
+    @GameRegistry.ObjectHolder(Reference.MODID + ":mode.fire_throw")
+    public static ICrystalMode fire_throw = new ModeFireThrow();
+
+    // Aquagust Crystal
+    @GameRegistry.ObjectHolder(Reference.MODID + ":mode.water_throw")
+    public static ICrystalMode water_throw = new ModeWaterThrow();
+
+    // Dirtshield Crystal
+    @GameRegistry.ObjectHolder(Reference.MODID + ":mode.dirt_shield")
+    public static ICrystalMode dirt_shield = new ModeDirtshield();
+
+    // Atmosburst
+    @GameRegistry.ObjectHolder(Reference.MODID + ":mode.atmos_burst")
+    public static ICrystalMode atmos_burst = new ModeAtmosburst();
 
     public static void register(RegistryEvent.Register<ICrystalMode> e) {
         e.getRegistry().register(view_insanity);
@@ -56,6 +76,10 @@ public class BaseModModes {
         e.getRegistry().register(regeneration);
         e.getRegistry().register(cleansing_reagent);
         e.getRegistry().register(administration);
+        e.getRegistry().register(fire_throw);
+        e.getRegistry().register(water_throw);
+        e.getRegistry().register(dirt_shield);
+        e.getRegistry().register(atmos_burst);
     }
 
 

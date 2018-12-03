@@ -4,6 +4,8 @@ import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
+import ext.tpz.crystalline.potion.PotionDirtshield;
+import ext.tpz.crystalline.potion.Potions;
 import ext.tpz.crystalline.reagents.BaseModReagents;
 import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.entity.item.EntityItem;
@@ -15,8 +17,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.HashMap;
@@ -150,4 +154,12 @@ public class EventHandlers {
             }
         }
     }
+
+    @SubscribeEvent
+    public void onPlayerHit(LivingHurtEvent e) {
+        if (e.getEntityLiving().isPotionActive(Potions.potionDirtshield)) {
+            e.setAmount(0.25f * e.getAmount());
+        }
+    }
+
 }

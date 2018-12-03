@@ -2,10 +2,14 @@ package ext.tpz.crystalline.proxy;
 
 import ext.tpz.crystalline.block.CrystallineBlocks;
 import ext.tpz.crystalline.compat.thaum.ThaumcraftCompat;
+import ext.tpz.crystalline.entity.EntityFireThrow;
 import ext.tpz.crystalline.entity.EntityObliterateBlock;
 import ext.tpz.crystalline.entity.EntityObliterateEntity;
+import ext.tpz.crystalline.entity.EntityWaterThrow;
+import ext.tpz.crystalline.entity.render.RenderEntityFireThrow;
 import ext.tpz.crystalline.entity.render.RenderEntityObliterate;
 import ext.tpz.crystalline.entity.render.RenderEntityObliterateEntity;
+import ext.tpz.crystalline.entity.render.RenderEntityWaterThrow;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.packet.client.InputHandler;
 import ext.tpz.crystalline.packet.client.KeyBindings;
@@ -45,8 +49,8 @@ public class ClientProxy extends CommonProxy {
     public void init(FMLInitializationEvent e) {
         super.init(e);
 
-        MinecraftForge.EVENT_BUS.register(new InputHandler());
         KeyBindings.init();
+        MinecraftForge.EVENT_BUS.register(new InputHandler());
 
         if (Loader.isModLoaded("thaumcraft")) {
             ThaumcraftCompat.clientInit(e);
@@ -79,6 +83,8 @@ public class ClientProxy extends CommonProxy {
         CrystallineItems.essence_powder.initModel();
         RenderingRegistry.registerEntityRenderingHandler(EntityObliterateBlock.class, RenderEntityObliterate.FACTORY);
         RenderingRegistry.registerEntityRenderingHandler(EntityObliterateEntity.class, RenderEntityObliterateEntity.FACTORY);
+        RenderingRegistry.registerEntityRenderingHandler(EntityFireThrow.class, RenderEntityFireThrow.FACTORY);
+        RenderingRegistry.registerEntityRenderingHandler(EntityWaterThrow.class, RenderEntityWaterThrow.FACTORY);
     }
 
 }

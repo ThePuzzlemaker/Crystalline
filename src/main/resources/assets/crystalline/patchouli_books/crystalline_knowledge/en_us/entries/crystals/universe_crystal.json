@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "text",
-      "text": "Similarly to the $(l:crystals/rift_crystal)Rift Crystal$(/l), the Universe Crystal has the \"Obliterate\" modes. There is also another mode with the Universe Crystal, \"Ultra Cleanse\". The \"Ultra Cleanse\" mode clears you of all insanity, but adds 1% insanity. This mode is helpful for clearing permanent insanity. It requires a $(l:reagents/universe_reagent)Universe Reagent$(/l), and does not cause any insanity, excluding the \"Ultra Cleanse\" mode."
+      "text": "Similarly to the $(l:crystals/rift_crystal)Rift Crystal$(/l), the Universe Crystal has the \"Obliterate\" modes, which both cause 25% insanity. There is also another mode with the Universe Crystal, \"Ultra Cleanse\". The \"Ultra Cleanse\" mode clears you of all insanity, but adds 1% insanity. This mode is helpful for clearing permanent insanity. It requires a $(l:reagents/universe_reagent)Universe Reagent$(/l)."
     }
   ]
 }

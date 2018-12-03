@@ -25,6 +25,7 @@ public class EntityObliterateBlock extends EntityThrowable {
 
     @Override
     protected void onImpact(RayTraceResult result) {
+        if (!world.isRemote) {
         /*if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
             if (result.entityHit != null) {
                 if (result.entityHit instanceof EntityLiving) {
@@ -35,12 +36,13 @@ public class EntityObliterateBlock extends EntityThrowable {
                 }
             }
         }*/
-        if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
-            if (result.getBlockPos() != null) {
-                if (this.getThrower() instanceof EntityPlayer) {
-                    if (world.canMineBlockBody((EntityPlayer) this.getThrower(), result.getBlockPos())) {
-                        world.destroyBlock(result.getBlockPos(), true);
-                        setDead();
+            if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
+                if (result.getBlockPos() != null) {
+                    if (this.getThrower() instanceof EntityPlayer) {
+                        if (world.canMineBlockBody((EntityPlayer) this.getThrower(), result.getBlockPos())) {
+                            world.destroyBlock(result.getBlockPos(), true);
+                            setDead();
+                        }
                     }
                 }
             }

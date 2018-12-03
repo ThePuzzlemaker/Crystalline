@@ -62,7 +62,10 @@ public class CommonProxy {
         Config.readConfig();
 
         PacketHandler.registerMessages("crystalline");
+        Crystalline.logger.info("Ion channels initiated!");
         EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":obliterate_block"), EntityObliterateBlock.class, "crystalline.entity.obliterate", 5691, Crystalline.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":fire_throw"), EntityObliterateBlock.class, "crystalline.entity.fire_throw", 5693, Crystalline.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":fire_throw"), EntityObliterateBlock.class, "crystalline.entity.water_throw", 5694, Crystalline.instance, 64, 10, true);
         EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":obliterate_entity"), EntityObliterateEntity.class, "crystalline.entity.obliterate_entity", 5692, Crystalline.instance, 64, 10, true);
         MinecraftForge.EVENT_BUS.register(new EventHandlers());
         if (Loader.isModLoaded("thaumcraft")) {

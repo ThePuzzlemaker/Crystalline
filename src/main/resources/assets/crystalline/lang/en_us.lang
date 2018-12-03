@@ -26,6 +26,8 @@ crystalline.lore.crystal.bound=Bound To: %s
 crystalline.lore.crystal.reagent=Reagent Required: %s
 crystalline.lore.crystal.insanity=This crystal %s cause insanity.
 
+crystalline.crystal.mode.changed=Crystal mode changed to: '%s'.
+
 crystalline.crystal.null=missingno
 crystalline.crystal.knowledge=Knowledge
 crystalline.crystal.cleansing=Cleansing
@@ -33,8 +35,10 @@ crystalline.crystal.administration=Administration
 crystalline.crystal.life=Life
 crystalline.crystal.rift=Rift
 crystalline.crystal.universe=Universe
-
-
+crystalline.crystal.hellfire=Hellfire
+crystalline.crystal.aquagust=Aquagust
+crystalline.crystal.dirtshield=Dirtshield
+crystalline.crystal.atmosburst=Atmosburst
 
 item.crystalline.crystal.name=Crystal
 
@@ -68,6 +72,10 @@ crystalline.mode.cleansing_reagent=Cleansing Reagent
 crystalline.mode.obliterate_block=Obliterate Block
 crystalline.mode.obliterate_entity=Obliterate Entity
 crystalline.mode.ultra_cleanse=Ultra Cleanse
+crystalline.mode.fire_throw=Fire Throw
+crystalline.mode.water_throw=Water Throw
+crystalline.mode.dirt_shield=Dirt Shield
+crystalline.mode.atmos_burst=Atmospheric Burst
 
 item.crystalline.cleansing_potion.name=Cleansing Potion
 
@@ -105,135 +113,6 @@ crystalline.i18n.yes=Yes
 crystalline.i18n.no=No
 crystalline.i18n.can=can
 crystalline.i18n.doesnot=does not
-
-< Book >
-
-crystalline.guide.title=Crystalline Knowledge
-crystalline.guide.lore=§oAll the knowledge you could need for crystalline magic
-crystalline.guide.wdli=Who doesn't like insanity?
-
-<< Crystals >>
-
-crystalline.guide.crystals.title=Crystals
-
-<<< About >>>
-
-crystalline.guide.crystals.about.title=About
-crystalline.guide.crystals.about=There are many types of crystals that you can find and create. This section will inform you of them. When you just create one, it is in the mode "Disabled". Press the "Switch Mode" key to change the mode. The default key for it is 'O'.
-
-<<< Administration >>>
-
-crystalline.guide.crystals.administration.title=Administration Crystal
-crystalline.guide.crystals.administration=Administration crystals are §overy§r fun to troll players with. They also cause the most insanity in this mod (without addons, excluding the Rift Crystal). If you use it in the mode "Administration", you can hurt a player by roughly 1.5 hearts if you use it while sneaking, at the cost of 25 insanity, 10 potential, and an Extreme Reagent. If you use it without sneaking, it will push a player in the direction you are looking, at the cost of 5 potential, 10 insanity, and an Extreme Reagent.
-
-<<< Cleansing >>>
-
-crystalline.guide.crystals.cleansing.title=Cleansing Crystal
-crystalline.guide.crystals.cleansing=Cleansing crystals can be made with any crystal with quartz all around it. When it is in "Cleansing Reagent" mode, you can right-click them to make Cleansing Reagents at the cost of one potential and a Basic Reagent.
-
-<<< Knowledge >>>
-
-crystalline.guide.crystals.knowledge.title=Knowledge Crystal
-crystalline.guide.crystals.knowledge=The knowledge crystal can help you monitor your sanity, so you do not become too insane. When it is in "View Insanity" mode, you can right click without sneaking to see a quick overview, or right click while sneaking to see information about the stage of insanity you are currently in.
-
-<<< Life >>>
-
-crystalline.guide.crystals.life.title=Life Crystal
-crystalline.guide.crystals.life=Life crystals have a 25 percent chance to be dropped when a player dies. They can be used for regeneration. Life crystals are a crystal with binding, so you can only use a crystal that is bound to you. See Rebinding for more information.
-
-<<< Rift >>>
-
-crystalline.guide.crystals.rift.title=Rift Crystal
-crystalline.guide.crystals.rift=The Rift Crystal has two modes: "Obliterate Block" and "Obliterate Entity". These do what their names suggest they do. They launch a projectile where you are looking, like a snowball. It requires a Rift Reagent, and causes permanent insanity if used with a Rift Reagent.
-
-<<< Universe >>>
-
-crystalline.guide.crystals.universe.title=Universe Crystal
-crystalline.guide.crystals.universe=The Universe Crystal has three modes: "Obliterate Block" and "Obliterate Entity", and "Ultra Cleanse". These "Obliterate" modes do what their names suggest they do. They launch a projectile where you are looking, like a snowball. The "Ultra Cleanse" mode clears you of all insanity, but adds 1 insanity, but it can help a lot in clearing permanent insanity. It requires a Universe Reagent, and does not cause any insanity.
-
-<< Distillation >>
-
-crystalline.guide.distillation.title=Distillation Recipes
-
-<<< Administration >>>
-
-crystalline.guide.distillation.administration.title=Administration Essence
-crystalline.guide.distillation.administration=You can create a Bottle of Pure Administration Essence using eight Glowstone Dust.
-
-<<< Cleansing >>>
-
-crystalline.guide.distillation.cleansing.title=Cleansing Essence
-crystalline.guide.distillation.cleansing=You can create a Bottle of Pure Administration Essence using eight Quartz.
-
-<<< Knowledge >>>
-
-crystalline.guide.distillation.knowledge.title=Knowledge Essence
-crystalline.guide.distillation.knowledge=You can create a Bottle of Pure Knowledge Essence using four diamonds.
-
-<<< Life >>>
-
-crystalline.guide.distillation.life.title=Life Essence
-crystalline.guide.distillation.life=You can create a Bottle of Pure Life Essence using four normal Golden Apples.
-
-<<< Rift >>>
-
-crystalline.guide.distillation.rift.title=Rift Essence
-crystalline.guide.distillation.rift=You can create a Bottle of Pure Rift Essence using eight Pure Rift Essences (powder form).
-
-<<< Universe >>>
-
-crystalline.guide.distillation.universe.title=Universe Essence
-crystalline.guide.distillation.universe=You can create a Bottle of Pure Universe Essence using eight Pure Universe Essences (powder form).
-
-<< Powders >>
-
-crystalline.guide.powders.title=Powdered Essences
-
-<<< Rift >>>
-
-crystalline.guide.powders.rift.title=Pure Rift Essence
-crystalline.guide.powders.rift=Pure Rift Essence is obtained from insanity of at least Stage 4. You get 8 per insanity event.
-
-<<< Universe >>>
-
-crystalline.guide.powders.universe.title=Pure Universe Essence
-crystalline.guide.powders.universe=Pure Universe Essence is made with 8 Cleansing Reagents and 1 Pure Rift Essence.
-
-<< Utilities >>
-
-crystalline.guide.utilities.title=Various Utilities
-
-<<< Cleansing Potion >>>
-
-crystalline.guide.utilities.cleansing_potion.title=Cleansing Potion
-crystalline.guide.utilities.cleansing_potion=The Cleansing Potion has a chance to cure insanity. Here's how it works: \n\nIf you temporary insanity:\n  50 percent chance: cure temporary insanity\n  50 percent chance: raise player insanity by 10 percent\n\nIf you have permanent insanity:\n  1 percent chance: Cure permanent insanity\n  99 percent chance: Kill the player, and do nothing else.
-
-<<< Rebinding >>>
-
-crystalline.guide.utilities.rebinding.title=Rebinding
-crystalline.guide.utilities.rebinding=You can bind a crystal using either of these two options: The Rebinding Reagent or Life Crystal Binding
-crystalline.guide.utilities.rebinding.life_crystal_binding=You can simply craft a life crystal with another crystal that has binding.
-crystalline.guide.utilities.rebinding.rebinding_reagent=You can simply craft a Rebinding Reagent, and right click it, then craft the bound Rebinding Reagent with a crystal.
-
-<<< Restoration >>>
-
-crystalline.guide.utilities.restoration.title=Restoration
-crystalline.guide.utilities.restoration=You can restore or create new crystals using the Restoration Apparatus. Simply right click with a crystal to put that in, then put an essence bottle in. You can right-click to get the essence bottle out, and right-click while sneaking to get the crystal out.
-
-<<< Distillation >>>
-
-crystalline.guide.utilities.distillation.title=Distillation
-crystalline.guide.utilities.distillation=You can create essence bottles by putting items in the Distillation Basin. Simply right-click with an item to put it in, and right click with an empty item to take it out. See Distillation Recipes for recipes.
-
-<< Reagents >>
-
-crystalline.guide.reagents.title=Reagents
-
-crystalline.guide.reagents.basic.title=Basic Reagent
-crystalline.guide.reagents.advanced.title=Advanced Reagent
-crystalline.guide.reagents.extreme.title=Extreme Reagent
-crystalline.guide.reagents.rift.title=Rift Reagent
-crystalline.guide.reagents.universe.title=Universe Reagent
 
 < JEI Integration >
 
