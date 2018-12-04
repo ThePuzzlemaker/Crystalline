@@ -58,7 +58,6 @@ public class PacketCrystalNewMode implements IMessage {
             }
             EntityPlayer player = Minecraft.getMinecraft().player;
             if (player != null)
-                player.sendMessage(new TextComponentString(TextFormatting.GREEN + I18n.format("crystalline.crystal.mode.changed", I18n.format(mode.getUnlocalizedName()))));
                 player.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + I18n.format("crystalline.crystal.mode.changed", I18n.format(mode.getUnlocalizedName()))), true);
         }
     }
