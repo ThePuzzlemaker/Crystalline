@@ -2,7 +2,7 @@
   "name": "Administration Crystal",
   "icon": "crystalline:crystal{type:'crystalline:crystal.administration'}",
   "category": "crystals",
-  "sortnum": 3,
+  "sortnum": 7,
   "pages": [
     {
       "type": "text",

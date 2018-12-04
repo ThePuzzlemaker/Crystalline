@@ -2,7 +2,7 @@
   "name": "Rift Crystal",
   "icon": "crystalline:crystal{type:'crystalline:crystal.rift'}",
   "category": "crystals",
-  "sortnum": 4,
+  "sortnum": 8,
   "pages": [
     {
       "type": "text",

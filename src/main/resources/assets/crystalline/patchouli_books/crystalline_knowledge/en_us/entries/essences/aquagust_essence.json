@@ -1,0 +1,12 @@
+{
+  "name": "Aquagust Essence",
+  "icon": "crystalline:essence_bottle{type:'crystalline:essence.liquid.aquagust'}",
+  "category": "essences",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Aquagust Essence can be crafted in a $(l:blocks/distillation_basin)Distillation Basin$(/l) with 1 Water Bottle."
+    }
+  ]
+}

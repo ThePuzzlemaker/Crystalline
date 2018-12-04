@@ -1,0 +1,12 @@
+{
+  "name": "Aquagust Crystal",
+  "icon": "crystalline:crystal{type:'crystalline:crystal.aquagust'}",
+  "category": "crystals",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "text",
+      "text": "The Aquagust Crystal is an elemental type crystal, representing water. They can be used to throw water in their \"Water Throw\" mode, which can extinguish players or blocks, or damage a Blaze by 1.5 hearts, at the cost of 1% potential, 10% insanity, and 1 $(l:reagents/advanced_reagent)Advanced Reagent$(/l). Its counterpart is the $(l:crystals/hellfire_crystal)Hellfire Crystal$(/l)."
+    }
+  ]
+}

@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "text",
-      "text": "The Cleansing Crystal can produce $(l:utils/cleansing_reagent)Cleansing Reagents$(/l) at the cost of 10% potential and 1 $(l:reagents/advanced_reagent)Advanced Reagent$(/l) while in the \"Cleansing Reagent\" mode."
+      "text": "The Cleansing Crystal can produce $(l:utils/cleansing_reagent)Cleansing Reagents$(/l) at the cost of 10% potential, and 1 $(l:reagents/advanced_reagent)Advanced Reagent$(/l) while in the \"Cleansing Reagent\" mode."
     },
     {
       "type": "crafting",

@@ -1,0 +1,12 @@
+{
+  "name": "Dirtshield Essence",
+  "icon": "crystalline:essence_bottle{type:'crystalline:essence.liquid.dirtshield'}",
+  "category": "essences",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Dirtshield Essence can be crafted in a $(l:blocks/distillation_basin)Distillation Basin$(/l) with 16 Dirt Blocks."
+    }
+  ]
+}

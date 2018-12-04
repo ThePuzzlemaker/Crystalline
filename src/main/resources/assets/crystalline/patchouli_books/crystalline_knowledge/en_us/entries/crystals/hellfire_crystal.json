@@ -1,0 +1,12 @@
+{
+  "name": "Hellfire Crystal",
+  "icon": "crystalline:crystal{type:'crystalline:crystal.hellfire'}",
+  "category": "crystals",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "The Hellfire Crystal is an elemental type crystal, representing fire. They can be used to throw literal fire in their \"Fire Throw\" mode, which can light players or blocks on fire, at the cost of 1% potential, 10% insanity, and 1 $(l:reagents/advanced_reagent)Advanced Reagent$(/l). Its counterpart is the $(l:crystals/aquagust_crystal)Aquagust Crystal$(/l)."
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "name": "Pure Universe Essence",
   "icon": "crystalline:essence_powder{type:'crystalline:essence.powder.universe'}",
   "category": "essences",
-  "sortnum": 7,
+  "sortnum": 11,
   "pages": [
     {
       "type": "text",

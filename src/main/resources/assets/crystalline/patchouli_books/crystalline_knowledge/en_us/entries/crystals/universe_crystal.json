@@ -2,7 +2,7 @@
   "name": "Universe Crystal",
   "icon": "crystalline:crystal{type:'crystalline:crystal.universe'}",
   "category": "crystals",
-  "sortnum": 5,
+  "sortnum": 9,
   "pages": [
     {
       "type": "text",

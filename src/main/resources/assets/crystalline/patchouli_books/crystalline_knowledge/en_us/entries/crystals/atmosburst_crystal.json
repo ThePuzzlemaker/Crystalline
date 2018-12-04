@@ -1,0 +1,12 @@
+{
+  "name": "Atmosburst Crystal",
+  "icon": "crystalline:crystal{type:'crystalline:crystal.atmosburst'}",
+  "category": "crystals",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "text",
+      "text": "The Atmosburst Crystal is an elemental type crystal, representing air. Its name is a portmanteau of the words \"atmospheric\" and \"burst\". They can be used to summon a blast of air in their \"Atmospheric Burst\" mode, which can push all mobs, including players, away from you, at the cost of 5% potential, 10% insanity, and 1 $(l:reagents/advanced_reagent)Advanced Reagent$(/l)."
+    }
+  ]
+}
