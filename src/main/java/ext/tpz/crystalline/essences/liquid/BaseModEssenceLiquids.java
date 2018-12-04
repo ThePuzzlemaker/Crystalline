@@ -34,10 +34,10 @@ public class BaseModEssenceLiquids {
     @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.aquagust")
     public static IEssenceLiquid essence_liquid_aquagust = new EssenceLiquidAquagust();
 
-    @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.hellfire")
+    @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.dirtshield")
     public static IEssenceLiquid essence_liquid_dirtshield = new EssenceLiquidDirtshield();
 
-    @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.hellfire")
+    @GameRegistry.ObjectHolder(Reference.MODID + ":essence.liquid.atmosburst")
     public static IEssenceLiquid essence_liquid_atmosburst = new EssenceLiquidAtmosburst();
 
 
