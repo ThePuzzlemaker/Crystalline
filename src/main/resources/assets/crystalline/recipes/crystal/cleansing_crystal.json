@@ -5,7 +5,7 @@
       "potential": 100,
       "drained": false,
       "type": "crystalline:crystal.cleansing",
-      "reagent": "crystalline:crystal.basic"
+      "reagent": "crystalline:reagent.basic"
     }
   },
   "pattern": [

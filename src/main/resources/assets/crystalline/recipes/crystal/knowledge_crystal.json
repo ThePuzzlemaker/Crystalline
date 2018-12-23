@@ -5,7 +5,7 @@
       "potential": 100,
       "drained": false,
       "type": "crystalline:crystal.knowledge",
-      "reagent": "crystalline:crystal.none"
+      "reagent": "crystalline:reagent.none"
     }
   },
   "pattern": [

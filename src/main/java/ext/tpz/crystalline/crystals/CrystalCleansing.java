@@ -22,7 +22,7 @@ public class CrystalCleansing implements ICrystal {
 
     @Override
     public IReagent getReagentType() {
-        return BaseModReagents.reagent_advanced;
+        return BaseModReagents.reagent_basic;
     }
 
     @Override
