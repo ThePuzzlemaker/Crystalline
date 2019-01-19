@@ -60,4 +60,5 @@ public class CrystalAquagust implements ICrystal {
     public boolean hasBinding() {
         return false;
     }
+
 }

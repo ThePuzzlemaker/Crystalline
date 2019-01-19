@@ -1,5 +1,8 @@
 package ext.tpz.crystalline.api.reagent;
 
+import ext.tpz.crystalline.api.crystal.CrystalRegistry;
+import ext.tpz.crystalline.api.mode.CrystalModeRegistry;
+import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -73,6 +77,18 @@ public class ReagentUtils {
             player.sendStatusMessage(new TextComponentString("No valid reagents were found in your inventory!"), true);
             return false;
         }
+    }
+
+    public static String[] dump() {
+        ArrayList<String> registryNames = new ArrayList<>();
+        if (CrystalRegistry.getRegistry() != null) {
+            for (IReagent c : ReagentRegistry.getRegistry()) {
+                registryNames.add(to(c));
+            }
+        }
+        String[] rNs = new String[registryNames.size()];
+        registryNames.toArray(rNs);
+        return rNs;
     }
 
 }

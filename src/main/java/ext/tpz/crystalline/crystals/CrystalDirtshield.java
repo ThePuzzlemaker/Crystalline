@@ -60,4 +60,5 @@ public class CrystalDirtshield implements ICrystal {
     public boolean hasBinding() {
         return false;
     }
+
 }

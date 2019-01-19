@@ -60,4 +60,5 @@ public class CrystalNull implements ICrystal {
     public boolean hasBinding() {
         return false;
     }
+
 }

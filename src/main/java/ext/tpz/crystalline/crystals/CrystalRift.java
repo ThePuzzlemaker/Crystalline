@@ -60,4 +60,5 @@ public class CrystalRift implements ICrystal {
     public boolean hasBinding() {
         return false;
     }
+
 }

@@ -60,4 +60,6 @@ public class CrystalKnowledge implements ICrystal {
     public boolean hasBinding() {
         return false;
     }
+
+
 }

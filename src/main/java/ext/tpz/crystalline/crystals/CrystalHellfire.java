@@ -60,4 +60,6 @@ public class CrystalHellfire implements ICrystal {
     public boolean hasBinding() {
         return false;
     }
+
+
 }

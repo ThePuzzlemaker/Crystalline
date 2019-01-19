@@ -60,4 +60,5 @@ public class CrystalLife implements ICrystal {
     public boolean hasBinding() {
         return true;
     }
+
 }

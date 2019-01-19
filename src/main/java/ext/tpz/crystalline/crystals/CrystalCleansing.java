@@ -60,4 +60,5 @@ public class CrystalCleansing implements ICrystal {
     public boolean hasBinding() {
         return false;
     }
+
 }
