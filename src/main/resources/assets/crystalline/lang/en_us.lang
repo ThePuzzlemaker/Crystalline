@@ -127,3 +127,14 @@ crystalline.jei.insanity_event.title=Insanity Event
 
 crystalline.guide.name=Crystalline Knowledge
 crystalline.guide.landing_text=Welcome to Crystalline, the mod where crystals and insanity reign dominant in this world. Also, who doesn't like insanity?
+
+< Insanity >
+
+crystalline.insanity.desc.s0=You have stage 0 insanity. This means you will not experience any effects.
+crystalline.insanity.desc.s1=You have stage 1 insanity. This means you may experience some minor events.
+crystalline.insanity.desc.s2=You have stage 2 insanity. This means you may experience some minor effects.
+crystalline.insanity.desc.s3=You have stage 3 insanity. This means you may experience some possibly damaging effects.
+crystalline.insanity.desc.s4=You have stage 4 insanity. This means you may experience some possibly damaging effects.
+crystalline.insanity.desc.s5=You have stage 5 insanity. This means you may experience some possibly lethal effects.
+crystalline.insanity.desc.s6=You have stage 6 insanity. This means you may experience some possibly lethal effects.
+crystalline.insanity.desc.s7=You have permanent insanity. This means you may experience some possibly lethal effects.
