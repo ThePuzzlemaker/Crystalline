@@ -4,6 +4,7 @@ import ext.tpz.crystalline.api.recipe.DistillationRegistry;
 import ext.tpz.crystalline.api.recipe.IDistillationRecipe;
 import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
 import ext.tpz.crystalline.item.CrystallineItems;
+import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -14,6 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.items.ItemHandlerHelper;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class TEDistillationBasin extends TileEntity implements ITickable {
@@ -127,8 +129,10 @@ public class TEDistillationBasin extends TileEntity implements ITickable {
                     Iterator<IDistillationRecipe> iterator = DistillationRegistry.getRegistry().getValuesCollection().iterator();
                     while (iterator.hasNext()) {
                         IDistillationRecipe recipe = iterator.next();
-                        if (ItemStack.areItemStacksEqual(s, recipe.getInput())) {
-                            setTimer((getTimer() + 1));
+                        if (!Arrays.asList(Config.disabledCrystals).contains(recipe.getOutput().getEquivalent().getRegistryName().toString())) {
+                            if (ItemStack.areItemStacksEqual(s, recipe.getInput())) {
+                                setTimer((getTimer() + 1));
+                            }
                         }
                     }
                 } else {
@@ -137,9 +141,11 @@ public class TEDistillationBasin extends TileEntity implements ITickable {
                     Iterator<IDistillationRecipe> iterator = DistillationRegistry.getRegistry().getValuesCollection().iterator();
                     while (iterator.hasNext()) {
                         IDistillationRecipe recipe = iterator.next();
-                        if (ItemStack.areItemStacksEqual(s, recipe.getInput())) {
-                            CrystallineItems.essence_bottle.setType(res, recipe.getOutput());
-                            te.setStack(res);
+                        if (!Arrays.asList(Config.disabledCrystals).contains(recipe.getOutput().getEquivalent().getRegistryName().toString())) {
+                            if (ItemStack.areItemStacksEqual(s, recipe.getInput())) {
+                                CrystallineItems.essence_bottle.setType(res, recipe.getOutput());
+                                te.setStack(res);
+                            }
                         }
                     }
                     setTimer(0);

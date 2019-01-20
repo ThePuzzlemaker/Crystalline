@@ -3,6 +3,7 @@ package ext.tpz.crystalline.proxy;
 
 import com.google.common.eventbus.Subscribe;
 import ext.tpz.crystalline.Crystalline;
+import ext.tpz.crystalline.api.crystal.CrystalRegistry;
 import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.essence.liquid.IEssenceLiquid;
 import ext.tpz.crystalline.api.essence.powder.IEssencePowder;
@@ -104,7 +105,8 @@ public class CommonProxy {
     public static void registerItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().register(CrystallineItems.crystal);
         e.getRegistry().register(CrystallineItems.reagent);
-        e.getRegistry().register(CrystallineItems.rebinding_reagent);
+        if (Config.enableRebinding)
+            e.getRegistry().register(CrystallineItems.rebinding_reagent);
         e.getRegistry().register(CrystallineItems.cleansing_reagent);
         e.getRegistry().register(CrystallineItems.cleansing_potion);
         e.getRegistry().register(new ItemBlock(CrystallineBlocks.distillationBasin).setRegistryName(CrystallineBlocks.distillationBasin.getRegistryName()));
@@ -117,7 +119,8 @@ public class CommonProxy {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> e) {
         e.getRegistry().register(new RecipeCleansing());
         e.getRegistry().register(new RecipeBinding());
-        e.getRegistry().register(new RecipeRebinding());
+        if (Config.enableRebinding)
+            e.getRegistry().register(new RecipeRebinding());
     }
 
     @SubscribeEvent

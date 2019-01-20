@@ -2,6 +2,7 @@ package ext.tpz.crystalline.block.tileentity;
 
 import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.item.CrystallineItems;
+import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,6 +10,8 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
+
+import java.util.Arrays;
 
 public class TERestorationApparatus extends TileEntity implements ITickable {
 
@@ -130,30 +133,32 @@ public class TERestorationApparatus extends TileEntity implements ITickable {
             if (!te.getCrystalStack().isEmpty() && !te.getEssenceStack().isEmpty()) {
                 ItemStack essence = te.getEssenceStack();
                 ItemStack crystal = te.getCrystalStack();
-                if (CrystallineItems.crystal.getPotential(crystal) < 100 && CrystallineItems.crystal.getPotential(crystal) > 0) {
-                    if (CrystallineItems.essence_bottle.getType(essence).equals(CrystallineItems.crystal.getType(crystal))) {
+                if (!Arrays.asList(Config.disabledCrystals).contains(CrystallineItems.essence_bottle.getType(essence).getEquivalent().getRegistryName().toString())) {
+                    if (CrystallineItems.crystal.getPotential(crystal) < 100 && CrystallineItems.crystal.getPotential(crystal) > 0) {
+                        if (CrystallineItems.essence_bottle.getType(essence).equals(CrystallineItems.crystal.getType(crystal))) {
+                            if (getTimer() + 1 < 1200) {
+                                setTimer(getTimer() + 1);
+                            } else {
+                                CrystallineItems.crystal.setPotential(crystal, 100);
+                                CrystallineItems.crystal.setDrained(crystal, false);
+                                te.setEssenceStack(ItemStack.EMPTY);
+                                setTimer(0);
+                            }
+                        }
+                    } else if (CrystallineItems.crystal.getPotential(crystal) == 0) {
                         if (getTimer() + 1 < 1200) {
                             setTimer(getTimer() + 1);
                         } else {
                             CrystallineItems.crystal.setPotential(crystal, 100);
+                            CrystallineItems.crystal.setType(crystal, CrystallineItems.essence_bottle.getType(essence).getEquivalent());
                             CrystallineItems.crystal.setDrained(crystal, false);
+                            CrystallineItems.crystal.setReagent(crystal, CrystallineItems.essence_bottle.getType(essence).getEquivalent().getReagentType());
+                            if (CrystallineItems.essence_bottle.getType(essence).getEquivalent().hasBinding()) {
+                                CrystallineItems.crystal.setBound(crystal, CrystallineItems.crystal.getBound(crystal));
+                            }
                             te.setEssenceStack(ItemStack.EMPTY);
                             setTimer(0);
                         }
-                    }
-                } else if (CrystallineItems.crystal.getPotential(crystal) == 0) {
-                    if (getTimer() + 1 < 1200) {
-                        setTimer(getTimer() + 1);
-                    } else {
-                        CrystallineItems.crystal.setPotential(crystal, 100);
-                        CrystallineItems.crystal.setType(crystal, CrystallineItems.essence_bottle.getType(essence).getEquivalent());
-                        CrystallineItems.crystal.setDrained(crystal, false);
-                        CrystallineItems.crystal.setReagent(crystal, CrystallineItems.essence_bottle.getType(essence).getEquivalent().getReagentType());
-                        if (CrystallineItems.essence_bottle.getType(essence).getEquivalent().hasBinding()) {
-                            CrystallineItems.crystal.setBound(crystal, CrystallineItems.crystal.getBound(crystal));
-                        }
-                        te.setEssenceStack(ItemStack.EMPTY);
-                        setTimer(0);
                     }
                 }
             }

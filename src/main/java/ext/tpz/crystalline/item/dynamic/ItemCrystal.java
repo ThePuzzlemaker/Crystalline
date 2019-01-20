@@ -11,6 +11,7 @@ import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.modes.BaseModModes;
 import ext.tpz.crystalline.reagents.BaseModReagents;
 import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.util.config.Config;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -208,17 +209,22 @@ public class ItemCrystal extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
-        if (!isDrained(stack) && getPotential(stack) > 0) {
-            player.getCooldownTracker().setCooldown(this, 10);
-            getMode(stack).use(stack, player);
+        if (Arrays.asList(Config.disabledCrystals).contains(getType(stack).getRegistryName().toString())) {
+            if (!isDrained(stack) && getPotential(stack) > 0) {
+                player.getCooldownTracker().setCooldown(this, 10);
+                getMode(stack).use(stack, player);
+            } else {
+                player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is drained of potential!"), true);
+                return ActionResult.newResult(EnumActionResult.FAIL, stack);
+            }
+            if (getPotential(stack) == 0) {
+                setDrained(stack, true);
+            }
+            return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
         } else {
-            player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is drained of potential!"), true);
+            player.sendStatusMessage(new TextComponentString(TextFormatting.RED + "This crystal is disabled in the config!"), true);
             return ActionResult.newResult(EnumActionResult.FAIL, stack);
         }
-        if (getPotential(stack) == 0) {
-            setDrained(stack, true);
-        }
-        return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
     }
 
     @SideOnly(Side.CLIENT)

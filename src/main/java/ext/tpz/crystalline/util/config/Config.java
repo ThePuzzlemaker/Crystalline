@@ -13,8 +13,8 @@ public class Config {
     public static final String CATEGORY_GENERAL = "general";
 
     // Crystals
-    public static String[] enabledCrystals;
-    public static String descEnabledCrystals = "This option determines what crystals are enabled. When you add a crystal to this list, it is able to be crafted and used. Use '/crystalline crystal dump' to find all registered crystals.";
+    public static String[] disabledCrystals = new String[] {};
+    public static String   descDisabledCrystals = "This option determines what crystals are enabled. When you add a crystal to this list, it is no longer able to be crafted or used. Use '/crystalline crystal dump' to find all registered crystals.";
 
     // Insanity
 
@@ -60,7 +60,7 @@ public class Config {
     public static void initCrystalConfig(Configuration cfg) {
         cfg.addCustomCategoryComment(CATEGORY_CRYSTALS, "This section determines different settings regarding crystals.");
 
-        enabledCrystals = cfg.getStringList("enabledCrystals", CATEGORY_CRYSTALS, CrystalUtils.dump(), descEnabledCrystals);
+        disabledCrystals = cfg.getStringList("disabledCrystals", CATEGORY_CRYSTALS, disabledCrystals, descDisabledCrystals);
     }
 
     public static void initInsanityConfig(Configuration cfg) {
