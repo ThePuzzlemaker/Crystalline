@@ -87,6 +87,7 @@ public class CommandCrystalline extends CommandBase {
         } else {
             iCommandSender.sendMessage(new TextComponentString(TextFormatting.RED + "Usage: " + getUsage(iCommandSender)));
         }
+
     }
 
     @Override

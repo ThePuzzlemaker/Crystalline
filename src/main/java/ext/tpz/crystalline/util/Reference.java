@@ -7,7 +7,7 @@ public class Reference {
     public static final String MODID = "crystalline";
     public static final String MODVER = "1.12.2-git";
     public static final String MODNAME = "Crystalline";
-    public static final String MODDEPS = "required-after:forge@[11.16.0.1865,);required-after:patchouli@[1.0-10,)";
+    public static final String MODDEPS = "required-after:forge@[14.23.5.2768,);required-after:patchouli@[1.0-10,)";
 
     public static final String PROXYSERVER = "ext.tpz.crystalline.proxy.ServerProxy";
     public static final String PROXYCLIENT = "ext.tpz.crystalline.proxy.ClientProxy";
