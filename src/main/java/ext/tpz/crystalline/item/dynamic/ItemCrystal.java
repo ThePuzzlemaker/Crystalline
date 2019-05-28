@@ -209,7 +209,7 @@ public class ItemCrystal extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
-        if (Arrays.asList(Config.disabledCrystals).contains(getType(stack).getRegistryName().toString())) {
+        if (!Arrays.asList(Config.disabledCrystals).contains(getType(stack).getRegistryName().toString())) {
             if (!isDrained(stack) && getPotential(stack) > 0) {
                 player.getCooldownTracker().setCooldown(this, 10);
                 getMode(stack).use(stack, player);

@@ -2,6 +2,7 @@ language: java
 before_install:
  - chmod +x gradlew
 script:
+  - jdk_switcher use oraclejdk8
   - ./gradlew setupCiWorkspace
   - ./gradlew build
 before_cache:
