@@ -27,7 +27,7 @@ minecraft {
 }
 
 repositories {
-    maven { url 'http://tehnut.info/maven/' }
+    /*maven { url 'http://tehnut.info/maven/' }
     maven { // TOP
         name 'tterrag maven'
         url "http://maven.tterrag.com/"
@@ -45,13 +45,13 @@ repositories {
     maven {  // Required by TOP
         name = "CoFH Maven"
         url = "http://maven.covers1624.net"
-    }
+    }*/
 }
 
 dependencies {
-    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
+    /*deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
     deobfProvided "mezz.jei:jei_1.12.2:4.15.0.277:api"
-    runtime "mezz.jei:jei_1.12.2:4.15.0.277"
+    runtime "mezz.jei:jei_1.12.2:4.15.0.277"*/
 }
 
 processResources {

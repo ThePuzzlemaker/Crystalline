@@ -1,4 +1,4 @@
-package ext.tpz.crystalline;
+@Mpackage ext.tpz.crystalline;
 
 import ext.tpz.crystalline.proxy.CommonProxy;
 import ext.tpz.crystalline.util.CommandCrystalline;
