@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.common;
+package ext.tpz.crystalline.api;
 
 public class CStatic {
 

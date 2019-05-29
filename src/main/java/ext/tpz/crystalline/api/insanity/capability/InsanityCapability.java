@@ -1,14 +1,13 @@
-package ext.tpz.crystalline.api.insanity;
+package ext.tpz.crystalline.api.insanity.capability;
 
+import ext.tpz.crystalline.api.CStatic;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
-import net.minecraftforge.common.util.INBTSerializable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -19,7 +18,7 @@ public class InsanityCapability implements IInsanity, ICapabilitySerializable<NB
     @CapabilityInject(IInsanity.class)
     public static Capability<IInsanity> CAPABILITY_INSANITY = null;
 
-    public static final ResourceLocation CAPABILITY_INSANITY_RL = new ResourceLocation("crystalline", "capability.insanity");
+    public static final ResourceLocation CAPABILITY_INSANITY_RL = new ResourceLocation(CStatic.MODID, "capability.insanity");
 
     private int insanity;
 
@@ -49,7 +48,7 @@ public class InsanityCapability implements IInsanity, ICapabilitySerializable<NB
 
     @Override
     public NBTTagCompound serializeNBT() {
-        return (NBTTagCompound)CAPABILITY_INSANITY.writeNBT(this, EnumFacing.UP);
+        return (NBTTagCompound) CAPABILITY_INSANITY.writeNBT(this, EnumFacing.UP);
     }
 
     @Override
@@ -71,7 +70,6 @@ public class InsanityCapability implements IInsanity, ICapabilitySerializable<NB
     }
 
     public static class Storage implements Capability.IStorage<IInsanity> {
-
         @Nullable
         @Override
         public NBTBase writeNBT(Capability<IInsanity> capability, IInsanity instance, EnumFacing side) {
@@ -83,7 +81,8 @@ public class InsanityCapability implements IInsanity, ICapabilitySerializable<NB
         @Override
         public void readNBT(Capability<IInsanity> capability, IInsanity instance, EnumFacing side, NBTBase nbt) {
             if (nbt instanceof NBTTagCompound) {
-                instance.setInsanity(((NBTTagCompound) nbt).getInteger("insanity"));
+                int insanity = ((NBTTagCompound) nbt).getInteger("insanity");
+                instance.setInsanity(insanity);
             } else {
                 instance.setInsanity(0);
             }
@@ -91,12 +90,10 @@ public class InsanityCapability implements IInsanity, ICapabilitySerializable<NB
     }
 
     public static class Factory implements Callable<IInsanity> {
-
         @Override
-        public IInsanity call() throws Exception {
+        public IInsanity call() {
             return new InsanityCapability();
         }
-
     }
 
 

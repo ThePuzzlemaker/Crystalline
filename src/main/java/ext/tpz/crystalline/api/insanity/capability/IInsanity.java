@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.api.insanity;
+package ext.tpz.crystalline.api.insanity.capability;
 
 public interface IInsanity {
 

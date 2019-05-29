@@ -1,5 +1,6 @@
 package ext.tpz.crystalline.common;
 
+import ext.tpz.crystalline.api.CStatic;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
