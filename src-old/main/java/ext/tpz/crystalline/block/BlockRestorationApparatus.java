@@ -131,7 +131,7 @@ public class BlockRestorationApparatus extends Block implements ITileEntityProvi
         }
 
         // Return true also on the client to make sure that MC knows we handled this and will not try to place
-        // a block on the client
+        // a blocks on the client
         return true;
     }
 

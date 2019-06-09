@@ -34,7 +34,7 @@ public class TESRDistillationBasin extends TileEntitySpecialRenderer<TEDistillat
                 RenderHelper.enableStandardItemLighting();
                 GlStateManager.enableLighting();
                 GlStateManager.pushMatrix();
-                // Translate to the center of the block and .9 points higher
+                // Translate to the center of the blocks and .9 points higher
                 GlStateManager.translate(.5, 1.20, .5);
                 GlStateManager.scale(.4f, .4f, .4f);
                 GlStateManager.rotate(te.rot, 0.0f, 1.0f, 0.0f);

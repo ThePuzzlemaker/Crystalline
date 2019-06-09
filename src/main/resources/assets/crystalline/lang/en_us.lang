@@ -1,0 +1,28 @@
+< Crystal Lore >
+
+crystalline.lore.crystal.type=§r§7Type: §r§a%s
+
+crystalline.lore.crystal.drained.true=§r§7Drained: §r§4Yes
+crystalline.lore.crystal.drained.false=§r§7Drained: §r§aNo
+
+crystalline.lore.crystal.insanity.true=§r§7Causes Insanity: §r§4Yes
+crystalline.lore.crystal.insanity.false=§r§7Causes Insanity: §r§aNo
+
+crystalline.lore.crystal.bound=§r§7Bound To: §r§a%s
+crystalline.lore.crystal.unbound=§r§7Bound To: §r§4Not Bound
+crystalline.lore.crystal.bound.invalid=§4Invalid Player!
+
+crystalline.lore.crystal.potential=§r§7Essence Potential: §r%s§r§7/§r§a100
+crystalline.lore.crystal.potential.firstquartile=§4%d
+crystalline.lore.crystal.potential.secondquartile=§c%d
+crystalline.lore.crystal.potential.thirdquartile=§2%d
+crystalline.lore.crystal.potential.fourthquartile=§a%d
+
+crystalline.lore.crystal.reagent=§r§7Reagent Required: §r%s
+
+
+
+
+< Tuning Machine >
+
+tile.crystalline.tuningmachine.name=Tuning Machine

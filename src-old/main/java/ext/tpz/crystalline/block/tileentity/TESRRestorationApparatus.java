@@ -34,7 +34,7 @@ public class TESRRestorationApparatus extends TileEntitySpecialRenderer<TERestor
                 GlStateManager.enableLighting();
                 RenderHelper.enableStandardItemLighting();
                 GlStateManager.pushMatrix();
-                // Translate to the center of the block and .9 points higher
+                // Translate to the center of the blocks and .9 points higher
                 GlStateManager.translate(.5, .25, .5);
                 GlStateManager.scale(.4f, .4f, .4f);
                 GlStateManager.rotate(te.rotC, 0.0f, 1.0f, 0.0f);
@@ -56,7 +56,7 @@ public class TESRRestorationApparatus extends TileEntitySpecialRenderer<TERestor
                 GlStateManager.enableLighting();
                 RenderHelper.enableStandardItemLighting();
                 GlStateManager.pushMatrix();
-                // Translate to the center of the block and .9 points higher
+                // Translate to the center of the blocks and .9 points higher
                 GlStateManager.translate(.5, .9, .5);
                 GlStateManager.scale(.4f, .4f, .4f);
                 GlStateManager.rotate(te.rotE, 0.0f, 1.0f, 0.0f);
