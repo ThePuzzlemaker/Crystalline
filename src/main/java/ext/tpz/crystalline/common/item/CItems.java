@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.item;
+package ext.tpz.crystalline.common.item;
 
 import ext.tpz.crystalline.common.item.dyn.ItemCrystal;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
