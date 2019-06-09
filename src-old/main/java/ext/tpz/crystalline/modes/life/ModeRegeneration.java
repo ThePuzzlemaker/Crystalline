@@ -5,7 +5,7 @@ import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.insanity.InsanityUtils;
-import ext.tpz.crystalline.item.CrystallineItems;
+import ext.tpz.crystalline.common.item.CrystallineItems;
 import ext.tpz.crystalline.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
