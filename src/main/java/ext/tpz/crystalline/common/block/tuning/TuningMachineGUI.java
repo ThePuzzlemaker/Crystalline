@@ -44,10 +44,12 @@ public class TuningMachineGUI extends GuiContainer {
         if (mouseButton == 0) {
             if (mouseX > tuneX && mouseX < tuneX + tuneW && mouseY > tuneY && mouseY < tuneY + tuneH) {
                 // TODO: Functionality
-                te.test(te.getItemStackHandler().getStackInSlot(0));
+                //te.tune(te.getItemStackHandler().getStackInSlot(0));
             } else if (mouseX > testX && mouseX < testX + testW && mouseY > testY && mouseY < testY + testH) {
                 // TODO: Functionality
                 difference = te.test(te.getItemStackHandler().getStackInSlot(0));
+                finalIndicY = guiTop + 35 + MathHelper.clamp(difference, -30, 30);
+                te.setCurrentLocation(finalIndicY);
             } else {
                 super.mouseClicked(mouseX, mouseY, mouseButton);
             }
@@ -60,6 +62,8 @@ public class TuningMachineGUI extends GuiContainer {
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         mc.getTextureManager().bindTexture(background);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+
+        finalIndicY = te.getCurrentLocation();
 
         tuneX = guiLeft + 50;
         tuneY = guiTop + 31;
@@ -82,8 +86,6 @@ public class TuningMachineGUI extends GuiContainer {
 
         mc.getTextureManager().bindTexture(indicator);
         drawTexturedModalRect(guiLeft + 144, indicY, 0, 0, 7, 1);
-
-        finalIndicY = guiTop + 35 + MathHelper.clamp(difference, -30, 30);
 
         new Label.LabelCentered(tuneX + tuneW / 2, tuneY + tuneH / 2 - 4, "TUNE", 0x000000, false).draw(mouseX, mouseY);
         new Label.LabelCentered(testX + testW / 2, testY + testH / 2 - 4, "TEST", 0x000000, false).draw(mouseX, mouseY);

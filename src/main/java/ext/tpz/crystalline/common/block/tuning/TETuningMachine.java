@@ -24,6 +24,8 @@ public class TETuningMachine extends TileEntity {
 
     private int frequency;
 
+    private int currentLocation;
+
     private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -40,6 +42,9 @@ public class TETuningMachine extends TileEntity {
         if (compound.hasKey("frequency")) {
             this.frequency = compound.getInteger("frequency");
         }
+        if (compound.hasKey("currentLoc")) {
+            this.currentLocation = compound.getInteger("currentLoc");
+        }
     }
 
     @Override
@@ -47,6 +52,7 @@ public class TETuningMachine extends TileEntity {
         super.writeToNBT(compound);
         compound.setTag("items", itemStackHandler.serializeNBT());
         compound.setInteger("frequency", this.frequency);
+        compound.setInteger("currentLoc", this.currentLocation);
         return compound;
     }
 
@@ -82,6 +88,14 @@ public class TETuningMachine extends TileEntity {
 
     public void setFrequency(int frequency) {
         this.frequency = frequency;
+    }
+
+    public int getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(int currentLocation) {
+        this.currentLocation = currentLocation;
     }
 
     public void tune(ItemStack crystal) {

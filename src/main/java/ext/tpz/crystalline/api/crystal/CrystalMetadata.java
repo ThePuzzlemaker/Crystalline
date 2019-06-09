@@ -1,13 +1,11 @@
 package ext.tpz.crystalline.api.crystal;
 
-import ext.tpz.crystalline.api.util.SerializableMetadata;
-import net.minecraft.entity.player.EntityPlayer;
+import ext.tpz.crystalline.api.util.ISerializableMetadata;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 
 import java.util.UUID;
 
-public class CrystalMetadata implements SerializableMetadata {
+public class CrystalMetadata implements ISerializableMetadata {
 
     private ICrystal crystal;
     private int frequency;
