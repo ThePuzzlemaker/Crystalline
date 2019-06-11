@@ -1,17 +1,16 @@
 package ext.tpz.crystalline.common.block.tuning;
 
 import ext.tpz.crystalline.api.CStatic;
-import ext.tpz.crystalline.common.Crystalline;
-import ext.tpz.crystalline.common.block.tuning.TETuningMachine;
-import ext.tpz.crystalline.common.block.tuning.TuningMachineContainer;
 import ext.tpz.crystalline.common.gui.Label;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
 
+@SideOnly(Side.CLIENT)
 public class TuningMachineGUI extends GuiContainer {
 
     public static final int WIDTH = 180;
@@ -50,6 +49,7 @@ public class TuningMachineGUI extends GuiContainer {
                 difference = te.test(te.getItemStackHandler().getStackInSlot(0));
                 finalIndicY = guiTop + 35 + MathHelper.clamp(difference, -30, 30);
                 te.setCurrentLocation(finalIndicY);
+                te.markDirty();
             } else {
                 super.mouseClicked(mouseX, mouseY, mouseButton);
             }
