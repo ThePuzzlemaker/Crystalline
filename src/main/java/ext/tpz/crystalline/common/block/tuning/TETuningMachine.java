@@ -42,8 +42,8 @@ public class TETuningMachine extends TileEntity {
         if (compound.hasKey("frequency")) {
             this.frequency = compound.getInteger("frequency");
         }
-        if (compound.hasKey("currentLoc")) {
-            this.currentLocation = compound.getInteger("currentLoc");
+        if (compound.hasKey("currentLocation")) {
+            this.currentLocation = compound.getInteger("currentLocation");
         }
     }
 
@@ -52,7 +52,7 @@ public class TETuningMachine extends TileEntity {
         super.writeToNBT(compound);
         compound.setTag("items", itemStackHandler.serializeNBT());
         compound.setInteger("frequency", this.frequency);
-        compound.setInteger("currentLoc", this.currentLocation);
+        compound.setInteger("currentLocation", this.currentLocation);
         return compound;
     }
 
