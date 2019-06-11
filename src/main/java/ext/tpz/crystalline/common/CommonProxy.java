@@ -5,6 +5,7 @@ import ext.tpz.crystalline.common.block.tuning.BlockTuningMachine;
 import ext.tpz.crystalline.common.block.tuning.TETuningMachine;
 import ext.tpz.crystalline.common.capabilities.CCapabilities;
 import ext.tpz.crystalline.common.gui.GuiProxy;
+import ext.tpz.crystalline.common.network.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -25,6 +26,7 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent e) {
         NetworkRegistry.INSTANCE.registerGuiHandler(Crystalline.instance, new GuiProxy());
+        PacketHandler.registerMessages(CStatic.MODID);
     }
 
     public void postInit(FMLPostInitializationEvent e) {

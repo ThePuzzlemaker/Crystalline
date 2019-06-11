@@ -2,6 +2,8 @@ package ext.tpz.crystalline.common.block.tuning;
 
 import ext.tpz.crystalline.api.CStatic;
 import ext.tpz.crystalline.common.gui.Label;
+import ext.tpz.crystalline.common.network.PacketHandler;
+import ext.tpz.crystalline.common.network.PacketTETuning;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -21,7 +23,6 @@ public class TuningMachineGUI extends GuiContainer {
 
     private int difference = 0;
     private int indicY = 0;
-    private int finalIndicY = 0;
 
     private static final ResourceLocation background = new ResourceLocation(CStatic.MODID, "textures/gui/tuningmachine.png");
     private static final ResourceLocation indicator = new ResourceLocation(CStatic.MODID, "textures/gui/tuningmachine-indicator.png");
@@ -42,14 +43,9 @@ public class TuningMachineGUI extends GuiContainer {
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         if (mouseButton == 0) {
             if (mouseX > tuneX && mouseX < tuneX + tuneW && mouseY > tuneY && mouseY < tuneY + tuneH) {
-                // TODO: Functionality
-                //te.tune(te.getItemStackHandler().getStackInSlot(0));
+                PacketHandler.INSTANCE.sendToServer(new PacketTETuning(te.getPos(), false));
             } else if (mouseX > testX && mouseX < testX + testW && mouseY > testY && mouseY < testY + testH) {
-                // TODO: Functionality
-                difference = te.test(te.getItemStackHandler().getStackInSlot(0));
-                finalIndicY = guiTop + 35 + MathHelper.clamp(difference, -30, 30);
-                te.setCurrentLocation(finalIndicY);
-                te.markDirty();
+                PacketHandler.INSTANCE.sendToServer(new PacketTETuning(te.getPos(), false));
             } else {
                 super.mouseClicked(mouseX, mouseY, mouseButton);
             }
@@ -63,8 +59,6 @@ public class TuningMachineGUI extends GuiContainer {
         mc.getTextureManager().bindTexture(background);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
-        finalIndicY = te.getCurrentLocation();
-
         tuneX = guiLeft + 50;
         tuneY = guiTop + 31;
         tuneW = 38;
@@ -74,6 +68,8 @@ public class TuningMachineGUI extends GuiContainer {
         testY = guiTop + 31;
         testW = 38;
         testH = 14;
+
+        int finalIndicY = guiTop + 35 + MathHelper.clamp(te.getDiff(), -30, 30);
 
         if (indicY < guiTop + 5 || indicY > guiTop + 565)
             indicY = guiTop + 35;

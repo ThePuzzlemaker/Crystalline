@@ -6,6 +6,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -24,7 +26,7 @@ public class TETuningMachine extends TileEntity {
 
     private int frequency;
 
-    private int currentLocation;
+    private int diff;
 
     private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE) {
         @Override
@@ -42,8 +44,8 @@ public class TETuningMachine extends TileEntity {
         if (compound.hasKey("frequency")) {
             this.frequency = compound.getInteger("frequency");
         }
-        if (compound.hasKey("currentLocation")) {
-            this.currentLocation = compound.getInteger("currentLocation");
+        if (compound.hasKey("diff")) {
+            this.diff = compound.getInteger("diff");
         }
     }
 
@@ -52,7 +54,7 @@ public class TETuningMachine extends TileEntity {
         super.writeToNBT(compound);
         compound.setTag("items", itemStackHandler.serializeNBT());
         compound.setInteger("frequency", this.frequency);
-        compound.setInteger("currentLocation", this.currentLocation);
+        compound.setInteger("diff", this.diff);
         return compound;
     }
 
@@ -88,26 +90,63 @@ public class TETuningMachine extends TileEntity {
 
     public void setFrequency(int frequency) {
         this.frequency = frequency;
+        this.markDirty();
+        if (world != null) {
+            IBlockState state = world.getBlockState(getPos());
+            world.notifyBlockUpdate(getPos(), state, state, 3);
+        }
     }
 
-    public int getCurrentLocation() {
-        return currentLocation;
+    public int getDiff() {
+        System.out.println(diff);
+        return diff;
     }
 
-    public void setCurrentLocation(int currentLocation) {
-        this.currentLocation = currentLocation;
+    public void setDiff(int diff) {
+        this.diff = diff;
+        this.markDirty();
+        if (world != null) {
+            IBlockState state = world.getBlockState(getPos());
+            world.notifyBlockUpdate(getPos(), state, state, 3);
+        }
     }
 
     public void tune(ItemStack crystal) {
 
     }
 
-    public int test(ItemStack crystal) {
+    public void test(ItemStack crystal) {
         if (crystal.getItem() == Items.DIAMOND) {
-            return 0;
+            this.setDiff(0);
         } else {
-            return 5100;
+            this.setDiff(5100);
         }
+    }
+
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        // getUpdateTag() is called whenever the chunkdata is sent to the
+        // client. In contrast getUpdatePacket() is called when the tile entity
+        // itself wants to sync to the client. In many cases you want to send
+        // over the same information in getUpdateTag() as in getUpdatePacket().
+        return writeToNBT(new NBTTagCompound());
+    }
+
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket() {
+        // Prepare a packet for syncing our TE to the client. Since we only have to sync the stack
+        // and that's all we have we just write our entire NBT here. If you have a complex
+        // tile entity that doesn't need to have all information on the client you can write
+        // a more optimal NBT here.
+        NBTTagCompound nbtTag = new NBTTagCompound();
+        this.writeToNBT(nbtTag);
+        return new SPacketUpdateTileEntity(getPos(), 1, nbtTag);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
+        // Here we get the packet from the server and read it into our client side tile entity
+        this.readFromNBT(packet.getNbtCompound());
     }
 
 }
