@@ -38,7 +38,7 @@ public class CBlocks {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void registerModels(ModelRegistryEvent e) {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(tuningMachine), 0, new ModelResourceLocation(tuningMachine.getRegistryName(), "inventory"));
+        tuningMachine.initModel();
     }
 
 

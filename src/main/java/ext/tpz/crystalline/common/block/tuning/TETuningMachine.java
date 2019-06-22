@@ -32,6 +32,10 @@ public class TETuningMachine extends TileEntity {
         @Override
         protected void onContentsChanged(int slot) {
             TETuningMachine.this.markDirty();
+            if (world != null) {
+                IBlockState state = world.getBlockState(getPos());
+                world.notifyBlockUpdate(getPos(), state, state, 3);
+            }
         }
     };
 
