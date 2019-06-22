@@ -27,10 +27,10 @@ public class TESRTuningMachine extends TileEntitySpecialRenderer<TETuningMachine
     private void renderItem(TETuningMachine te) {
         ItemStack stack = te.getItemStackHandler().getStackInSlot(0);
         if (!stack.isEmpty()) {
-            RenderHelper.enableStandardItemLighting();
             GlStateManager.enableLighting();
+            RenderHelper.enableStandardItemLighting();
             GlStateManager.pushMatrix();
-            //GlStateManager.translate(.5, .5, .5);
+            GlStateManager.translate(.5, .35, .5);
             GlStateManager.scale(.4f, .4f, .4f);
             Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.NONE);
             GlStateManager.popMatrix();
