@@ -18,7 +18,7 @@ public class Crystalline {
     @Mod.Instance
     public static Crystalline instance;
 
-    public static Logger logger = LogManager.getLogger(CStatic.MODID);
+    public static final Logger logger = LogManager.getLogger(CStatic.MODID);
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
