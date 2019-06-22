@@ -12,6 +12,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -101,4 +102,17 @@ public class BlockTuningMachine extends Block implements ITileEntityProvider {
         ClientRegistry.bindTileEntitySpecialRenderer(TETuningMachine.class, new TESRTuningMachine());
     }
 
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        if (tileentity instanceof TETuningMachine)
+        {
+            TETuningMachine te = (TETuningMachine)tileentity;
+            for (int i = 0; i < te.getItemStackHandler().getSlots(); i++ ) {
+                EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), te.getItemStackHandler().getStackInSlot(i));
+                worldIn.spawnEntity(entityItem);
+            }
+        }
+        super.breakBlock(worldIn, pos, state);
+    }
 }
