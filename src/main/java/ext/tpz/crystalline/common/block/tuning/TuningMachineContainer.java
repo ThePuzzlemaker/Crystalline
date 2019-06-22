@@ -74,4 +74,9 @@ public class TuningMachineContainer extends Container {
     public boolean canInteractWith(EntityPlayer playerIn) {
         return te.canInteractWith(playerIn);
     }
+
+    @Override
+    public void onContainerClosed(EntityPlayer playerIn) {
+        te.markClosed();
+    }
 }

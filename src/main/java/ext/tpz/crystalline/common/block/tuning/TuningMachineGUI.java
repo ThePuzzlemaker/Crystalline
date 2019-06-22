@@ -88,10 +88,4 @@ public class TuningMachineGUI extends GuiContainer {
         new Label.LabelCentered(testX + testW / 2, testY + testH / 2 - 4, "TEST", 0x000000, false).draw(mouseX, mouseY);
     }
 
-
-    @Override
-    public void onGuiClosed() {
-        te.markClosed();
-    }
-
 }

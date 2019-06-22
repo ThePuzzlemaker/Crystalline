@@ -27,6 +27,7 @@ public class TETuningMachine extends TileEntity {
     private int currentFrequency;
     private int currentDifference;
 
+
     private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -73,7 +74,8 @@ public class TETuningMachine extends TileEntity {
         BlockPos pos = this.getPos();
         World world = this.getWorld();
         IBlockState state = world.getBlockState(pos);
-        world.setBlockState(pos, state.withProperty(OPEN, false), 2);
+        IBlockState newState = state.withProperty(OPEN, false);
+        world.setBlockState(pos, newState, 2);
     }
 
     public ItemStackHandler getItemStackHandler() {
@@ -132,5 +134,8 @@ public class TETuningMachine extends TileEntity {
         getWorld().notifyBlockUpdate(getPos(), state, state, 3);
     }
 
-
+    @Override
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+        return false;
+    }
 }
