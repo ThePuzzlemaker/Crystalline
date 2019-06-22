@@ -70,7 +70,7 @@ public class TuningMachineGUI extends GuiContainer {
         testW = 38;
         testH = 14;
 
-        int finalIndicY = guiTop + 35 + MathHelper.clamp(te.getDiff(), -30, 30);
+        int finalIndicY = guiTop + 35 + MathHelper.clamp(te.getCurrentDifference(), -30, 30);
 
         if (indicY < guiTop + 5 || indicY > guiTop + 565)
             indicY = guiTop + 35;
