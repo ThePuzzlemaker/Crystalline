@@ -3,7 +3,8 @@ package ext.tpz.crystalline.common.block.tuning;
 import ext.tpz.crystalline.api.CStatic;
 import ext.tpz.crystalline.common.gui.Label;
 import ext.tpz.crystalline.common.network.PacketHandler;
-import ext.tpz.crystalline.common.network.PacketTETuning;
+import ext.tpz.crystalline.common.network.PacketTMTest;
+import ext.tpz.crystalline.common.network.PacketTMTune;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -43,9 +44,9 @@ public class TuningMachineGUI extends GuiContainer {
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         if (mouseButton == 0) {
             if (mouseX > tuneX && mouseX < tuneX + tuneW && mouseY > tuneY && mouseY < tuneY + tuneH) {
-                PacketHandler.INSTANCE.sendToServer(new PacketTETuning(te.getPos(), false));
+                PacketHandler.INSTANCE.sendToServer(new PacketTMTune(te.getPos()));
             } else if (mouseX > testX && mouseX < testX + testW && mouseY > testY && mouseY < testY + testH) {
-                PacketHandler.INSTANCE.sendToServer(new PacketTETuning(te.getPos(), false));
+                PacketHandler.INSTANCE.sendToServer(new PacketTMTest(te.getPos()));
             } else {
                 super.mouseClicked(mouseX, mouseY, mouseButton);
             }

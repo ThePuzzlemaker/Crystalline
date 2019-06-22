@@ -90,7 +90,7 @@ public class TETuningMachine extends TileEntity {
 
     public void setFrequency(int frequency) {
         this.frequency = frequency;
-        this.markDirty();
+        markDirty();
         if (world != null) {
             IBlockState state = world.getBlockState(getPos());
             world.notifyBlockUpdate(getPos(), state, state, 3);
@@ -98,13 +98,12 @@ public class TETuningMachine extends TileEntity {
     }
 
     public int getDiff() {
-        System.out.println(diff);
         return diff;
     }
 
     public void setDiff(int diff) {
         this.diff = diff;
-        this.markDirty();
+        markDirty();
         if (world != null) {
             IBlockState state = world.getBlockState(getPos());
             world.notifyBlockUpdate(getPos(), state, state, 3);
@@ -129,7 +128,7 @@ public class TETuningMachine extends TileEntity {
         // client. In contrast getUpdatePacket() is called when the tile entity
         // itself wants to sync to the client. In many cases you want to send
         // over the same information in getUpdateTag() as in getUpdatePacket().
-        return writeToNBT(new NBTTagCompound());
+        return this.writeToNBT(new NBTTagCompound());
     }
 
     @Override
