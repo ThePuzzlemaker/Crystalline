@@ -48,12 +48,14 @@ public class PacketTETuning implements IMessage {
             EntityPlayerMP playerEntity = ctx.getServerHandler().player;
             World world = playerEntity.getEntityWorld();
             if (world.isBlockLoaded(message.blockPos)) {
-                if (world.getTileEntity(message.blockPos) instanceof TETuningMachine) {
-                    TETuningMachine te = (TETuningMachine) world.getTileEntity(message.blockPos);
-                    if (message.real) {
-                        te.tune(te.getItemStackHandler().getStackInSlot(0));
-                    } else {
-                        te.test(te.getItemStackHandler().getStackInSlot(0));
+                if (world.isBlockModifiable(playerEntity, message.blockPos)) {
+                    if (world.getTileEntity(message.blockPos) instanceof TETuningMachine) {
+                        TETuningMachine te = (TETuningMachine) world.getTileEntity(message.blockPos);
+                        if (message.real) {
+                            te.tune(te.getItemStackHandler().getStackInSlot(0));
+                        } else {
+                            te.test(te.getItemStackHandler().getStackInSlot(0));
+                        }
                     }
                 }
             }

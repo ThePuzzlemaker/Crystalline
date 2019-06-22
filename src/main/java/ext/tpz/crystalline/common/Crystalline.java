@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = CStatic.MODID, name = CStatic.MODNAME, version = CStatic.MODVER, dependencies = CStatic.MODDEPS, useMetadata = true)
@@ -17,11 +18,10 @@ public class Crystalline {
     @Mod.Instance
     public static Crystalline instance;
 
-    public static Logger logger;
+    public static Logger logger = LogManager.getLogger(CStatic.MODID);
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-        logger = e.getModLog();
         proxy.preInit(e);
     }
 
