@@ -20,7 +20,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ResonanceHandler {
 
     @SubscribeEvent
-    public static void onWorldGeneration(WorldEvent.CreateSpawnPosition e) {
+    public static void onWorldGeneration(WorldEvent.Load e) {
         WorldResonance rl = WorldResonance.INSTANCE;
         if (CrystalRegistry.getRegistry() != null) {
             for (ICrystal c : CrystalRegistry.getRegistry().getValuesCollection()) {
