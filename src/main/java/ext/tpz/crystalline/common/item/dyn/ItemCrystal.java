@@ -2,6 +2,8 @@ package ext.tpz.crystalline.common.item.dyn;
 
 import ext.tpz.crystalline.api.CStatic;
 import ext.tpz.crystalline.api.crystal.CrystalMetadata;
+import ext.tpz.crystalline.api.resonance.Resonance;
+import ext.tpz.crystalline.api.resonance.WorldResonance;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,7 +23,7 @@ public class ItemCrystal extends Item {
         this.setRegistryName(new ResourceLocation(CStatic.MODID, "crystal")).setUnlocalizedName(CStatic.MODID + ".crystal").setMaxStackSize(1);
     }
 
-    public CrystalMetadata get(ItemStack stack) {
+    public static CrystalMetadata get(ItemStack stack) {
         if (stack.hasTagCompound()) {
             if (stack.getTagCompound().hasKey("data")) {
                 return new CrystalMetadata().deserialize(stack.getTagCompound().getCompoundTag("data"));
@@ -71,8 +73,27 @@ public class ItemCrystal extends Item {
                 } else if (data.getPotential() >= 75 && data.getPotential() <= 100) {
                     tooltip.add(I18n.format("crystalline.lore.crystal.potential", I18n.format("crystalline.lore.crystal.potential.fourthquartile", data.getPotential())));
                 }
+
+                tooltip.add(I18n.format("crystalline.lore.crystal.efficiency", Math.round(calculateEfficiency(getDifference(stack)) * 100.0) / 100.0));
                 // TODO: Reagent tooltip
             }
         }
     }
+
+    public static double calculateEfficiency(double difference) {
+        return (-Math.pow(difference*100, 1.5) + 1000)/1000;
+    }
+
+    public static double getDifference(ItemStack stack) {
+        CrystalMetadata m = get(stack);
+        if (m != null && m.getCrystal() != null) {
+            Resonance r = WorldResonance.INSTANCE.getResonance(m.getCrystal());
+            if (r != null) {
+                return ((double)m.getFrequency()) / ((double)r.getExact());
+            }
+        }
+        return -1;
+    }
+
+
 }
