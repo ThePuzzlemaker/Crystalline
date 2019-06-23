@@ -8,6 +8,7 @@ import ext.tpz.crystalline.common.gui.GuiProxy;
 import ext.tpz.crystalline.common.network.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -22,6 +23,7 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent e) {
         CCapabilities.register();
+        OBJLoader.INSTANCE.addDomain(CStatic.MODID);
     }
 
     public void init(FMLInitializationEvent e) {

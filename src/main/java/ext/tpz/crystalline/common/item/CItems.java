@@ -27,7 +27,7 @@ public class CItems {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void registerModels(ModelRegistryEvent e) {
-        ModelLoader.setCustomModelResourceLocation(crystal, 0, new ModelResourceLocation(crystal.getRegistryName(), "inventory"));
+        crystal.initModel();
     }
 
 }

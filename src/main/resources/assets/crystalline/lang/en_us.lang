@@ -4,6 +4,9 @@ item.crystalline.crystal.name=§r§5§kaa§r§5Crystal§r§5§kaa§r
 
 < Crystal Lore >
 
+crystalline.lore.crystal.lore.one=§r§7§oIt's a geometrically simple crystal formed from some sort of mysterious mineral.
+crystalline.lore.crystal.lore.two=§r§7§oIt seems to whisper out to you to harness its power.
+
 crystalline.lore.crystal.type=§r§7Type: §r§a%s
 
 crystalline.lore.crystal.drained.true=§r§7Drained: §r§4Yes
