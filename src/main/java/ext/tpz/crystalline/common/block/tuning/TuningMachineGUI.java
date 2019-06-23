@@ -43,9 +43,9 @@ public class TuningMachineGUI extends GuiContainer {
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         if (mouseButton == 0) {
-            if (mouseX > tuneX && mouseX < tuneX + tuneW && mouseY > tuneY && mouseY < tuneY + tuneH) {
+            if (isInRange(tuneX, tuneY, tuneW, tuneH, mouseX, mouseY)) {
                 PacketHandler.INSTANCE.sendToServer(new PacketTMTune(te.getPos()));
-            } else if (mouseX > testX && mouseX < testX + testW && mouseY > testY && mouseY < testY + testH) {
+            } else if (isInRange(testX, testY, testW, testH, mouseX, mouseY)) {
                 PacketHandler.INSTANCE.sendToServer(new PacketTMTest(te.getPos()));
             } else {
                 super.mouseClicked(mouseX, mouseY, mouseButton);
@@ -53,6 +53,10 @@ public class TuningMachineGUI extends GuiContainer {
         } else {
             super.mouseClicked(mouseX, mouseY, mouseButton);
         }
+    }
+
+    private boolean isInRange(int x, int y, int w, int h, int mx, int my) {
+        return (mx > x && mx < x + w && my > y && my < y + h);
     }
 
     @Override
@@ -68,6 +72,8 @@ public class TuningMachineGUI extends GuiContainer {
         // Iterate indicator's position and draw the indicator
         iterateIndicatorPos(guiLeft, guiTop);
         drawHorizontalLine(guiLeft + 144, guiLeft + 144 + 7, indicY, 0x000000);
+
+
     }
 
     private void setDrawConstants(int guiLeft, int guiTop) {
