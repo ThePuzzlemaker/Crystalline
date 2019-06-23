@@ -1,8 +1,8 @@
 package ext.tpz.crystalline.common.block.tuning;
 
 import ext.tpz.crystalline.api.CStatic;
-import ext.tpz.crystalline.common.gui.Label;
 import ext.tpz.crystalline.common.network.PacketHandler;
+import ext.tpz.crystalline.common.network.PacketTMFreqChange;
 import ext.tpz.crystalline.common.network.PacketTMTest;
 import ext.tpz.crystalline.common.network.PacketTMTune;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -21,6 +21,15 @@ public class TuningMachineGUI extends GuiContainer {
 
     private int tuneX, tuneY, tuneW, tuneH = 0;
     private int testX, testY, testW, testH = 0;
+    private int freqX, freqY, freqW = 0;
+    private int freqOffset, freqBtnOffset = 0;
+    private int freqBtnX, freqIncY, freqDecY = 0;
+    private int freqBtnClickX = 0;
+    private int texExtra = 0;
+
+    private int texIncBtnY, texIncBtnHvrY = 0;
+    private int texDecBtnY, texDecBtnHvrY = 0;
+    private int freqBtnW, freqBtnH = 0;
 
     private int difference = 0;
     private int indicY = 0;
@@ -48,6 +57,20 @@ public class TuningMachineGUI extends GuiContainer {
             } else if (isInRange(testX, testY, testW, testH, mouseX, mouseY)) {
                 PacketHandler.INSTANCE.sendToServer(new PacketTMTest(te.getPos()));
             } else {
+                for (int i = 0; i < 7; i++) {
+                    if (isInRange(freqBtnClickX - (freqBtnOffset * i), freqIncY, freqBtnW, freqBtnH, mouseX, mouseY)) {
+                        if (!(Math.rint(te.getCurrentFrequency() + (int)Math.rint(Math.pow(10, i))) > 9999999)) {
+                            PacketHandler.INSTANCE.sendToServer(new PacketTMFreqChange(te.getPos(), (int)Math.rint((Math.pow(10, i)))));
+                        }
+                    }
+                }
+                for (int i = 0; i < 7; i++) {
+                    if (isInRange(freqBtnClickX - (freqBtnOffset * i), freqDecY, freqBtnW, freqBtnH, mouseX, mouseY)) {
+                        if (!(Math.rint(te.getCurrentFrequency() - (int)Math.rint(Math.pow(10, i))) < 0)) {
+                            PacketHandler.INSTANCE.sendToServer(new PacketTMFreqChange(te.getPos(), (int)-Math.rint((Math.pow(10, i)))));
+                        }
+                    }
+                }
                 super.mouseClicked(mouseX, mouseY, mouseButton);
             }
         } else {
@@ -66,36 +89,106 @@ public class TuningMachineGUI extends GuiContainer {
         setDrawConstants(guiLeft, guiTop);
 
         // Draw labels
-        drawTextCentered(tuneX + tuneW / 2, tuneY + tuneH / 2 - 4, "TUNE");
-        drawTextCentered(testX + testW / 2, testY + testH / 2 - 4, "TEST");
+        if (isInRange(tuneX, tuneY, tuneW, tuneH, mouseX, mouseY)) {
+            drawTextCenteredShadow(tuneX + tuneW / 2, tuneY + tuneH / 2 - 4, "TUNE", 0xddddff);
+        } else {
+            drawTextCenteredShadow(tuneX + tuneW / 2, tuneY + tuneH / 2 - 4, "TUNE", 0xffffff);
+        }
+
+        if (isInRange(testX, testY, testW, testH, mouseX, mouseY)) {
+            drawTextCenteredShadow(testX + testW / 2, testY + testH / 2 - 4, "TEST", 0xddddff);
+        } else {
+            drawTextCenteredShadow(testX + testW / 2, testY + testH / 2 - 4, "TEST", 0xffffff);
+        }
+
 
         // Iterate indicator's position and draw the indicator
         iterateIndicatorPos(guiLeft, guiTop);
-        drawHorizontalLine(guiLeft + 144, guiLeft + 144 + 7, indicY, 0x000000);
+        renderTexturedModalRect(background, guiLeft + 144, indicY, texExtra, 0, 7, 1);
 
+        // Draw frequency numbers and buttons
+        drawFrequency(te.getCurrentFrequency());
+        drawButtons(mouseX, mouseY);
 
     }
 
+    private void drawButtons(int mx, int my) {
+        for (int i = 0; i < 7; i++) {
+            if (isInRange(freqBtnX + (freqBtnOffset * i), freqIncY, freqBtnW, freqBtnH, mx, my)) {
+                renderTexturedModalRect(background, freqBtnX + (freqOffset * i), freqIncY, texExtra, texIncBtnHvrY, freqBtnW, freqBtnH);
+            } else {
+                renderTexturedModalRect(background, freqBtnX + (freqOffset * i), freqIncY, texExtra, texIncBtnY, freqBtnW, freqBtnH);
+            }
+        }
+        for (int i = 0; i < 7; i++) {
+            if (isInRange(freqBtnX + (freqBtnOffset * i), freqDecY, freqBtnW, freqBtnH, mx, my)) {
+                renderTexturedModalRect(background, freqBtnX + (freqOffset * i), freqDecY, texExtra, texDecBtnHvrY, freqBtnW, freqBtnH);
+            } else {
+                renderTexturedModalRect(background, freqBtnX + (freqOffset * i), freqDecY, texExtra, texDecBtnY, freqBtnW, freqBtnH);
+            }
+        }
+    }
+
+
+
     private void setDrawConstants(int guiLeft, int guiTop) {
-        tuneX = guiLeft + 50;
-        tuneY = guiTop + 31;
+        tuneX = guiLeft + 49;
+        tuneY = guiTop + 32;
         tuneW = 38;
         tuneH = 14;
 
         testX = guiLeft + 92;
-        testY = guiTop + 31;
+        testY = guiTop + 32;
         testW = 38;
         testH = 14;
+
+        freqX = guiLeft + 63;
+        freqY = guiTop + 13;
+        freqW = 5;
+
+        freqOffset = freqW + 3;
+        freqBtnOffset = freqBtnW + 1;
+
+        freqBtnX = guiLeft + 62;
+        freqIncY = guiTop + 6;
+        freqDecY = guiTop + 23;
+        freqBtnClickX = guiLeft + 110;
+
+        freqBtnW = 7;
+        freqBtnH = 4;
+
+        texExtra = 180;
+
+        texIncBtnY = 1;
+        texDecBtnY = 5;
+
+        texIncBtnHvrY = 9;
+        texDecBtnHvrY = 13;
 
         finalIndicY = guiTop + 35 + MathHelper.clamp(te.getCurrentDifference(), -30, 30);
     }
 
-    private void drawText(int x, int y, String text) {
-        mc.fontRenderer.drawString(text, x, y, 0x000000);
+    private void drawFrequency(int freq) {
+        char[] freqChs = padInteger(freq, 7).toCharArray();
+        for (int i = 0; i < freqChs.length; i++) {
+            drawText(freqX + (freqOffset * i), freqY, Character.toString(freqChs[i]), 0xffffff);
+        }
+    }
+
+    private void drawText(int x, int y, String text, int color) {
+        mc.fontRenderer.drawString(text, x, y, color);
+    }
+
+    private void drawTextShadow(int x, int y, String text, int color) {
+        mc.fontRenderer.drawString(text, x, y, color, true);
     }
 
     private void drawTextCentered(int x, int y, String text) {
-        drawText(x - (mc.fontRenderer.getStringWidth(text) / 2), y, text);
+        drawText(x - (mc.fontRenderer.getStringWidth(text) / 2), y, text, 0xffffff);
+    }
+
+    private void drawTextCenteredShadow(int x, int y, String text, int color) {
+        drawTextShadow(x - (mc.fontRenderer.getStringWidth(text) / 2), y, text, color);
     }
 
     private void iterateIndicatorPos(int guiLeft, int guiTop) {
@@ -112,6 +205,10 @@ public class TuningMachineGUI extends GuiContainer {
     private void renderTexturedModalRect(ResourceLocation tex, int x, int y, int texx, int texy, int sizex, int sizey) {
         mc.getTextureManager().bindTexture(tex);
         drawTexturedModalRect(x, y, texx, texy, sizex, sizey);
+    }
+
+    private String padInteger(int in, int padLength) {
+        return String.format("%0" + padLength + "d", in);
     }
 
 
