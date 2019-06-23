@@ -74,7 +74,10 @@ public class ItemCrystal extends Item {
                     tooltip.add(I18n.format("crystalline.lore.crystal.potential", I18n.format("crystalline.lore.crystal.potential.fourthquartile", data.getPotential())));
                 }
 
-                tooltip.add(I18n.format("crystalline.lore.crystal.efficiency", Math.round(calculateEfficiency(getDifference(stack)) * 100.0) / 100.0));
+                if (getDifference(stack) != -1)
+                    tooltip.add(I18n.format("crystalline.lore.crystal.efficiency", Math.round(calculateEfficiency(getDifference(stack)) * 100.0) / 100.0));
+                else
+                    tooltip.add(I18n.format("crystalline.lore.crystal.efficiency.unknown"));
                 // TODO: Reagent tooltip
             }
         }
