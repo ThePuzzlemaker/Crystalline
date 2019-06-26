@@ -1,6 +1,6 @@
 package ext.tpz.crystalline.api.mode;
 
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;

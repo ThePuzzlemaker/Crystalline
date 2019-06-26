@@ -1,6 +1,6 @@
 package ext.tpz.crystalline.insanity;
 
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;

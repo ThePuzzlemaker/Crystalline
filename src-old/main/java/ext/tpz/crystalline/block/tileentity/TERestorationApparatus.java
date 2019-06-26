@@ -2,7 +2,7 @@ package ext.tpz.crystalline.block.tileentity;
 
 import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.util.config.Config;
+import ext.tpz.crystalline.common.util.config.Config;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

@@ -36,3 +36,11 @@ crystalline.lore.crystal.reagent=§r§7Reagent Required: §r%s
 < Tuning Machine >
 
 tile.crystalline.tuningmachine.name=Tuning Machine
+
+< Arcanum Mineralis >
+
+tile.crystalline.arcanummineralis.name=§r§5Arcanum Mineralis
+
+item.crystalline.arcanummineraliscrystal.name=§r§5Crystallized Arcanum Mineralis
+
+itemGroup.crystalline=§r§5§kaa§r§5Crystalline§r§5§kaa§r

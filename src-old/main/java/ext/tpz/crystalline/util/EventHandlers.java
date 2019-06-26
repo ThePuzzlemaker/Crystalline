@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.util;
+package ext.tpz.crystalline.common.util;
 
 import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
@@ -7,7 +7,7 @@ import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.potion.PotionDirtshield;
 import ext.tpz.crystalline.potion.Potions;
 import ext.tpz.crystalline.reagents.BaseModReagents;
-import ext.tpz.crystalline.util.config.Config;
+import ext.tpz.crystalline.common.util.config.Config;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;

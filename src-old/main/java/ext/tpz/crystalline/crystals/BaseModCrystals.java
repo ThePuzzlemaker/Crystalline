@@ -2,7 +2,7 @@ package ext.tpz.crystalline.crystals;
 
 import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.reagents.BaseModReagents;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

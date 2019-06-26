@@ -3,7 +3,7 @@ package ext.tpz.crystalline.essences.liquid;
 import ext.tpz.crystalline.api.crystal.ICrystal;
 import ext.tpz.crystalline.api.essence.liquid.IEssenceLiquid;
 import ext.tpz.crystalline.crystals.BaseModCrystals;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.util.ResourceLocation;
 

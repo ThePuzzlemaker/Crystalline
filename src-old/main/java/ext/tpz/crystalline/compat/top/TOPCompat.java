@@ -1,7 +1,7 @@
 package ext.tpz.crystalline.compat.top;
 
 import ext.tpz.crystalline.Crystalline;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import javax.annotation.Nullable;
 import mcjty.theoneprobe.api.*;
 import net.minecraft.block.state.IBlockState;

@@ -7,7 +7,7 @@ import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.insanity.InsanityUtils;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.potion.Potions;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityZombie;

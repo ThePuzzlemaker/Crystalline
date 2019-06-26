@@ -3,7 +3,7 @@ package ext.tpz.crystalline.recipe;
 import ext.tpz.crystalline.api.recipe.IDistillationRecipe;
 import ext.tpz.crystalline.recipe.distillation.*;
 import ext.tpz.crystalline.recipe.distillation.RecipeCleansing;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

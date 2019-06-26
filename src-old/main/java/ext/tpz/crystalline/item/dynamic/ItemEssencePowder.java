@@ -10,7 +10,7 @@ import ext.tpz.crystalline.entity.DamageSourceBitesTheDust;
 import ext.tpz.crystalline.entity.DamageSourceLiquidEssence;
 import ext.tpz.crystalline.essences.liquid.BaseModEssenceLiquids;
 import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

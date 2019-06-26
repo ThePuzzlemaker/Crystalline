@@ -2,7 +2,7 @@ package ext.tpz.crystalline.entity.render;
 
 import ext.tpz.crystalline.entity.EntityObliterateBlock;
 import ext.tpz.crystalline.entity.model.ObliterateModel;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelSnowMan;
 import net.minecraft.client.renderer.GlStateManager;

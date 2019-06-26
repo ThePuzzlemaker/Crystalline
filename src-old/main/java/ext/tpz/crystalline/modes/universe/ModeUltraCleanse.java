@@ -7,7 +7,7 @@ import ext.tpz.crystalline.crystals.BaseModCrystals;
 import ext.tpz.crystalline.insanity.InsanityUtils;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;

@@ -3,7 +3,7 @@ package ext.tpz.crystalline.recipe.distillation;
 import ext.tpz.crystalline.api.essence.liquid.IEssenceLiquid;
 import ext.tpz.crystalline.api.recipe.IDistillationRecipe;
 import ext.tpz.crystalline.essences.liquid.BaseModEssenceLiquids;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.util;
+package ext.tpz.crystalline.common.util;
 
 import ext.tpz.crystalline.item.CrystallineItems;
 

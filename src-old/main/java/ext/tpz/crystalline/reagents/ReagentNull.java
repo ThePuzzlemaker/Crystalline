@@ -1,7 +1,7 @@
 package ext.tpz.crystalline.reagents;
 
 import ext.tpz.crystalline.api.reagent.IReagent;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

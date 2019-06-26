@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.util;
+package ext.tpz.crystalline.common.util;
 
 import com.google.common.collect.Lists;
 import ext.tpz.crystalline.api.crystal.CrystalRegistry;

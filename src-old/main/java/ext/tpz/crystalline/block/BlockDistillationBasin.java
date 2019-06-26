@@ -4,7 +4,7 @@ import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.block.tileentity.TEDistillationBasin;
 import ext.tpz.crystalline.block.tileentity.TESRDistillationBasin;
 import ext.tpz.crystalline.compat.top.TOPInfoProvider;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import mcjty.theoneprobe.api.IProbeHitData;
 import mcjty.theoneprobe.api.IProbeInfo;
 import mcjty.theoneprobe.api.ProbeMode;

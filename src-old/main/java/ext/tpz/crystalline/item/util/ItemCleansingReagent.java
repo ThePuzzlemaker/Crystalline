@@ -3,7 +3,7 @@ package ext.tpz.crystalline.item.util;
 import com.google.common.collect.Lists;
 import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.item.CrystallineItem;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;

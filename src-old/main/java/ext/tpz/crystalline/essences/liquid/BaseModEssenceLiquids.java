@@ -1,7 +1,7 @@
 package ext.tpz.crystalline.essences.liquid;
 
 import ext.tpz.crystalline.api.essence.liquid.IEssenceLiquid;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

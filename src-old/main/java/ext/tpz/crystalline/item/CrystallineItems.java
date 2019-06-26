@@ -5,7 +5,7 @@ import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.item.dynamic.*;
 import ext.tpz.crystalline.item.util.ItemCleansingPotion;
 import ext.tpz.crystalline.item.util.ItemCleansingReagent;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.registry.GameRegistry;

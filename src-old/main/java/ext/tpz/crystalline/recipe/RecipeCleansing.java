@@ -1,7 +1,7 @@
 package ext.tpz.crystalline.recipe;
 
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;

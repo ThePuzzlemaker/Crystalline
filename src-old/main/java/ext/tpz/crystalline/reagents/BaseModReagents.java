@@ -1,7 +1,7 @@
 package ext.tpz.crystalline.reagents;
 
 import ext.tpz.crystalline.api.reagent.IReagent;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

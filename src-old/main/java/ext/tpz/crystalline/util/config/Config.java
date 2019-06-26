@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.util.config;
+package ext.tpz.crystalline.common.util.config;
 
 import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.api.crystal.CrystalUtils;

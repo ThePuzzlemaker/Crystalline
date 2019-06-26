@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.util;
+package ext.tpz.crystalline.common.util;
 
 import ext.tpz.crystalline.api.CStatic;
 import net.minecraftforge.common.config.Config;

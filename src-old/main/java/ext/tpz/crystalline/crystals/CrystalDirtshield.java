@@ -6,7 +6,7 @@ import ext.tpz.crystalline.api.mode.ICrystalMode;
 import ext.tpz.crystalline.api.reagent.IReagent;
 import ext.tpz.crystalline.modes.BaseModModes;
 import ext.tpz.crystalline.reagents.BaseModReagents;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.util.ResourceLocation;
 

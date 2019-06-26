@@ -3,7 +3,7 @@ package ext.tpz.crystalline.item.util;
 import ext.tpz.crystalline.Crystalline;
 import ext.tpz.crystalline.entity.DamageSourceCleansingPotion;
 import ext.tpz.crystalline.insanity.InsanityWorldSavedData;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

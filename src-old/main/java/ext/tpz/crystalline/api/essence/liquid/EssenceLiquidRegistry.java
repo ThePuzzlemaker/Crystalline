@@ -1,7 +1,7 @@
 package ext.tpz.crystalline.api.essence.liquid;
 
 import ext.tpz.crystalline.api.essence.powder.IEssencePowder;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;

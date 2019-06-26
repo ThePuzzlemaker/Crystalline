@@ -14,7 +14,7 @@ import ext.tpz.crystalline.modes.life.ModeRegeneration;
 import ext.tpz.crystalline.modes.obliterate.ModeObliterateBlock;
 import ext.tpz.crystalline.modes.obliterate.ModeObliterateEntity;
 import ext.tpz.crystalline.modes.universe.ModeUltraCleanse;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

@@ -1,6 +1,8 @@
 package ext.tpz.crystalline.common;
 
 import ext.tpz.crystalline.api.CStatic;
+import ext.tpz.crystalline.common.util.TabCrystalline;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -19,6 +21,8 @@ public class Crystalline {
     public static Crystalline instance;
 
     public static final Logger logger = LogManager.getLogger(CStatic.MODID);
+
+    public static CreativeTabs tab = new TabCrystalline();
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {

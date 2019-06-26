@@ -40,6 +40,7 @@ public class BlockTuningMachine extends Block implements ITileEntityProvider {
         super(Material.IRON);
         setUnlocalizedName("crystalline.tuningmachine").setRegistryName(CStatic.MODID, "tuningmachine").setHardness(1.0f).setResistance(1.0f).setHarvestLevel("pickaxe", 1);
         setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, false));
+        setCreativeTab(Crystalline.tab);
     }
 
     @Nullable

@@ -4,7 +4,7 @@ import ext.tpz.crystalline.api.recipe.DistillationRegistry;
 import ext.tpz.crystalline.api.recipe.IDistillationRecipe;
 import ext.tpz.crystalline.essences.powder.BaseModEssencePowders;
 import ext.tpz.crystalline.item.CrystallineItems;
-import ext.tpz.crystalline.util.config.Config;
+import ext.tpz.crystalline.common.util.config.Config;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

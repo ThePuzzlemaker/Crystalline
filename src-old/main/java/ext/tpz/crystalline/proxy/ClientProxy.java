@@ -13,7 +13,7 @@ import ext.tpz.crystalline.entity.render.RenderEntityWaterThrow;
 import ext.tpz.crystalline.item.CrystallineItems;
 import ext.tpz.crystalline.packet.client.InputHandler;
 import ext.tpz.crystalline.packet.client.KeyBindings;
-import ext.tpz.crystalline.util.Reference;
+import ext.tpz.crystalline.common.util.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
