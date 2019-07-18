@@ -44,3 +44,8 @@ tile.crystalline.arcanummineralis.name=§r§5Arcanum Mineralis
 item.crystalline.arcanummineraliscrystal.name=§r§5Crystallized Arcanum Mineralis
 
 itemGroup.crystalline=§r§5§kaa§r§5Crystalline§r§5§kaa§r
+
+< Advancements >
+
+crystalline.advancements.root.title=Crystalline » Discovery
+crystalline.advancements.root.description=As you pick up the mysterious crystal, it seems to quiver with potential. It's glowing, as if it's creating its own energy source.

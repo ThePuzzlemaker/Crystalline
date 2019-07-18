@@ -26,12 +26,7 @@ public class CItems {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().register(new ItemCrystal());
-        e.getRegistry().register(new Item() {
-            @Override
-            public boolean hasEffect(ItemStack stack) {
-                return true;
-            }
-        }.setRegistryName("crystalline:arcanummineraliscrystal").setUnlocalizedName("crystalline.arcanummineraliscrystal").setCreativeTab(Crystalline.tab));
+        e.getRegistry().register(new Item().setRegistryName("crystalline:arcanummineraliscrystal").setUnlocalizedName("crystalline.arcanummineraliscrystal").setCreativeTab(Crystalline.tab));
     }
 
     @SubscribeEvent

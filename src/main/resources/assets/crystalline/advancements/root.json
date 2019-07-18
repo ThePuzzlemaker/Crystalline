@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "crystalline:arcanummineraliscrystal"
+    },
+    "title": {
+      "translate": "crystalline.advancements.root.title"
+    },
+    "description": {
+      "translate": "crystalline.advancements.root.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crystalline:arcanummineraliscrystal"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "crystal"
+    ]
+  ]
+}
