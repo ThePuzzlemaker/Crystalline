@@ -21,7 +21,7 @@ public class BlockArcanumMineralis extends Block {
 
     public BlockArcanumMineralis() {
         super(Material.ROCK);
-        setUnlocalizedName("crystalline.arcanummineralis").setRegistryName(CStatic.MODID, "arcanummineralis").setHardness(3.0f).setResistance(15.0f).setLightLevel(0.0125f).setHarvestLevel("pickaxe", 3);
+        setUnlocalizedName("crystalline.arcanummineralis").setRegistryName(CStatic.MODID, "arcanummineralis").setHardness(3.0f).setResistance(15.0f).setHarvestLevel("pickaxe", 3);
         setCreativeTab(Crystalline.tab);
     }
 
