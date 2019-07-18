@@ -5,7 +5,6 @@ import ext.tpz.crystalline.common.network.PacketHandler;
 import ext.tpz.crystalline.common.network.PacketTMFreqChange;
 import ext.tpz.crystalline.common.network.PacketTMTest;
 import ext.tpz.crystalline.common.network.PacketTMTune;
-import ext.tpz.crystalline.common.util.BalancingEquations;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
