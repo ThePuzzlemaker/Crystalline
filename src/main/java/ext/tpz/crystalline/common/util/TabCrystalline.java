@@ -2,6 +2,7 @@ package ext.tpz.crystalline.common.util;
 
 import ext.tpz.crystalline.common.item.CItems;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
@@ -17,9 +18,8 @@ public class TabCrystalline extends CreativeTabs {
     }
 
     @Override
-    public void displayAllRelevantItems(NonNullList<ItemStack> p_78018_1_) {
-        super.displayAllRelevantItems(p_78018_1_);
-
+    public void displayAllRelevantItems(NonNullList<ItemStack> items) {
+        super.displayAllRelevantItems(items);
     }
 
 
