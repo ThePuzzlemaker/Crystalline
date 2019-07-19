@@ -45,6 +45,12 @@ item.crystalline.arcanummineraliscrystal.name=§r§5Crystallized Arcanum Mineral
 
 itemGroup.crystalline=§r§5§kaa§r§5Crystalline§r§5§kaa§r
 
+< Misc Items >
+
+item.crystalline.crystalbase.name=§r§7Crystal Base
+
+item.crystalline.mortarandpestle.name=§r§7Mortar and Pestle
+
 < Advancements >
 
 crystalline.advancements.root.title=Crystalline » Discovery

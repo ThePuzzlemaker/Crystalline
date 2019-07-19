@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "crystalline:mortarandpestle"
+  },
+  "pattern": [
+    "s  ",
+    " w ",
+    " bs"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "b": {
+      "item": "minecraft:bowl"
+    }
+  }
+}

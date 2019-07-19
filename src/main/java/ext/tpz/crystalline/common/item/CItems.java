@@ -23,10 +23,18 @@ public class CItems {
     @GameRegistry.ObjectHolder("crystalline:arcanummineraliscrystal")
     public static Item arcanumMineralisCrystal;
 
+    @GameRegistry.ObjectHolder("crystalline:crystalbase")
+    public static Item crystalBase;
+
+    @GameRegistry.ObjectHolder("crystalline:mortarandpestle")
+    public static Item mortarAndPestle;
+
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().register(new ItemCrystal());
         e.getRegistry().register(new Item().setRegistryName("crystalline:arcanummineraliscrystal").setUnlocalizedName("crystalline.arcanummineraliscrystal").setCreativeTab(Crystalline.tab));
+        e.getRegistry().register(new Item().setRegistryName("crystalline:crystalbase").setUnlocalizedName("crystalline.crystalbase").setCreativeTab(Crystalline.tab));
+        e.getRegistry().register(new Item().setRegistryName("crystalline:mortarandpestle").setUnlocalizedName("crystalline.mortarandpestle").setCreativeTab(Crystalline.tab));
     }
 
     @SubscribeEvent
@@ -34,6 +42,8 @@ public class CItems {
     public static void registerModels(ModelRegistryEvent e) {
         crystal.initModel();
         ModelLoader.setCustomModelResourceLocation(arcanumMineralisCrystal, 0, new ModelResourceLocation(arcanumMineralisCrystal.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(crystalBase, 0, new ModelResourceLocation(crystalBase.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(mortarAndPestle, 0, new ModelResourceLocation(mortarAndPestle.getRegistryName(), "inventory"));
     }
 
 }
