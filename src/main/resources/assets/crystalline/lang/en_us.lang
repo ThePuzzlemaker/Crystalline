@@ -55,3 +55,9 @@ item.crystalline.mortarandpestle.name=§r§7Mortar and Pestle
 
 crystalline.advancements.root.title=Crystalline » Discovery
 crystalline.advancements.root.description=As you pick up the mysterious crystal, it seems to quiver with potential. It's glowing, as if it's creating its own energy source.
+
+crystalline.advancements.map.title=Revelations
+crystalline.advancements.map.description=Perhaps if you pulverize some natural crystal, such as quartz, you can create a base for the formation of some sort of larger crystal.
+
+crystalline.advancements.base.title=Implementation
+crystalline.advancements.base.description=This base is dull and impure, the perfect starter for a crystal. Perhaps if you combine it with water and some Arcanum Mineralis, it will form a solution that will precipitate into a crystal.

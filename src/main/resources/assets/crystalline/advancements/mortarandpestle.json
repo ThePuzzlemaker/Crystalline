@@ -1,0 +1,35 @@
+{
+  "parent": "crystalline:root",
+  "display": {
+    "icon": {
+      "item": "crystalline:mortarandpestle"
+    },
+    "title": {
+      "translate": "crystalline.advancements.map.title"
+    },
+    "description": {
+      "translate": "crystalline.advancements.map.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crystalline:mortarandpestle"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "map"
+    ]
+  ]
+}
