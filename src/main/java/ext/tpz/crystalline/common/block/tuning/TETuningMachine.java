@@ -1,5 +1,10 @@
 package ext.tpz.crystalline.common.block.tuning;
 
+import ext.tpz.crystalline.api.crystal.CrystalMetadata;
+import ext.tpz.crystalline.api.resonance.Resonance;
+import ext.tpz.crystalline.api.resonance.WorldResonance;
+import ext.tpz.crystalline.common.item.CItems;
+import ext.tpz.crystalline.common.item.dyn.ItemCrystal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -83,14 +88,27 @@ public class TETuningMachine extends TileEntity {
     }
 
     public void tune(ItemStack crystal) {
-
+        if (crystal.getItem() == CItems.crystal) {
+            CrystalMetadata meta = ItemCrystal.get(crystal);
+            if (meta != null) {
+                if (meta.getCrystal() != null) {
+                    meta.setFrequency(this.getCurrentFrequency());
+                }
+            }
+        }
     }
 
     public void test(ItemStack crystal) {
-        if (crystal.getItem() == Items.DIAMOND) {
-            this.setCurrentDifference(0);
-        } else {
-            this.setCurrentDifference(5100);
+        if (crystal.getItem() == CItems.crystal) {
+            CrystalMetadata meta = ItemCrystal.get(crystal);
+            if (meta != null) {
+                if (meta.getCrystal() != null) {
+                    Resonance r = WorldResonance.INSTANCE.getResonance(meta.getCrystal());
+                    if (r != null) {
+                        this.setCurrentDifference(r.getExact() - this.getCurrentFrequency());
+                    }
+                }
+            }
         }
     }
 
