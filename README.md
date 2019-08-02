@@ -1,4 +1,4 @@
-# Crystalline ![travis status](https://api.travis-ci.org/ThePuzzlemaker/Crystalline.svg?branch=rewrite-1.12) ![curseforge download counter widget thing](http://cf.way2muchnoise.eu/full_crystalline_downloads.svg) ![curseforge version widget thing](http://cf.way2muchnoise.eu/versions/For%20MC_crystalline_all.svg)
+# Crystalline [![Build Status](https://jenkins.thepuzzlemaker.info/job/Crystalline/job/rewrite-1.12/badge/icon?style=flat-square)](https://jenkins.thepuzzlemaker.info/job/Crystalline/job/rewrite-1.12/) ![curseforge download counter widget thing](http://cf.way2muchnoise.eu/full_crystalline_downloads.svg) ![curseforge version widget thing](http://cf.way2muchnoise.eu/versions/For%20MC_crystalline_all.svg)
 
 ![logo](src/main/resources/assets/crystalline/textures/gui/logo.png)
 
