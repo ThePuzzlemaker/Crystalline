@@ -5,11 +5,11 @@
   "description": "Crystalline is a mod that adds magic crystals. If you use the crystals too much though, you may want to question your sanity!",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/crystalline",
   "updateUrl": "",
   "authorList": ["The Puzzlemaker"],
-  "credits": "McJty, for his tutorials; Azanor, for creating Thaumcraft, one of the inspirations of this mod; Vazkii, for creating Psi, another one of the inspirations of this mod; and Some friends for giving me some ideas, and many other people. Universe crystal texture (very downscaled) by Lyshastra @ https://www.deviantart.com/lyshastra/art/Free-Space-Galaxy-Texture-435798637. Insanity event brain icon by Lorc @ https://game-icons.net/lorc/originals/brain.html (licensed under CC BY 3.0)",
-  "logoFile": "",
+  "credits": "McJty, for his tutorials; Azanor, for creating Thaumcraft, one of the inspirations of this mod; Vazkii, for creating Psi, another one of the inspirations of this mod; some friends for giving me ideas for this mod; the MMD Discord server for advice on art and code; many other people that may not be listed here. ",
+  "logoFile": "assets/crystalline/textures/gui/logo.png",
   "screenshots": [],
   "dependencies": []
 }
