@@ -1,6 +1,6 @@
 # TeamIsotope Open Source License
 
-##### This software is free to use EXCEPT for any illegal purposes, free to modify AS LONG AS the modification of the software has the same license AND credits the original author. This software is also free to redistribute AS LONG AS the redistribution has the license attached and credits the original author.
+##### This software is free to use EXCEPT for any illegal purposes, free to modify AS LONG AS the modification of the software has the same license AND credits the original author. This software is also free to redistribute AS LONG AS the redistribution has the license attached and credits the original author. Any redistributions MUST NOT be monetized by the redistributor. The original source MAY be monetized.
 #
 ##### This software MUST contain all the freedoms of GNU:
 
