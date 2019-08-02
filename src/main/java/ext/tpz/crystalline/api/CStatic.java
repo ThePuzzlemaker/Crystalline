@@ -9,5 +9,5 @@ public class CStatic {
 
     public static final String PROXY_SERVER = "ext.tpz.crystalline.server.ServerProxy";
     public static final String PROXY_CLIENT = "ext.tpz.crystalline.client.ClientProxy";
-	"
+	
 }
