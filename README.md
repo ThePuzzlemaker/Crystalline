@@ -14,4 +14,4 @@ This branch is for the current complete rewrite for 1.12. Eventually, there will
 
 [CurseForge](https://www.curseforge.com/minecraft/mc-mods/crystalline)
 
-[CI](https://jenkins.thepuzzlemaker.info/job/Crystalline/rewrite-1.12)
+[CI](https://jenkins.thepuzzlemaker.info/job/Crystalline/job/rewrite-1.12)
