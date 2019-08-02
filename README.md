@@ -7,3 +7,11 @@ Crystalline is a Minecraft mod that adds various magical crystals to the game. T
 ## Branch Information
 
 This branch is for the current complete rewrite for 1.12. Eventually, there will be another branch for the 1.13 rewrite/update.
+
+## Helpful Links
+
+[Issues](https://github.com/ThePuzzlemaker/Crystalline/issues)
+
+[CurseForge](https://www.curseforge.com/minecraft/mc-mods/crystalline)
+
+[CI](https://jenkins.thepuzzlemaker.info/job/Crystalline/rewrite-1.12)
