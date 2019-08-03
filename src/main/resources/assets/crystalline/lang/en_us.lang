@@ -35,7 +35,7 @@ crystalline.lore.crystal.reagent=§r§7Reagent Required: §r%s
 
 < Tuning Machine >
 
-tile.crystalline.tuningmachine.name=Tuning Machine
+tile.crystalline.tuningmachine.name=§r§7Tuning Machine
 
 < Arcanum Mineralis >
 
@@ -50,6 +50,12 @@ itemGroup.crystalline=§r§5§kaa§r§5Crystalline§r§5§kaa§r
 item.crystalline.crystalbase.name=§r§7Crystal Base
 
 item.crystalline.mortarandpestle.name=§r§7Mortar and Pestle
+
+< Crafting Components >
+
+item.crystalline.tuningcomponents.name=§r§7Tuning Components
+
+item.crystalline.seismicresonator.name=§r§7Seismic Resonator
 
 < Advancements >
 

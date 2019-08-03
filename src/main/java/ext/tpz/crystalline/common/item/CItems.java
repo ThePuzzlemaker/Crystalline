@@ -29,12 +29,20 @@ public class CItems {
     @GameRegistry.ObjectHolder("crystalline:mortarandpestle")
     public static Item mortarAndPestle;
 
+    @GameRegistry.ObjectHolder("crystalline:tuningcomponents")
+    public static Item tuningComponents;
+
+    @GameRegistry.ObjectHolder("crystalline:seismicresonator")
+    public static Item seismicResonator;
+
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().register(new ItemCrystal());
         e.getRegistry().register(new Item().setRegistryName("crystalline:arcanummineraliscrystal").setUnlocalizedName("crystalline.arcanummineraliscrystal").setCreativeTab(Crystalline.tab));
         e.getRegistry().register(new Item().setRegistryName("crystalline:crystalbase").setUnlocalizedName("crystalline.crystalbase").setCreativeTab(Crystalline.tab));
         e.getRegistry().register(new Item().setRegistryName("crystalline:mortarandpestle").setUnlocalizedName("crystalline.mortarandpestle").setCreativeTab(Crystalline.tab));
+        e.getRegistry().register(new Item().setRegistryName("crystalline:tuningcomponents").setUnlocalizedName("crystalline.tuningcomponents").setCreativeTab(Crystalline.tab));
+        e.getRegistry().register(new Item().setRegistryName("crystalline:seismicresonator").setUnlocalizedName("crystalline.seismicresonator").setCreativeTab(Crystalline.tab));
     }
 
     @SubscribeEvent
@@ -44,6 +52,8 @@ public class CItems {
         ModelLoader.setCustomModelResourceLocation(arcanumMineralisCrystal, 0, new ModelResourceLocation(arcanumMineralisCrystal.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(crystalBase, 0, new ModelResourceLocation(crystalBase.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(mortarAndPestle, 0, new ModelResourceLocation(mortarAndPestle.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(tuningComponents, 0, new ModelResourceLocation(tuningComponents.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(seismicResonator, 0, new ModelResourceLocation(seismicResonator.getRegistryName(), "inventory"));
     }
 
 }

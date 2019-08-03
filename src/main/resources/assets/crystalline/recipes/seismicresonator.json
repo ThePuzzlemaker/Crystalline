@@ -1,0 +1,34 @@
+{
+  "result": {
+    "item": "crystalline:seismicresonator"
+  },
+  "pattern": [
+    "rlb",
+    "sgs",
+    "ppp"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "r": {
+      "type": "forge:ore_dict",
+      "ore": "dyeRed"
+    },
+    "l": {
+      "type": "forge:ore_dict",
+      "ore": "dyeLightBlue"
+    },
+    "b": {
+      "type": "forge:ore_dict",
+      "ore": "dyeBlue"
+    },
+    "s": {
+      "item": "minecraft:redstone"
+    },
+    "p": {
+      "item": "minecraft:paper"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    }
+  }
+}

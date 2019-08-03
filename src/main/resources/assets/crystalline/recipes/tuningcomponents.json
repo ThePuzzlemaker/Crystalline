@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "crystalline:tuningcomponents"
+  },
+  "pattern": [
+    "ggg",
+    "rir",
+    "iqi"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "q": {
+      "item": "minecraft:quartz"
+    }
+  }
+}

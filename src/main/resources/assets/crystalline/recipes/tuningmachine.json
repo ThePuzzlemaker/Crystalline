@@ -1,0 +1,29 @@
+{
+  "result": {
+    "item": "crystalline:tuningmachine"
+  },
+  "pattern": [
+    "iii",
+    "rsr",
+    "ctc"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "s": {
+      "item": "crystalline:seismicresonator"
+    },
+    "t": {
+      "item": "crystalline:tuningcomponents"
+    },
+    "c": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    }
+  }
+}
