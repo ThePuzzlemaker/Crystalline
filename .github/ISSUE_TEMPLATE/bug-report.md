@@ -26,8 +26,14 @@ If applicable, add screenshots to help explain your problem.
 Add any other context about the problem here.
 
 **I have:**
-- [ ] Checked my Minecraft version
+- [ ] Checked my Forge version
 - [ ] Checked for an update
 - [ ] Checked for dependencies
 
-**Notice: if this is a rendering issue and you are using Optifine, the mod author (The Puzzlemaker) will __not__ support this problem as it is invalid.**
+**Versions:**
+Crystalline version: [required]
+Patchouli version: [required]
+Forge version: [required]
+Optional dependencies and their versions (e.g. addons, JEI, The One Probe): N/A
+
+**Notice (please remove): if this is a rendering issue and you are using Optifine, the mod author (The Puzzlemaker) will __not__ support this problem as it is invalid. If you can reproduce the bug without Optifine, the issue will be accepted. To have an issue re-evaluated, please tag @ThePuzzlemaker.**
