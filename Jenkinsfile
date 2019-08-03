@@ -14,9 +14,6 @@ pipeline {
 		}
 	}
 	post {
-		always {
-		
-		}
 		success {
 			withCredentials([string(credentialsId: 'DC-Webhook-URL', variable: 'DC_URL')]) {
 				discordSend description: 'Build #${env.BUILD_NUMBER} succeded!', link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: env.DC_URL
