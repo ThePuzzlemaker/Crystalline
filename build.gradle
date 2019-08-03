@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 
 version = "1.12.2-git"
-group = "ext.tpz.crystalline"
+group = "com.teamisotope.crystalline"
 archivesBaseName = "crystalline"
 
 sourceCompatibility = targetCompatibility = '1.8' 
