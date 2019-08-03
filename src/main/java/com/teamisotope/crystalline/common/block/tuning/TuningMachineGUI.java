@@ -1,10 +1,10 @@
-package ext.tpz.crystalline.common.block.tuning;
+package com.teamisotope.crystalline.common.block.tuning;
 
-import ext.tpz.crystalline.api.CStatic;
-import ext.tpz.crystalline.common.network.PacketHandler;
-import ext.tpz.crystalline.common.network.PacketTMFreqChange;
-import ext.tpz.crystalline.common.network.PacketTMTest;
-import ext.tpz.crystalline.common.network.PacketTMTune;
+import com.teamisotope.crystalline.common.network.PacketHandler;
+import com.teamisotope.crystalline.common.network.PacketTMFreqChange;
+import com.teamisotope.crystalline.common.network.PacketTMTune;
+import com.teamisotope.crystalline.api.CStatic;
+import com.teamisotope.crystalline.common.network.PacketTMTest;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;

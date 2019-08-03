@@ -1,7 +1,7 @@
-package ext.tpz.crystalline.common.capabilities;
+package com.teamisotope.crystalline.common.capabilities;
 
-import ext.tpz.crystalline.api.insanity.capability.IInsanity;
-import ext.tpz.crystalline.api.insanity.capability.InsanityCapability;
+import com.teamisotope.crystalline.api.insanity.capability.IInsanity;
+import com.teamisotope.crystalline.api.insanity.capability.InsanityCapability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 
 public class CCapabilities {

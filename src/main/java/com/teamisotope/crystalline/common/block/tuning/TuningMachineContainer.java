@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.common.block.tuning;
+package com.teamisotope.crystalline.common.block.tuning;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;

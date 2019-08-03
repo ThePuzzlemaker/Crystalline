@@ -1,13 +1,12 @@
-package ext.tpz.crystalline.common.block.am;
+package com.teamisotope.crystalline.common.block.am;
 
-import ext.tpz.crystalline.api.CStatic;
-import ext.tpz.crystalline.common.Crystalline;
-import ext.tpz.crystalline.common.item.CItems;
+import com.teamisotope.crystalline.api.CStatic;
+import com.teamisotope.crystalline.common.Crystalline;
+import com.teamisotope.crystalline.common.item.CItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

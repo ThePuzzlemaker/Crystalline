@@ -1,7 +1,7 @@
-package ext.tpz.crystalline.api.crystal;
+package com.teamisotope.crystalline.api.crystal;
 
 
-import ext.tpz.crystalline.api.CStatic;
+import com.teamisotope.crystalline.api.CStatic;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;

@@ -76,5 +76,5 @@ task apiJar(type: Jar) {
 	from sourceSets.main.allSource
 	from sourceSets.main.output
 	
-	include 'ext/tpz/crystalline/api/**/*'
+	include 'com/teamisotope/crystalline/api/**/*'
 }

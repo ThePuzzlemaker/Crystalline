@@ -1,10 +1,9 @@
-package ext.tpz.crystalline.common.block;
+package com.teamisotope.crystalline.common.block;
 
-import ext.tpz.crystalline.api.CStatic;
-import ext.tpz.crystalline.common.Crystalline;
-import ext.tpz.crystalline.common.block.am.BlockArcanumMineralis;
-import ext.tpz.crystalline.common.block.tuning.BlockTuningMachine;
-import ext.tpz.crystalline.common.block.tuning.TETuningMachine;
+import com.teamisotope.crystalline.api.CStatic;
+import com.teamisotope.crystalline.common.block.am.BlockArcanumMineralis;
+import com.teamisotope.crystalline.common.block.tuning.BlockTuningMachine;
+import com.teamisotope.crystalline.common.block.tuning.TETuningMachine;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;

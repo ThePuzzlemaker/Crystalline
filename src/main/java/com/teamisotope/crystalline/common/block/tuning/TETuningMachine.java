@@ -1,14 +1,12 @@
-package ext.tpz.crystalline.common.block.tuning;
+package com.teamisotope.crystalline.common.block.tuning;
 
-import ext.tpz.crystalline.api.crystal.CrystalMetadata;
-import ext.tpz.crystalline.api.resonance.Resonance;
-import ext.tpz.crystalline.api.resonance.WorldResonance;
-import ext.tpz.crystalline.common.item.CItems;
-import ext.tpz.crystalline.common.item.dyn.ItemCrystal;
+import com.teamisotope.crystalline.api.crystal.CrystalMetadata;
+import com.teamisotope.crystalline.api.resonance.Resonance;
+import com.teamisotope.crystalline.api.resonance.WorldResonance;
+import com.teamisotope.crystalline.common.item.CItems;
+import com.teamisotope.crystalline.common.item.dyn.ItemCrystal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -22,8 +20,6 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
-
-import static ext.tpz.crystalline.common.block.tuning.BlockTuningMachine.OPEN;
 
 public class TETuningMachine extends TileEntity {
 
@@ -79,7 +75,7 @@ public class TETuningMachine extends TileEntity {
         BlockPos pos = this.getPos();
         World world = this.getWorld();
         IBlockState state = world.getBlockState(pos);
-        IBlockState newState = state.withProperty(OPEN, false);
+        IBlockState newState = state.withProperty(BlockTuningMachine.OPEN, false);
         world.setBlockState(pos, newState, 2);
     }
 

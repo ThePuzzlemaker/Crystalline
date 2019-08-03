@@ -1,4 +1,4 @@
-package ext.tpz.crystalline.api.crystal;
+package com.teamisotope.crystalline.api.crystal;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.util.ResourceLocation;
