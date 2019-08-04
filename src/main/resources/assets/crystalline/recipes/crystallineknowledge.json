@@ -1,23 +1,28 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "AAA",
-    "ABA",
-    "AWA"
+    "AII",
+    "ARG",
+    "AII"
   ],
   "key": {
     "A": {
       "item": "crystalline:arcanummineraliscrystal"
     },
-    "B": {
-      "item": "crystalline:crystalbase"
+    "I": {
+      "item": "minecraft:iron_ingot"
     },
-    "W": {
-      "item": "minecraft:water_bucket"
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
     }
   },
   "result": {
-    "item": "crystalline:crystal",
-    "__comment": "will add nbt data for it later"
+    "item": "patchouli:guide_book",
+    "nbt": {
+      "patchouli:book": "crystalline:crystallineknowledge"
+    }
   }
 }

@@ -67,3 +67,12 @@ crystalline.advancements.map.description=Perhaps if you pulverize some natural c
 
 crystalline.advancements.base.title=Implementation
 crystalline.advancements.base.description=This base is dull and impure, the perfect starter for a crystal. Perhaps if you combine it with water and some Arcanum Mineralis, it will form a solution that will precipitate into a crystal.
+
+crystalline.advancements.book.title=Knowledge
+crystalline.advancements.book.description=It seems that with the right setup, that crystal can somehow drive a monitor.
+
+< Book >
+
+crystalline.book.wdli=Who doesn't like insanity?
+
+crystalline.book.lore=This contraption seems to pull energy from a crystal to drive a monitor of some sort, and it seems to have created a guide. Perhaps this could be to your use?

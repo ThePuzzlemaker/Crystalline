@@ -2,13 +2,14 @@
   "parent": "crystalline:root",
   "display": {
     "icon": {
-      "item": "crystalline:mortarandpestle"
+      "item": "patchouli:guide_book",
+      "nbt": "{\"patchouli:book\": \"crystalline:crystallineknowledge\"}"
     },
     "title": {
-      "translate": "crystalline.advancements.map.title"
+      "translate": "crystalline.advancements.book.title"
     },
     "description": {
-      "translate": "crystalline.advancements.map.description"
+      "translate": "crystalline.advancements.book.description"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,12 +17,13 @@
     "hidden": false
   },
   "criteria": {
-    "map": {
+    "book": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "crystalline:mortarandpestle"
+            "item": "patchouli:guide_book",
+            "nbt": "{\"patchouli:book\": \"crystalline:crystallineknowledge\"}"
           }
         ]
       }
@@ -29,7 +31,7 @@
   },
   "requirements": [
     [
-      "map"
+      "book"
     ]
   ]
 }

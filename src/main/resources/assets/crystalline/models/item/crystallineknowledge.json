@@ -1,3 +1,6 @@
 {
-  "parent": "crystalline:block/arcanummineralis"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "crystalline:items/crystallineknowledge"
+  }
 }
