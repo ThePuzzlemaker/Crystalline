@@ -1,6 +1,0 @@
-{
-  "name": "Crystals",
-  "description": "There are many types of crystals that you can find or create. This section will inform you of them. When you create a crystal, it is by default in the mode \"Disabled\". Press the \"Switch Mode\" key to change the mode (currently set to \"$(k:key.change_crystal_operation)\").",
-  "sortnum": 0,
-  "icon": "crystalline:crystal{type:'crystalline:crystal.knowledge'}"
-}
