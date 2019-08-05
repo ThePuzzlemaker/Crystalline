@@ -54,7 +54,7 @@ public class ItemCrystal extends Item {
                 tooltip.add("");
                 tooltip.add(I18n.format("crystalline.lore.crystal.type", I18n.format(data.getCrystal().getUnlocalizedName())));
                 tooltip.add("");
-                if (data.getCrystal().hasBinding())
+                if (data.getCrystal().hasBinding()) {
                     if (data.getBound() != null) {
                         EntityPlayer p = world.getPlayerEntityByUUID(data.getBound());
                         if (p != null)
@@ -63,7 +63,8 @@ public class ItemCrystal extends Item {
                             tooltip.add(I18n.format("crystalline.lore.crystal.bound", I18n.format("crystalline.lore.crystal.bound.invalid")));
                     } else
                         tooltip.add(I18n.format("crystalline.lore.crystal.unbound"));
-                tooltip.add("");
+                    tooltip.add("");
+                }
                 if (data.getCrystal().causesInsanity())
                     tooltip.add(I18n.format("crystalline.lore.crystal.insanity.true"));
                 else
@@ -84,11 +85,17 @@ public class ItemCrystal extends Item {
                     tooltip.add(I18n.format("crystalline.lore.crystal.potential", I18n.format("crystalline.lore.crystal.potential.fourthquartile", data.getPotential())));
                 }
                 tooltip.add("");
+                if (data.getFrequency() >= 0) {
+                    tooltip.add(I18n.format("crystalline.lore.crystal.frequency", data.getFrequency()));
+                } else {
+                    tooltip.add(I18n.format("crystalline.lore.crystal.frequency.invalid"));
+                }
+                tooltip.add("");
                 if (getDifference(stack) != -1)
-                    tooltip.add(I18n.format("crystalline.lore.crystal.efficiency", Math.round(calculateEfficiency(getDifference(stack)) * 100.0) / 100.0));
+                    tooltip.add(I18n.format("crystalline.lore.crystal.efficiency", Math.round(calculateEfficiency(getDifference(stack)) * 100.0) / 100.0 * 100) + "%");
                 else
                     tooltip.add(I18n.format("crystalline.lore.crystal.efficiency.unknown"));
-                tooltip.add("");
+                //tooltip.add("");
                 // TODO: Reagent tooltip
             }
         }
@@ -103,6 +110,9 @@ public class ItemCrystal extends Item {
         if (m != null && m.getCrystal() != null) {
             Resonance r = WorldResonance.INSTANCE.getResonance(m.getCrystal());
             if (r != null) {
+                if (m.getFrequency() == 0)
+                    // make sure if the frequency is 0 then it doesn't make the efficiency 100% if it's not really 100%
+                    return ((double)1) / ((double)r.getExact());
                 return ((double)m.getFrequency()) / ((double)r.getExact());
             }
         }

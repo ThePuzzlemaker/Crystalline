@@ -25,10 +25,13 @@ crystalline.lore.crystal.potential.secondquartile=§c%d
 crystalline.lore.crystal.potential.thirdquartile=§2%d
 crystalline.lore.crystal.potential.fourthquartile=§a%d
 
-crystalline.lore.crystal.efficiency=§r§7Efficiency: §r§a%d%
+crystalline.lore.crystal.efficiency=§r§7Efficiency: §r§a%d
 crystalline.lore.crystal.efficiency.unknown=§r§7Efficiency: §r§4Unknown
 
 crystalline.lore.crystal.reagent=§r§7Reagent Required: §r%s
+
+crystalline.lore.crystal.frequency=§r§7Frequency: §r§a%d Hz
+crystalline.lore.crystal.frequency.invalid=§r§7Frequency: §r§4Invalid
 
 
 
@@ -76,3 +79,7 @@ crystalline.advancements.book.description=It seems that with the right setup, th
 crystalline.book.wdli=Who doesn't like insanity?
 
 crystalline.book.lore=This contraption seems to pull energy from a crystal to drive a monitor of some sort, and it seems to have created a guide. Perhaps this could be to your use?
+
+< Crystals >
+
+crystalline.crystal.base=Base Crystal

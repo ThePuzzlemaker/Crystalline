@@ -18,6 +18,12 @@
   },
   "result": {
     "item": "crystalline:crystal",
-    "__comment": "will add nbt data for it later"
+    "nbt": {
+      "data": {
+        "id": "crystalline:crystal.base",
+        "potential": 0,
+        "frequency": 0
+      }
+    }
   }
 }
