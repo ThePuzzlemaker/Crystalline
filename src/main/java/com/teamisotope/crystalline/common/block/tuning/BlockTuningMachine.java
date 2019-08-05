@@ -3,6 +3,11 @@ package com.teamisotope.crystalline.common.block.tuning;
 import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.client.tesrs.TESRTuningMachine;
 import com.teamisotope.crystalline.common.Crystalline;
+import com.teamisotope.crystalline.common.compat.top.TOPInfoProvider;
+import com.teamisotope.crystalline.common.item.CItems;
+import mcjty.theoneprobe.api.IProbeHitData;
+import mcjty.theoneprobe.api.IProbeInfo;
+import mcjty.theoneprobe.api.ProbeMode;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -21,6 +26,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -28,8 +34,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.text.DecimalFormat;
 
-public class BlockTuningMachine extends Block implements ITileEntityProvider {
+public class BlockTuningMachine extends Block implements ITileEntityProvider, TOPInfoProvider {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
     public static final PropertyBool OPEN = PropertyBool.create("open");
@@ -115,5 +122,16 @@ public class BlockTuningMachine extends Block implements ITileEntityProvider {
             }
         }
         super.breakBlock(worldIn, pos, state);
+    }
+
+    @Override
+    public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, EntityPlayer player, World world, IBlockState blockState, IProbeHitData data) {
+        TileEntity te = world.getTileEntity(data.getPos());
+        if (te instanceof TETuningMachine) {
+            TETuningMachine tm = (TETuningMachine) te;
+            probeInfo.horizontal()
+                    .item(new ItemStack(CItems.crystal))
+                    .text(TextFormatting.GRAY + "Current frequency: " + TextFormatting.GREEN + new DecimalFormat("#,###,###").format(tm.getCurrentFrequency()));
+        }
     }
 }
