@@ -32,7 +32,7 @@ public class TESRTuningMachine extends TileEntitySpecialRenderer<TETuningMachine
             GlStateManager.pushMatrix();
             GlStateManager.translate(.5, .35, .5);
             GlStateManager.scale(.4f, .4f, .4f);
-            Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.NONE);
+            Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
             GlStateManager.popMatrix();
         }
     }

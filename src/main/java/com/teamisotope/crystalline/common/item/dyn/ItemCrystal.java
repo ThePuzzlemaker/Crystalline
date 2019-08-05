@@ -22,6 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -99,7 +100,7 @@ public class ItemCrystal extends Item {
                 }
                 tooltip.add("");
                 if (data.getFrequency() >= 0) {
-                    tooltip.add(I18n.format("crystalline.lore.crystal.frequency", data.getFrequency()));
+                    tooltip.add(I18n.format("crystalline.lore.crystal.frequency", new DecimalFormat("#,###,###").format(data.getFrequency())));
                 } else {
                     tooltip.add(I18n.format("crystalline.lore.crystal.frequency.invalid"));
                 }

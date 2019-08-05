@@ -1,13 +1,17 @@
 package com.teamisotope.crystalline.common.block.tuning;
 
+import com.teamisotope.crystalline.common.item.CItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
+
+import javax.annotation.Nonnull;
 
 public class TuningMachineContainer extends Container {
 
@@ -39,8 +43,8 @@ public class TuningMachineContainer extends Container {
 
     private void addOwnSlots() {
         IItemHandler itemHandler = this.te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-        addSlotToContainer(new SlotItemHandler(itemHandler, 0, 108, 50));
-        addSlotToContainer(new SlotItemHandler(itemHandler, 1, 55, 50));
+        addSlotToContainer(new SlotCrystalInput(itemHandler, 0, 108, 50));
+        addSlotToContainer(new SlotCrystalOutput(itemHandler, 1, 55, 50));
     }
 
     @Override
@@ -80,6 +84,30 @@ public class TuningMachineContainer extends Container {
         te.markClosed();
     }
 
-    
+    public static class SlotCrystalInput extends SlotItemHandler {
+
+        public SlotCrystalInput(IItemHandler itemHandler, int index, int xPosition, int yPosition)
+        {
+            super(itemHandler, index, xPosition, yPosition);
+        }
+
+        @Override
+        public boolean isItemValid(@Nonnull ItemStack stack) {
+            return stack.getItem() == CItems.crystal;
+        }
+    }
+
+    public static class SlotCrystalOutput extends SlotItemHandler {
+
+        public SlotCrystalOutput(IItemHandler itemHandler, int index, int xPosition, int yPosition)
+        {
+            super(itemHandler, index, xPosition, yPosition);
+        }
+
+        @Override
+        public boolean isItemValid(@Nonnull ItemStack stack) {
+            return false;
+        }
+    }
 
 }

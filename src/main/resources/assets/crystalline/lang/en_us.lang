@@ -30,7 +30,7 @@ crystalline.lore.crystal.efficiency.unknown=§r§7Efficiency: §r§4Unknown
 
 crystalline.lore.crystal.reagent=§r§7Reagent Required: §r%s
 
-crystalline.lore.crystal.frequency=§r§7Frequency: §r§a%d Hz
+crystalline.lore.crystal.frequency=§r§7Frequency: §r§a%s Hz
 crystalline.lore.crystal.frequency.invalid=§r§7Frequency: §r§4Invalid
 
 
