@@ -1,10 +1,10 @@
 package com.teamisotope.crystalline.common.block.tuning;
 
+import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.common.network.PacketHandler;
 import com.teamisotope.crystalline.common.network.PacketTMFreqChange;
-import com.teamisotope.crystalline.common.network.PacketTMTune;
-import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.common.network.PacketTMTest;
+import com.teamisotope.crystalline.common.network.PacketTMTune;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -34,6 +34,8 @@ public class TuningMachineGUI extends GuiContainer {
     private int difference = 0;
     private int indicY = 0;
     private int finalIndicY = 0;
+
+    private int idbX = 0, idbY = 0;
 
     private static final ResourceLocation background = new ResourceLocation(CStatic.MODID, "textures/gui/tuningmachine.png");
 
@@ -88,6 +90,9 @@ public class TuningMachineGUI extends GuiContainer {
         renderTexturedModalRect(background, guiLeft, guiTop, 0, 0, xSize, ySize);
         setDrawConstants(guiLeft, guiTop);
 
+        renderTexturedModalRect(background, guiLeft + 182, guiTop + idbY, idbX, idbY, 16, 188);
+
+
         // Draw labels
         if (isInRange(tuneX, tuneY, tuneW, tuneH, mouseX, mouseY)) {
             drawTextCenteredShadow(tuneX + tuneW / 2, tuneY + tuneH / 2 - 4, "TUNE", 0xddddff);
@@ -103,7 +108,7 @@ public class TuningMachineGUI extends GuiContainer {
 
         // Iterate indicator's position and draw the indicator
         iterateIndicatorPos(guiLeft, guiTop);
-        renderTexturedModalRect(background, guiLeft + 144, indicY, texExtra, 0, 7, 1);
+        renderTexturedModalRect(background, guiLeft + 190, indicY, texExtra, 0, 7, 2);
 
         // Draw frequency numbers and buttons
         drawFrequency(te.getCurrentFrequency());
@@ -158,13 +163,16 @@ public class TuningMachineGUI extends GuiContainer {
 
         texExtra = 180;
 
-        texIncBtnY = 1;
-        texDecBtnY = 5;
+        texIncBtnY = 2;
+        texDecBtnY = 6;
 
-        texIncBtnHvrY = 9;
-        texDecBtnHvrY = 13;
+        texIncBtnHvrY = 10;
+        texDecBtnHvrY = 14;
 
-        finalIndicY = guiTop + 35 + MathHelper.clamp(te.getCurrentDifference(), -30, 30);
+        idbX = 187;
+        idbY = 0;
+
+        finalIndicY = guiTop + 1 + 74 + MathHelper.clamp(te.getCurrentDifference()/ 100, -74, 74);
     }
 
     private void drawFrequency(int freq) {
@@ -191,8 +199,8 @@ public class TuningMachineGUI extends GuiContainer {
     }
 
     private void iterateIndicatorPos(int guiLeft, int guiTop) {
-        if (indicY < guiTop + 5 || indicY > guiTop + 565)
-            indicY = guiTop + 35;
+        if (indicY < guiTop + 1 || indicY > guiTop + 152)
+            indicY = guiTop + 1;
 
         if (indicY < finalIndicY) {
             indicY++;
@@ -210,6 +218,11 @@ public class TuningMachineGUI extends GuiContainer {
         return String.format("%0" + padLength + "d", in);
     }
 
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        super.renderHoveredToolTip(mouseX, mouseY);
+    }
 
 
 }

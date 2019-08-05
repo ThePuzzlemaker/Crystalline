@@ -1,8 +1,8 @@
 package com.teamisotope.crystalline.common.block.tuning;
 
+import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.client.tesrs.TESRTuningMachine;
 import com.teamisotope.crystalline.common.Crystalline;
-import com.teamisotope.crystalline.api.CStatic;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

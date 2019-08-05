@@ -7,7 +7,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Mod.EventBusSubscriber
 public class ResonanceHandler {
@@ -17,7 +16,7 @@ public class ResonanceHandler {
         WorldResonance rl = WorldResonance.INSTANCE;
         if (CrystalRegistry.getRegistry() != null) {
             for (ICrystal c : CrystalRegistry.getRegistry().getValuesCollection()) {
-                Random r = e.getWorld().rand;
+                Random r = new Random(e.getWorld().getSeed());
                 int difference = r.nextInt(39062 - 9765 + 1) + 9765; // Difference between two numbers can be anywhere from ~= 1/256 of the spectrum or ~= 1/1024 of the spectrum
                 int lower = r.nextInt(9999999 - difference + 1);
                 int upper = lower + difference;

@@ -39,8 +39,8 @@ public class TuningMachineContainer extends Container {
 
     private void addOwnSlots() {
         IItemHandler itemHandler = this.te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-        addSlotToContainer(new SlotItemHandler(itemHandler, 0, 82, 50));
-        addSlotToContainer(new SlotItemHandler(itemHandler, 1, 28, 50));
+        addSlotToContainer(new SlotItemHandler(itemHandler, 0, 108, 50));
+        addSlotToContainer(new SlotItemHandler(itemHandler, 1, 55, 50));
     }
 
     @Override
@@ -79,4 +79,7 @@ public class TuningMachineContainer extends Container {
     public void onContainerClosed(EntityPlayer playerIn) {
         te.markClosed();
     }
+
+    
+
 }

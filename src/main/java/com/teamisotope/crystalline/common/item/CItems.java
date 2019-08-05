@@ -1,7 +1,7 @@
 package com.teamisotope.crystalline.common.item;
 
-import com.teamisotope.crystalline.common.item.dyn.ItemCrystal;
 import com.teamisotope.crystalline.common.Crystalline;
+import com.teamisotope.crystalline.common.item.dyn.ItemCrystal;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -39,7 +39,8 @@ public class CItems {
         e.getRegistry().register(new ItemCrystal());
         e.getRegistry().register(new Item().setRegistryName("crystalline:arcanummineraliscrystal").setUnlocalizedName("crystalline.arcanummineraliscrystal").setCreativeTab(Crystalline.tab));
         e.getRegistry().register(new Item().setRegistryName("crystalline:crystalbase").setUnlocalizedName("crystalline.crystalbase").setCreativeTab(Crystalline.tab));
-        e.getRegistry().register(new Item().setRegistryName("crystalline:mortarandpestle").setUnlocalizedName("crystalline.mortarandpestle").setCreativeTab(Crystalline.tab));
+        Item map = new Item().setRegistryName("crystalline:mortarandpestle").setUnlocalizedName("crystalline.mortarandpestle").setCreativeTab(Crystalline.tab).setMaxStackSize(1);
+        e.getRegistry().register(map.setContainerItem(map));
         e.getRegistry().register(new Item().setRegistryName("crystalline:tuningcomponents").setUnlocalizedName("crystalline.tuningcomponents").setCreativeTab(Crystalline.tab));
         e.getRegistry().register(new Item().setRegistryName("crystalline:seismicresonator").setUnlocalizedName("crystalline.seismicresonator").setCreativeTab(Crystalline.tab));
     }

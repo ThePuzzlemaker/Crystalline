@@ -25,7 +25,7 @@ crystalline.lore.crystal.potential.secondquartile=§c%d
 crystalline.lore.crystal.potential.thirdquartile=§2%d
 crystalline.lore.crystal.potential.fourthquartile=§a%d
 
-crystalline.lore.crystal.efficiency=§r§7Efficiency: §r§a%d
+crystalline.lore.crystal.efficiency=§r§7Efficiency: §r§a%s
 crystalline.lore.crystal.efficiency.unknown=§r§7Efficiency: §r§4Unknown
 
 crystalline.lore.crystal.reagent=§r§7Reagent Required: §r%s

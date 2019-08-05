@@ -1,8 +1,8 @@
 package com.teamisotope.crystalline.common.gui;
 
+import com.teamisotope.crystalline.common.block.tuning.TETuningMachine;
 import com.teamisotope.crystalline.common.block.tuning.TuningMachineContainer;
 import com.teamisotope.crystalline.common.block.tuning.TuningMachineGUI;
-import com.teamisotope.crystalline.common.block.tuning.TETuningMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

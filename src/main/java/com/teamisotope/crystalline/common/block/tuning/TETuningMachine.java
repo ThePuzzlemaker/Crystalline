@@ -88,11 +88,18 @@ public class TETuningMachine extends TileEntity {
             CrystalMetadata meta = ItemCrystal.get(crystal);
             if (meta != null) {
                 if (meta.getCrystal() != null) {
-                    meta.setFrequency(this.getCurrentFrequency());
+                    if (itemStackHandler.getStackInSlot(1) == ItemStack.EMPTY) {
+                        meta.setFrequency(this.getCurrentFrequency());
+                        ItemCrystal.set(crystal, meta);
+                        itemStackHandler.setStackInSlot(1, crystal);
+                        itemStackHandler.setStackInSlot(0, ItemStack.EMPTY);
+                    }
                 }
             }
         }
     }
+
+
 
     public void test(ItemStack crystal) {
         if (crystal.getItem() == CItems.crystal) {

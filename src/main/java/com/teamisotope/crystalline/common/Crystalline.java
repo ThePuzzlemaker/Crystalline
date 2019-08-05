@@ -1,7 +1,7 @@
 package com.teamisotope.crystalline.common;
 
-import com.teamisotope.crystalline.common.util.TabCrystalline;
 import com.teamisotope.crystalline.api.CStatic;
+import com.teamisotope.crystalline.common.util.TabCrystalline;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
