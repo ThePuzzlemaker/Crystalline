@@ -1,6 +1,7 @@
 package com.teamisotope.crystalline.common;
 
 import com.teamisotope.crystalline.api.CStatic;
+import com.teamisotope.crystalline.common.advancement.CPredicates;
 import com.teamisotope.crystalline.common.capabilities.CCapabilities;
 import com.teamisotope.crystalline.common.compat.top.TOPCompat;
 import com.teamisotope.crystalline.common.gui.GuiProxy;
@@ -25,6 +26,7 @@ public class CommonProxy {
         if (Loader.isModLoaded("theoneprobe")) {
             TOPCompat.register();
         }
+        CPredicates.register();
     }
 
     public void init(FMLInitializationEvent e) {

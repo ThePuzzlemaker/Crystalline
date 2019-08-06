@@ -1,0 +1,11 @@
+{
+  "name": "Arcanum Mineralis",
+  "icon": "crystalline:arcanummineralis",
+  "category": "arcana",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Legends tell of a mysterious mineral, $(bold)one which known to be about as common as redstone$(). It is told to have mysterious properties which could be harnessed; the glowing crystal, if used right, could be used to do nearly anything."
+    }
+  ]
+}

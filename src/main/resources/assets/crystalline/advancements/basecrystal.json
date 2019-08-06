@@ -1,0 +1,37 @@
+{
+  "parent": "crystalline:crystalbase",
+  "display": {
+    "icon": {
+      "item": "crystalline:crystal",
+      "nbt": "{\"data\": {\"id\": \"crystalline:crystal.base\"}}"
+    },
+    "title": {
+      "translate": "crystalline.advancements.firstcrystal.title"
+    },
+    "description": {
+      "translate": "crystalline.advancements.firstcrystal.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "base": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "crystalline:crystal",
+            "crystal": "crystalline:crystal.base"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "base"
+    ]
+  ]
+}

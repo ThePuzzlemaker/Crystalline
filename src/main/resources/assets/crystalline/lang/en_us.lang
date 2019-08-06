@@ -74,6 +74,9 @@ crystalline.advancements.base.description=This base is dull and impure, the perf
 crystalline.advancements.book.title=Knowledge
 crystalline.advancements.book.description=It seems that with the right setup, that crystal can somehow drive a monitor.
 
+crystalline.advancements.firstcrystal.title=The First Crystal
+crystalline.advancements.firstcrystal.description=This crystal is the right shape for the most efficient energy output, but it has no potential yet. You'll have to find some way to melt and mix various things to create an essence that can be put into it.
+
 < Book >
 
 crystalline.book.wdli=Who doesn't like insanity?
