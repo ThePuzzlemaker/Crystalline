@@ -5,7 +5,20 @@
   "pages": [
     {
       "type": "text",
-      "text": "Legends tell of a mysterious mineral, $(bold)one which known to be about as common as redstone$(). It is told to have mysterious properties which could be harnessed; the glowing crystal, if used right, could be used to do nearly anything."
+      "text": "Legends tell of a mysterious mineral, $(bold)one which known to be about as common as redstone$(). It has been dubbed by many as \"$(5)arcanum mineralis$()\", or \"$(italic)mysterious mineral$()\" in Latin. It is told to $(bold)have mysterious properties which could be harnessed$(); the glowing crystal, $(bold)if used right, could be used to do nearly anything$()."
+    },
+    {
+      "type": "image",
+      "images": [
+        "crystalline:textures/book/arcanummineralis.png"
+      ],
+      "text": "$(italic)$(5)Arcanum Mineralis$()$(italic) spotted in the wild$()",
+      "border": true
+    },
+    {
+      "type": "smelting",
+      "recipe": "crystalline:arcanummineralis",
+      "text": "For those with the magical $(6)Silk Touch$() enchantment, raw $(5)Arcanum Mineralis$() can be smelted in a regular furnace to create a crystal."
     }
   ]
 }

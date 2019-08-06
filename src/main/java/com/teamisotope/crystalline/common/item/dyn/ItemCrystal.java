@@ -110,7 +110,6 @@ public class ItemCrystal extends Item {
                 } else
                     tooltip.add(I18n.format("crystalline.lore.crystal.efficiency.unknown"));
                 //tooltip.add("");
-                tooltip.add("heck the intellij debugger ");
                 // TODO: Reagent tooltip
             }
         }
