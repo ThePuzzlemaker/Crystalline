@@ -40,11 +40,11 @@ crystalline.lore.crystal.frequency.invalid=§r§7Frequency: §r§4Invalid
 
 tile.crystalline.tuningmachine.name=§r§7Tuning Machine
 
-< Arcanum Mineralis >
+< Arcanum Minerale >
 
-tile.crystalline.arcanummineralis.name=§r§5Arcanum Mineralis
+tile.crystalline.arcanumminerale.name=§r§5Arcanum Minerale
 
-item.crystalline.arcanummineraliscrystal.name=§r§5Crystallized Arcanum Mineralis
+item.crystalline.arcanummineralecrystal.name=§r§5Crystallized Arcanum Minerale
 
 itemGroup.crystalline=§r§5§kaa§r§5Crystalline§r§5§kaa§r
 
@@ -69,7 +69,7 @@ crystalline.advancements.map.title=Revelations
 crystalline.advancements.map.description=Perhaps if you pulverize some natural crystal, such as quartz, you can create a base for the formation of some sort of larger crystal.
 
 crystalline.advancements.base.title=Implementation
-crystalline.advancements.base.description=This base is dull and impure, the perfect starter for a crystal. Perhaps if you combine it with water and some Arcanum Mineralis, it will form a solution that will precipitate into a crystal.
+crystalline.advancements.base.description=This base is dull and impure, the perfect starter for a crystal. Perhaps if you combine it with water and some Arcanum Minerale, it will form a solution that will precipitate into a crystal.
 
 crystalline.advancements.book.title=Knowledge
 crystalline.advancements.book.description=It seems that with the right setup, that crystal can somehow drive a monitor.

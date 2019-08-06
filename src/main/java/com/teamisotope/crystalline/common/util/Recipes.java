@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class Recipes {
 
     public static void init() {
-        GameRegistry.addSmelting(CBlocks.arcanumMineralis, new ItemStack(CItems.arcanumMineralisCrystal), 1.5f);
+        GameRegistry.addSmelting(CBlocks.arcanumMinerale, new ItemStack(CItems.arcanumMineraleCrystal), 1.5f);
     }
 
 }

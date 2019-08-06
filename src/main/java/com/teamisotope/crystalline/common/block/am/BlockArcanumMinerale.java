@@ -16,11 +16,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockArcanumMineralis extends Block {
+public class BlockArcanumMinerale extends Block {
 
-    public BlockArcanumMineralis() {
+    public BlockArcanumMinerale() {
         super(Material.ROCK);
-        setUnlocalizedName("crystalline.arcanummineralis").setRegistryName(CStatic.MODID, "arcanummineralis").setHardness(3.0f).setResistance(15.0f).setHarvestLevel("pickaxe", 3);
+        setUnlocalizedName("crystalline.arcanumminerale").setRegistryName(CStatic.MODID, "arcanumminerale").setHardness(3.0f).setResistance(15.0f).setHarvestLevel("pickaxe", 3);
         setCreativeTab(Crystalline.tab);
     }
 
@@ -55,7 +55,7 @@ public class BlockArcanumMineralis extends Block {
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return CItems.arcanumMineralisCrystal;
+        return CItems.arcanumMineraleCrystal;
     }
 
     @SideOnly(Side.CLIENT)

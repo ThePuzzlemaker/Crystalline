@@ -19,8 +19,8 @@ public class CItems {
     @GameRegistry.ObjectHolder("crystalline:crystal")
     public static ItemCrystal crystal;
 
-    @GameRegistry.ObjectHolder("crystalline:arcanummineraliscrystal")
-    public static Item arcanumMineralisCrystal;
+    @GameRegistry.ObjectHolder("crystalline:arcanummineralecrystal")
+    public static Item arcanumMineraleCrystal;
 
     @GameRegistry.ObjectHolder("crystalline:crystalbase")
     public static Item crystalBase;
@@ -37,7 +37,7 @@ public class CItems {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().register(new ItemCrystal());
-        e.getRegistry().register(new Item().setRegistryName("crystalline:arcanummineraliscrystal").setUnlocalizedName("crystalline.arcanummineraliscrystal").setCreativeTab(Crystalline.tab));
+        e.getRegistry().register(new Item().setRegistryName("crystalline:arcanummineralecrystal").setUnlocalizedName("crystalline.arcanummineralecrystal").setCreativeTab(Crystalline.tab));
         e.getRegistry().register(new Item().setRegistryName("crystalline:crystalbase").setUnlocalizedName("crystalline.crystalbase").setCreativeTab(Crystalline.tab));
         Item map = new Item().setRegistryName("crystalline:mortarandpestle").setUnlocalizedName("crystalline.mortarandpestle").setCreativeTab(Crystalline.tab).setMaxStackSize(1);
         e.getRegistry().register(map.setContainerItem(map));
@@ -49,7 +49,7 @@ public class CItems {
     @SideOnly(Side.CLIENT)
     public static void registerModels(ModelRegistryEvent e) {
         crystal.initModel();
-        ModelLoader.setCustomModelResourceLocation(arcanumMineralisCrystal, 0, new ModelResourceLocation(arcanumMineralisCrystal.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(arcanumMineraleCrystal, 0, new ModelResourceLocation(arcanumMineraleCrystal.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(crystalBase, 0, new ModelResourceLocation(crystalBase.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(mortarAndPestle, 0, new ModelResourceLocation(mortarAndPestle.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(tuningComponents, 0, new ModelResourceLocation(tuningComponents.getRegistryName(), "inventory"));

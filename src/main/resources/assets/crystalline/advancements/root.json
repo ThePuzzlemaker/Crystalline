@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "crystalline:arcanummineraliscrystal"
+      "item": "crystalline:arcanummineralecrystal"
     },
     "title": {
       "translate": "crystalline.advancements.root.title"
@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "item": "crystalline:arcanummineraliscrystal"
+            "item": "crystalline:arcanummineralecrystal"
           }
         ]
       }

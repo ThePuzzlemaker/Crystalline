@@ -1,0 +1,17 @@
+{
+  "name": "Mortar and Pestle",
+  "icon": "crystalline:mortarandpestle",
+  "category": "arcana",
+  "pages": [
+    {
+      "type": "text",
+      "text": "The mortar and pestle, one of the most common tools for any learner of arcana. It can be used to crush many materials, however one of the most useful is crushing a natural crystal (i.e. quartz) to make a $(l:arcana/crystal_base)base for a crystal$(/l)."
+    },
+    {
+      "type": "crafting",
+      "recipe": "crystalline:mortar_and_pestle",
+      "text": "Its crafting recipe is quite simple, just combine some planks and sticks to create a pestle, and use a bowl as a mortar."
+    }
+  ],
+  "sortnum": 1
+}

@@ -2,7 +2,13 @@ package com.teamisotope.crystalline.common.base.crystal;
 
 import com.teamisotope.crystalline.api.crystal.ICrystal;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
@@ -44,4 +50,6 @@ public class CBase implements ICrystal {
         return ICrystal.class;
     }
 
+    @Override
+    public void onHold(ItemStack stack, World world, EntityPlayer player, EnumHand hand) { }
 }

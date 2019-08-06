@@ -1,0 +1,17 @@
+{
+  "name": "Crystal Base",
+  "icon": "crystalline:crystalbase",
+  "category": "arcana",
+  "pages": [
+    {
+      "type": "text",
+      "text": "If you crush nether quartz in a $(l:arcana/mortar_and_pestle)mortar and pestle$(/l), you can create a base for a crystal. Combined with some water and $(l:arcana/arcanum_minerale)arcanum minerale$(/l), you can create your first crystal. However, it won't have much potential yet."
+    },
+    {
+      "type": "crafting",
+      "recipe": "crystalline:crystalbase",
+      "text": "Your $(l:arcana/mortar_and_pestle)mortar and pestle$(/l) you crafted earlier will be retained after crushing, so you can re-use it."
+    }
+  ],
+  "sortnum": 2
+}

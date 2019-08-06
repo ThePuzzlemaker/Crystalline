@@ -23,7 +23,7 @@ public class OreGen implements IWorldGenerator {
         switch(world.provider.getDimension()) {
             case -1:
                 break;
-            case 0: runGenerator(CBlocks.arcanumMineralis.getDefaultState(), 7, 10, 0, 20, BlockMatcher.forBlock(Blocks.STONE), world, random, chunkX, chunkZ);
+            case 0: runGenerator(CBlocks.arcanumMinerale.getDefaultState(), 7, 10, 0, 20, BlockMatcher.forBlock(Blocks.STONE), world, random, chunkX, chunkZ);
                 break;
             case 1:
                 break;

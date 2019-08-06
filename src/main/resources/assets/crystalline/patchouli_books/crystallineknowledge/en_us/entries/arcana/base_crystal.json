@@ -1,0 +1,18 @@
+{
+  "name": "Base Crystal",
+  "icon": "crystalline:crystal{data:{id:'crystalline:crystal.base'}}",
+  "category": "arcana",
+  "pages": [
+    {
+      "type": "text",
+      "text": "You're ready to create your first crystal, a base crystal. It won't do much, however, as it has no potential. It's simply just a crystal in the right shape to be the most efficient."
+    },
+    {
+      "type": "crafting",
+      "recipe": "crystalline:basecrystal",
+      "text": "The base crystal can be made with some water, a $(l:arcana/crystal_base)crystal base$(/l), and some $(l:arcana/arcanum_minerale)arcanum minerale$(/l). However, it won't have much potential yet."
+    }
+  ],
+  "sortnum": 3,
+  "advancement": "crystalline:basecrystal"
+}

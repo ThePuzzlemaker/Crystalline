@@ -1,5 +1,6 @@
 {
   "name": "Arcana",
   "description": "The beginning of your endeavours; the Arcana are the things you will need to make in order to progress to further and more powerful crystals.",
-  "icon": "crystalline:arcanummineraliscrystal"
+  "icon": "crystalline:arcanummineralecrystal",
+  "sortnum": 0
 }

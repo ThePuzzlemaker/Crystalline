@@ -11,10 +11,12 @@ import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -159,5 +161,31 @@ public class ItemCrystal extends Item {
         });
     }
 
-
+    @Override
+    public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+        super.onUpdate(stack, world, entity, itemSlot, isSelected);
+        if (entity instanceof EntityPlayer) {
+            EntityPlayer p = (EntityPlayer) entity;
+            if (p.getHeldItemMainhand().getItem() == this) {
+                ItemStack s = p.getHeldItemMainhand();
+                CrystalMetadata meta = get(s);
+                if (meta != null) {
+                    ICrystal c = meta.getCrystal();
+                    if (c != null) {
+                        c.onHold(s, world, p, EnumHand.MAIN_HAND);
+                    }
+                }
+            }
+            if (p.getHeldItemOffhand().getItem() == this) {
+                ItemStack s = p.getHeldItemMainhand();
+                CrystalMetadata meta = get(s);
+                if (meta != null) {
+                    ICrystal c = meta.getCrystal();
+                    if (c != null) {
+                        c.onHold(s, world, p, EnumHand.OFF_HAND);
+                    }
+                }
+            }
+        }
+    }
 }
