@@ -12,10 +12,14 @@ public class CrystalInit {
     @GameRegistry.ObjectHolder("crystalline:crystal.base")
     public static CBase baseCrystal;
 
+    @GameRegistry.ObjectHolder("crystalline:crystal.knowledge")
+    public static CKnowledge knowledgeCrystal;
+
 
     @SubscribeEvent
     public static void register(RegistryEvent.Register<ICrystal> e) {
         e.getRegistry().register(new CBase());
+        e.getRegistry().register(new CKnowledge());
     }
 
 }

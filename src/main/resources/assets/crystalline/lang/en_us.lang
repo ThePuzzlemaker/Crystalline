@@ -86,3 +86,11 @@ crystalline.book.lore=This contraption seems to pull energy from a crystal to dr
 < Crystals >
 
 crystalline.crystal.base=Base Crystal
+
+crystalline.crystal.knowledge=Knowledge Crystal
+
+crystalline.crystal.knowledge.msg=§r§7You are currently %s§r§7 insane.
+
+crystalline.crystal.knowledge.permanent=§r§4permanently
+
+crystalline.crystal.knowledge.error=§r§4error

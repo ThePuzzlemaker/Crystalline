@@ -33,4 +33,9 @@ public interface ICrystal extends IForgeRegistryEntry<ICrystal> {
         return this.getRegistryName() == null ? this.getRegistryName().toString() : "crystalline:crystal.base";
     }
 
+    @Override
+    default public Class<ICrystal> getRegistryType() {
+        return ICrystal.class;
+    }
+
 }

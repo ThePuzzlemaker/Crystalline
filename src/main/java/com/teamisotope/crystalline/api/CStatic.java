@@ -7,7 +7,7 @@ public class CStatic {
     public static final String MODNAME = "Crystalline";
     public static final String MODDEPS = "required-after:forge@[14.23.5.2838,);required-after:patchouli@[1.0-20,)";
 
-    public static final String PROXY_SERVER = "com.teamisotope.crystalline.server.ServerProxy";
+    public static final String PROXY_SERVER = "com.teamisotope.crystalline.common.CommonProxy";
     public static final String PROXY_CLIENT = "com.teamisotope.crystalline.client.ClientProxy";
 	
 }

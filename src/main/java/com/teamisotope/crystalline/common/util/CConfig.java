@@ -29,14 +29,6 @@ public class CConfig {
         @Config.SlidingOption
         public int chance = 50;
 
-        @Config.Name("Insanity Overlay X")
-        @Config.Comment("Where to draw the Insanity Overlay")
-        public int insanityOverlayX = 0;
-
-        @Config.Name("Insanity Overlay Y")
-        @Config.Comment("Where to draw the Insanity Overlay")
-        public int insanityOverlayY = 0;
-
         public Stages stages = new Stages();
 
         public static class Stages {

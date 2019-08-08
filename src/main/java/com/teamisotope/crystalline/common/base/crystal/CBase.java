@@ -46,10 +46,5 @@ public class CBase implements ICrystal {
     }
 
     @Override
-    public Class<ICrystal> getRegistryType() {
-        return ICrystal.class;
-    }
-
-    @Override
     public void onHold(ItemStack stack, World world, EntityPlayer player, EnumHand hand) { }
 }

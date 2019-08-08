@@ -1,6 +1,8 @@
 package com.teamisotope.crystalline.api.insanity.capability;
 
 import com.teamisotope.crystalline.api.CStatic;
+import com.teamisotope.crystalline.common.network.PacketHandler;
+import com.teamisotope.crystalline.common.network.PacketInsanityChanged;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -22,8 +24,9 @@ public class InsanityCapability implements IInsanity, ICapabilitySerializable<NB
 
     private int insanity;
 
+    // WARNING WARNING WARNING: DO NOT USE THIS, PLEASE USE InsanityUtils.addInsanity, setInsanity, and subInsanity
     public InsanityCapability() {
-        this.insanity = 0;
+        setInsanity(0);
     }
 
     @Override
@@ -38,12 +41,14 @@ public class InsanityCapability implements IInsanity, ICapabilitySerializable<NB
 
     @Override
     public void addInsanity(int toAdd) {
-        this.insanity += toAdd;
+        if (toAdd + this.insanity < 101)
+            setInsanity(this.insanity + toAdd);
     }
 
     @Override
     public void subInsanity(int toSub) {
-        this.insanity -= toSub;
+        if (this.insanity - toSub < 0)
+            setInsanity(this.insanity - toSub);
     }
 
     @Override
