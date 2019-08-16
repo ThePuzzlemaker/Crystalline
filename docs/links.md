@@ -18,7 +18,7 @@
 
 ## Jenkins
 
-[Main CI](https://jenkins.thepuzzlemaker.info/job/Crystalline)
+[Main CI](https://ci.teamisotope.com/job/Crystalline)
 
 [1.12 Rewrite Branch](https://jenkins.thepuzzlemaker.info/job/Crystalline/job/rewrite-1.12)
 
