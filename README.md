@@ -1,4 +1,4 @@
-# Crystalline [![Build Status](https://ci.teamisotope.com/job/Crystalline/job/rewrite-1.12/badge/icon?style=flat-square)](https://ci.teamisotope.com/job/Crystalline/job/rewrite-1.12/) ![curseforge download counter widget thing](http://cf.way2muchnoise.eu/full_crystalline_downloads.svg?badge_style=for_the_badge) ![curseforge version widget thing](http://cf.way2muchnoise.eu/versions/For%20MC_crystalline_all.svg?badge_style=for_the_badge)
+# Crystalline [![Build Status](https://ci.teamisotope.com/buildStatus/icon?job=Crystalline%2Frewrite-1.12&style=flat-square)](https://ci.teamisotope.com/job/Crystalline/job/rewrite-1.12/) ![curseforge download counter widget thing](http://cf.way2muchnoise.eu/full_crystalline_downloads.svg?badge_style=for_the_badge) ![curseforge version widget thing](http://cf.way2muchnoise.eu/versions/For%20MC_crystalline_all.svg?badge_style=for_the_badge)
 
 ![logo](src/main/resources/assets/crystalline/textures/gui/logo.png)
 
