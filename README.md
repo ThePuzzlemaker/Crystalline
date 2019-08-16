@@ -1,4 +1,4 @@
-# Crystalline [![Build Status](https://jenkins.thepuzzlemaker.info/job/Crystalline/job/rewrite-1.12/badge/icon?style=flat-square)](https://jenkins.thepuzzlemaker.info/job/Crystalline/job/rewrite-1.12/) ![curseforge download counter widget thing](http://cf.way2muchnoise.eu/full_crystalline_downloads.svg?badge_style=for_the_badge) ![curseforge version widget thing](http://cf.way2muchnoise.eu/versions/For%20MC_crystalline_all.svg?badge_style=for_the_badge)
+# Crystalline [![Build Status](https://ci.teamisotope.com/job/Crystalline/job/rewrite-1.12/badge/icon?style=flat-square)](https://ci.teamisotope.com/job/Crystalline/job/rewrite-1.12/) ![curseforge download counter widget thing](http://cf.way2muchnoise.eu/full_crystalline_downloads.svg?badge_style=for_the_badge) ![curseforge version widget thing](http://cf.way2muchnoise.eu/versions/For%20MC_crystalline_all.svg?badge_style=for_the_badge)
 
 ![logo](src/main/resources/assets/crystalline/textures/gui/logo.png)
 
@@ -14,4 +14,4 @@ This branch is for the current complete rewrite for 1.12. Eventually, there will
 
 [CurseForge](https://www.curseforge.com/minecraft/mc-mods/crystalline)
 
-[CI](https://jenkins.thepuzzlemaker.info/job/Crystalline/job/rewrite-1.12)
+[CI](https://ci.teamisotope.com/job/Crystalline/job/rewrite-1.12)
