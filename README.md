@@ -15,3 +15,5 @@ This branch is for the current complete rewrite for 1.12. Eventually, there will
 [CurseForge](https://www.curseforge.com/minecraft/mc-mods/crystalline)
 
 [CI](https://ci.teamisotope.com/job/Crystalline/job/rewrite-1.12)
+
+![Build Status](https://ci.teamisotope.com/job/Crystalline/job/rewrite-1.12/badge/icon?style=flat-square)
