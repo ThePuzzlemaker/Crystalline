@@ -4,7 +4,8 @@ export VERSION="1.12.2-git"
 source ./version.info
 
 if [[ "$VERSION" == *-git ]]; then
-	sed -i "s/-git/-git.`git show -s --format=\"%ct\" master`/g" version.info
+	export GITTIME=$(git show -s --format=\"%ct\" HEAD)
+	sed -i "s/-git/-git.${GITTIME}/g" version.info
 fi
 
 source ./version.info
