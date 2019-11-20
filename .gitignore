@@ -44,3 +44,7 @@ build
 eclipse
 run
 diagrams
+
+private.sh
+private.bat
+private.ps1

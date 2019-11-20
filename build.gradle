@@ -2,13 +2,23 @@ buildscript {
     repositories {
         jcenter()
         maven { url = "http://files.minecraftforge.net/maven" }
+		maven {
+            url 'https://modmaven.k-4u.nl/artifactory/all'
+            credentials {
+                username = System.env.ARTU
+                password = System.env.ARTP
+            }
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+		classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.10.0"
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 version = "1.12.2-git"
 group = "com.teamisotope.crystalline"
@@ -20,7 +30,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.5.2847"
+    version = "1.12.2-14.23.5.2838"
     runDir = "run"
     
     mappings = "snapshot_20171003"
@@ -77,4 +87,41 @@ task apiJar(type: Jar) {
 	from sourceSets.main.output
 	
 	include 'com/teamisotope/crystalline/api/**/*'
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			from components.java
+			artifactId = 'crystalline'
+			artifacts = [sourceJar, apiJar]
+		}
+	}
+}
+
+artifactory {
+	contextUrl = System.env.ARTC
+	clientConfig.info.setPrincipal("ManualBuild")
+	publish {
+        repository {
+            repoKey = 'all'
+            username = System.env.ARTU
+            password = System.env.ARTP
+            maven = true
+        }
+		defaults {
+			publishArtifacts = true
+			properties = ['com.teamisotope.crystalline.api': 'api']
+			publications('maven')
+			publishPom = true
+		}
+    }
+    resolve {
+        repository {
+            repoKey = 'all'
+            username = System.env.ARTU
+            password = System.env.ARTP
+            maven = true
+        }
+    }
 }
