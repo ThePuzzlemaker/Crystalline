@@ -3,7 +3,6 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				sh 
 			    sh 'chmod +x version.sh'
 			    sh './version.sh'
 				sh 'chmod +x gradlew'
