@@ -3,10 +3,11 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
+				sh 
 			    sh 'chmod +x version.sh'
 			    sh './version.sh'
 				sh 'chmod +x gradlew'
-				sh './gradlew clean setupCiWorkspace build apiJar artifactoryPublish'
+				sh './gradlew clean setupCiWorkspace build apiJar'
 			}
 		}
 		stage('Deploy') {
