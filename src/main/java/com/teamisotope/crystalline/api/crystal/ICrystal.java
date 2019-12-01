@@ -30,7 +30,7 @@ public interface ICrystal extends IForgeRegistryEntry<ICrystal> {
     }
 
     default String serialize() {
-        return this.getRegistryName() == null ? this.getRegistryName().toString() : "crystalline:crystal.base";
+        return this.getRegistryName() != null ? this.getRegistryName().toString() : "crystalline:crystal.base";
     }
 
     @Override

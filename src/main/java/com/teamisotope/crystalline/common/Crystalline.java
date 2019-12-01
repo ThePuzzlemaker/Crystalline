@@ -2,6 +2,7 @@ package com.teamisotope.crystalline.common;
 
 import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.common.util.TabCrystalline;
+import com.teamisotope.crystalline.common.util.TabCrystallineCrystals;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -23,6 +24,7 @@ public class Crystalline {
     public static final Logger logger = LogManager.getLogger(CStatic.MODID);
 
     public static CreativeTabs tab = new TabCrystalline();
+    public static CreativeTabs tabCrystals = new TabCrystallineCrystals();
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {

@@ -1,6 +1,7 @@
 package com.teamisotope.crystalline.api.crystal;
 
 import com.teamisotope.crystalline.api.util.ISerializableMetadata;
+import com.teamisotope.crystalline.common.base.crystal.CrystalInit;
 import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.UUID;

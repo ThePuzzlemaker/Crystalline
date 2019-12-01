@@ -6,6 +6,11 @@ import com.teamisotope.crystalline.api.crystal.CrystalRegistry;
 import com.teamisotope.crystalline.api.crystal.ICrystal;
 import com.teamisotope.crystalline.api.resonance.Resonance;
 import com.teamisotope.crystalline.api.resonance.WorldResonance;
+import com.teamisotope.crystalline.common.item.CItems;
+import mezz.jei.api.IJeiHelpers;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.ISubtypeRegistry;
+import mezz.jei.api.ingredients.IIngredientBlacklist;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -17,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -25,8 +31,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.text.DecimalFormat;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class ItemCrystal extends Item {
 
@@ -187,5 +195,25 @@ public class ItemCrystal extends Item {
                 }
             }
         }
+    }
+
+    public static void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
+        subtypeRegistry.registerSubtypeInterpreter(CItems.crystal, itemStack -> {
+            CrystalMetadata meta = get(itemStack);
+            if (meta == null)
+                return "null";
+            ICrystal crystal = meta.getCrystal();
+            if (crystal == null)
+                return "null";
+            ResourceLocation rl = crystal.getRegistryName();
+            if (rl == null)
+                return "null";
+            return rl.toString();
+        });
+    }
+
+    public static void register(IModRegistry registry) {
+        IIngredientBlacklist blacklist = registry.getJeiHelpers().getIngredientBlacklist();
+        blacklist.addIngredientToBlacklist(new ItemStack(CItems.crystal));
     }
 }

@@ -1,3 +1,6 @@
+itemGroup.crystalline=§r§5§kaa§r§5Crystalline§r§5§kaa§r
+itemGroup.crystallineCrystals=§r§5§kaa§r§5Crystalline Crystals§r§5§kaa§r
+
 < Crystal Item >
 
 item.crystalline.crystal.name=§r§5§kaa§r§5Crystal§r§5§kaa§r
@@ -45,8 +48,6 @@ tile.crystalline.tuningmachine.name=§r§7Tuning Machine
 tile.crystalline.arcanumminerale.name=§r§5Arcanum Minerale
 
 item.crystalline.arcanummineralecrystal.name=§r§5Crystallized Arcanum Minerale
-
-itemGroup.crystalline=§r§5§kaa§r§5Crystalline§r§5§kaa§r
 
 < Misc Items >
 
