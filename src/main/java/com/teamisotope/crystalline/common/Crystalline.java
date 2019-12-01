@@ -1,6 +1,7 @@
 package com.teamisotope.crystalline.common;
 
 import com.teamisotope.crystalline.api.CStatic;
+import com.teamisotope.crystalline.common.command.CommandResonance;
 import com.teamisotope.crystalline.common.util.TabCrystalline;
 import com.teamisotope.crystalline.common.util.TabCrystallineCrystals;
 import net.minecraft.creativetab.CreativeTabs;
@@ -9,6 +10,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,6 +41,11 @@ public class Crystalline {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
         proxy.postInit(e);
+    }
+
+    @Mod.EventHandler
+    public void serverLoad(FMLServerStartingEvent e) {
+        e.registerServerCommand(new CommandResonance());
     }
 
 }

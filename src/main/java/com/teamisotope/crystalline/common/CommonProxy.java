@@ -3,6 +3,7 @@ package com.teamisotope.crystalline.common;
 import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.common.advancement.CPredicates;
 import com.teamisotope.crystalline.common.capabilities.CCapabilities;
+import com.teamisotope.crystalline.common.command.CommandResonance;
 import com.teamisotope.crystalline.common.compat.top.TOPCompat;
 import com.teamisotope.crystalline.common.gui.GuiProxy;
 import com.teamisotope.crystalline.common.network.PacketHandler;
@@ -14,6 +15,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

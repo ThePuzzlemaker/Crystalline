@@ -13,5 +13,6 @@
       "text": "Your $(l:arcana/mortar_and_pestle)mortar and pestle$(/l) you crafted earlier will be retained after crushing, so you can re-use it."
     }
   ],
-  "sortnum": 2
+  "sortnum": 2,
+  "advancement": "crystalline:mortarandpestle"
 }

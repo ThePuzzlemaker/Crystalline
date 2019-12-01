@@ -151,6 +151,10 @@ public class CConfig {
         @Config.SlidingOption
         public int lifeModifier = 1;
 
+        @Config.Name("Hardcore Crystal Efficiency")
+        @Config.Comment("Potential scales the efficiency of crystals")
+        public boolean hardcoreEfficiency = false;
+
     }
 
 }

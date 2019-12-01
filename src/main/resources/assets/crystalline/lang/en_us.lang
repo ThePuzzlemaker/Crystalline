@@ -1,6 +1,12 @@
 itemGroup.crystalline=§r§5§kaa§r§5Crystalline§r§5§kaa§r
 itemGroup.crystallineCrystals=§r§5§kaa§r§5Crystalline Crystals§r§5§kaa§r
 
+< Command >
+
+crystalline.command.resonance.invalid=Error parsing crystal ID!
+crystalline.command.resonance.lowerupper=Lower/Upper: %d/%d
+crystalline.command.resonance.exact=Exact: %d
+
 < Crystal Item >
 
 item.crystalline.crystal.name=§r§5§kaa§r§5Crystal§r§5§kaa§r

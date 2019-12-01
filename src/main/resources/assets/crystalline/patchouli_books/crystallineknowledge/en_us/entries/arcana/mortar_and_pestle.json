@@ -13,5 +13,6 @@
       "text": "Its crafting recipe is quite simple, just combine some planks and sticks to create a pestle, and use a bowl as a mortar."
     }
   ],
-  "sortnum": 1
+  "sortnum": 1,
+  "advancement": "crystalline:root"
 }
