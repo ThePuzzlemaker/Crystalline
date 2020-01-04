@@ -51,8 +51,7 @@ public class CKnowledge implements ICrystal {
 
     @Override
     public void onHold(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-
-        if (!world.isRemote) {
+        if (world.isRemote) {
             int insanity = InsanityUtils.getInsanity(player);
             if (insanity != -1) {
                 if (insanity == 101)

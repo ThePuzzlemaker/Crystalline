@@ -25,8 +25,12 @@ public class TETuningMachine extends TileEntity {
 
     public static final int SIZE = 2;
 
-    private int currentFrequency;
-    private int currentDifference;
+    private int currentFrequency = 0;
+    private int currentDifference = -1;
+
+    private int upper = -1;
+    private int lower = -1;
+    private int exact = -1;
 
 
     private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE) {
@@ -44,7 +48,10 @@ public class TETuningMachine extends TileEntity {
         if (compound.hasKey("items"))
             itemStackHandler.deserializeNBT((NBTTagCompound) compound.getTag("items"));
         this.currentFrequency = compound.hasKey("currentFrequency") ? compound.getInteger("currentFrequency") : 0;
-        this.currentDifference = compound.hasKey("currentDifference") ? compound.getInteger("currentDifference") : 0;
+        this.currentDifference = compound.hasKey("currentDifference") ? compound.getInteger("currentDifference") : -1;
+        this.upper = compound.hasKey("upper") ? compound.getInteger("upper") : -1;
+        this.lower = compound.hasKey("lower") ? compound.getInteger("lower") : -1;
+        this.exact = compound.hasKey("exact") ? compound.getInteger("exact") : -1;
     }
 
     @Override
@@ -53,6 +60,9 @@ public class TETuningMachine extends TileEntity {
         compound.setTag("items", itemStackHandler.serializeNBT());
         compound.setInteger("currentFrequency", currentFrequency);
         compound.setInteger("currentDifference", currentDifference);
+        compound.setInteger("upper", upper);
+        compound.setInteger("lower", lower);
+        compound.setInteger("exact", exact);
         return compound;
     }
 
@@ -109,6 +119,8 @@ public class TETuningMachine extends TileEntity {
                     Resonance r = WorldResonance.INSTANCE.getResonance(meta.getCrystal());
                     if (r != null) {
                         this.setCurrentDifference(r.getExact() - this.getCurrentFrequency());
+                        this.setUpper(r.getUpper());
+                        this.setLower(r.getLower());
                     }
                 }
             }
@@ -150,6 +162,33 @@ public class TETuningMachine extends TileEntity {
 
     public void setCurrentDifference(int currentDifference) {
         this.currentDifference = currentDifference;
+        this.markDirty();
+        IBlockState state = getWorld().getBlockState(getPos());
+        getWorld().notifyBlockUpdate(getPos(), state, state, 3);
+    }
+
+    public int getUpper() { return upper; }
+
+    public int getLower() { return lower; }
+
+    public int getExact() { return exact; }
+
+    public void setUpper(int upper) {
+        this.upper = upper;
+        this.markDirty();
+        IBlockState state = getWorld().getBlockState(getPos());
+        getWorld().notifyBlockUpdate(getPos(), state, state, 3);
+    }
+
+    public void setLower(int lower) {
+        this.lower = lower;
+        this.markDirty();
+        IBlockState state = getWorld().getBlockState(getPos());
+        getWorld().notifyBlockUpdate(getPos(), state, state, 3);
+    }
+
+    public void setExact(int exact) {
+        this.exact = exact;
         this.markDirty();
         IBlockState state = getWorld().getBlockState(getPos());
         getWorld().notifyBlockUpdate(getPos(), state, state, 3);

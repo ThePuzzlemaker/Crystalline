@@ -1,7 +1,9 @@
 package com.teamisotope.crystalline.client;
 
+import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.common.CommonProxy;
 import com.teamisotope.crystalline.client.insanity.OverlayInsanity;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -17,6 +19,7 @@ public class ClientProxy extends CommonProxy {
     @SideOnly(Side.CLIENT)
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
+        OBJLoader.INSTANCE.addDomain(CStatic.MODID);
         MinecraftForge.EVENT_BUS.register(new OverlayInsanity());
     }
 

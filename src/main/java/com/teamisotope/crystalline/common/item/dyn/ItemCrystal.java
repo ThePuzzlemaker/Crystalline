@@ -117,7 +117,7 @@ public class ItemCrystal extends Item {
                 }
                 tooltip.add("");
                 if (getDifference(stack) >= 0) {
-                    tooltip.add(I18n.format("crystalline.lore.crystal.efficiency", String.format("%.2f", getEfficiency(stack) * 100)) + "%");
+                    tooltip.add(I18n.format("crystalline.lore.crystal.efficiency", String.format("%.2f%%", getEfficiency(stack) * 100)));
                 } else
                     tooltip.add(I18n.format("crystalline.lore.crystal.efficiency.unknown"));
                 //tooltip.add("");

@@ -22,6 +22,9 @@ public class CItems {
     @GameRegistry.ObjectHolder("crystalline:arcanummineralecrystal")
     public static Item arcanumMineraleCrystal;
 
+    @GameRegistry.ObjectHolder("crystalline:arcaneknowledge")
+    public static Item arcaneKnowledge;
+
     @GameRegistry.ObjectHolder("crystalline:crystalbase")
     public static Item crystalBase;
 
@@ -43,6 +46,7 @@ public class CItems {
         e.getRegistry().register(map.setContainerItem(map));
         e.getRegistry().register(new Item().setRegistryName("crystalline:tuningcomponents").setUnlocalizedName("crystalline.tuningcomponents").setCreativeTab(Crystalline.tab));
         e.getRegistry().register(new Item().setRegistryName("crystalline:seismicresonator").setUnlocalizedName("crystalline.seismicresonator").setCreativeTab(Crystalline.tab));
+        e.getRegistry().register(new Item().setRegistryName("crystalline:arcaneknowledge").setUnlocalizedName("crystalline.arcaneknowledge").setCreativeTab(Crystalline.tab));
     }
 
     @SubscribeEvent
@@ -54,6 +58,7 @@ public class CItems {
         ModelLoader.setCustomModelResourceLocation(mortarAndPestle, 0, new ModelResourceLocation(mortarAndPestle.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(tuningComponents, 0, new ModelResourceLocation(tuningComponents.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(seismicResonator, 0, new ModelResourceLocation(seismicResonator.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(arcaneKnowledge, 0, new ModelResourceLocation(arcaneKnowledge.getRegistryName(), "inventory"));
     }
 
 }

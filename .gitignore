@@ -48,3 +48,4 @@ diagrams
 private.sh
 private.bat
 private.ps1
+*.bbmodel

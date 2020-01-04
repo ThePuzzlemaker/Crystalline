@@ -105,6 +105,13 @@ public class TuningMachineGUI extends GuiContainer {
         } else {
             drawTextCenteredShadow(testX + testW / 2, testY + testH / 2 - 4, "TEST", 0xffffff);
         }
+        // 177 2
+        String upper = String.format("Upper: %s", te.getUpper() != -1 ? String.format("%d", te.getUpper()) : "Press Test");
+        drawTextShadow((guiLeft+177)-mc.fontRenderer.getStringWidth(upper), guiTop-27, upper, 0xffffff);
+        String lower = String.format("Lower: %s", te.getLower() != -1 ? String.format("%d", te.getLower()) : "Press Test");
+        drawTextShadow((guiLeft+177)-mc.fontRenderer.getStringWidth(lower), guiTop-18, lower, 0xffffff);
+        String difference = String.format("Difference: %s", te.getCurrentDifference() != -1 ? String.format("%f", ((float)(te.getCurrentFrequency() / te.getExact()) * 100)) : "Press Test");
+        drawTextShadow((guiLeft+177)-mc.fontRenderer.getStringWidth(difference), guiTop-9, difference, 0xffffff);
 
         // Iterate indicator's position and draw the indicator
         iterateIndicatorPos(guiLeft, guiTop);
@@ -172,7 +179,7 @@ public class TuningMachineGUI extends GuiContainer {
         idbX = 187;
         idbY = 0;
 
-        finalIndicY = guiTop + 1 + 74 + MathHelper.clamp(te.getCurrentDifference()/ 100, -74, 74);
+        finalIndicY = guiTop + 1 + 74 + MathHelper.clamp(te.getCurrentDifference() / 100, -74, 74);
     }
 
     private void drawFrequency(int freq) {

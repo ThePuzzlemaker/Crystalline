@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "crystalline:distillation/distillationapparatus_left"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{"model":  "crystalline:distillation/distillationapparatus"}],
+    "facing": {
+      "north": {"y": 90},
+      "south": {"y": -90},
+      "west": {"y": 0},
+      "east": {"y": 180},
+      "up": {},
+      "down": {}
+    },
+    "mbsecondary": {
+      "true": {"model":  "crystalline:distillation/distillationapparatus_right"},
+      "false": {}
+    }
+  }
+}

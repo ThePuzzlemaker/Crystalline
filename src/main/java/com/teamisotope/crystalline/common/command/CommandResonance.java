@@ -43,17 +43,18 @@ public class CommandResonance extends CommandBase {
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         if (args.length < 1) {
+            sender.sendMessage(new TextComponentString(TextFormatting.RED + "Usage: /" + getUsage(sender)));
             return;
         }
         String id = args[0];
         ICrystal crystal = CrystalRegistry.deserialize(id);
         if (crystal == null) {
-            sender.sendMessage(new TextComponentString(TextFormatting.RED + I18n.format("crystalline.command.resonance.invalid")));
+            sender.sendMessage(new TextComponentString(TextFormatting.RED + "Error parsing crystal ID!"));
             return;
         }
         Resonance resonance = WorldResonance.INSTANCE.getResonance(crystal);
-        sender.sendMessage(new TextComponentString(I18n.format("crystalline.command.resonance.lowerupper", resonance.getLower(), resonance.getUpper())));
-        sender.sendMessage(new TextComponentString(I18n.format("crystalline.command.resonance.exact", resonance.getExact())));
+        sender.sendMessage(new TextComponentString(String.format("Lower/Upper: %d/%d", resonance.getLower(), resonance.getUpper())));
+        sender.sendMessage(new TextComponentString(String.format("Exact: %d", resonance.getExact())));
     }
 
     @Override
@@ -69,7 +70,7 @@ public class CommandResonance extends CommandBase {
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
         if (args.length < 1) {
-            return getListOfStringsMatchingLastWord(args, CrystalRegistry.getRegistry().getKeys());
+            return getListOfStringsMatchingLastWord(args, CrystalRegistry.getRegistry().getKeys().stream().map(ResourceLocation::toString).collect(Collectors.toList()));
         } else {
             return Lists.newArrayList();
         }

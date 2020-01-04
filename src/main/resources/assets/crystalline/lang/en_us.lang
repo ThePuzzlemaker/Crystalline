@@ -1,12 +1,6 @@
 itemGroup.crystalline=§r§5§kaa§r§5Crystalline§r§5§kaa§r
 itemGroup.crystallineCrystals=§r§5§kaa§r§5Crystalline Crystals§r§5§kaa§r
 
-< Command >
-
-crystalline.command.resonance.invalid=Error parsing crystal ID!
-crystalline.command.resonance.lowerupper=Lower/Upper: %d/%d
-crystalline.command.resonance.exact=Exact: %d
-
 < Crystal Item >
 
 item.crystalline.crystal.name=§r§5§kaa§r§5Crystal§r§5§kaa§r
@@ -43,7 +37,7 @@ crystalline.lore.crystal.frequency=§r§7Frequency: §r§a%s Hz
 crystalline.lore.crystal.frequency.invalid=§r§7Frequency: §r§4Invalid
 
 
-
+tile.crystalline.distillationapparatus.name=§r§7Distillation Apparatus
 
 < Tuning Machine >
 
@@ -60,6 +54,8 @@ item.crystalline.arcanummineralecrystal.name=§r§5Crystallized Arcanum Minerale
 item.crystalline.crystalbase.name=§r§7Crystal Base
 
 item.crystalline.mortarandpestle.name=§r§7Mortar and Pestle
+
+item.crystalline.arcaneknowledge.name=§r§7Crystal of Arcane Knowledge
 
 < Crafting Components >
 

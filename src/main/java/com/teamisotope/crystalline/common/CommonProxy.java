@@ -25,7 +25,6 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent e) {
         CCapabilities.register();
-        OBJLoader.INSTANCE.addDomain(CStatic.MODID);
         if (Loader.isModLoaded("theoneprobe")) {
             TOPCompat.register();
         }
