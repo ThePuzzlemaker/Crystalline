@@ -28,8 +28,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -49,6 +51,15 @@ public class BlockDistillationApparatus extends Block {
         setUnlocalizedName("crystalline.distillationapparatus").setRegistryName(CStatic.MODID, "distillationapparatus").setHardness(1.0f).setResistance(1.0f).setHarvestLevel("pickaxe", 1);
         setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(MBSECONDARY, false));
         setCreativeTab(Crystalline.tab);
+    }
+
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        state = state.getActualState(source, pos);
+        if (state.getValue(MBSECONDARY)) {
+            return new AxisAlignedBB(0, 0, 0, 16 * .0625, 23 * .0625, 16 * .0625);
+        } else {
+            return new AxisAlignedBB(0, 0, 0, 16 * .0625, 26 * .0625, 16 * .0625);
+        }
     }
 
     @Override
@@ -219,8 +230,6 @@ public class BlockDistillationApparatus extends Block {
             default: break;
         }
     }
-
-
 
     // looks like these are necessary ._.
     @Override
