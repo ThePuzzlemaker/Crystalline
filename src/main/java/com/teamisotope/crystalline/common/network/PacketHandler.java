@@ -24,9 +24,7 @@ public class PacketHandler {
 
     public static void registerMessages() {
         // Register messages which are sent from the client to the server here:
-        INSTANCE.registerMessage(PacketTMTune.Handler.class, PacketTMTune.class, nextID(), Side.SERVER);
-        INSTANCE.registerMessage(PacketTMTest.Handler.class, PacketTMTest.class, nextID(), Side.SERVER);
-        INSTANCE.registerMessage(PacketTMFreqChange.Handler.class, PacketTMFreqChange.class, nextID(), Side.SERVER);
+
         // Messages from server to client:
         INSTANCE.registerMessage(PacketInsanityChanged.Handler.class, PacketInsanityChanged.class, nextID(), Side.CLIENT);
     }

@@ -3,8 +3,6 @@ package com.teamisotope.crystalline.common.block;
 import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.common.block.am.BlockArcanumMinerale;
 import com.teamisotope.crystalline.common.block.distillation.BlockDistillationApparatus;
-import com.teamisotope.crystalline.common.block.tuning.BlockTuningMachine;
-import com.teamisotope.crystalline.common.block.tuning.TETuningMachine;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -20,8 +18,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber
 public class CBlocks {
 
-    @GameRegistry.ObjectHolder(CStatic.MODID + ":tuningmachine")
-    public static BlockTuningMachine tuningMachine;
 
     @GameRegistry.ObjectHolder(CStatic.MODID + ":arcanumminerale")
     public static BlockArcanumMinerale arcanumMinerale;
@@ -31,15 +27,12 @@ public class CBlocks {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> e) {
-        e.getRegistry().register(new BlockTuningMachine());
         e.getRegistry().register(new BlockArcanumMinerale());
         e.getRegistry().register(new BlockDistillationApparatus());
-        GameRegistry.registerTileEntity(TETuningMachine.class, new ResourceLocation(CStatic.MODID, "_tuningmachine"));
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
-        e.getRegistry().register(new ItemBlock(tuningMachine).setRegistryName(tuningMachine.getRegistryName()));
         e.getRegistry().register(new ItemBlock(arcanumMinerale).setRegistryName(arcanumMinerale.getRegistryName()));
         e.getRegistry().register(new ItemBlock(distillationApparatus).setRegistryName(distillationApparatus.getRegistryName()));
     }
@@ -47,7 +40,6 @@ public class CBlocks {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void registerModels(ModelRegistryEvent e) {
-        tuningMachine.initModel();
         arcanumMinerale.initModel();
         distillationApparatus.initModel();
     }

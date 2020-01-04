@@ -3,7 +3,6 @@ package com.teamisotope.crystalline.common;
 import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.common.advancement.CPredicates;
 import com.teamisotope.crystalline.common.capabilities.CCapabilities;
-import com.teamisotope.crystalline.common.command.CommandResonance;
 import com.teamisotope.crystalline.common.compat.top.TOPCompat;
 import com.teamisotope.crystalline.common.gui.GuiProxy;
 import com.teamisotope.crystalline.common.network.PacketHandler;

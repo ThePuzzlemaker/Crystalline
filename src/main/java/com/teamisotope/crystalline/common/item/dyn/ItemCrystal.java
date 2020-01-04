@@ -4,8 +4,6 @@ import com.teamisotope.crystalline.api.CStatic;
 import com.teamisotope.crystalline.api.crystal.CrystalMetadata;
 import com.teamisotope.crystalline.api.crystal.CrystalRegistry;
 import com.teamisotope.crystalline.api.crystal.ICrystal;
-import com.teamisotope.crystalline.api.resonance.Resonance;
-import com.teamisotope.crystalline.api.resonance.WorldResonance;
 import com.teamisotope.crystalline.common.item.CItems;
 import com.teamisotope.crystalline.common.util.CConfig;
 import mezz.jei.api.IJeiHelpers;
@@ -109,50 +107,10 @@ public class ItemCrystal extends Item {
                 } else if (data.getPotential() >= 75 && data.getPotential() <= 100) {
                     tooltip.add(I18n.format("crystalline.lore.crystal.potential", I18n.format("crystalline.lore.crystal.potential.fourthquartile", data.getPotential())));
                 }
-                tooltip.add("");
-                if (data.getFrequency() >= 0) {
-                    tooltip.add(I18n.format("crystalline.lore.crystal.frequency", new DecimalFormat("#,###,###").format(data.getFrequency())));
-                } else {
-                    tooltip.add(I18n.format("crystalline.lore.crystal.frequency.invalid"));
-                }
-                tooltip.add("");
-                if (getDifference(stack) >= 0) {
-                    tooltip.add(I18n.format("crystalline.lore.crystal.efficiency", String.format("%.2f%%", getEfficiency(stack) * 100)));
-                } else
-                    tooltip.add(I18n.format("crystalline.lore.crystal.efficiency.unknown"));
                 //tooltip.add("");
                 // TODO: Reagent tooltip
             }
         }
-    }
-
-    public static int getDifference(ItemStack stack) {
-        CrystalMetadata m = get(stack);
-        if (m != null && m.getCrystal() != null) {
-            Resonance r = WorldResonance.INSTANCE.getResonance(m.getCrystal());
-            if (r != null) {
-                return Math.abs(m.getFrequency() - r.getExact());
-            }
-        }
-        return -1;
-    }
-
-    public static double getEfficiency(ItemStack stack) {
-        CrystalMetadata m = get(stack);
-        if (m != null && m.getCrystal() != null) {
-            Resonance r = WorldResonance.INSTANCE.getResonance(m.getCrystal());
-            if (r != null) {
-                if (!CConfig.crystals.hardcoreEfficiency) {
-                    return Math.abs(((double)r.getExact() - (double)getDifference(stack)) / (double)r.getExact());
-                } else {
-                    if (m.getPotential() == 0) {
-                        return 0;
-                    }
-                    return Math.abs((((double)r.getExact() - (double)getDifference(stack)) / (double)r.getExact()) * ((double)m.getPotential() / 100d));
-                }
-            }
-        }
-        return -1;
     }
 
     @SideOnly(Side.CLIENT)

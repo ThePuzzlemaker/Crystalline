@@ -9,30 +9,25 @@ import java.util.UUID;
 public class CrystalMetadata implements ISerializableMetadata {
 
     private ICrystal crystal;
-    private int frequency;
     private UUID bound;
     private int potential;
 
-    public CrystalMetadata(ICrystal crystal, UUID bound, int frequency, int potential) {
+    public CrystalMetadata(ICrystal crystal, UUID bound, int potential) {
         this.crystal = crystal;
         this.bound = bound;
-        this.frequency = frequency;
         this.potential = potential;
     }
     public CrystalMetadata(ICrystal crystal, UUID bound) {
-        this(crystal, bound, 0, 100);
+        this(crystal, bound, 100);
     }
     public CrystalMetadata(ICrystal crystal) {
-        this(crystal, null, 0, 100);
-    }
-    public CrystalMetadata(ICrystal crystal, int frequency, int potential) {
-        this(crystal, null, frequency, potential);
+        this(crystal, null, 100);
     }
     public CrystalMetadata(ICrystal crystal, int potential) {
-        this(crystal, null, 0, potential);
+        this(crystal, null, potential);
     }
     public CrystalMetadata() {
-        this(null, null, 0, 100);
+        this(null, null, 100);
     }
 
     @Override
@@ -43,7 +38,6 @@ public class CrystalMetadata implements ISerializableMetadata {
         if (bound != null)
             nbt.setUniqueId("bound", bound);
         nbt.setInteger("potential", potential);
-        nbt.setInteger("frequency", frequency);
         return nbt;
     }
 
@@ -56,8 +50,6 @@ public class CrystalMetadata implements ISerializableMetadata {
                 this.bound = nbt.getUniqueId("bound");
             if (nbt.hasKey("potential"))
                 this.potential = nbt.getInteger("potential");
-            if (nbt.hasKey("frequency"))
-                this.frequency = nbt.getInteger("frequency");
         }
         return this;
     }
@@ -70,20 +62,12 @@ public class CrystalMetadata implements ISerializableMetadata {
         this.bound = bound;
     }
 
-    public void setFrequency(int frequency) {
-        this.frequency = frequency;
-    }
-
     public void setPotential(int potential) {
         this.potential = potential;
     }
 
     public ICrystal getCrystal() {
         return crystal;
-    }
-
-    public int getFrequency() {
-        return frequency;
     }
 
     public UUID getBound() {

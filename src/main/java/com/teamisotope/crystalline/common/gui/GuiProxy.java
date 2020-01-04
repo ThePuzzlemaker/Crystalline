@@ -1,8 +1,5 @@
 package com.teamisotope.crystalline.common.gui;
 
-import com.teamisotope.crystalline.common.block.tuning.TETuningMachine;
-import com.teamisotope.crystalline.common.block.tuning.TuningMachineContainer;
-import com.teamisotope.crystalline.common.block.tuning.TuningMachineGUI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -17,9 +14,6 @@ public class GuiProxy implements IGuiHandler {
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         BlockPos pos = new BlockPos(x, y, z);
         TileEntity te = world.getTileEntity(pos);
-        if (te instanceof TETuningMachine) {
-            return new TuningMachineContainer(player.inventory, (TETuningMachine) te);
-        }
         return null;
     }
 
@@ -28,10 +22,6 @@ public class GuiProxy implements IGuiHandler {
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         BlockPos pos = new BlockPos(x, y, z);
         TileEntity te = world.getTileEntity(pos);
-        if (te instanceof TETuningMachine) {
-            TETuningMachine containerTileEntity = (TETuningMachine) te;
-            return new TuningMachineGUI(containerTileEntity, new TuningMachineContainer(player.inventory, containerTileEntity));
-        }
         return null;
     }
 

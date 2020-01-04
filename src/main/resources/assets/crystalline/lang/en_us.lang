@@ -57,6 +57,10 @@ item.crystalline.mortarandpestle.name=§r§7Mortar and Pestle
 
 item.crystalline.arcaneknowledge.name=§r§7Crystal of Arcane Knowledge
 
+item.crystalline.glasstube.name=§r§7Glass Tube
+
+item.crystalline.mysterioussolvent.name=§r§7Mysterious Solvent
+
 < Crafting Components >
 
 item.crystalline.tuningcomponents.name=§r§7Tuning Components

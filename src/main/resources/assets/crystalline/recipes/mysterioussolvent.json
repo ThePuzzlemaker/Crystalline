@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GAG",
+    "GAG",
+    "WGW"
+  ],
+  "key": {
+    "A": {
+      "item": "crystalline:arcanummineralecrystal"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "crystalline:mysterioussolvent",
+    "count": 8
+  }
+}

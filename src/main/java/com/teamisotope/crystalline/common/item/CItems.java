@@ -37,6 +37,12 @@ public class CItems {
     @GameRegistry.ObjectHolder("crystalline:seismicresonator")
     public static Item seismicResonator;
 
+    @GameRegistry.ObjectHolder("crystalline:glasstube")
+    public static Item glassTube;
+
+    @GameRegistry.ObjectHolder("crystalline:mysterioussolvent")
+    public static Item mysteriousSolvent;
+
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> e) {
         e.getRegistry().register(new ItemCrystal());
@@ -47,6 +53,8 @@ public class CItems {
         e.getRegistry().register(new Item().setRegistryName("crystalline:tuningcomponents").setUnlocalizedName("crystalline.tuningcomponents").setCreativeTab(Crystalline.tab));
         e.getRegistry().register(new Item().setRegistryName("crystalline:seismicresonator").setUnlocalizedName("crystalline.seismicresonator").setCreativeTab(Crystalline.tab));
         e.getRegistry().register(new Item().setRegistryName("crystalline:arcaneknowledge").setUnlocalizedName("crystalline.arcaneknowledge").setCreativeTab(Crystalline.tab));
+        e.getRegistry().register(new Item().setRegistryName("crystalline:glasstube").setUnlocalizedName("crystalline.glasstube").setCreativeTab(Crystalline.tab));
+        e.getRegistry().register(new Item().setRegistryName("crystalline:mysterioussolvent").setUnlocalizedName("crystalline.mysterioussolvent").setCreativeTab(Crystalline.tab));
     }
 
     @SubscribeEvent
@@ -59,6 +67,8 @@ public class CItems {
         ModelLoader.setCustomModelResourceLocation(tuningComponents, 0, new ModelResourceLocation(tuningComponents.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(seismicResonator, 0, new ModelResourceLocation(seismicResonator.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(arcaneKnowledge, 0, new ModelResourceLocation(arcaneKnowledge.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(glassTube, 0, new ModelResourceLocation(glassTube.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(mysteriousSolvent, 0, new ModelResourceLocation(mysteriousSolvent.getRegistryName(), "inventory"));
     }
 
 }

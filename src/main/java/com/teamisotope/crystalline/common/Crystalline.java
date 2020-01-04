@@ -1,7 +1,6 @@
 package com.teamisotope.crystalline.common;
 
 import com.teamisotope.crystalline.api.CStatic;
-import com.teamisotope.crystalline.common.command.CommandResonance;
 import com.teamisotope.crystalline.common.util.TabCrystalline;
 import com.teamisotope.crystalline.common.util.TabCrystallineCrystals;
 import net.minecraft.creativetab.CreativeTabs;
@@ -45,7 +44,7 @@ public class Crystalline {
 
     @Mod.EventHandler
     public void serverLoad(FMLServerStartingEvent e) {
-        e.registerServerCommand(new CommandResonance());
+
     }
 
 }

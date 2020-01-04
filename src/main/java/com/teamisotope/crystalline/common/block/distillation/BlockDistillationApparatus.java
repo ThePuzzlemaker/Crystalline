@@ -1,7 +1,6 @@
 package com.teamisotope.crystalline.common.block.distillation;
 
 import com.teamisotope.crystalline.api.CStatic;
-import com.teamisotope.crystalline.client.tesrs.TESRTuningMachine;
 import com.teamisotope.crystalline.common.Crystalline;
 import com.teamisotope.crystalline.common.compat.top.TOPInfoProvider;
 import com.teamisotope.crystalline.common.item.CItems;
