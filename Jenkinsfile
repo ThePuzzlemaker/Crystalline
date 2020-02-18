@@ -6,7 +6,7 @@ pipeline {
 				//sh 'chmod +x version.sh'
 				//sh './version.sh'
 				sh 'chmod +x gradlew'
-				sh './gradlew clean setupCiWorkspace build apiJar'
+				sh './gradlew clean build'
 			}
 		}
 		stage('Deploy') {
