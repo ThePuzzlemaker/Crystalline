@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+issueTrackerURL="https://github.com/ThePuzzlemaker/Crystalline/issues"
+[[mods]]
+modId="crystalline"
+version="${file.jarVersion}"
+displayName="Crystalline"
+# TODO: updateJSONURL="http://myurl.me/"
+# TODO: displayURL="http://example.com/"
+logoFile="crystalline-logo.png"
+credits="McJty, for his tutorials; Azanor; for creating Thaumcraft, one of the inspirations of this mod; Vazkii, for creating Psi, another one of the inspirations of this mod; some friends for giving me ideas for this mod; the MMD Discord server for advice on art and code; and many other people that may not be listed here who have inspired me along the time of development of this mod."
+authors="The Puzzlemaker"
+description='''
+    Crystalline is an open source Minecraft mod that adds crystals that give you special powers. But caution: if you use the crystals too much, you may want to question your sanity.
+'''
+[[dependencies.crystalline]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.crystalline]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.4]"
+    ordering="NONE"
+    side="BOTH"
