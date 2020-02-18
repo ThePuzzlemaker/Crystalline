@@ -1,0 +1,10 @@
+{
+  "_comment": "Blocks",
+  "block.crystalline.arcanumminerale": "§r§5Arcanum Minerale",
+
+  "_comment": "Items",
+  "item.crystalline.arcanummineralecrystal": "§r§5Crystallized Arcanum Minerale",
+
+  "_comment": "Creative Tabs",
+  "itemGroup.crystallinemain": "§r§5Crystalline"
+}

@@ -1,4 +1,4 @@
-package com.teamisotope.crystalline.blocks;
+package com.teamisotope.crystalline.items;
 
 import com.teamisotope.crystalline.Crystalline;
 import com.teamisotope.crystalline.setup.CrystallineSetup;
@@ -12,26 +12,16 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class CrystallineBlocks {
+public class CrystallineItems {
 
-    @ObjectHolder("crystalline:arcanumminerale")
-    public static ArcanumMinerale arcanumminerale;
-
-    @SubscribeEvent
-    public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-        IForgeRegistry<Block> registry = blockRegistryEvent.getRegistry();
-        registry.register(new ArcanumMinerale());
-    }
+    @ObjectHolder("crystalline:arcanummineralecrystal")
+    public static Item arcanummineralecrystal;
 
     @SubscribeEvent
     public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
         IForgeRegistry<Item> registry = itemRegistryEvent.getRegistry();
         Item.Properties mainGroup = new Item.Properties().group(Crystalline.setup.crystallineMainGroup);
-        registry.register(newBlockItem(arcanumminerale, mainGroup));
-    }
-
-    private static Item newBlockItem(Block block, Item.Properties properties) {
-        return new BlockItem(block, properties).setRegistryName(block.getRegistryName());
+        registry.register(new Item(mainGroup).setRegistryName("arcanummineralecrystal"));
     }
 
 }
