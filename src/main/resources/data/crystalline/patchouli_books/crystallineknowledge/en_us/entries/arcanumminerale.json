@@ -1,0 +1,32 @@
+{
+  "name": "Arcanum Minerale",
+  "icon": "crystalline:arcanumminerale",
+  "category": "arcana",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Legends tell of a mysterious mineral, $(bold)one which known to be about as common as redstone$(). It has been dubbed by many as \"$(5)arcanum minerale$()\", or \"$(italic)mysterious mineral$()\" in Latin. It is told to $(bold)have mysterious properties which could be harnessed$(); the glowing crystal, $(bold)if used right, could be used to do nearly anything$()."
+    },
+    {
+      "type": "image",
+      "images": [
+        "crystalline:textures/book/arcanumminerale.png"
+      ],
+      "text": "$(italic)$(5)Arcanum Minerale$()$(italic) in the wild. Rumor says it's the $(6)Prima Materia$()$(italic), however those claims are baseless.$()",
+      "border": true
+    },
+    {
+      "type": "smelting",
+      "recipe": "crystalline:arcanumminerale",
+      "title": "Basic Smelting",
+      "text": "For those with the $(6)Silk Touch$() enchantment, raw $(5)Arcanum Minerale$() can be smelted in a regular furnace to create a crystal. However, this has less yield than simply mining the raw crystal. It is recommended to mine the raw crystal with a tool which has some form of the $(9)Fortune$() enchantment as it will give a greater yield."
+    },
+    {
+      "type": "spotlight",
+      "item": "crystalline:arcanummineralecrystal",
+      "title": "Pure Arcanum Minerale",
+      "text": "This is pure $(5)Arcanum Minerale$(), or at least the purest it can get. It's potential is $(bold)nearly infinite$(). While it is quite common, it has been found that it is $(bold)somewhat hard to harness without extra components or ways to increase its power$()."
+    }
+  ],
+  "sortnum": 0
+}

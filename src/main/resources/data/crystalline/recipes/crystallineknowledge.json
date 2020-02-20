@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AII",
+    "ARG",
+    "AII"
+  ],
+  "key": {
+    "A": {
+      "item": "crystalline:arcanummineralecrystal"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "result": {
+    "item": "patchouli:guide_book",
+    "nbt": {
+      "patchouli:book": "crystalline:crystallineknowledge"
+    }
+  }
+}

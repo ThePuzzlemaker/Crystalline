@@ -1,0 +1,9 @@
+{
+  "name": "Crystalline Knowledge",
+  "landing_text": "crystalline.book.lore",
+  "model": "crystalline:crystallineknowledge",
+  "subtitle": "crystalline.book.wdli",
+  "creative_tab": "crystalline",
+  "advancement_namespaces": ["crystalline"],
+  "book_texture": "patchouli:textures/gui/book_cyan.png"
+}

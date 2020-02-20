@@ -1,8 +1,13 @@
 package com.teamisotope.crystalline.groups;
 
 import com.teamisotope.crystalline.blocks.CrystallineBlocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class CrystallineMainGroup extends ItemGroup {
 
@@ -15,5 +20,13 @@ public class CrystallineMainGroup extends ItemGroup {
         return new ItemStack(CrystallineBlocks.arcanumminerale);
     }
 
-
+    @Override
+    public void fill(NonNullList<ItemStack> items) {
+        super.fill(items);
+        ItemStack guideBook = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("patchouli", "guide_book")));
+        CompoundNBT nbtTag = new CompoundNBT();
+        nbtTag.putString("patchouli:book", "crystalline:crystallineknowledge");
+        guideBook.setTag(nbtTag);
+        items.add(guideBook);
+    }
 }

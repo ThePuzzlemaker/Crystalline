@@ -76,8 +76,14 @@ minecraft {
     }
 }
 
+repositories {
+    maven { url 'https://maven.blamejared.com' }
+}
+
 dependencies {
     minecraft 'net.minecraftforge:forge:1.14.4-28.2.0'
+    compile fg.deobf("vazkii.patchouli:Patchouli-1.14.4:1.1-25.128")
+    runtime fg.deobf("vazkii.patchouli:Patchouli-1.14.4:1.1-25.128")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

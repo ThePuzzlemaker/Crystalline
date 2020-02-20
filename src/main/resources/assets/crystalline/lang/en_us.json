@@ -6,5 +6,9 @@
   "item.crystalline.arcanummineralecrystal": "§r§5Crystallized Arcanum Minerale",
 
   "_comment": "Creative Tabs",
-  "itemGroup.crystallinemain": "§r§5Crystalline"
+  "itemGroup.crystallinemain": "§r§5Crystalline",
+
+  "_comment": "Book",
+  "crystalline.book.lore": "This contraption seems to pull energy from a crystal to drive a monitor of some sort, and it seems to contain arcane knowledge. Perhaps this could be to your use?",
+  "crystalline.book.wdli": "Who doesn't like insanity?"
 }
