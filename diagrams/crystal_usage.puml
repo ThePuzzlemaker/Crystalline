@@ -1,0 +1,48 @@
+@startuml
+
+!include theme.puml
+
+class Crystal {
+    has a material
+    has a name
+    has a list of modes fetched from ModeDistributor
+    has a list of modes that it blacklists
+    has an auto-generated item representation
+}
+
+class ModeDistributor {
+    on startup, distributes modes
+    iterates through all registered modes and makes a hashmap
+    removes blacklisted modes
+    has a HashMap<ResourceLocation, ResourceLocation[]> // Crystal RL, Modes RLs
+    allows crystals to fetch all their valid modes
+}
+
+class Mode {
+    has a name
+    {field} has a list of valid crystals (ResourceLocation[]), empty for any
+    has a required catalyst
+    does all the physical work of a crystal
+}
+
+class Catalyst {
+    has a name
+    has a tier
+    has an auto-generated item representation
+}
+
+class CrystalRunner {
+    layer between Crystal and its item representation
+    finds the crystal, finds its selected mode, and runs its physical work as well as consuming catalysts
+    cycles modes when necessary
+}
+
+Mode *-- Crystal: has many
+Mode *-- ModeDistributor: stores references to
+ModeDistributor *-- Crystal: uses
+Catalyst *-- Mode: has one required
+Catalyst *-- CrystalRunner: handles consumption of
+Crystal *-- CrystalRunner: handles item representations of
+Mode *-- CrystalRunner: runs physical work of
+
+@enduml

@@ -25,7 +25,7 @@
       "type": "spotlight",
       "item": "crystalline:arcanummineralecrystal",
       "title": "Pure Arcanum Minerale",
-      "text": "This is pure $(5)Arcanum Minerale$(), or at least the purest it can get. It's potential is $(bold)nearly infinite$(). While it is quite common, it has been found that it is $(bold)somewhat hard to harness without extra components or ways to increase its power$()."
+      "text": "This is pure $(5)Arcanum Minerale$(), or at least the purest it can get. Its potential is $(bold)nearly infinite$(). While it is quite common, it has been found that it is $(bold)somewhat hard to harness without extra components or ways to increase its power$()."
     }
   ],
   "sortnum": 0
