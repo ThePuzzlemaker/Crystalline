@@ -1,0 +1,59 @@
+@startuml
+
+!include theme.puml
+
+note top of Crystalline : Class/method names not final\nBased on flow from 'crystal_usage.puml'\n'...' in method/field definitions for brevity\nModelReference is some type of reference\nto a model, however is possible w/ OBJ in Forge
+
+package Crystalline {
+    note top of API : Easily accessible by addon mods
+    package API {
+        +class Mode {
+            +String getName();
+            +ResourceLocation[] getValidCrystals();
+        }
+        +class Catalyst {
+            +String getName();
+            +int getTier();
+            +ModelReference getModel();
+        }
+        +class Crystal {
+            +String getName();
+            +ResourceLocation[] getBlacklistedModes();
+            +ModelReference getModel();
+        }
+    }
+
+    note top of Core : Not directly accessible by addons and should not be when possible
+    package Core {
+        +class CrystallineSetup {
+            +void initialize(); // { ModeDistributor.distribute(); }
+        }
+
+        +class ModeDistributor {
+            -HashMap<ResourceLocation, ResourceLocation[]> // Crystal -> Modes HashMap
+            +void distribute(); // distributes modes
+            +ResourceLocation[] getModesForCrystal(ResourceLocation);
+        }
+
+        note top of CrystalItem : acts as CrystalRunner
+
+        +class CrystalItem {
+            +void runsOnItemRightClick(...); // handles catalysts and runs modes
+            +boolean runsOnCycleModePacket(...); // handles mode cycling
+        }
+
+        ModeDistributor *-- CrystalItem : uses data from
+        ModeDistributor *-- CrystallineSetup : initializes
+    }
+
+    Crystal *-- CrystalItem : represents
+    Mode *-- Crystal : has many
+    Catalyst *-- Mode : requires one
+    Mode *-- ModeDistributor : distributes to Crystals
+    Crystal *-- ModeDistributor : stores modes of
+
+}
+
+
+
+@enduml

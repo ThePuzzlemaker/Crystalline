@@ -5,7 +5,6 @@
 class Crystal {
     has a material
     has a name
-    has a list of modes fetched from ModeDistributor
     has a list of modes that it blacklists
     has an auto-generated item representation
 }
