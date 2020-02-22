@@ -4,9 +4,15 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.teamisotope.crystalline.Crystalline;
+import net.minecraft.client.renderer.model.IBakedModel;
+import net.minecraft.client.renderer.model.IUnbakedModel;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.resources.IResource;
 import net.minecraft.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelBakeEvent;
+import net.minecraftforge.client.model.BasicState;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
@@ -23,20 +29,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.regex.Pattern;
 
-// kill me now
-// this class is going to be the source of 99% of this mod's errors
-// please help me now
-// please stop me before I become unstoppable
-// why won't Forge implement a thing like this
 public class CrystallineOBJHelper {
 
     public static OBJModel.MaterialLibrary replaceMaterials(OBJModel objModel, ResourceLocation newMaterialFile) throws Exception {
-        Class<? extends OBJLoader> objLoaderClass = OBJLoader.class;
-        OBJLoader objLoader = OBJLoader.INSTANCE;
+        IResourceManager irm = getIRMFromOBJLoader();
         OBJModel.MaterialLibrary materialLibrary = new OBJModel.MaterialLibrary();
-        Field irmField = objLoaderClass.getDeclaredField("manager");
-        irmField.setAccessible(true);
-        IResourceManager irm = (IResourceManager)irmField.get(objLoader);
         materialLibrary.parseMaterials(irm, newMaterialFile.getPath(), newMaterialFile);
         return materialLibrary;
     }
@@ -44,8 +41,20 @@ public class CrystallineOBJHelper {
     public static IResourceManager getIRMFromOBJLoader() throws Exception {
         Field irmField = ObfuscationReflectionHelper.findField(OBJLoader.class, "manager");
         irmField.setAccessible(true);
-        IResourceManager irm = (IResourceManager)irmField.get(OBJLoader.INSTANCE);
-        return irm;
+        return (IResourceManager)irmField.get(OBJLoader.INSTANCE);
+    }
+
+    public static IBakedModel bakeOBJWithDynamicMaterial(ResourceLocation modelLocation, ResourceLocation newMaterialFile, ModelBakeEvent event) throws Exception {
+        IUnbakedModel model = ModelLoaderRegistry.getModelOrMissing(modelLocation);
+        if (model instanceof OBJModel) {
+            OBJModel objModel = (OBJModel)model;
+            OBJModel.MaterialLibrary newMtlLib = replaceMaterials(objModel, newMaterialFile);
+            IResourceManager irm = getIRMFromOBJLoader();
+            IUnbakedModel newModel = new CrystallineOBJParser(modelLocation).parse(newMtlLib);
+            return newModel.bake(event.getModelLoader(), ModelLoader.defaultTextureGetter(), new BasicState(newModel.getDefaultState(), false), DefaultVertexFormats.ITEM);
+        } else {
+            return null;
+        }
     }
 
     public static class CrystallineOBJParser
@@ -69,6 +78,17 @@ public class CrystallineOBJHelper {
             this.objFrom = from.getLocation();
             this.objStream = new InputStreamReader(from.getInputStream(), StandardCharsets.UTF_8);
             this.objReader = new BufferedReader(objStream);
+        }
+
+        public CrystallineOBJParser(IResource from) throws Exception {
+            this.manager = getIRMFromOBJLoader();
+            this.objFrom = from.getLocation();
+            this.objStream = new InputStreamReader(from.getInputStream(), StandardCharsets.UTF_8);
+            this.objReader = new BufferedReader(objStream);
+        }
+
+        public CrystallineOBJParser(ResourceLocation fromRL) throws Exception {
+            this(getIRMFromOBJLoader().getResource(fromRL));
         }
 
         public List<String> getElements()
@@ -99,7 +119,7 @@ public class CrystallineOBJHelper {
                 lineNum++;
                 currentLine = objReader.readLine();
                 if (currentLine == null) break;
-                currentLine.trim();
+                currentLine = currentLine.trim();
                 if (currentLine.isEmpty() || currentLine.startsWith("#")) continue;
 
                 try
@@ -113,7 +133,8 @@ public class CrystallineOBJHelper {
                     {
                         Field materialsField = ObfuscationReflectionHelper.findField(OBJModel.MaterialLibrary.class, "materials");
                         materialsField.setAccessible(true);
-                        Map<String, OBJModel.Material> materials = (Map<String,OBJModel.Material>)materialsField.get(this.materialLibrary);
+                        @SuppressWarnings("unchecked")
+                        Map<String, OBJModel.Material> materials = (Map<String, OBJModel.Material>) materialsField.get(this.materialLibrary);
                         if (materials.containsKey(data))
                         {
                             material = materials.get(data);
@@ -220,8 +241,7 @@ public class CrystallineOBJHelper {
                         if (key.equalsIgnoreCase("g"))
                         {
                             String[] splitSpace = data.split(" ");
-                            for (String s : splitSpace)
-                                groupList.add(s);
+                            groupList.addAll(Arrays.asList(splitSpace));
                         }
                         else
                         {
