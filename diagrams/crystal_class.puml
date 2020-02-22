@@ -10,6 +10,9 @@ package Crystalline {
         +class Mode {
             +String getName();
             +ResourceLocation[] getValidCrystals();
+            +void runsOnHold(...);
+            +void runsOnRightClick(...);
+            +void runsOnLeftClick(...);
         }
         +class Catalyst {
             +String getName();
