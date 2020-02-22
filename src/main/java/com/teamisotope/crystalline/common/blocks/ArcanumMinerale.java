@@ -1,4 +1,4 @@
-package com.teamisotope.crystalline.blocks;
+package com.teamisotope.crystalline.common.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

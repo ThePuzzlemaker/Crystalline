@@ -1,9 +1,8 @@
 package com.teamisotope.crystalline.client;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.teamisotope.crystalline.Crystalline;
+import com.teamisotope.crystalline.common.Crystalline;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.IUnbakedModel;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -17,11 +16,9 @@ import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import org.apache.commons.io.IOUtils;
 
 import javax.vecmath.Vector4f;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;

@@ -1,4 +1,4 @@
-package com.teamisotope.crystalline.setup;
+package com.teamisotope.crystalline.common.setup;
 
 public class ServerProxy implements IProxy {
 

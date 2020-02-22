@@ -1,7 +1,6 @@
-package com.teamisotope.crystalline.blocks;
+package com.teamisotope.crystalline.common.blocks;
 
-import com.teamisotope.crystalline.Crystalline;
-import com.teamisotope.crystalline.setup.CrystallineSetup;
+import com.teamisotope.crystalline.common.Crystalline;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;

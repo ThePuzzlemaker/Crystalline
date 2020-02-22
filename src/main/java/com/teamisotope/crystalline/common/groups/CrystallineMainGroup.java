@@ -1,7 +1,6 @@
-package com.teamisotope.crystalline.groups;
+package com.teamisotope.crystalline.common.groups;
 
-import com.teamisotope.crystalline.blocks.CrystallineBlocks;
-import net.minecraft.item.Item;
+import com.teamisotope.crystalline.common.blocks.CrystallineBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;

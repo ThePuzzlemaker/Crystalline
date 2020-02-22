@@ -1,7 +1,7 @@
-package com.teamisotope.crystalline.setup;
+package com.teamisotope.crystalline.common.setup;
 
-import com.teamisotope.crystalline.groups.CrystallineMainGroup;
-import com.teamisotope.crystalline.world.OreGeneration;
+import com.teamisotope.crystalline.common.groups.CrystallineMainGroup;
+import com.teamisotope.crystalline.common.world.OreGeneration;
 
 public class CrystallineSetup {
 

@@ -1,6 +1,6 @@
-package com.teamisotope.crystalline.items;
+package com.teamisotope.crystalline.common.items;
 
-import com.teamisotope.crystalline.Crystalline;
+import com.teamisotope.crystalline.common.Crystalline;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
