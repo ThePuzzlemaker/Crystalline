@@ -3,8 +3,8 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				//sh 'chmod +x version.sh'
-				//sh './version.sh'
+				sh 'chmod +x version.sh'
+				sh './version.sh'
 				sh 'chmod +x gradlew'
 				sh './gradlew clean build'
 			}

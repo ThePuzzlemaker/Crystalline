@@ -1,9 +1,6 @@
 package com.teamisotope.crystalline.common;
 
-import com.teamisotope.crystalline.common.setup.ClientProxy;
-import com.teamisotope.crystalline.common.setup.CrystallineSetup;
-import com.teamisotope.crystalline.common.setup.IProxy;
-import com.teamisotope.crystalline.common.setup.ServerProxy;
+import com.teamisotope.crystalline.common.setup.*;
 import com.teamisotope.crystalline.common.util.Config;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -37,6 +34,8 @@ public class Crystalline {
         Config.loadConfig(Config.Common.CONFIG_SPEC, FMLPaths.CONFIGDIR.get().resolve("crystalline-common.toml"));
         Config.loadConfig(Config.Client.CONFIG_SPEC, FMLPaths.CONFIGDIR.get().resolve("crystalline-client.toml"));
         Config.loadConfig(Config.Server.CONFIG_SPEC, FMLPaths.CONFIGDIR.get().resolve("crystalline-server.toml"));
+
+        Registration.init();
 
     }
 

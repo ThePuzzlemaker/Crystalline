@@ -1,6 +1,6 @@
 # Blender v2.82 (sub 7) OBJ File: 'crystal.blend'
 # www.blender.org
-mtllib crystal.mtl
+mtllib crystalline:models/crystal/drained.mtl
 o Cube_Cube.001
 v -0.125000 -0.337456 0.125000
 v -0.125000 0.337456 0.125000

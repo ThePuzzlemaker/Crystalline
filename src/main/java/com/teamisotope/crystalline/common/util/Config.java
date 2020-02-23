@@ -30,7 +30,7 @@ public class Config {
     }
 
     @SubscribeEvent
-    public static void onReload(final ModConfig.ConfigReloading configEvent) {
+    public static void onReload(final ModConfig.Reloading configEvent) {
     }
 
     public static class Common {
@@ -59,13 +59,13 @@ public class Config {
 
             private static void setupConfig(ForgeConfigSpec.Builder builder) {
                 builder.comment("Arcanum Minerale ore generation settings").push(CATEGORY_ARCANUMMINNERALE);
-                AM_VEINSIZE = builder.comment("Vein size for Arcanum Minerale ore generation")
+                AM_VEINSIZE = builder.comment("Vein size for Arcanum Minerale ore generation\nDefault: 10")
                         .defineInRange("amVeinSize", 10, 1, 20);
-                AM_MINY = builder.comment("Minimum Y-value for Arcanum Minerale ore generation")
+                AM_MINY = builder.comment("Minimum Y-value for Arcanum Minerale ore generation\nDefault:0")
                         .defineInRange("amMinY", 0, 0, 255);
-                AM_MAXY = builder.comment("Maximum Y-value for Arcanum Minerale ore generation")
+                AM_MAXY = builder.comment("Maximum Y-value for Arcanum Minerale ore generation\nDefault:20")
                         .defineInRange("amMaxY", 20, 0, 255);
-                AM_COUNT = builder.comment("Number of times to generate per chunk for Arcanum Minerale ore generation")
+                AM_COUNT = builder.comment("Number of times to generate per chunk for Arcanum Minerale ore generation\nDefault:7")
                         .defineInRange("amCount", 7, 1, 20);
                 builder.pop();
             }

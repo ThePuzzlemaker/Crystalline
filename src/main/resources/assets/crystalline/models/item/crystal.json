@@ -1,0 +1,22 @@
+{
+  "parent": "forge:item/default",
+  "loader": "crystalline:crystal_loader",
+  "crystalTypes": {
+    "": {
+      "parent": "crystalline:item/crystal_base",
+      "loader": "forge:obj",
+      "model": "crystalline:models/item/crystal.obj"
+    },
+    "crystalline:crystal.knowledge": {
+      "parent": "crystalline:item/crystal_base",
+      "loader": "forge:obj",
+      "model": "crystalline:models/item/crystal.obj",
+      "materialLibraryOverride":  "crystalline:models/crystal/knowledge.mtl"
+    },
+    "crystalline:crystals.drained": {
+      "parent": "crystalline:item/crystal_base",
+      "loader": "forge:obj",
+      "model": "crystalline:models/item/crystal.obj"
+    }
+  }
+}

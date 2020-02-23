@@ -12,7 +12,6 @@ public class ArcanumMinerale extends Block {
                 .harvestTool(ToolType.PICKAXE)
                 .harvestLevel(3)
         );
-        setRegistryName("arcanumminerale");
     }
 
 }

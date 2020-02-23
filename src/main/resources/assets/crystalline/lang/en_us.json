@@ -1,14 +1,15 @@
 {
-  "_comment": "Blocks",
+  "_comment1": "Blocks",
   "block.crystalline.arcanumminerale": "§r§5Arcanum Minerale",
 
-  "_comment": "Items",
+  "_comment2": "Items",
   "item.crystalline.arcanummineralecrystal": "§r§5Crystallized Arcanum Minerale",
+  "item.crystalline.crystal": "§r§5Crystal",
 
-  "_comment": "Creative Tabs",
+  "_comment3": "Creative Tabs",
   "itemGroup.crystallinemain": "§r§5Crystalline",
 
-  "_comment": "Book",
+  "_comment4": "Book",
   "crystalline.book.lore": "This contraption seems to pull energy from a crystal to drive a monitor of some sort, and it seems to contain arcane knowledge. Perhaps this could be to your use?",
   "crystalline.book.wdli": "Who doesn't like insanity?"
 }
